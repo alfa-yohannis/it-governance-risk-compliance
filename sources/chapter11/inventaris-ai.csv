@@ -1,0 +1,3 @@
+# Kegunaan: lembar kosong inventaris AI untuk Aktivitas Bab 11. Cara memakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, isi satu baris per kasus. Jangan memasukkan data pasien atau karyawan nyata.
+id,tujuan,pemilik,vendor_versi,data,kelompok_terdampak,risiko_utama,klasifikasi_pembanding,pengawasan,keputusan,tanggal_tinjau
+,,,,,,,,,,

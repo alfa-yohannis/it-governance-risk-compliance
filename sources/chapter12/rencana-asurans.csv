@@ -1,0 +1,12 @@
+# Kegunaan: contoh semesta audit dan rencana asurans dua tahun Medikara untuk Aktivitas Bab 12, sama dengan tabel rencana pada bab. Cara memakai: salin berkas, ganti area dan nilainya, hitung prioritas = skor_risiko + perubahan + kewajiban - asurans_lain, lalu cocokkan jam dengan kapasitas. Seluruh isi pengandaian.
+periode,area,risiko,skor_risiko,perubahan,kewajiban,asurans_lain,prioritas,jam,kriteria,populasi,penilai,keahlian,keputusan_didukung,alasan_waktu
+Tahun 1 awal,Akses vendor AC-01,R-01,12,3,5,1,19,600,KB-02 dan KB-03,120 akun dan 60 catatan,audit internal,akses dan privasi,kesiapan perluasan mitra,insiden vendor dan temuan akses
+Tahun 1 akhir,Pemulihan DSS04,R-05,10,5,2,1,16,480,KB-08 dan target BIA,144 uji per tahun,audit internal dan spesialis,pemulihan dan layanan,kesiapan migrasi,harus selesai sebelum perpindahan ke cloud
+Tahun 1 akhir,Insiden dan pemberitahuan,R-12,8,3,5,2,14,240,KB-07 dan K-04,2 latihan bersama,audit internal,hukum dan insiden,kesiapan pemberitahuan,mengikuti Paket C
+Tahun 2,AI klinis AI-01 dan AI-02,R-11,12,5,3,1,19,480,KB-09,sistem yang sudah berjalan,auditor yang tidak memberi saran KB-09,penilaian AI dan klinis,batas perluasan AI,sistem belum berjalan pada Tahun 1
+Tahun 2,Jejak aktivitas,R-02,12,3,3,2,16,240,KB-06,260 tinjauan,audit internal,keamanan dan log,keandalan penelusuran,mengikuti Paket D
+Tahun 2,Privasi dan retensi,R-09,9,3,5,2,15,200,RoPA dan register kewajiban,6 proses inti,audit internal,privasi,batas pemakaian data,mengikuti DPIA Bab 9
+Tahun 2,Vendor inti dan cloud,R-08,8,5,3,3,13,320,klausul kontrak Bab 9,V-01 dan V-02,audit internal dan spesialis,kontrak dan cloud,perpanjangan kontrak,setelah membaca laporan SOC 2 terbaru
+Tahun 2,Integrasi BPJS Kesehatan,R-03,9,3,2,1,13,200,target layanan pendaftaran,5 rumah sakit,audit internal,integrasi,kelangsungan pendaftaran,setelah pola integrasi baru berjalan
+Ditunda,Laporan spreadsheet,R-04,12,1,1,4,10,240,definisi data,laporan manajemen,lini pertama dipantau lini kedua,pelaporan,tidak masuk rencana dua tahun,kapasitas tidak cukup; tinjau tahunan
+Ditunda,Rilis Medikara+,R-07,9,2,1,2,10,240,prosedur perubahan,40 perubahan per bulan,lini kedua,perubahan,tidak masuk rencana dua tahun,kapasitas tidak cukup; tinjau tahunan

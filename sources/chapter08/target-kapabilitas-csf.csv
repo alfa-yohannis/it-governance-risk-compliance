@@ -1,0 +1,26 @@
+# Kegunaan: target kapabilitas COBIT dan profil target NIST CSF pengandaian Medikara untuk Aktivitas Bab 08. Cara memakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, lalu ganti contoh dengan bukti tim; status lokal, tier, dan tingkat kapabilitas tidak saling dikonversi.
+id,jenis,rujukan,kondisi_c2,target_c3,alasan_risiko,cakupan,bukti_penerimaan,pemilik,tenggat_bulan,ketergantungan,paket
+T-01,Kapabilitas COBIT,DSS05,AC-01 indikatif 1; satu rumah sakit,Tingkat 3,R-01; K-01; insiden 2025,Lima rumah sakit,Satu prosedur berjalan di 5 rumah sakit,Kepala TI,12,Inventaris identitas,A
+T-02,Kapabilitas COBIT,APO10,Perjanjian vendor 6 dari 11 butir,Tingkat 3,R-01; K-05,Vendor Medikara+,11 dari 11 butir dan latihan laporan 12 jam,Pengelola vendor,12,Bab 9,A
+T-03,Kapabilitas COBIT,APO13,SoA 87 kontrol diperlukan; 6 dikecualikan,Tingkat 3,R-01; R-02,Lima rumah sakit dan Medikara+,Kebijakan dan SoA ditinjau berkala,CISO,12,KB-01,A
+T-04,Kapabilitas COBIT,APO14,2.400 dari 96.000 data tidak cocok di Bogor,Tingkat 2,R-02; R-04,Lima rumah sakit,Definisi punya pemilik,Kepala rekam medis,12,Rancangan IT40613,Umum
+T-05,Kapabilitas COBIT,APO12,12 skenario sudah berpemilik,Tingkat 2,Semua skenario,12 skenario,12 skenario ditinjau tiap triwulan,Kepala risiko,12,Data dua triwulan,Umum
+T-06,Kapabilitas COBIT,MEA03,7 dari 16 kewajiban belum diverifikasi,Tingkat 2,K-01 sampai K-16,Register Bab 3,16 dari 16 baris terverifikasi,Fungsi kepatuhan,12,Register Bab 3,Umum
+T-07,Kapabilitas COBIT,BAI06,8 dari 10 tiket contoh lengkap,Tingkat 2,R-07,Perubahan SIMRS dan Medikara+,10 dari 10 tiket contoh lengkap; termasuk darurat,Manajer perubahan,12,Pengganti pemilik layanan,Umum
+T-08,Hasil CSF,GV.OC-03,Sebagian,Terbukti,K-01 sampai K-16,36 fasilitas,16 dari 16 baris register terverifikasi,Fungsi kepatuhan,12,Register Bab 3,Umum
+T-09,Hasil CSF,GV.RM-02,Sebagian,Terbukti,Batas risiko Bab 5,Akses vendor,Batas diuji dengan satu penyimpangan,Kepala risiko,12,Komite risiko,Umum
+T-10,Hasil CSF,GV.RR-02,Sebagian,Terbukti,R-01,Akses vendor,Mandat dan RACI disahkan; 120 akun berpemilik,Kepala TI,6,Model tata kelola,A
+T-11,Hasil CSF,GV.SC-07,Sebagian,Terbukti,R-01; R-08; K-05,Vendor Medikara+,Tinjauan vendor berkala; 11 dari 11 butir,Pengelola vendor,12,Bab 9,A dan C
+T-12,Hasil CSF,ID.AM-02,Sebagian,Sebagian,R-02,Lima rumah sakit,Rekonsiliasi berjalan pada 2 dari 5 rumah sakit,Kepala TI,12,G-06 gelombang kedua,Gelombang 2
+T-13,Hasil CSF,PR.AA-01,Sebagian,Sebagian,R-02; K-01,Lima rumah sakit,Nol akun bersama pada sampel 2 rumah sakit,Pemilik layanan,12,G-04 gelombang kedua,Gelombang 2
+T-14,Hasil CSF,PR.AA-03,Sebagian; MFA 108 dari 120 akun,Terbukti,R-01; K-01,120 akun vendor,MFA pada 120 dari 120 akun,Kepala operasi TI,6,Daftar penugasan,A
+T-15,Hasil CSF,PR.AA-05,Sebagian; bukti 1 dari 5 rumah sakit,Terbukti,R-01; R-02; K-01,120 akun vendor pada 5 rumah sakit,120 dari 120 akun cocok; 60 dari 60 catatan,Kepala operasi TI,6,Inventaris identitas,A
+T-16,Hasil CSF,PR.AA-06,Tidak relevan,Tidak relevan,Tidak ada,Akun vendor jarak jauh,Ditinjau bila vendor hadir di lokasi,Fungsi keamanan,12,Tidak ada,Umum
+T-17,Hasil CSF,PR.PS-04,Terbukti pada 5 SIMRS,Terbukti,R-01; R-12,5 SIMRS dan Medikara+,Cakupan ditambah Medikara+; catatan rinci 90 hari,Kepala operasi TI,12,KB-06,D
+T-18,Hasil CSF,PR.DS-11,Sebagian,Terbukti,R-05; K-02,36 fasilitas,Cadangan disertai hasil uji pemulihan,Kepala operasi TI,3,Akses uji,B
+T-19,Hasil CSF,DE.CM-03,Sebagian; 0 dari 260 tinjauan,Terbukti,R-01; K-01,Lima rumah sakit,247 dari 260 tinjauan mingguan,Fungsi keamanan,12,KB-06,D
+T-20,Hasil CSF,RS.MA-01,Belum ada bukti,Terbukti,R-01; R-12; K-04; K-05,Insiden vendor,2 latihan bersama; laporan vendor dalam 12 jam,Pengelola vendor,12,KB-07,C
+T-21,Hasil CSF,RC.RP-03,Belum ada bukti,Terbukti,R-05; K-02,36 fasilitas,144 uji per tahun; hasil disahkan,Kepala operasi TI,3,KB-08,B
+T-22,Hasil CSF,GV.PO-01,Belum dinilai,Terbukti,Arsitektur kebijakan,Medikara,KB-01 dan KB-05 disahkan serta disosialisasikan,Direktur pelayanan,6,Isi profil saat ini,Umum
+T-23,Hasil CSF,GV.PO-02,Belum dinilai,Terbukti,Arsitektur kebijakan,Medikara,8 dari 8 dokumen ditinjau sesuai jadwal,Kepala risiko,12,Isi profil saat ini,Umum
+T-24,Kapabilitas COBIT,DSS04,Ditunda Bab 4; skor 10; ditetapkan Bab 10,Tingkat 3,R-05; K-02,36 fasilitas,Prosedur korporat dengan 36 lampiran; BIA 36 baris; 144 uji dan 5 tabletop per tahun,Direktur pelayanan,12,BIA Bab 10,B

@@ -1,0 +1,41 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  execute at begin node={\hyphenpenalty=10000},
+  induk/.style={draw, rounded corners, align=center, text width=1.8cm,
+    minimum height=1.3cm, fill=praditagreen!15},
+  tahap/.style={draw, rounded corners, align=center, text width=3.1cm,
+    minimum height=0.62cm, fill=blue!8},
+  lanjut/.style={draw, rounded corners, align=center, text width=3.4cm,
+    minimum height=0.62cm, fill=orange!12},
+  masalah/.style={draw, rounded corners, align=center, text width=3.4cm,
+    minimum height=0.9cm, fill=red!22},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[font=\scriptsize\bfseries] at (0,2.75) {Organisasi};
+  \node[font=\scriptsize\bfseries] at (3.6,2.75) {Pihak ketiga};
+  \node[font=\scriptsize\bfseries] at (8.1,2.75) {Pihak keempat};
+  \node[induk] (m) at (0,0)
+    {Medikara\\{\tiny\mdseries pemilik tujuan dan risiko}};
+  \node[tahap] (v3) at (3.6,2) {V-03 Laboratorium mitra};
+  \node[tahap] (v1) at (3.6,1) {V-01 Vendor Medikara+};
+  \node[tahap] (v2) at (3.6,0) {V-02 Penyedia cloud};
+  \node[tahap] (v4) at (3.6,-1) {V-04 Mitra asuransi};
+  \node[tahap] (v5) at (3.6,-2) {V-05 Apotek daring};
+  \node[masalah] (p1) at (8.1,1.6)
+    {Penyedia pesan bersama\\{\tiny\mdseries titik kegagalan V-01 dan V-03}};
+  \node[masalah] (p2) at (8.1,0.3)
+    {Layanan identitas bersama\\{\tiny\mdseries titik kegagalan V-01 dan V-02}};
+  \node[lanjut] (p3) at (8.1,-1) {Pengolah klaim};
+  \node[lanjut] (p4) at (8.1,-2) {Kurir obat};
+  \draw[panah] (m.east) -- (v3.west);
+  \draw[panah] (m.east) -- (v1.west);
+  \draw[panah] (m.east) -- (v2.west);
+  \draw[panah] (m.east) -- (v4.west);
+  \draw[panah] (m.east) -- (v5.west);
+  \draw[panah] (v1.south) -- (v2.north);
+  \draw[panah] (v3.east) -- (p1.west);
+  \draw[panah] (v1.east) -- (p1.west);
+  \draw[panah] (v1.east) -- (p2.west);
+  \draw[panah] (v2.east) -- (p2.west);
+  \draw[panah] (v4.east) -- (p3.west);
+  \draw[panah] (v5.east) -- (p4.west);
+\end{tikzpicture}

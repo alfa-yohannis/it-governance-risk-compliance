@@ -1,0 +1,9 @@
+\begin{tikzpicture}[node distance=5mm, kotak/.style={draw, rounded corners, align=center, text width=2.25cm, minimum height=1.2cm, font=\scriptsize}, panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[kotak,fill=praditagreen!15] (t0) {Dampak layanan};
+  \node[kotak,fill=blue!8] (t1) [right=of t0] {Target pemulihan};
+  \node[kotak,fill=orange!12] (t2) [right=of t1] {Strategi dan sumber daya};
+  \node[kotak,fill=green!10] (t3) [right=of t2] {Latihan dan perbaikan};
+  \draw[panah] (t0) -- (t1);
+  \draw[panah] (t1) -- (t2);
+  \draw[panah] (t2) -- (t3);
+\end{tikzpicture}

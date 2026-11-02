@@ -1,0 +1,9 @@
+# Kegunaan: syarat wajib dan lima kriteria berbobot untuk memilih alat GRC pada Bab 14. Cara memakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, uji syarat wajib lebih dahulu, lalu hitung skor = jumlah bobot x skor / 100. Skor adalah asumsi pembelajaran, bukan penilaian produk.
+kriteria,jenis,bobot_persen,spreadsheet_skor_1_5,sumber_terbuka_skor_1_5,platform_skor_1_5,bukti_yang_diminta
+Pembatasan akses bukti,wajib,0,ya_bersyarat,belum_diuji,belum_diuji,demo peran dan jejak akses
+Ekspor data lengkap,wajib,0,ya,belum_diuji,belum_diuji,ekspor kontrol relasi bukti dan tindakan
+Kecocokan proses,berbobot,25,3,4,5,demonstrasi alur AC-01
+Biaya tiga tahun,berbobot,25,5,3,2,asumsi biaya total dan kapasitas
+Kemudahan pengelolaan,berbobot,20,4,2,3,keahlian dan waktu pengelola
+Jejak perubahan,berbobot,15,2,4,5,uji versi serta persetujuan
+Portabilitas,berbobot,15,4,4,3,uji ekspor serta pemulihan

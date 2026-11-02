@@ -1,0 +1,57 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  lapisan/.style={draw, align=left, text width=3.5cm, minimum height=0.42cm, inner xsep=3pt,
+    inner ysep=0pt, fill=praditagreen!15},
+  judul/.style={draw, align=center, minimum width=2.3cm, minimum height=0.42cm,
+    inner ysep=0pt, fill=praditagreen!15, font=\scriptsize\bfseries},
+  pel/.style={draw, align=center, minimum width=2.3cm, minimum height=0.42cm, inner ysep=0pt,
+    fill=orange!12},
+  ber/.style={draw, align=center, minimum width=2.3cm, minimum height=0.42cm, inner ysep=0pt,
+    fill=blue!8},
+  pen/.style={draw, align=center, minimum width=2.3cm, minimum height=0.42cm, inner ysep=0pt,
+    fill=green!10}]
+  \node[lapisan, font=\scriptsize\bfseries] at (0,0) {Lapisan};
+  \node[judul] at (3.2,0) {IaaS};
+  \node[judul] at (5.5,0) {PaaS};
+  \node[judul] at (7.8,0) {SaaS};
+  \node[lapisan] at (0,-0.42) {Data pelanggan};
+  \node[pel] at (3.2,-0.42) {Pelanggan};
+  \node[pel] at (5.5,-0.42) {Pelanggan};
+  \node[pel] at (7.8,-0.42) {Pelanggan};
+  \node[lapisan] at (0,-0.84) {Konfigurasi dan pengaturan};
+  \node[pel] at (3.2,-0.84) {Pelanggan};
+  \node[pel] at (5.5,-0.84) {Pelanggan};
+  \node[pel] at (7.8,-0.84) {Pelanggan};
+  \node[lapisan] at (0,-1.26) {Identitas dan pengguna};
+  \node[pel] at (3.2,-1.26) {Pelanggan};
+  \node[pel] at (5.5,-1.26) {Pelanggan};
+  \node[pel] at (7.8,-1.26) {Pelanggan};
+  \node[lapisan] at (0,-1.68) {Perangkat klien};
+  \node[pel] at (3.2,-1.68) {Pelanggan};
+  \node[pel] at (5.5,-1.68) {Pelanggan};
+  \node[ber] at (7.8,-1.68) {Bersama};
+  \node[lapisan] at (0,-2.1) {Aplikasi};
+  \node[pel] at (3.2,-2.1) {Pelanggan};
+  \node[ber] at (5.5,-2.1) {Bersama};
+  \node[ber] at (7.8,-2.1) {Bersama};
+  \node[lapisan] at (0,-2.52) {Kendali jaringan};
+  \node[pel] at (3.2,-2.52) {Pelanggan};
+  \node[ber] at (5.5,-2.52) {Bersama};
+  \node[pen] at (7.8,-2.52) {Penyedia};
+  \node[lapisan] at (0,-2.94) {Sistem operasi};
+  \node[pel] at (3.2,-2.94) {Pelanggan};
+  \node[pen] at (5.5,-2.94) {Penyedia};
+  \node[pen] at (7.8,-2.94) {Penyedia};
+  \node[lapisan] at (0,-3.36) {Host fisik};
+  \node[pen] at (3.2,-3.36) {Penyedia};
+  \node[pen] at (5.5,-3.36) {Penyedia};
+  \node[pen] at (7.8,-3.36) {Penyedia};
+  \node[lapisan] at (0,-3.78) {Jaringan fisik};
+  \node[pen] at (3.2,-3.78) {Penyedia};
+  \node[pen] at (5.5,-3.78) {Penyedia};
+  \node[pen] at (7.8,-3.78) {Penyedia};
+  \node[lapisan] at (0,-4.2) {Pusat data fisik};
+  \node[pen] at (3.2,-4.2) {Penyedia};
+  \node[pen] at (5.5,-4.2) {Penyedia};
+  \node[pen] at (7.8,-4.2) {Penyedia};
+\end{tikzpicture}

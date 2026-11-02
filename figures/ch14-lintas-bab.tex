@@ -1,0 +1,14 @@
+\begin{tikzpicture}[node distance=7mm and 3mm, kotak/.style={draw, rounded corners, align=flush left, text width=2.7cm, minimum height=2.1cm, font=\scriptsize, anchor=north}, hasil/.style={draw, rounded corners, align=flush center, text width=11.7cm, minimum height=0.95cm, font=\scriptsize}, panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[kotak,fill=blue!8] (c1) {\textbf{C1: Bab 1 sampai 3}\\Rp10 miliar\\R-01 dan AC-01\\K-01 sampai K-16\\Batas delegasi};
+  \node[kotak,fill=blue!8,right=of c1] (c2) {\textbf{C2: Bab 4 sampai 7}\\12 skenario risiko\\Batas 2 persen\\G-01 sampai G-06\\CP-01 sampai CP-07};
+  \node[kotak,fill=blue!8,right=of c2] (c3) {\textbf{C3: Bab 8 sampai 11}\\T-01 sampai T-24\\Rp720 juta setahun\\Opsi B Rp480 juta\\3.046 jam AI};
+  \node[kotak,fill=blue!8,right=of c3] (c4) {\textbf{C4: Bab 12 dan 13}\\2.880 jam audit\\TA-01\\IK-01 sampai IK-12\\Keputusan opsi B};
+  \path (c1.south west) -- (c4.south east) coordinate[midway] (tengah);
+  \node[hasil,fill=orange!12,below=9mm of tengah] (b14) {\textbf{C4: Bab 14.} Peta jalan tiga tahun Rp4.976,60 juta, pilihan alat, dan lima keputusan untuk direksi};
+  \node[hasil,fill=green!10,below=of b14] (it) {Dilebur ke portofolio IT40513: satu cetak biru bersama IT40613 dan IT40713};
+  \draw[panah] (c1.south) -- (b14.north -| c1.south);
+  \draw[panah] (c2.south) -- (b14.north -| c2.south);
+  \draw[panah] (c3.south) -- (b14.north -| c3.south);
+  \draw[panah] (c4.south) -- (b14.north -| c4.south);
+  \draw[panah] (b14) -- (it);
+\end{tikzpicture}

@@ -1,0 +1,42 @@
+# Kegunaan: orientasi 40 pengenal objektif COBIT 2019 untuk Bab 4, dengan status pencocokan nama. Cara pakai: pakai nama pada kolom nama_terbaca; baris berstatus perlu dicocokkan wajib diperiksa ke publikasi resmi ISACA sebelum dikutip. Kolom sumber memakai kunci bib Bab 4.
+id,domain,jenis,nama_terbaca,cakupan_ringkas_bahasa_indonesia,status,sumber,versi
+EDM01,EDM,Tata kelola,,Kerangka tata kelola,Perlu dicocokkan,,COBIT2019
+EDM02,EDM,Tata kelola,Ensured benefits delivery,Manfaat,Dicocokkan,c04-strategi,COBIT2019
+EDM03,EDM,Tata kelola,Ensured risk optimization,Risiko,Dicocokkan,c04-kapabilitas; c04-sistematis,COBIT2019
+EDM04,EDM,Tata kelola,Ensured resource optimization,Sumber daya,Dicocokkan,c04-kapabilitas,COBIT2019
+EDM05,EDM,Tata kelola,,Pelibatan pemangku kepentingan,Perlu dicocokkan,,COBIT2019
+APO01,APO,Manajemen,,Kerangka manajemen TI,Perlu dicocokkan,,COBIT2019
+APO02,APO,Manajemen,Managed strategy,Strategi,Dicocokkan,c04-transformasi,COBIT2019
+APO03,APO,Manajemen,,Arsitektur enterprise,Perlu dicocokkan,,COBIT2019
+APO04,APO,Manajemen,,Inovasi,Perlu dicocokkan,,COBIT2019
+APO05,APO,Manajemen,Managed portfolio,Portofolio,Dicocokkan,c04-kontinuitas,COBIT2019
+APO06,APO,Manajemen,Managed budget and costs,Anggaran dan biaya,Dicocokkan,c04-kapabilitas,COBIT2019
+APO07,APO,Manajemen,Managed human resources,Sumber daya manusia,Dicocokkan,c04-wilujeng,COBIT2019
+APO08,APO,Manajemen,Managed relationships,Hubungan bisnis,Dicocokkan,c04-kontinuitas,COBIT2019
+APO09,APO,Manajemen,Managed service agreements,Perjanjian layanan,Dicocokkan; c04-kapabilitas menulis service level agreements,c04-kontinuitas,COBIT2019
+APO10,APO,Manajemen,Managed vendors,Vendor,Dicocokkan,c04-kapabilitas; c04-kontinuitas,COBIT2019
+APO11,APO,Manajemen,Managed quality,Kualitas,Dicocokkan,c04-kapabilitas,COBIT2019
+APO12,APO,Manajemen,Managed risk,Risiko,Dicocokkan,c04-kapabilitas; c04-sistematis,COBIT2019
+APO13,APO,Manajemen,Managed security,Keamanan,Dicocokkan,c04-kapabilitas; c04-sistematis,COBIT2019
+APO14,APO,Manajemen,Managed data,Data,Dicocokkan,c04-perbandingan; c04-kapabilitas,COBIT2019
+BAI01,BAI,Manajemen,,Program,Perlu dicocokkan,,COBIT2019
+BAI02,BAI,Manajemen,Managed requirements definition,Definisi kebutuhan,Dicocokkan,c04-kontinuitas,COBIT2019
+BAI03,BAI,Manajemen,Managed solutions identification and build,Identifikasi dan pembangunan solusi,Dicocokkan,c04-kontinuitas,COBIT2019
+BAI04,BAI,Manajemen,Managed availability and capacity,Ketersediaan dan kapasitas,Dicocokkan,c04-kontinuitas,COBIT2019
+BAI05,BAI,Manajemen,,Perubahan organisasi,Perlu dicocokkan,,COBIT2019
+BAI06,BAI,Manajemen,Managed IT changes,Perubahan TI,Dicocokkan,c04-kapabilitas; c04-strategi,COBIT2019
+BAI07,BAI,Manajemen,,Penerimaan dan transisi perubahan,Perlu dicocokkan,,COBIT2019
+BAI08,BAI,Manajemen,,Pengetahuan,Perlu dicocokkan,,COBIT2019
+BAI09,BAI,Manajemen,Managed assets,Aset,Dicocokkan,c04-kapabilitas,COBIT2019
+BAI10,BAI,Manajemen,Managed configuration,Konfigurasi,Dicocokkan,c04-kapabilitas; c04-sistematis,COBIT2019
+BAI11,BAI,Manajemen,Managed projects,Proyek,Dicocokkan,c04-perbandingan; c04-strategi,COBIT2019
+DSS01,DSS,Manajemen,Managed operations,Operasi,Dicocokkan,c04-kapabilitas; c04-kontinuitas,COBIT2019
+DSS02,DSS,Manajemen,Managed service requests and incidents,Permintaan layanan dan insiden,Dicocokkan,c04-kapabilitas; c04-kontinuitas,COBIT2019
+DSS03,DSS,Manajemen,Managed problems,Masalah,Dicocokkan,c04-kapabilitas; c04-kontinuitas,COBIT2019
+DSS04,DSS,Manajemen,Managed continuity,Kelangsungan,Dicocokkan,c04-kapabilitas; c04-sistematis,COBIT2019
+DSS05,DSS,Manajemen,Managed security services,Layanan keamanan,Dicocokkan,c04-kapabilitas; c04-sistematis,COBIT2019
+DSS06,DSS,Manajemen,Managed business process controls,Kontrol proses bisnis,Dicocokkan,c04-kapabilitas,COBIT2019
+MEA01,MEA,Manajemen,Managed performance and conformance monitoring,Kinerja dan kesesuaian,Dicocokkan,c04-kontinuitas,COBIT2019
+MEA02,MEA,Manajemen,Managed system of internal control,Sistem kontrol internal,Dicocokkan,c04-kapabilitas,COBIT2019
+MEA03,MEA,Manajemen,Managed compliance with external requirements,Kepatuhan eksternal,Dicocokkan,c04-kapabilitas,COBIT2019
+MEA04,MEA,Manajemen,Managed assurance,Asurans,Dicocokkan,c04-perbandingan; c04-kapabilitas,COBIT2019

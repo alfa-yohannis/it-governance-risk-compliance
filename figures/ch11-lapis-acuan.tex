@@ -1,0 +1,25 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  lapis/.style={draw, rounded corners, align=left, text width=7.9cm, minimum height=0.88cm},
+  induk/.style={draw, rounded corners, align=center, text width=2.6cm, minimum height=2.2cm},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[lapis, fill=orange!12] (a) at (0,0)
+    {\textbf{Mengikat.} UU 27/2022 Pasal 10 dan Pasal 34; PP 28/2024 Pasal 966 dan Pasal 972;
+    Permenkes 24/2022};
+  \node[lapis, fill=blue!8] (b) at (0,-1.08)
+    {\textbf{Pedoman.} Surat Edaran 9/2023 tentang etika; panduan WHO untuk AI kesehatan};
+  \node[lapis, fill=gray!35] (c) at (0,-2.16)
+    {\textbf{Belum berlaku, dipantau.} Rancangan Perpres etika dan peta jalan AI};
+  \node[lapis, fill=blue!8] (d) at (0,-3.24)
+    {\textbf{Pembanding.} EU AI Act, menjadi kewajiban hanya bila cakupan Article 2 terpenuhi};
+  \node[lapis, fill=blue!8] (e) at (0,-4.32)
+    {\textbf{Sukarela.} ISO/IEC 42001, ISO/IEC 42005, dan NIST AI RMF};
+  \node[induk, fill=green!10] (k) at (6.1,-2.16)
+    {\textbf{Kebijakan KB-09}\\Kewajiban hukum, pilihan internal, dan butir pemantauan ditulis
+    terpisah};
+  \draw[panah] (a.east) -- (k);
+  \draw[panah] (b.east) -- (k);
+  \draw[panah, dashed] (c.east) -- (k);
+  \draw[panah] (d.east) -- (k);
+  \draw[panah] (e.east) -- (k);
+\end{tikzpicture}

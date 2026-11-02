@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+  kotak/.style={draw,rounded corners,align=center,text width=1.95cm,
+    minimum height=1.45cm,font=\scriptsize,fill=blue!8},
+  label/.style={font=\tiny,fill=white,inner sep=1pt},
+  panah/.style={-{Stealth[length=2mm]},thick}
+]
+  \node[kotak,fill=praditagreen!15] (a) at (0,0) {\textbf{Sumber}\\ UU PDP Pasal 39: cegah akses tidak sah};
+  \node[kotak,fill=orange!12] (b) at (2.4,0) {\textbf{K-01}\\ Kewajiban dengan pemilik Medikara+};
+  \node[kotak] (c) at (4.8,0) {\textbf{AC-01}\\ Peninjauan hak akses bulanan};
+  \node[kotak] (d) at (7.2,0) {\textbf{B-01}\\ 6 dari 30 akun sampel belum dicabut};
+  \node[kotak,fill=green!10] (e) at (9.6,0) {\textbf{Status}\\ Memenuhi sebagian, cakupan dan tanggal jelas};
+  \node[kotak,fill=red!22,minimum height=0.95cm] (r) at (4.8,-2.05) {\textbf{R-01}\\ Akses vendor berlebihan};
+  \draw[panah] (a) -- (b);
+  \draw[panah] (b) -- (c);
+  \draw[panah] (c) -- (d);
+  \draw[panah] (d) -- (e);
+  \draw[panah] (c) -- node[label,right] {menurunkan} (r);
+  \draw[panah,dashed] (b.south) |- (r.west);
+  \draw[panah,dashed] (e.south) -- (9.6,-3.0) -- node[label,below] {aturan, kegiatan, atau vendor berubah: baris ditinjau ulang} (0,-3.0) -- (a.south);
+\end{tikzpicture}

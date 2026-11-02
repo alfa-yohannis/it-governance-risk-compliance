@@ -1,0 +1,10 @@
+\begin{tikzpicture}[node distance=5mm, kotak/.style={draw, rounded corners, align=center, text width=2.3cm, minimum height=1.55cm, font=\scriptsize, execute at begin node={\hyphenpenalty=10000}}, panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[kotak,fill=praditagreen!15] (t0) {\textbf{Tujuan dan risiko}\\[1pt]{\tiny\mdseries R-01 sampai \mbox{R-12},\\ batas Bab 5}};
+  \node[kotak,fill=blue!8] (t1) [right=of t0] {\textbf{Definisi dan data}\\[1pt]{\tiny\mdseries pembilang, penyebut, sumber}};
+  \node[kotak,fill=orange!12] (t2) [right=of t1] {\textbf{Ambang dan tindakan}\\[1pt]{\tiny\mdseries hijau, kuning, merah, pemilik}};
+  \node[kotak,fill=green!10] (t3) [right=of t2] {\textbf{Keputusan dan tinjauan}\\[1pt]{\tiny\mdseries opsi, biaya, tenggat}};
+  \draw[panah] (t0) -- (t1);
+  \draw[panah] (t1) -- (t2);
+  \draw[panah] (t2) -- (t3);
+  \draw[panah] (t3.south) -- ++(0,-0.45) -| (t0.south) node[pos=0.25, below, font=\scriptsize] {hasil keputusan mengubah risiko dan indikator pada periode berikutnya};
+\end{tikzpicture}

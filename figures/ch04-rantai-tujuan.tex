@@ -1,0 +1,31 @@
+\begin{tikzpicture}[
+  kotak/.style={draw,rounded corners,align=center,text width=3.3cm,
+    minimum height=1.25cm,font=\scriptsize,fill=blue!8},
+  saring/.style={draw,rounded corners,align=center,text width=2.3cm,
+    minimum height=1.25cm,font=\scriptsize,fill=orange!12},
+  panah/.style={-{Stealth[length=2mm]},thick}
+]
+  \node[kotak,fill=praditagreen!15] (k) at (0,0)
+    {\textbf{Kebutuhan pemangku kepentingan}\\
+    {\tiny\mdseries layanan tetap berjalan saat terganggu}};
+  \node[kotak] (e) at (3.95,0)
+    {\textbf{Tujuan organisasi}\\EG06\\
+    {\tiny\mdseries \textit{business service continuity and availability}}};
+  \node[kotak] (g) at (7.9,0)
+    {\textbf{Tujuan keselarasan}\\AG07 primer\\
+    {\tiny\mdseries AG02 dan AG05 sekunder}};
+  \draw[panah] (k) -- (e);
+  \draw[panah] (e) -- (g);
+  \node[saring,fill=gray!35] (s0) at (-0.5,-2.25)
+    {\textbf{40}\\{\tiny\mdseries objektif model inti}};
+  \node[saring] (s1) at (2.45,-2.25)
+    {\textbf{17}\\{\tiny\mdseries objektif berprioritas primer}};
+  \node[saring] (s2) at (5.4,-2.25)
+    {\textbf{8}\\{\tiny\mdseries daftar pendek sesuai konteks}};
+  \node[saring,fill=green!10] (s3) at (8.35,-2.25)
+    {\textbf{4}\\{\tiny\mdseries fokus awal: 25 praktik, 140 aktivitas}};
+  \draw[panah] (s0) -- (s1);
+  \draw[panah] (s1) -- (s2);
+  \draw[panah] (s2) -- (s3);
+  \draw[panah] (g.south) -- ++(0,-0.3) -| (s0.north);
+\end{tikzpicture}

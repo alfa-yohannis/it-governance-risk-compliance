@@ -1,0 +1,1536 @@
+{
+  "code": "IT40813",
+  "format_version": 1,
+  "description": "Diagram konsep orisinal, disusun dari naskah bab; kotak generik, tanpa TikZ.",
+  "chapters": [
+    {
+      "caption": "Dari tujuan layanan ke kontrol dan bukti GRC",
+      "nodes": [
+        {
+          "id": "tujuan",
+          "text": "Tujuan layanan|manfaat dan pihak terdampak",
+          "role": "outcome",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "keputusan",
+          "text": "Tata kelola|arah dan hak keputusan",
+          "role": "control",
+          "column": 1.02,
+          "row": 0
+        },
+        {
+          "id": "manajemen",
+          "text": "Manajemen|rencana dan pelaksanaan",
+          "role": "service",
+          "column": 2.15,
+          "row": 1
+        },
+        {
+          "id": "risiko",
+          "text": "Risiko dan kewajiban|ketidakpastian serta batas",
+          "role": "risk",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "kontrol",
+          "text": "Kontrol yang dijalankan|pemilik dan jadwal",
+          "role": "control",
+          "column": 1.02,
+          "row": 1
+        },
+        {
+          "id": "bukti",
+          "text": "Bukti dan asurans|cakupan dan hasil uji",
+          "role": "data",
+          "column": 2.15,
+          "row": 0
+        }
+      ],
+      "edges": [
+        {
+          "source": "tujuan",
+          "target": "keputusan",
+          "label": "dasar prioritas",
+          "dashed": false
+        },
+        {
+          "source": "keputusan",
+          "target": "manajemen",
+          "label": "mandat",
+          "dashed": false,
+          "source_port": "b",
+          "target_port": "l"
+        },
+        {
+          "source": "manajemen",
+          "target": "bukti",
+          "label": "bukti pelaksanaan",
+          "dashed": false,
+          "source_port": "t",
+          "target_port": "b"
+        },
+        {
+          "source": "risiko",
+          "target": "kontrol",
+          "label": "dasar penanganan",
+          "dashed": false
+        },
+        {
+          "source": "kontrol",
+          "target": "manajemen",
+          "label": "persyaratan operasi",
+          "dashed": false,
+          "source_port": "b",
+          "target_port": "b"
+        },
+        {
+          "source": "bukti",
+          "target": "keputusan",
+          "label": "dasar peninjauan",
+          "dashed": true,
+          "source_port": "l",
+          "target_port": "r"
+        },
+        {
+          "source": "tujuan",
+          "target": "risiko",
+          "label": "konteks penilaian",
+          "dashed": false
+        }
+      ],
+      "note": "Kebijakan saja belum menunjukkan kontrol bekerja. Keputusan menyebut pemilik hasil, dasar bukti, dan waktu peninjauan.",
+      "basis": "Governance versus management, risk/control/compliance/assurance, vendor incident and accountable decisions.",
+      "number": 1,
+      "filename": "ch01-diagram-konsep.png",
+      "source": "module/chapter01.tex",
+      "chapter_title": "Orientasi Mata Kuliah dan Dasar-Dasar GRC",
+      "sections": [
+        "Pendahuluan",
+        "Mengapa Organisasi Membutuhkan Tata Kelola TI",
+        "Tata Kelola dan Manajemen",
+        "Istilah Dasar GRC",
+        "Peta Kerangka dan Regulasi",
+        "Capstone Bersama dan Kasus Medikara Health",
+        "Cara Belajar Mandiri dan Menilai Bukti",
+        "Aktivitas: Profil Organisasi dan Peta Pemangku Kepentingan",
+        "Ringkasan",
+        "Latihan"
+      ]
+    },
+    {
+      "caption": "Evaluate, Direct, Monitor dengan pelibatan pemangku kepentingan",
+      "nodes": [
+        {
+          "id": "pihak",
+          "text": "Pemangku kepentingan|kebutuhan dan dampak",
+          "role": "actor",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "eval",
+          "text": "Evaluate|nilai pilihan dan konsekuensi",
+          "role": "control",
+          "column": 1.0,
+          "row": 0
+        },
+        {
+          "id": "arah",
+          "text": "Direct|arah dan batas delegasi",
+          "role": "control",
+          "column": 2.15,
+          "row": 0
+        },
+        {
+          "id": "hasil",
+          "text": "Hasil layanan|manfaat, risiko, sumber daya",
+          "role": "outcome",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "pantau",
+          "text": "Monitor|bandingkan hasil dan arah",
+          "role": "control",
+          "column": 1.0,
+          "row": 1
+        },
+        {
+          "id": "kelola",
+          "text": "Manajemen|jalankan rencana",
+          "role": "service",
+          "column": 2.15,
+          "row": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "pihak",
+          "target": "eval",
+          "label": "masukan dan kebutuhan",
+          "dashed": false,
+          "source_port": "r",
+          "target_port": "l"
+        },
+        {
+          "source": "eval",
+          "target": "arah",
+          "label": "dasar keputusan",
+          "dashed": false
+        },
+        {
+          "source": "arah",
+          "target": "kelola",
+          "label": "mandat pelaksanaan",
+          "dashed": false
+        },
+        {
+          "source": "kelola",
+          "target": "pantau",
+          "label": "bukti hasil",
+          "dashed": false
+        },
+        {
+          "source": "pantau",
+          "target": "hasil",
+          "label": "penilaian capaian",
+          "dashed": false,
+          "source_port": "b",
+          "target_port": "b"
+        },
+        {
+          "source": "pantau",
+          "target": "eval",
+          "label": "perlu tinjauan ulang",
+          "dashed": true,
+          "source_port": "t",
+          "target_port": "b"
+        },
+        {
+          "source": "pihak",
+          "target": "arah",
+          "label": "pelibatan berlanjut",
+          "dashed": true,
+          "source_port": "t",
+          "target_port": "t"
+        },
+        {
+          "source": "pihak",
+          "target": "pantau",
+          "label": "pelibatan berlanjut",
+          "dashed": true,
+          "source_port": "b",
+          "target_port": "l"
+        }
+      ],
+      "note": "Hak keputusan harus mengikuti mandat dan delegasi. Forum komite tidak memindahkan pertanggungjawaban hasil bisnis kepada TI.",
+      "basis": "ISO/IEC 38500:2024 EDM, stakeholder engagement, decision rights and alignment/value.",
+      "number": 2,
+      "filename": "ch02-diagram-konsep.png",
+      "source": "module/chapter02.tex",
+      "chapter_title": "Prinsip Tata Kelola TI dan Peran Direksi",
+      "sections": [
+        "Pendahuluan",
+        "Tata Kelola Korporat dan Posisi TI",
+        "ISO/IEC 38500:2024 dan Model Evaluate, Direct, Monitor",
+        "Hak Keputusan TI",
+        "Struktur, Proses, dan Mekanisme Relasional",
+        "Keselarasan Bisnis dan TI serta Penciptaan Nilai",
+        "Aktivitas: Matriks Hak Keputusan dan Piagam Komite Pengarah TI",
+        "Ringkasan",
+        "Latihan"
+      ]
+    },
+    {
+      "caption": "Menurunkan sumber hukum menjadi kewajiban yang dapat diuji",
+      "nodes": [
+        {
+          "id": "cakupan",
+          "text": "Cakupan organisasi|sektor, data, lokasi, mitra",
+          "role": "data",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "hukum",
+          "text": "Naskah dan status resmi|pasal, perubahan, berlaku",
+          "role": "control",
+          "column": 1.0,
+          "row": 0
+        },
+        {
+          "id": "register",
+          "text": "Register kewajiban|siapa, apa, kondisi, tenggat",
+          "role": "data",
+          "column": 2.15,
+          "row": 0
+        },
+        {
+          "id": "status",
+          "text": "Status kepatuhan|cakupan dan tanggal jelas",
+          "role": "outcome",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "uji",
+          "text": "Pemeriksaan bukti|kriteria per kewajiban",
+          "role": "control",
+          "column": 1.0,
+          "row": 1
+        },
+        {
+          "id": "kontrol",
+          "text": "Kontrol dan pemilik|tindakan operasional",
+          "role": "service",
+          "column": 2.15,
+          "row": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "cakupan",
+          "target": "hukum",
+          "label": "menentukan relevansi",
+          "dashed": false
+        },
+        {
+          "source": "hukum",
+          "target": "register",
+          "label": "urai persyaratan",
+          "dashed": false
+        },
+        {
+          "source": "register",
+          "target": "kontrol",
+          "label": "tetapkan pelaksanaan",
+          "dashed": false
+        },
+        {
+          "source": "kontrol",
+          "target": "uji",
+          "label": "bukti kerja",
+          "dashed": false
+        },
+        {
+          "source": "uji",
+          "target": "status",
+          "label": "simpulan terbatas",
+          "dashed": false
+        },
+        {
+          "source": "register",
+          "target": "uji",
+          "label": "kriteria uji",
+          "dashed": false,
+          "source_port": "b",
+          "target_port": "t"
+        }
+      ],
+      "note": "Retensi, cadangan, interoperabilitas, dan pelaporan adalah kewajiban berbeda. Satu sertifikat tidak menggantikan pemeriksaan cakupan.",
+      "basis": "Regulatory applicability, official texts, PDP/PSE/medical record duties, obligation register and evidence statuses.",
+      "number": 3,
+      "filename": "ch03-diagram-konsep.png",
+      "source": "module/chapter03.tex",
+      "chapter_title": "Lanskap Regulasi dan Kewajiban Kepatuhan",
+      "sections": [
+        "Pendahuluan",
+        "Membaca Regulasi Indonesia",
+        "Pelindungan Data Pribadi dan Sistem Elektronik",
+        "Regulasi Sektor Kesehatan",
+        "Keamanan Siber Nasional dan Infrastruktur Informasi Vital",
+        "Regulasi yang Mengikat Mitra: OJK dan SPBE",
+        "Register Kewajiban Kepatuhan",
+        "Aktivitas: Register Kewajiban Kepatuhan",
+        "Ringkasan",
+        "Latihan"
+      ]
+    },
+    {
+      "caption": "COBIT 2019: tujuan, faktor desain, dan bukti kapabilitas",
+      "nodes": [
+        {
+          "id": "kebutuhan",
+          "text": "Pemangku kepentingan|kebutuhan, hasil organisasi",
+          "role": "actor",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "goals",
+          "text": "Rantai tujuan|enterprise dan alignment goals",
+          "role": "control",
+          "column": 0.97,
+          "row": 0
+        },
+        {
+          "id": "obj",
+          "text": "Objektif prioritas|EDM, APO, BAI, DSS, MEA",
+          "role": "control",
+          "column": 2.15,
+          "row": 0
+        },
+        {
+          "id": "faktor",
+          "text": "Faktor desain|strategi, risiko, kepatuhan",
+          "role": "data",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "komponen",
+          "text": "Komponen sistem|proses, peran, informasi, alat",
+          "role": "service",
+          "column": 2.15,
+          "row": 1
+        },
+        {
+          "id": "bukti",
+          "text": "Kapabilitas berbukti|aktivitas dalam cakupan",
+          "role": "outcome",
+          "column": 0.97,
+          "row": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "kebutuhan",
+          "target": "goals",
+          "label": "diterjemahkan",
+          "dashed": false
+        },
+        {
+          "source": "goals",
+          "target": "obj",
+          "label": "memetakan kontribusi",
+          "dashed": false,
+          "source_port": "t",
+          "target_port": "t"
+        },
+        {
+          "source": "faktor",
+          "target": "obj",
+          "label": "cakupan awal 4 faktor, penyempurnaan 7 faktor",
+          "dashed": false,
+          "source_port": "t",
+          "target_port": "l"
+        },
+        {
+          "source": "obj",
+          "target": "komponen",
+          "label": "perlu dukungan",
+          "dashed": false,
+          "source_port": "b",
+          "target_port": "t"
+        },
+        {
+          "source": "komponen",
+          "target": "bukti",
+          "label": "bukti pelaksanaan",
+          "dashed": false,
+          "source_port": "l",
+          "target_port": "r"
+        }
+      ],
+      "note": "Versi model dicatat pada artefak. Prioritas lokal dan hasil pemetaan tidak otomatis menjadi keluaran resmi COBIT Toolkit.",
+      "basis": "COBIT 2019 seven components, 40 objectives, design factors, goals cascade and evidence-based capability.",
+      "number": 4,
+      "filename": "ch04-diagram-konsep.png",
+      "source": "module/chapter04.tex",
+      "chapter_title": "COBIT 2019: Sistem Tata Kelola dan Faktor Desain",
+      "sections": [
+        "Pendahuluan",
+        "Prinsip dan Komponen Sistem Tata Kelola",
+        "Model Inti: 40 Objektif dalam Lima Domain",
+        "Faktor Desain dan Focus Area",
+        "Goals Cascade dan Pemilihan Prioritas",
+        "Penilaian Kapabilitas Berdasarkan Bukti",
+        "Pengendalian Versi dan Transisi COBIT 7",
+        "Aktivitas: Faktor Desain, Goals Cascade, dan Potret Kapabilitas",
+        "Ringkasan",
+        "Latihan"
+      ]
+    },
+    {
+      "caption": "Skenario risiko dinilai terhadap tujuan dan kriteria",
+      "nodes": [
+        {
+          "id": "tujuan",
+          "text": "Tujuan dan konteks|layanan serta cakupan waktu",
+          "role": "control",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "skenario",
+          "text": "Skenario risiko|sebab, kejadian, akibat",
+          "role": "risk",
+          "column": 1.0,
+          "row": 0
+        },
+        {
+          "id": "nilai",
+          "text": "Analisis dan evaluasi|bukti serta kriteria",
+          "role": "control",
+          "column": 2.15,
+          "row": 0
+        },
+        {
+          "id": "monitor",
+          "text": "Pantau dan tinjau|perubahan bukti dan paparan",
+          "role": "data",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "sisa",
+          "text": "Risiko sisa|setelah kontrol terbukti",
+          "role": "risk",
+          "column": 1.0,
+          "row": 1
+        },
+        {
+          "id": "tindak",
+          "text": "Penanganan risiko|pemilik, aksi, tenggat",
+          "role": "service",
+          "column": 2.15,
+          "row": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "tujuan",
+          "target": "skenario",
+          "label": "konteks, kriteria",
+          "dashed": false
+        },
+        {
+          "source": "skenario",
+          "target": "nilai",
+          "label": "kemungkinan dan dampak",
+          "dashed": false
+        },
+        {
+          "source": "nilai",
+          "target": "tindak",
+          "label": "pilihan berwenang",
+          "dashed": false
+        },
+        {
+          "source": "tindak",
+          "target": "sisa",
+          "label": "uji efektivitas",
+          "dashed": false
+        },
+        {
+          "source": "sisa",
+          "target": "monitor",
+          "label": "batas, indikator",
+          "dashed": false
+        },
+        {
+          "source": "monitor",
+          "target": "skenario",
+          "label": "perbarui penilaian",
+          "dashed": true,
+          "source_port": "t",
+          "target_port": "b"
+        }
+      ],
+      "note": "Skor matriks berskala urut, bukan rupiah atau peluang. Pemilik risiko tetap bertanggung jawab meski kontrol dikerjakan vendor.",
+      "basis": "ERM, ISO 31000 context/assessment/treatment, appetite/tolerance/capacity, register and residual risk.",
+      "number": 5,
+      "filename": "ch05-diagram-konsep.png",
+      "source": "module/chapter05.tex",
+      "chapter_title": "Manajemen Risiko Enterprise dan Risiko TI",
+      "sections": [
+        "Pendahuluan",
+        "Risiko Berawal dari Tujuan Organisasi",
+        "Proses ISO 31000 dan Konteks Penilaian",
+        "Risk Appetite, Tolerance, dan Kapasitas",
+        "Skenario, Kontrol, dan Risk Register",
+        "Matriks Risiko dan Pengukuran Kuantitatif",
+        "Penanganan, Risiko Sisa, dan Pemantauan",
+        "Aktivitas: Risk Appetite dan Risk Register Kondisi Saat Ini",
+        "Ringkasan",
+        "Latihan"
+      ]
+    },
+    {
+      "caption": "ISMS menghubungkan risiko, kontrol, dan hasil keamanan",
+      "nodes": [
+        {
+          "id": "konteks",
+          "text": "Konteks dan risiko|cakupan serta tujuan CIA",
+          "role": "control",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "soa",
+          "text": "Statement of Applicability|pilihan kontrol dan alasan",
+          "role": "data",
+          "column": 1.0,
+          "row": 0
+        },
+        {
+          "id": "laksana",
+          "text": "Penerapan kontrol|orang, proses, teknologi",
+          "role": "service",
+          "column": 2.15,
+          "row": 0
+        },
+        {
+          "id": "perbaiki",
+          "text": "Perbaikan sistem|tindakan dan pemilik",
+          "role": "outcome",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "celah",
+          "text": "Profil dan celah hasil|bukti terhadap target",
+          "role": "data",
+          "column": 1.0,
+          "row": 1
+        },
+        {
+          "id": "ukur",
+          "text": "Evaluasi kinerja|uji dan pemantauan",
+          "role": "control",
+          "column": 2.15,
+          "row": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "konteks",
+          "target": "soa",
+          "label": "dasar pemilihan",
+          "dashed": false
+        },
+        {
+          "source": "soa",
+          "target": "laksana",
+          "label": "kontrol diperlukan",
+          "dashed": false
+        },
+        {
+          "source": "laksana",
+          "target": "ukur",
+          "label": "bukti operasi",
+          "dashed": false
+        },
+        {
+          "source": "ukur",
+          "target": "celah",
+          "label": "hasil, kekurangan",
+          "dashed": false
+        },
+        {
+          "source": "celah",
+          "target": "perbaiki",
+          "label": "prioritas tindakan",
+          "dashed": false
+        },
+        {
+          "source": "perbaiki",
+          "target": "konteks",
+          "label": "tinjau ulang",
+          "dashed": true
+        }
+      ],
+      "note": "NIST CSF: Govern, Identify, Protect, Detect, Respond, Recover bekerja bersamaan. Pemetaan tidak membuktikan kesetaraan kerangka.",
+      "basis": "ISO 27001 ISMS and SoA, CIA, Annex A/27002, NIST CSF concurrent functions, profiles and gaps.",
+      "number": 6,
+      "filename": "ch06-diagram-konsep.png",
+      "source": "module/chapter06.tex",
+      "chapter_title": "Keamanan Informasi: ISO/IEC 27001 dan NIST CSF 2.0",
+      "sections": [
+        "Pendahuluan",
+        "Kerahasiaan, Integritas, dan Ketersediaan",
+        "Sistem Manajemen ISO/IEC 27001",
+        "Annex A, SoA, dan Panduan Kontrol",
+        "Enam Fungsi NIST CSF 2.0",
+        "Profil Saat Ini dan Tier",
+        "Dari Bukti ke Celah Kontrol",
+        "Aktivitas: Profil Keamanan Saat Ini dan Daftar Celah",
+        "Ringkasan",
+        "Latihan"
+      ]
+    },
+    {
+      "caption": "Tujuan dan dasar pemrosesan mengendalikan alur data pribadi",
+      "nodes": [
+        {
+          "id": "tujuan",
+          "text": "Tujuan dan dasar|nilai per kegiatan pemrosesan",
+          "role": "control",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "kendali",
+          "text": "Pengendali: Medikara|tujuan dan instruksi",
+          "role": "actor",
+          "column": 1.0,
+          "row": 0
+        },
+        {
+          "id": "vendor",
+          "text": "Prosesor vendor|bertindak sesuai instruksi",
+          "role": "service",
+          "column": 2.15,
+          "row": 0
+        },
+        {
+          "id": "hak",
+          "text": "Permintaan subjek data|verifikasi dan tanggapan",
+          "role": "actor",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "ropa",
+          "text": "Catatan pemrosesan|data, penerima, lokasi, retensi",
+          "role": "data",
+          "column": 1.0,
+          "row": 1
+        },
+        {
+          "id": "dampak",
+          "text": "Penilaian dampak|risiko bagi pasien",
+          "role": "control",
+          "column": 2.15,
+          "row": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "tujuan",
+          "target": "kendali",
+          "label": "dasar kegiatan",
+          "dashed": false,
+          "source_port": "t",
+          "target_port": "t"
+        },
+        {
+          "source": "kendali",
+          "target": "vendor",
+          "label": "instruksi terbatas",
+          "dashed": false
+        },
+        {
+          "source": "vendor",
+          "target": "ropa",
+          "label": "alur dan salinan data",
+          "dashed": false,
+          "source_port": "b",
+          "target_port": "r"
+        },
+        {
+          "source": "kendali",
+          "target": "ropa",
+          "label": "catat tujuan, peran",
+          "dashed": false,
+          "source_port": "b",
+          "target_port": "t"
+        },
+        {
+          "source": "hak",
+          "target": "kendali",
+          "label": "proses hak subjek",
+          "dashed": false,
+          "source_port": "r",
+          "target_port": "l"
+        },
+        {
+          "source": "ropa",
+          "target": "dampak",
+          "label": "alur berisiko tinggi",
+          "dashed": false,
+          "source_port": "b",
+          "target_port": "b"
+        }
+      ],
+      "note": "Persetujuan bukan satu-satunya dasar pemrosesan. Retensi serta transfer dinilai bersama aturan sektor dan tujuan masing-masing.",
+      "basis": "PDP legal bases, controller/processor roles, rights, RoPA, DPIA, retention/transfer and privacy management.",
+      "number": 7,
+      "filename": "ch07-diagram-konsep.png",
+      "source": "module/chapter07.tex",
+      "chapter_title": "Pelindungan Data Pribadi dalam Praktik",
+      "sections": [
+        "Pendahuluan",
+        "Data, Tujuan, dan Dasar Pemrosesan",
+        "Pengendali, Prosesor, dan Hak Subjek Data",
+        "Status Aturan Pelaksana dan Penegakan",
+        "Penilaian Dampak dan Notifikasi Kegagalan",
+        "Catatan Pemrosesan, Retensi, dan Transfer Data",
+        "Sistem Manajemen Privasi dan Pelaksanaan Teknis",
+        "Aktivitas: Catatan Pemrosesan dan Analisis Insiden Vendor",
+        "Ringkasan",
+        "Latihan"
+      ]
+    },
+    {
+      "caption": "Rancangan tata kelola target berawal dari celah yang terbukti",
+      "nodes": [
+        {
+          "id": "celah",
+          "text": "Temuan kondisi saat ini|bukti C2 dan risiko",
+          "role": "risk",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "target",
+          "text": "Hasil target|cakupan dan penerimaan",
+          "role": "outcome",
+          "column": 1.05,
+          "row": 0
+        },
+        {
+          "id": "forum",
+          "text": "Forum dan mandat|hak keputusan, eskalasi",
+          "role": "control",
+          "column": 2.15,
+          "row": 0
+        },
+        {
+          "id": "uji",
+          "text": "Bukti penerimaan|kontrol bekerja di cakupan",
+          "role": "data",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "prosedur",
+          "text": "Standar dan prosedur|cara kerja yang dapat diuji",
+          "role": "service",
+          "column": 1.05,
+          "row": 1
+        },
+        {
+          "id": "raci",
+          "text": "RACI per kegiatan|satu Accountable yang jelas",
+          "role": "control",
+          "column": 2.15,
+          "row": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "celah",
+          "target": "target",
+          "label": "prioritas perubahan",
+          "dashed": false
+        },
+        {
+          "source": "target",
+          "target": "forum",
+          "label": "kewenangan diperlukan",
+          "dashed": false
+        },
+        {
+          "source": "forum",
+          "target": "raci",
+          "label": "bagi tanggung jawab",
+          "dashed": false
+        },
+        {
+          "source": "raci",
+          "target": "prosedur",
+          "label": "tetapkan pelaksanaan",
+          "dashed": false
+        },
+        {
+          "source": "prosedur",
+          "target": "uji",
+          "label": "bukti operasi",
+          "dashed": false
+        },
+        {
+          "source": "uji",
+          "target": "target",
+          "label": "verifikasi hasil",
+          "dashed": true,
+          "source_port": "t",
+          "target_port": "b"
+        }
+      ],
+      "note": "Target kapabilitas dipilih sesuai kebutuhan. Kebijakan, standar, prosedur, dan pedoman memiliki fungsi serta pemilik berbeda.",
+      "basis": "COBIT design, target CSF profile, forum/SoD, RACI, policy lifecycle and acceptance evidence.",
+      "number": 8,
+      "filename": "ch08-diagram-konsep.png",
+      "source": "module/chapter08.tex",
+      "chapter_title": "Merancang Sistem Tata Kelola Target",
+      "sections": [
+        "Pendahuluan",
+        "Dari Temuan C2 ke Keputusan Target",
+        "Struktur, Forum Keputusan, dan Pemisahan Tugas",
+        "Matriks RACI yang Dapat Dipakai",
+        "Arsitektur dan Siklus Hidup Kebijakan",
+        "COBIT dan ITIL 4 dalam Operasi Layanan",
+        "Profil Target dan Tata Kelola Arsitektur",
+        "Aktivitas: Model Tata Kelola Target",
+        "Ringkasan",
+        "Latihan"
+      ]
+    },
+    {
+      "caption": "Risiko konsentrasi tersembunyi di balik beberapa vendor",
+      "nodes": [
+        {
+          "id": "med",
+          "text": "Medikara|pemilik tujuan dan risiko",
+          "role": "actor",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "app",
+          "text": "Vendor Medikara+|akses dan kontrak layanan",
+          "role": "service",
+          "column": 1.0,
+          "row": 0
+        },
+        {
+          "id": "pesan",
+          "text": "Penyedia pesan bersama|ketergantungan pihak keempat",
+          "role": "risk",
+          "column": 2.15,
+          "row": 0
+        },
+        {
+          "id": "kontrol",
+          "text": "Siklus hubungan vendor|uji tuntas sampai keluar",
+          "role": "control",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "lab",
+          "text": "Laboratorium mitra|kontrak layanan berbeda",
+          "role": "service",
+          "column": 1.0,
+          "row": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "med",
+          "target": "app",
+          "label": "kontrak dan instruksi",
+          "dashed": false,
+          "source_port": "t",
+          "target_port": "t"
+        },
+        {
+          "source": "app",
+          "target": "pesan",
+          "label": "bergantung",
+          "dashed": false
+        },
+        {
+          "source": "med",
+          "target": "lab",
+          "label": "kerja sama layanan",
+          "dashed": false,
+          "source_port": "r",
+          "target_port": "t"
+        },
+        {
+          "source": "lab",
+          "target": "pesan",
+          "label": "bergantung",
+          "dashed": false,
+          "source_port": "r",
+          "target_port": "b"
+        },
+        {
+          "source": "kontrol",
+          "target": "med",
+          "label": "mengatur hubungan",
+          "dashed": false
+        },
+        {
+          "source": "kontrol",
+          "target": "lab",
+          "label": "syarat dan bukti",
+          "dashed": false
+        }
+      ],
+      "note": "Dua vendor dapat memiliki satu titik kegagalan bersama. Kontrak dan sertifikat penyedia tidak menghapus tanggung jawab pelanggan.",
+      "basis": "Third/fourth parties, concentration, supplier lifecycle, contractual controls, shared responsibility and DPIA.",
+      "number": 9,
+      "filename": "ch09-diagram-konsep.png",
+      "source": "module/chapter09.tex",
+      "chapter_title": "Risiko Pihak Ketiga dan Cloud",
+      "sections": [
+        "Pendahuluan",
+        "Rantai Pasok Digital dan Konsentrasi Risiko",
+        "Siklus Hidup Risiko Pihak Ketiga",
+        "Klausul Kontrak dan Kewajiban Prosesor",
+        "Cloud dan Tanggung Jawab Bersama",
+        "Berbagi Data dan Penilaian Dampak",
+        "Aktivitas: Kerangka Pihak Ketiga, Matriks Cloud, dan DPIA",
+        "Ringkasan",
+        "Latihan"
+      ]
+    },
+    {
+      "caption": "Kelangsungan layanan memerlukan jalur bisnis dan teknologi",
+      "nodes": [
+        {
+          "id": "bia",
+          "text": "Analisis dampak bisnis|MTPD, RTO, RPO, MBCO",
+          "role": "control",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "strategi",
+          "text": "Strategi kelangsungan|orang, data, tempat, vendor",
+          "role": "control",
+          "column": 1.0,
+          "row": 0
+        },
+        {
+          "id": "gangguan",
+          "text": "Gangguan layanan|catat dan nilai dampak",
+          "role": "risk",
+          "column": 2.15,
+          "row": 0
+        },
+        {
+          "id": "bukti",
+          "text": "Uji dan rekonsiliasi|bukti layanan aman pulih",
+          "role": "outcome",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "manual",
+          "text": "Layanan sementara|kapasitas minimum aman",
+          "role": "service",
+          "column": 1.0,
+          "row": 1
+        },
+        {
+          "id": "dr",
+          "text": "Pemulihan teknologi|restore dan verifikasi data",
+          "role": "service",
+          "column": 2.15,
+          "row": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "bia",
+          "target": "strategi",
+          "label": "target layanan",
+          "dashed": false
+        },
+        {
+          "source": "gangguan",
+          "target": "strategi",
+          "label": "aktifkan rencana",
+          "dashed": false
+        },
+        {
+          "source": "strategi",
+          "target": "manual",
+          "label": "rencana operasional",
+          "dashed": false
+        },
+        {
+          "source": "strategi",
+          "target": "dr",
+          "label": "rencana pemulihan",
+          "dashed": false,
+          "source_port": "b",
+          "target_port": "l"
+        },
+        {
+          "source": "manual",
+          "target": "bukti",
+          "label": "rekonsiliasi",
+          "dashed": false
+        },
+        {
+          "source": "dr",
+          "target": "bukti",
+          "label": "bukti RTO / RPO",
+          "dashed": false,
+          "source_port": "b",
+          "target_port": "b"
+        }
+      ],
+      "note": "Server hidup belum menjamin layanan pasien pulih. Tabletop menguji keputusan; restore teknis membuktikan kemampuan pemulihan.",
+      "basis": "BCMS, BIA objectives, continuity versus DR/incident management, cyber crisis and distinct exercise evidence.",
+      "number": 10,
+      "filename": "ch10-diagram-konsep.png",
+      "source": "module/chapter10.tex",
+      "chapter_title": "Kelangsungan Bisnis dan Ketahanan Operasional",
+      "sections": [
+        "Pendahuluan",
+        "Ketahanan Operasional sebagai Tanggung Jawab Direksi",
+        "ISO 22301:2019",
+        "Analisis Dampak Bisnis",
+        "Strategi Kelangsungan",
+        "Insiden Siber dan Manajemen Krisis",
+        "Latihan dan Pengujian",
+        "Aktivitas: BIA dan Strategi Kelangsungan Layanan",
+        "Ringkasan",
+        "Latihan"
+      ]
+    },
+    {
+      "caption": "AI dikelola menurut tujuan, dampak, dan kemampuan pengawasan",
+      "nodes": [
+        {
+          "id": "invent",
+          "text": "Inventaris AI|tujuan, versi, pemilik, data",
+          "role": "data",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "map",
+          "text": "Map konteks dan dampak|pasien dan kelompok terdampak",
+          "role": "control",
+          "column": 1.1,
+          "row": 0
+        },
+        {
+          "id": "measure",
+          "text": "Measure|uji manfaat, bias, kesalahan",
+          "role": "control",
+          "column": 2.15,
+          "row": 0
+        },
+        {
+          "id": "govern",
+          "text": "Govern lintas fungsi|mandat dan kebijakan",
+          "role": "control",
+          "column": 1.1,
+          "row": 1
+        },
+        {
+          "id": "manage",
+          "text": "Manage|terima, batasi, atau hentikan",
+          "role": "control",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "human",
+          "text": "Pengawas manusia|kompeten dan berhak menolak",
+          "role": "actor",
+          "column": 2.15,
+          "row": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "invent",
+          "target": "map",
+          "label": "konteks penggunaan",
+          "dashed": false
+        },
+        {
+          "source": "map",
+          "target": "measure",
+          "label": "kriteria uji",
+          "dashed": false
+        },
+        {
+          "source": "measure",
+          "target": "human",
+          "label": "bukti dan batas hasil",
+          "dashed": false
+        },
+        {
+          "source": "human",
+          "target": "manage",
+          "label": "penilaian berwenang",
+          "dashed": false,
+          "source_port": "b",
+          "target_port": "b"
+        },
+        {
+          "source": "govern",
+          "target": "map",
+          "label": "arah dan akuntabilitas",
+          "dashed": false
+        },
+        {
+          "source": "govern",
+          "target": "manage",
+          "label": "batas keputusan",
+          "dashed": false
+        },
+        {
+          "source": "manage",
+          "target": "invent",
+          "label": "perubahan memicu tinjauan",
+          "dashed": true
+        }
+      ],
+      "note": "Fungsi AI RMF saling berulang. Kategori hukum bergantung tujuan dan cakupan; pengawasan memerlukan waktu serta wewenang nyata.",
+      "basis": "AI inventory and human oversight, ISO 42001/42005, NIST AI RMF Govern/Map/Measure/Manage and context-based legal classification.",
+      "number": 11,
+      "filename": "ch11-diagram-konsep.png",
+      "source": "module/chapter11.tex",
+      "chapter_title": "Tata Kelola Kecerdasan Artifisial",
+      "sections": [
+        "Pendahuluan",
+        "Peluang dan Risiko AI di Layanan Kesehatan",
+        "ISO/IEC 42001:2023 dan Standar Pendukung",
+        "NIST AI RMF",
+        "EU AI Act dan Pendekatan Berbasis Risiko",
+        "Posisi Regulasi AI di Indonesia",
+        "Inventaris AI, Pengawasan Manusia, dan Kebijakan",
+        "Aktivitas: Inventaris AI dan Kebijakan Pemakaian AI",
+        "Ringkasan",
+        "Latihan"
+      ]
+    },
+    {
+      "caption": "Pengelolaan risiko dan asurans independen mempunyai peran berbeda",
+      "nodes": [
+        {
+          "id": "board",
+          "text": "Badan pengarah|mandat dan pengawasan",
+          "role": "control",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "lini1",
+          "text": "Lini pertama|layanan dan risiko operasi",
+          "role": "service",
+          "column": 0.95,
+          "row": 0
+        },
+        {
+          "id": "lini2",
+          "text": "Lini kedua|keahlian, pantau, tantang",
+          "role": "control",
+          "column": 2.15,
+          "row": 0
+        },
+        {
+          "id": "audit",
+          "text": "Audit internal|asurans independen",
+          "role": "actor",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "bukti",
+          "text": "Bukti pengujian|rancangan dan operasi",
+          "role": "data",
+          "column": 0.95,
+          "row": 1
+        },
+        {
+          "id": "tindak",
+          "text": "Tindak lanjut manajemen|pemilik dan tenggat",
+          "role": "outcome",
+          "column": 2.15,
+          "row": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "board",
+          "target": "lini1",
+          "label": "arah dan akuntabilitas",
+          "dashed": false
+        },
+        {
+          "source": "lini2",
+          "target": "lini1",
+          "label": "dukungan dan tantangan",
+          "dashed": false
+        },
+        {
+          "source": "lini1",
+          "target": "bukti",
+          "label": "catatan operasi",
+          "dashed": false
+        },
+        {
+          "source": "audit",
+          "target": "bukti",
+          "label": "uji menurut kriteria",
+          "dashed": false
+        },
+        {
+          "source": "audit",
+          "target": "board",
+          "label": "laporan independen",
+          "dashed": false
+        },
+        {
+          "source": "bukti",
+          "target": "tindak",
+          "label": "temuan terverifikasi",
+          "dashed": false
+        }
+      ],
+      "note": "Peran bukan jumlah departemen. Penutupan temuan memerlukan pengujian perbaikan; sampel membatasi kesimpulan audit.",
+      "basis": "Three Lines, audit independence, risk-based planning, design/operating tests, findings and verified follow-up.",
+      "number": 12,
+      "filename": "ch12-diagram-konsep.png",
+      "source": "module/chapter12.tex",
+      "chapter_title": "Audit TI dan Asurans",
+      "sections": [
+        "Pendahuluan",
+        "Konsep Asurans",
+        "Three Lines Model",
+        "Global Internal Audit Standards",
+        "Perencanaan Audit Berbasis Risiko",
+        "Program Audit dan Pengujian Kontrol",
+        "Pelaporan Temuan dan Tindak Lanjut",
+        "Aktivitas: Rencana Asurans dan Pengujian Satu Kontrol",
+        "Ringkasan",
+        "Latihan"
+      ]
+    },
+    {
+      "caption": "Indikator yang berbeda memicu keputusan yang berbeda",
+      "nodes": [
+        {
+          "id": "data",
+          "text": "Data bersumber|populasi, periode, definisi",
+          "role": "data",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "kpi",
+          "text": "KPI hasil|tujuan layanan tercapai?",
+          "role": "outcome",
+          "column": 1.0,
+          "row": 0
+        },
+        {
+          "id": "putusan",
+          "text": "Keputusan direksi|opsi, biaya, pemilik, tenggat",
+          "role": "control",
+          "column": 2.15,
+          "row": 0
+        },
+        {
+          "id": "kci",
+          "text": "KCI kontrol|tinjauan akses terlaksana?",
+          "role": "control",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "kri",
+          "text": "KRI paparan|akun tanpa pemilik?",
+          "role": "risk",
+          "column": 1.0,
+          "row": 1
+        },
+        {
+          "id": "ambang",
+          "text": "Ambang dan eskalasi|tindakan menurut toleransi",
+          "role": "control",
+          "column": 2.15,
+          "row": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "data",
+          "target": "kpi",
+          "label": "hitung hasil",
+          "dashed": false
+        },
+        {
+          "source": "data",
+          "target": "kci",
+          "label": "hitung pelaksanaan",
+          "dashed": false
+        },
+        {
+          "source": "data",
+          "target": "kri",
+          "label": "hitung paparan",
+          "dashed": false,
+          "source_port": "b",
+          "target_port": "t"
+        },
+        {
+          "source": "kpi",
+          "target": "putusan",
+          "label": "status hasil",
+          "dashed": false
+        },
+        {
+          "source": "kci",
+          "target": "ambang",
+          "label": "bandingkan batas",
+          "dashed": false,
+          "source_port": "b",
+          "target_port": "b"
+        },
+        {
+          "source": "kri",
+          "target": "ambang",
+          "label": "bandingkan batas",
+          "dashed": false,
+          "source_port": "r",
+          "target_port": "l"
+        },
+        {
+          "source": "ambang",
+          "target": "putusan",
+          "label": "usulan tindakan",
+          "dashed": false
+        },
+        {
+          "source": "kci",
+          "target": "kri",
+          "label": "memengaruhi",
+          "dashed": true,
+          "source_port": "r",
+          "target_port": "l"
+        }
+      ],
+      "note": "KCI tinjauan 95% dapat hijau sementara satu akun tanpa pemilik membuat KRI merah. Kedua status tidak dirata-ratakan.",
+      "basis": "KPI/KRI/KCI, numerator/denominator and zero/missing statuses, threshold actions and decision-oriented board reporting.",
+      "number": 13,
+      "filename": "ch13-diagram-konsep.png",
+      "source": "module/chapter13.tex",
+      "chapter_title": "KPI, KRI, dan Pelaporan ke Direksi",
+      "sections": [
+        "Pendahuluan",
+        "KPI, KRI, dan KCI",
+        "Merancang Indikator yang Baik",
+        "Ambang Batas dan Eskalasi",
+        "Metrik Tata Kelola, Keamanan, dan Privasi",
+        "Dashboard dan Laporan ke Direksi",
+        "Aktivitas: Dashboard KPI dan KRI serta Laporan Satu Halaman",
+        "Ringkasan",
+        "Latihan"
+      ]
+    },
+    {
+      "caption": "Satu kontrol terhubung ke risiko, kewajiban, dan bukti",
+      "nodes": [
+        {
+          "id": "risiko",
+          "text": "R-01 risiko akses vendor|tujuan dan pemilik risiko",
+          "role": "risk",
+          "column": -0.15,
+          "row": 0
+        },
+        {
+          "id": "ac",
+          "text": "AC-01 peninjauan akses|satu identitas kontrol",
+          "role": "control",
+          "column": 1.0,
+          "row": 0
+        },
+        {
+          "id": "wajib",
+          "text": "Kewajiban dan rujukan|PDP, ISO, CSF sesuai cakupan",
+          "role": "data",
+          "column": 2.15,
+          "row": 0
+        },
+        {
+          "id": "aksi",
+          "text": "Tindakan perbaikan|pemilik, tenggat, prioritas",
+          "role": "service",
+          "column": -0.15,
+          "row": 1
+        },
+        {
+          "id": "uji",
+          "text": "Pengujian kontrol|kriteria dan periode",
+          "role": "control",
+          "column": 1.0,
+          "row": 1
+        },
+        {
+          "id": "bukti",
+          "text": "Bukti pelaksanaan|akun, persetujuan, pencabutan",
+          "role": "data",
+          "column": 2.15,
+          "row": 1
+        }
+      ],
+      "edges": [
+        {
+          "source": "risiko",
+          "target": "ac",
+          "label": "ditangani oleh",
+          "dashed": false
+        },
+        {
+          "source": "ac",
+          "target": "wajib",
+          "label": "berkontribusi pada",
+          "dashed": false,
+          "source_port": "t",
+          "target_port": "t"
+        },
+        {
+          "source": "ac",
+          "target": "bukti",
+          "label": "menghasilkan bukti",
+          "dashed": false,
+          "source_port": "r",
+          "target_port": "t"
+        },
+        {
+          "source": "bukti",
+          "target": "uji",
+          "label": "dasar pengujian",
+          "dashed": false
+        },
+        {
+          "source": "uji",
+          "target": "aksi",
+          "label": "celah yang ditemukan",
+          "dashed": false
+        },
+        {
+          "source": "aksi",
+          "target": "ac",
+          "label": "memperbaiki pelaksanaan",
+          "dashed": true,
+          "source_port": "t",
+          "target_port": "b"
+        }
+      ],
+      "note": "Pemakaian ulang bukti memerlukan kecocokan periode, sistem, dan kriteria. Alat dipilih setelah identitas serta proses disepakati.",
+      "basis": "Integrated GRC shared IDs, many-to-many mapping, tool requirements, evidence reuse and phased governance roadmap.",
+      "number": 14,
+      "filename": "ch14-diagram-konsep.png",
+      "source": "module/chapter14.tex",
+      "chapter_title": "Alat GRC dan Peta Jalan Tata Kelola Terpadu",
+      "sections": [
+        "Pendahuluan",
+        "GRC Terpadu",
+        "Fungsi dan Pilihan Alat GRC",
+        "Menyusun Peta Jalan GRC",
+        "Manajemen Perubahan dan Budaya",
+        "Mempresentasikan Rekomendasi kepada Direksi",
+        "Aktivitas: Peta Jalan GRC dan Gladi Presentasi C4",
+        "Ringkasan",
+        "Latihan"
+      ]
+    }
+  ]
+}

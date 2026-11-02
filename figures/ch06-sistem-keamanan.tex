@@ -1,0 +1,28 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  tahap/.style={draw, rounded corners, align=center, text width=2.35cm,
+    minimum height=1.25cm, fill=blue!8},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[tahap, fill=praditagreen!15] (k4) at (0,0)
+    {\textbf{Klausul 4}\\Konteks\\{\tiny\mdseries cakupan dan pihak terkait}};
+  \node[tahap] (k5) at (3.05,0)
+    {\textbf{Klausul 5}\\Kepemimpinan\\{\tiny\mdseries kebijakan dan peran}};
+  \node[tahap] (k6) at (6.1,0)
+    {\textbf{Klausul 6}\\Perencanaan\\{\tiny\mdseries risiko, SoA, sasaran}};
+  \node[tahap] (k7) at (9.15,0)
+    {\textbf{Klausul 7}\\Dukungan\\{\tiny\mdseries orang dan dokumen}};
+  \node[tahap] (k8) at (9.15,-2.0)
+    {\textbf{Klausul 8}\\Operasi\\{\tiny\mdseries kontrol dijalankan}};
+  \node[tahap, fill=orange!12] (k9) at (6.1,-2.0)
+    {\textbf{Klausul 9}\\Evaluasi kinerja\\{\tiny\mdseries uji, audit, tinjauan}};
+  \node[tahap, fill=green!10] (k10) at (3.05,-2.0)
+    {\textbf{Klausul 10}\\Perbaikan\\{\tiny\mdseries koreksi yang diverifikasi}};
+  \draw[panah] (k4) -- (k5);
+  \draw[panah] (k5) -- (k6);
+  \draw[panah] (k6) -- (k7);
+  \draw[panah] (k7) -- (k8);
+  \draw[panah] (k8) -- (k9);
+  \draw[panah] (k9) -- (k10);
+  \draw[panah, dashed] (k10.west) -| node[pos=0.75, left, align=right]
+    {tinjau\\ulang} (k4.south);
+\end{tikzpicture}

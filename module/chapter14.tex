@@ -1,62 +1,1183 @@
+% !TeX root = it-governance-risk-compliance.tex
+% !TeX encoding = UTF-8
 \chapter{Alat GRC dan Peta Jalan Tata Kelola Terpadu}
 
 \section*{Tujuan Pembelajaran}
 \begin{itemize}
-  \item Membandingkan pilihan alat GRC, dari spreadsheet sampai platform terintegrasi, berdasarkan kebutuhan dan kematangan organisasi.
+  \item Membandingkan pilihan alat GRC, dari spreadsheet sampai platform terintegrasi, berdasarkan
+  kebutuhan dan kematangan organisasi.
   \item Menyusun peta jalan GRC bertahap yang selaras dengan peta jalan transformasi digital.
-  \item Mempertahankan rekomendasi tata kelola, risiko, dan kepatuhan di depan pemangku kepentingan.
+  \item Mempertahankan rekomendasi tata kelola, risiko, dan kepatuhan di depan pemangku
+  kepentingan.
 \end{itemize}
 
 \section{Pendahuluan}
 
-% TODO
-% Cakupan: register risiko, kepatuhan, dan audit tersebar di puluhan spreadsheet yang isinya saling bertentangan, sehingga direksi menerima angka yang berbeda dari tiap unit.
+Misalkan register risiko, daftar kepatuhan, dan temuan audit Medikara tersimpan dalam 20
+spreadsheet. Satu akun vendor dicatat sebagai tiga masalah dengan pemilik berbeda. Unit
+teknologi informasi (TI) melaporkan 108 dari 108 akun sudah ditinjau, padahal populasinya 120
+akun. Direksi menerima jumlah temuan yang berubah menurut unit pelapor. Membeli aplikasi baru
+belum menyelesaikan perbedaan definisi dan tanggung jawab.
+
+Bab 1 sampai Bab 13 menghasilkan banyak angka yang benar di babnya masing-masing. Bab 8 dan Bab
+10 menghitung Rp720 juta per tahun untuk target kapabilitas. Bab 10 meminta opsi B seharga Rp480
+juta per tahun. Bab 11 menghitung 3.046 jam ditambah alat alternatif Rp240 juta. Belum ada yang
+menjumlahkan semuanya, memeriksa tumpang tindihnya, lalu membandingkannya dengan anggaran
+modernisasi Rp10 miliar. Bab penutup ini mengerjakan ketiganya. Hasil kerjanya adalah peta jalan
+tiga tahun, pilihan alat GRC, dan paket keputusan yang menutup tonggak C4 capstone.
+
+Bab ini memakai rumusan GRC terpadu dari Racz dan rekan, langkah profil pada Cybersecurity
+Framework (CSF) 2.0 dari National Institute of Standards and Technology (NIST), serta COBIT 2019
+sebagai sistem tata kelola. Open Security Controls Assessment Language (OSCAL) dibahas sebagai
+format pertukaran informasi kontrol. Semua rujukan itu memberi kerangka. Seluruh angka, pemetaan,
+dan anggaran Medikara merupakan pengandaian pembelajaran
+\cite{c01-racz2010,nistcsf2,cobit2019-intro,c08-isaca-press,c14-oscal}.
+
+Gambar~\ref{fig:ch14-alur} menunjukkan urutan keputusan dalam bab ini.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch14-alur.tex}
+  \caption{Alur keputusan alat GRC dan peta jalan tata kelola terpadu}
+  \label{fig:ch14-alur}
+\end{figure}
+
+\IfFileExists{../figures/ch14-diagram-konsep.png}{%
+
+Gambar \ref{fig:ch14-ilustrasi-bab} merangkum hubungan komponen dan konsep utama bab ini.
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/ch14-diagram-konsep.png}
+  \caption{Satu kontrol terhubung ke risiko, kewajiban, dan bukti}
+  \label{fig:ch14-ilustrasi-bab}
+\end{figure}
+}{}
 
 \section{GRC Terpadu}
 
-% TODO
-% Cakupan: gagasan satu kontrol untuk banyak kewajiban; pustaka kontrol bersama dan pemetaan antarkerangka; manfaat dan batas pendekatan terpadu.
-% Kasus Medikara: kontrol peninjauan hak akses yang sekaligus memenuhi UU PDP, ISO/IEC 27001, dan NIST CSF.
+\subsection*{Satu identitas untuk satu objek}
+
+GRC terpadu menghubungkan tujuan, risiko, kewajiban, kontrol, bukti, pengujian, dan tindakan.
+Bab 1 sudah memakai rumusan Racz dan rekan: pendekatan terpadu di seluruh organisasi, lewat
+penyelarasan strategi, proses, teknologi, dan orang \cite{c01-racz2010}. Integrasi memakai satu
+pustaka kontrol dan hubungan ke berbagai kewajiban. Setiap objek punya satu kode, satu pemilik,
+dan hubungan yang tercatat. Pekerjaan utamanya karena itu bukan menggabungkan berkas, melainkan
+menyepakati apa yang dihitung sebagai satu objek.
+
+Analogi katalog perpustakaan menjelaskan identitas bersama. Satu buku dapat muncul pada beberapa
+kategori tanpa dicatat sebagai tiga buku fisik. Nomor unik menghubungkan kategorinya dengan objek
+yang sama.
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Bab 1 memisalkan audit internal, kepatuhan, dan keamanan informasi masing-masing meminta
+  daftar akun kepada 23 fasilitas setiap triwulan. Jumlahnya $3 \times 23 \times 4 = 276$
+  permintaan per tahun. Dengan satu register dan satu jadwal, permintaan turun menjadi 92.
+  Selisih 184 permintaan kali 2 jam adalah 368 jam per tahun, atau Rp22,08 juta pada tarif
+  Rp60.000 per jam dari Bab 7.
+  \item Misalkan R-01 terkait akses vendor. Satu bukti tinjauan AC-01 ditautkan ke risiko,
+  kewajiban, dan pengujian. Tiga baris tindakan dengan tiga pemilik menjadi satu tindakan,
+  ACT-AC01-01, sehingga tidak ada pemilik yang saling menunggu.
+\end{enumerate}
+
+Tabel~\ref{tab:ch14-grc-terpadu} menghitung objek yang perlu diberi identitas pada Medikara. Kode
+mengikuti bab asalnya dan tidak diubah. AI berarti kecerdasan artifisial. Jumlahnya 196 objek. Bukti
+tumbuh lebih cepat: 60 catatan AC-01, 144 uji pemulihan, dan 260 tinjauan catatan aktivitas
+menghasilkan 464 bukti per tahun.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Objek GRC bersama pada Medikara (misalkan)}\label{tab:ch14-grc-terpadu}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.3\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.09\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|}
+    \hline
+    \textbf{Objek} & \textbf{Kode} & \textbf{Jumlah} & \textbf{Asal} \\ \hline
+    Risiko & R-01 sampai R-12 & 12 & Bab 5 \\ \hline
+    Kewajiban & K-01 sampai K-16 & 16 & Bab 3 \\ \hline
+    Kebijakan & KB-01 sampai KB-09 & 9 & Bab 8, Bab 11 \\ \hline
+    Target & T-01 sampai T-24 & 24 & Bab 8, Bab 10 \\ \hline
+    Celah & G-01 sampai G-06, CP-01 sampai CP-07 & 13 & Bab 6, Bab 7 \\ \hline
+    Hubungan pemasok & Register, termasuk V-01 sampai V-06 & 40 & Bab 9 \\ \hline
+    Sistem AI & AI-01 sampai AI-06 & 6 & Bab 11 \\ \hline
+    Baris catatan pemrosesan & Enam proses inti & 28 & Bab 7 \\ \hline
+    Baris Business Impact Analysis (BIA) & Lima rumah sakit dan fasilitas lain & 36 & Bab 10 \\
+    \hline
+    Indikator & IK-01 sampai IK-12 & 12 & Bab 13 \\ \hline
+    \textbf{Jumlah} & & \textbf{196} & \\ \hline
+  \end{tabularx}
+\end{table}
+
+Keputusan memakai satu pustaka punya dua konsekuensi. Pertama, penyamaan punya biaya. Misalkan
+satu objek diperiksa 30 menit, sehingga 196 objek memakan 98 jam, atau Rp5,88 juta. Kedua, satu
+kesalahan kode kini terbaca oleh semua unit. Register karena itu memerlukan satu pemilik dan
+aturan perubahan. Peta jalan bab ini menunjuk kepala risiko sebagai pemilik register.
+
+\begin{kasus}[title={Kasus Medikara Health: Satu Masalah Akses, Tiga Catatan}]
+Misalkan satu akun vendor yang penugasannya sudah berakhir tercatat pada tiga berkas. Register
+risiko mencatatnya pada R-01, milik pemilik Medikara+. Register kewajiban mencatat K-01 belum
+terpenuhi. Audit internal mencatat TA-01, dengan kepala operasi TI sebagai pemilik tindakan.
+Ketiga pihak menunggu jawaban yang sama.
+
+Integrasi dimulai dari identitas, pemilik, dan bukti yang sama. Risikonya tetap R-01, kontrolnya
+AC-01, dan tindakannya ACT-AC01-01. Pemilik risiko dan pemilik tindakan tetap dipisahkan seperti
+Bab 6. Fungsi kepatuhan dan audit internal membaca satu bukti, EV-AC01-2026-10, tanpa meminta
+daftar baru.
+\end{kasus}
+
+\subsection*{Memeriksa tiga acuan AC-01}
+
+Bab 1 menyebut AC-01 mendukung tiga acuan, dan menjanjikan tiap acuan diperiksa pada bab ini. Dua
+hal pada pemetaan sering tertukar, yaitu kontribusi dan pemenuhan. Pembagiannya begini. Kontribusi
+berarti kontrol menjawab sebagian isi acuan. Pemenuhan berarti seluruh isi acuan sudah terjawab
+dan terbukti. Tabel~\ref{tab:ch14-tiga-acuan} membaca isi tiap acuan, lalu memisahkan yang dijawab
+AC-01 dari yang belum.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Isi acuan dan batas kontribusi AC-01}\label{tab:ch14-tiga-acuan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.21\textwidth}|}
+    \hline
+    \textbf{Acuan} & \textbf{Isi yang diminta} & \textbf{Dijawab AC-01} & \textbf{Belum dijawab} \\
+    \hline
+    UU 27/2022 Pasal 39, K-01 & Mencegah data pribadi diakses secara tidak sah, antara lain dengan
+    sistem keamanan & Akun tanpa dasar dicabut & Autentikasi, jejak aktivitas, akun bersama \\
+    \hline
+    UU 27/2022 Pasal 35, 36, 37 & Langkah teknis operasional, kerahasiaan, dan pengawasan pihak
+    yang terlibat & Sebagian pengawasan akun vendor & Tingkat keamanan menurut risiko; 11 butir
+    perjanjian vendor \\ \hline
+    ISO/IEC 27001:2022 Annex A 5.18 & Pengelolaan hak akses; naskah berbayar, uraian ini ringkas &
+    Peninjauan dan pencabutan berkala & Baris \textit{Statement of Applicability} (SoA), penilaian
+    risiko, kontrol 5.15, 8.2, 8.3, 8.18 \\ \hline
+    NIST CSF 2.0 PR.AA-05 & Izin akses ditetapkan dalam kebijakan, dikelola, ditegakkan, ditinjau,
+    serta memuat hak paling kecil dan pemisahan tugas & Ditinjau, dan sebagian ditegakkan & Hak
+    paling kecil dan pemisahan tugas \\ \hline
+  \end{tabularx}
+\end{table}
+
+Isi Undang-Undang (UU) 27/2022 dibaca dari naskah resmi \cite{uu27-2022-pdp}, dan isi PR.AA-05
+dibaca dari CSF 2.0 \cite{nistcsf2}. Nomor Annex A pada kolom terakhir mengikuti pemetaan NIST
+yang dipakai Bab 6 \cite{c06-nist-irefs}. K-01 berasal dari Pasal 39 pada Bab 3, dan Pasal 37
+mengatur pengawasan pihak yang terlibat dalam pemrosesan. Register karena itu memuat keempat
+pasal, seperti contoh Bab 1, dengan Pasal 39 sebagai acuan utama.
+
+Dua contoh batas klaim:
+\begin{enumerate}
+  \item PR.AA-05 memuat enam unsur: kebijakan, pengelolaan, penegakan, peninjauan, hak paling
+  kecil, dan pemisahan tugas. KB-02 dan KB-03 menjawab unsur kebijakan. AC-01 menjawab peninjauan
+  dan sebagian penegakan. Hak paling kecil dan pemisahan tugas menunggu G-04 pada gelombang
+  kedua. Status terbukti pada T-15 hanya berlaku untuk 120 akun vendor pada cakupan Bab 8.
+  \item Pasal 39 ayat (2) menyebut sistem elektronik yang andal, aman, dan bertanggung jawab. Satu
+  peninjauan bulanan tidak menjawab ketiganya. Multi-Factor Authentication (MFA) pada 108 dari
+  120 akun, misalnya, tetap menjadi bukti terpisah pada T-14.
+\end{enumerate}
+
+\subsection*{Kapan bukti boleh dipakai ulang}
+
+Pertanyaan kemudian muncul: apakah bukti dapat selalu dipakai ulang? Periode, cakupan sistem,
+kriteria, dan keandalan bukti perlu cocok. Hasil peninjauan satu rumah sakit tidak otomatis
+berlaku bagi empat lainnya. Pemetaan yang rapi tidak membuktikan efektivitas kontrol.
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan EV-AC01-2026-10 mencatat 114 dari 120 akun ditinjau pada Oktober 2026. Bukti itu
+  sah untuk IK-07 bulan Oktober, yaitu 95 persen. Bukti yang sama belum cukup untuk menutup TA-01,
+  karena kriteria penutupan meminta 120 dari 120 akun.
+  \item Laporan unit TI berbunyi 108 dari 108, atau tampak 100 persen. Audit memakai populasi 120
+  dari daftar penugasan, sehingga 12 akun luput. Bukti dengan penyebut yang salah tidak dipakai
+  ulang untuk acuan apa pun.
+\end{enumerate}
+
+Diagram konsep pada awal bab meringkas alur yang sama. R-01 ditangani AC-01. AC-01 berkontribusi
+pada kewajiban sesuai cakupannya dan menghasilkan bukti pelaksanaan. Bukti menjadi dasar pengujian.
+Celah yang ditemukan menjadi tindakan dengan pemilik, tenggat, dan prioritas, lalu tindakan itu
+memperbaiki pelaksanaan AC-01.
 
 \section{Fungsi dan Pilihan Alat GRC}
 
-% TODO
-% Cakupan: fungsi alat GRC (register, alur kerja, pengelolaan bukti, pelaporan); spreadsheet terstruktur, alat sumber terbuka seperti CISO Assistant dan eramba, serta platform komersial; kriteria pemilihan dan biaya total kepemilikan.
-% Pendalaman teknis: memasang alat GRC sumber terbuka, memuat kerangka ISO/IEC 27001 dan NIST CSF, mengimpor register semester ini, dan mengenal OSCAL untuk pertukaran data kontrol.
+\subsection*{Empat fungsi yang dicari}
+
+Alat GRC mendukung register, alur kerja, pengelolaan bukti, dan pelaporan, disertai jejak
+perubahan. Spreadsheet terstruktur sesuai untuk ruang lingkup terbatas dengan kontrol versi dan
+pemilik yang jelas. Platform khusus membantu koordinasi lebih luas, tetapi memerlukan
+konfigurasi, pengelolaan akses, data yang bersih, dan dukungan. Papazafeiropoulou dan Spanaki
+menyusun karakteristik sistem GRC dari literatur dan pandangan pakar: tujuan, fungsi sistem,
+pemangku kepentingan utama, metodologi dan persyaratan sebelum penerapan, faktor keberhasilan,
+serta hambatan \cite{c14-papazafeiropoulou2015}. Bab ini memakai susunan itu sebagai daftar
+pertanyaan sebelum alat dipilih.
+
+Analogi pergudangan menjelaskan pilihan alat. Rak sederhana dapat cukup untuk puluhan barang.
+Gudang besar membutuhkan pelacakan terpusat. Namun sistem mahal tetap menghasilkan kesalahan jika
+nomor barang dan penanggung jawabnya tidak tertib.
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Register Medikara memuat 196 objek dan 464 bukti per tahun. Jumlah itu masih tertampung
+  spreadsheet. Masalahnya bukan ukuran. Data Protection Impact Assessment (DPIA) dan kertas kerja
+  audit tidak boleh dibaca semua pemakai, dan satu lembar bersama sulit membatasi akses per baris.
+  \item Bab 12 menemukan 12 akun luput karena daftar diambil dari sistem yang diperiksa. Platform
+  yang membaca daftar yang sama tetap melaporkan 108 dari 108. Alat mempercepat hitungan,
+  sedangkan penyebut tetap keputusan proses.
+\end{enumerate}
+
+Tabel~\ref{tab:ch14-pilihan-alat} merangkum pilihan alat menurut kebutuhan.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Pilihan alat menurut kebutuhan}\label{tab:ch14-pilihan-alat}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Pilihan} & \textbf{Kekuatan} & \textbf{Kebutuhan pengelolaan} & \textbf{Cocok bila} \\
+    \hline
+    Spreadsheet terstruktur & Cepat dimulai dan mudah ditinjau & Versi, akses, validasi data &
+    Definisi baru disepakati; objek ratusan \\ \hline
+    Sumber terbuka & Dapat disesuaikan & Operasi, pembaruan, keahlian & Ada pengelola tetap dan
+    server yang aman \\ \hline
+    Platform komersial & Dukungan dan fungsi terintegrasi & Lisensi, kontrak, portabilitas & Alur
+    lintas unit sudah stabil \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Biaya total pada periode yang sama}
+
+Total Cost of Ownership (TCO), atau biaya total kepemilikan, mencakup lisensi, implementasi,
+migrasi, waktu pegawai, pelatihan, operasi, dan keluar dari sistem. Pilihan hanya dapat
+dibandingkan pada periode dan cakupan yang sama. Angka berikut merupakan asumsi tiga tahun, tanpa
+klaim harga produk tertentu.
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan spreadsheet memerlukan biaya awal Rp20 juta dan Rp30 juta per tahun, sedangkan
+  platform memerlukan Rp150 juta awal dan Rp100 juta per tahun. Biaya tiga tahunnya Rp110 juta dan
+  Rp450 juta. Selisih Rp340 juta harus dijelaskan oleh manfaat dan kebutuhan.
+  \item Lisensi nol bukan biaya nol. CISO Assistant edisi Community memakai GNU Affero General
+  Public License (AGPL) versi 3, menyebut lebih dari 200 kerangka, dan menyediakan pemasangan
+  Docker serta REST Application Programming Interface (API) \cite{c14-ciso-assistant}. Eramba
+  menyediakan edisi Community tanpa biaya untuk pemasangan sendiri, di samping edisi Enterprise
+  berbayar \cite{c14-eramba}. Misalkan pengelola memerlukan 1.000 jam per tahun, atau Rp60 juta,
+  ditambah Rp60 juta biaya awal. Biaya tiga tahunnya $60 + 3 \times 60 = 240$, atau Rp240 juta.
+\end{enumerate}
+
+Tabel~\ref{tab:ch14-biaya-alat} menyusun keempat jalur pada periode yang sama. Jalur bertahap
+memakai spreadsheet pada Tahun 1, lalu pindah ke sumber terbuka bila gerbang bulan 12 lulus. Bila
+tetap memakai spreadsheet, biayanya kembali ke Rp110 juta. Bila pindah ke platform pada Tahun 2,
+biayanya $50 + 250 + 100 = 400$, atau Rp50 juta lebih murah daripada membeli platform sejak awal.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Biaya alat selama tiga tahun dalam juta rupiah (misalkan)}\label{tab:ch14-biaya-alat}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedleft\arraybackslash}p{0.1\textwidth}|>{\raggedleft\arraybackslash}p{0.1\textwidth}|>{\raggedleft\arraybackslash}p{0.1\textwidth}|>{\raggedleft\arraybackslash}p{0.1\textwidth}|>{\raggedright\arraybackslash}p{0.23\textwidth}|}
+    \hline
+    \textbf{Jalur} & \textbf{Tahun 1} & \textbf{Tahun 2} & \textbf{Tahun 3} & \textbf{Jumlah} &
+    \textbf{Hitungan} \\ \hline
+    Spreadsheet & 50 & 30 & 30 & 110 & $20 + 3 \times 30$ \\ \hline
+    Sumber terbuka & 120 & 60 & 60 & 240 & $60 + 3 \times 60$ \\ \hline
+    Platform & 250 & 100 & 100 & 450 & $150 + 3 \times 100$ \\ \hline
+    \textbf{Bertahap} & \textbf{50} & \textbf{120} & \textbf{60} & \textbf{230} & $(20 + 30) + (60
+    + 60) + 60$ \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Syarat wajib lebih dahulu, skor kemudian}
+
+Perbandingan memakai kebutuhan wajib sebelum skor berbobot. Pilihan gagal bila tidak dapat
+mengekspor data atau membatasi bukti sensitif sesuai kebutuhan. Skor tinggi pada kriteria lain
+tidak dapat menebusnya. Gambar~\ref{fig:ch14-alat} memperlihatkan urutan itu, dan
+Tabel~\ref{tab:ch14-kriteria} memuat skor sementara dari
+\berkas{sources/chapter14/kriteria-alat-grc.csv}.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch14-alat-grc.tex}
+  \caption{Urutan memilih alat GRC pada Medikara (misalkan)}
+  \label{fig:ch14-alat}
+\end{figure}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Syarat wajib dan skor berbobot alat (misalkan)}\label{tab:ch14-kriteria}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedleft\arraybackslash}p{0.09\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}p{0.13\textwidth}|}
+    \hline
+    \textbf{Kriteria} & \textbf{Bobot} & \textbf{Spreadsheet} & \textbf{Sumber terbuka} &
+    \textbf{Platform} \\ \hline
+    Pembatasan akses bukti & Wajib & Ya, bersyarat & Belum diuji & Belum diuji \\ \hline
+    Ekspor data lengkap & Wajib & Ya & Belum diuji & Belum diuji \\ \hline
+    Kecocokan proses & 25 & 3 & 4 & 5 \\ \hline
+    Biaya tiga tahun & 25 & 5 & 3 & 2 \\ \hline
+    Kemudahan pengelolaan & 20 & 4 & 2 & 3 \\ \hline
+    Jejak perubahan & 15 & 2 & 4 & 5 \\ \hline
+    Portabilitas & 15 & 4 & 4 & 3 \\ \hline
+    \textbf{Skor berbobot} & 100 & \textbf{3,70} & \textbf{3,35} & \textbf{3,55} \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh cara membaca skor:
+\begin{enumerate}
+  \item Spreadsheet memperoleh $(25 \times 3 + 25 \times 5 + 20 \times 4 + 15 \times 2 + 15 \times
+  4) / 100 = 3{,}70$. Sumber terbuka memperoleh 3,35, dan platform 3,55. Selisih 0,15 antara
+  spreadsheet dan platform terlalu kecil untuk memilih pemenang.
+  \item Misalkan bobot biaya turun 10 poin dan bobot jejak perubahan naik 10 poin, menjadi 15 dan
+  25. Skornya berubah menjadi 3,40, 3,45, dan 3,85. Platform kini teratas. Urutan yang berbalik
+  karena 10 poin bobot berarti keputusan belum boleh bersandar pada skor saja.
+\end{enumerate}
+
+Keputusan memakai syarat wajib punya dua konsekuensi. Pertama, dua pilihan belum dapat dinilai
+sebelum diuji. Kedua, alat GRC menyimpan daftar kelemahan Medikara, sehingga penyedianya masuk
+register pemasok Bab 9 dan diuji ekspornya seperti V-01. Bab 9 menghitung sisa 4 persen rekam yang
+tidak terbaca mesin sebagai 1.120 jam kerja manual. Pelajaran yang sama berlaku bagi vendor alat.
+
+\begin{kasus}[title={Kasus Medikara Health: Alat Dipilih Bertahap}]
+Misalkan kepala risiko mengusulkan spreadsheet terstruktur pada Tahun 1. Biayanya Rp50 juta,
+terdiri atas Rp20 juta biaya awal dan Rp30 juta pengelola, atau 500 jam. Dua puluh berkas lama
+dibekukan, dan 196 objek masuk satu register. Bukti sensitif disimpan terpisah dengan akses per
+peran.
+
+Gerbang pada bulan 12, November 2027, memakai tiga pertanyaan. Apakah 196 objek punya pemilik?
+Apakah pembatasan akses bersyarat itu pernah gagal? Apakah pengelola melewati 500 jam? Bila dua
+jawaban menunjukkan spreadsheet tidak cukup lagi, Medikara menguji CISO Assistant atau eramba di
+lingkungan lokal, lalu pindah ke sumber terbuka dengan cadangan Rp180 juta untuk Tahun 2 dan 3.
+
+Pilihan ini punya \textit{tradeoff}. Selama setahun, jejak perubahan tetap lemah, dengan skor 2
+dari 5. Sebaliknya, Medikara tidak mengotomasi definisi yang belum stabil. Bila gerbang menyatakan
+spreadsheet masih cukup, Rp120 juta tidak terpakai.
+\end{kasus}
+
+\begin{pendalaman}
+OSCAL memakai format terbaca mesin, yaitu Extensible Markup Language (XML), JavaScript Object
+Notation (JSON), dan YAML \cite{c14-oscal}. Situs NIST membagi modelnya ke tiga lapisan: kontrol
+(\textit{catalog}, \textit{profile}, \textit{control mapping}), implementasi (\textit{system
+security plan}, \textit{component definition}), dan penilaian (\textit{assessment plan},
+\textit{assessment results}, \textit{plan of action and milestones}) \cite{c14-oscal-layers}.
+Padanan terdekat pada capstone, menurut pembacaan bab ini:
+\berkas{sources/chapter14/pemetaan-kontrol.csv} dengan \textit{control mapping}, program audit Bab
+12 dengan \textit{assessment plan}, serta TA-01 dengan \textit{plan of action and milestones}.
+Berkas Comma-Separated Values (CSV) pada Aktivitas bukan dokumen OSCAL. Model \textit{catalog}
+dirancang untuk kerangka berbasis kontrol, sehingga cara menuliskan kewajiban hukum seperti K-01
+tetap perlu keputusan tim.
+\end{pendalaman}
 
 \section{Menyusun Peta Jalan GRC}
 
-% TODO
-% Cakupan: gelombang inisiatif, ketergantungan, quick win, anggaran, dan indikator keberhasilan; menempelkan peta jalan GRC pada peta jalan transformasi dan portofolio inisiatif (dibahas rinci di IT40513); urutan yang realistis bagi organisasi menengah.
+\subsection*{Urutan mengikuti ketergantungan}
+
+Peta jalan mengurutkan inisiatif berdasarkan pengurangan risiko, kewajiban, ketergantungan, biaya,
+dan kapasitas perubahan. Setiap inisiatif memiliki pemilik, luaran, syarat mulai, kriteria
+selesai, ukuran keberhasilan, serta risiko sisa. CSF 2.0 menggambarkan langkah yang serupa:
+organisasi menganalisis celah antara profil saat ini dan profil target, menyusun rencana tindakan
+berprioritas, menjalankannya, memperbarui profil, lalu mengulanginya \cite{nistcsf2}. ISACA juga
+menerbitkan COBIT 2019 Implementation Guide sebagai peta jalan perbaikan tata kelola yang
+berkelanjutan \cite{c08-isaca-press}. \textit{Quick win} adalah perbaikan awal yang bernilai dan
+layak, bukan sekadar pekerjaan paling mudah.
+
+Analogi renovasi gedung menunjukkan urutan ketergantungan. Pengecatan tidak didahulukan dari
+perbaikan kebocoran. Jadwal yang mengabaikan ketergantungan menghasilkan pekerjaan ulang.
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item IT40513 menjadwalkan P1 kontrol akses terpusat selesai Maret 2027, titik keputusan K2 pada
+  Oktober 2027, dan portal dan API mitra P8 mulai Januari 2029. Penilaian risiko vendor harus selesai
+  sebelum K2. Register 40 hubungan memakan 484 jam. Misalkan tersedia sekitar 60 jam per bulan,
+  sehingga pekerjaan itu memerlukan sekitar 8 bulan dan harus dimulai paling lambat Februari 2027.
+  \item Latihan terpadu Rp180 juta bergantung pada tahap kedua opsi B. Pada triwulan pertama, baru
+  3 dari 5 rumah sakit lulus. Bila latihan dimajukan, 2 rumah sakit melatih pemulihan yang belum
+  terbukti, dan uangnya habis untuk mengulang temuan lama. Bab 10 karena itu menjadwalkannya
+  sesudah tahap kedua.
+\end{enumerate}
+
+Peta jalan dihitung sejak keputusan direksi pada November 2026. Bulan 1 adalah Desember 2026, dan
+bulan 36 adalah November 2029, masih di dalam Strategi 2026 sampai 2030. Pembelian alat besar
+sebelum definisi dan proses stabil berisiko mengotomasi kebingungan. Karena itu, urutannya dibagi
+menjadi tiga gelombang.
+\begin{enumerate}
+  \item Gelombang 1, bulan 1 sampai 6, menutup yang sudah jatuh tempo: TA-01, keputusan tahap
+  kedua opsi B, satu register, dan uji ekspor. Bulan 2 juga memuat pemantauan Peraturan Pemerintah
+  (PP) 33/2026 yang berlaku 16 Januari 2027. Naskah resminya belum diperoleh, sehingga peraturan
+  itu belum menjadi baris kewajiban baru.
+  \item Gelombang 2, bulan 7 sampai 18, menguji kemampuan: latihan terpadu, penilaian pemasok
+  sebelum K2, gerbang alat, dan audit pemulihan.
+  \item Gelombang 3, bulan 19 sampai 36, memperluas: celah gelombang kedua selesai, lalu asurans
+  mengikuti P8, K3 pada Maret 2029, dan K4 pada Oktober 2029.
+\end{enumerate}
+
+Gambar~\ref{fig:ch14-peta-jalan} memperlihatkan seluruh jadwal. Warna oranye menandai pekerjaan
+dengan tenggat keras, dan warna hijau menandai pekerjaan yang memakai kapasitas yang sudah ada.
+Belah ketupat menandai gerbang, dan garis putus-putus menandai titik keputusan IT40513.
+Tabel~\ref{tab:ch14-peta-jalan} merinci pemilik dan gerbangnya. SIMRS pada tabel itu adalah Sistem
+Informasi Manajemen Rumah Sakit. Berkas lengkapnya ada di
+\berkas{sources/chapter14/peta-jalan-grc.csv}.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch14-peta-jalan.tex}
+  \caption{Peta jalan GRC tiga tahun Medikara (misalkan)}
+  \label{fig:ch14-peta-jalan}
+\end{figure}
+
+\begin{table}[!htb]
+  \centering\footnotesize
+  \caption{Inisiatif, ketergantungan, pemilik, dan gerbang (misalkan)}\label{tab:ch14-peta-jalan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.08\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.08\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Kode} & \textbf{Inisiatif} & \textbf{Bulan} & \textbf{Bergantung pada} & \textbf{Pemilik
+    tindakan} & \textbf{Gerbang selesai} \\ \hline
+    GRC-01 & Target delapan objektif, Paket A sampai D dan DSS04 & 1 sampai 36 & Keputusan direksi
+    & Pemilik tiap objektif & T-01 sampai T-24 diterima \\ \hline
+    GRC-02 & Penutupan TA-01, AC-01 pada 5 rumah sakit & 1 sampai 4 & Perpanjangan tenggat & Kepala
+    operasi TI & 120 dari 120 akun, 60 dari 60 catatan, 30 dari 30 sampel \\ \hline
+    GRC-03 & Opsi B: cadangan terpisah, pemulihan prioritas & 1 sampai 36 & Keputusan November 2026
+    & Kepala operasi TI & Bulan 2: 5 dari 5 rumah sakit, 9 dari 9 uji akun terpisah \\ \hline
+    GRC-04 & Tata kelola AI, KB-09, alat alternatif & 1 sampai 36 & KB-09 disetujui direksi &
+    Direktur pelayanan & 6 baris inventaris ditinjau tiap triwulan \\ \hline
+    GRC-05 & Satu register dan alat GRC & 1 sampai 36 & Kode bersama & Kepala risiko & Bulan 3: 196
+    objek berpemilik; bulan 12: gerbang alat \\ \hline
+    GRC-06 & Uji ekspor V-01 dan pendampingan & 3 sampai 6 & Klausul kontrak Bab 9 & Pengelola
+    vendor & Rekam sintetis terbaca; sisa manual dihitung \\ \hline
+    GRC-07 & Penilaian 40 hubungan pemasok & 3 sampai 10 & Skala Bab 9 & Pengelola vendor & 40 dari
+    40 dinilai sebelum K2 \\ \hline
+    GRC-08 & Latihan terpadu dua layanan & 7 sampai 12 & Tahap kedua opsi B & Kepala operasi TI &
+    Dua layanan memenuhi Recovery Time Objective (RTO) dan kapasitas minimum \\ \hline
+    GRC-09 & Celah G-04, G-06, CP-02, CP-07 & 13 sampai 30 & GRC-02, GRC-05 & Pemilik SIMRS & Peran
+    baku 5 rumah sakit; satu inventaris \\ \hline
+    GRC-10 & Rencana asurans & 1 sampai 36 & Kapasitas audit & Kepala audit internal & Temuan lolos
+    uji ulang \\ \hline
+    GRC-11 & Laporan satu halaman, 12 indikator & 1 sampai 36 & GRC-05 & Kepala risiko & Direksi
+    memutuskan dari laporan \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Hitungan biaya tiga tahun}
+
+Dua angka pada peta jalan sering tertukar karena nilainya sama. Pembagiannya begini. Rp180 juta
+pada Bab 10 adalah tiap tahap pencairan tambahan opsi B. Rp180 juta pada GRC-08 adalah latihan
+terpadu dua layanan. Peta jalan versi lama hanya memuat latihan itu. Padahal Bab 10 dan Bab 13
+meminta opsi B Rp480 juta masuk peta jalan. Tabel~\ref{tab:ch14-anggaran} memuat keduanya sebagai
+baris terpisah. Dua baris terakhirnya dibahas pada subbagian tentang anggaran.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Biaya penuh dan uang baru dalam juta rupiah (misalkan)}\label{tab:ch14-anggaran}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedleft\arraybackslash}p{0.11\textwidth}|>{\raggedleft\arraybackslash}p{0.11\textwidth}|>{\raggedleft\arraybackslash}p{0.11\textwidth}|>{\raggedleft\arraybackslash}p{0.11\textwidth}|}
+    \hline
+    \textbf{Baris} & \textbf{Tahun 1} & \textbf{Tahun 2} & \textbf{Tahun 3} & \textbf{Jumlah} \\
+    \hline
+    GRC-01 Target delapan objektif & 720,00 & 720,00 & 720,00 & 2.160,00 \\ \hline
+    GRC-03 Opsi B & 480,00 & 480,00 & 480,00 & 1.440,00 \\ \hline
+    GRC-04 Waktu staf tata kelola AI & 182,76 & 1,92 & 1,92 & 186,60 \\ \hline
+    GRC-04 Alat alternatif & 240,00 & 240,00 & 240,00 & 720,00 \\ \hline
+    GRC-05 Register dan alat GRC & 50,00 & 120,00 & 60,00 & 230,00 \\ \hline
+    GRC-06 Uji ekspor V-01 & 60,00 & 0,00 & 0,00 & 60,00 \\ \hline
+    GRC-08 Latihan terpadu & 180,00 & 0,00 & 0,00 & 180,00 \\ \hline
+    \textbf{Biaya penuh} & \textbf{1.912,76} & \textbf{1.561,92} & \textbf{1.501,92} &
+    \textbf{4.976,60} \\ \hline
+    Dikurangi nilai jam kerja, Tabel~\ref{tab:ch14-jam} & 412,38 & 197,94 & 197,94 & 808,26 \\
+    \hline
+    \textbf{Uang baru} & \textbf{1.500,38} & \textbf{1.363,98} & \textbf{1.303,98} &
+    \textbf{4.168,34} \\ \hline
+  \end{tabularx}
+\end{table}
+
+Asal tiap baris dapat ditelusuri:
+\begin{enumerate}
+  \item GRC-01 berasal dari Bab 8 dan Bab 10: 4 objektif tingkat 3 dengan Rp120 juta (DSS05,
+  APO10, APO13, DSS04) ditambah 4 objektif tingkat 2 dengan Rp60 juta (APO14, APO12, MEA03,
+  BAI06), atau Rp720 juta. AC-01 Rp60 juta sudah berada di dalam DSS05, sehingga tidak ditambahkan
+  lagi.
+  \item GRC-03 berasal dari Bab 10: dasar Rp120 juta, tahap pertama Rp180 juta yang sudah cair, dan
+  tahap kedua Rp180 juta yang ditahan, atau Rp480 juta. Bab 10 menyatakannya sebagai biaya per
+  tahun, sehingga Tahun 2 dan Tahun 3 tetap Rp480 juta.
+  \item GRC-04 berasal dari Bab 11: 3.046 jam kali Rp60.000 adalah Rp182,76 juta. Ditambah alat
+  alternatif Rp240 juta, Tahun 1 menjadi Rp422,76 juta. Lisensi AI-01 belum termasuk. Pada Tahun 2
+  dan Tahun 3, baris berulang pada tabel Bab 11 tinggal tinjauan inventaris 24 jam dan tinjauan
+  KB-09 8 jam, atau 32 jam senilai Rp1,92 juta.
+  \item Bab 11 tidak menyebut apakah alat alternatif dibayar sekali atau tiap tahun. Bab ini
+  memakai anggapan yang lebih hati-hati, yaitu langganan tahunan. Bila dibayar sekali, jumlah tiga
+  tahun turun Rp480 juta menjadi Rp4.496,60 juta.
+  \item GRC-05 mengikuti jalur bertahap pada Tabel~\ref{tab:ch14-biaya-alat}. GRC-06 memakai Rp60
+  juta sebagai biaya sekali seperti Bab 9, dan uji tahunan berikutnya mengikuti klausul kontrak.
+  GRC-08 adalah Rp180 juta sekali seperti Bab 10.
+\end{enumerate}
+
+Hitungan ini punya dua konsekuensi. Pertama, GRC-01 dan GRC-03 berjumlah Rp3.600 juta, atau 72,3
+persen dari seluruh biaya, dan keduanya berulang tiap tahun. Program ini sebagian besar berupa
+kemampuan yang harus terus dibayar, bukan proyek yang selesai. Kedua, Tahun 1 paling berat, yaitu
+38,4 persen dari jumlah, karena memuat pekerjaan sekali jalan seperti pengenalan AI dan latihan.
+
+\subsection*{Hitungan jam tiga tahun}
+
+Jam dihitung terpisah dari rupiah. Bab 8 sudah mengingatkan bahwa waktu staf sebagian termasuk
+dalam biaya kontrol, sehingga kedua angka tidak dijumlahkan begitu saja. Tabel~\ref{tab:ch14-jam}
+memuat tiap baris dari bab asalnya, dan \berkas{sources/chapter14/beban-jam-peta-jalan.csv}
+menyalin isinya. BIA, DPIA, dan register pemasok dihitung sebagai pekerjaan Tahun 1. Pembaruannya
+pada Tahun 2 dan Tahun 3 masuk tinjauan berkala.
+
+\begin{table}[!htb]
+  \centering\footnotesize
+  \caption{Beban jam peta jalan dan pembebanannya ke objektif (misalkan)}\label{tab:ch14-jam}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.11\textwidth}|>{\raggedright\arraybackslash}p{0.09\textwidth}|>{\raggedleft\arraybackslash}p{0.08\textwidth}|>{\raggedleft\arraybackslash}p{0.08\textwidth}|>{\raggedleft\arraybackslash}p{0.08\textwidth}|>{\raggedleft\arraybackslash}p{0.08\textwidth}|}
+    \hline
+    \textbf{Baris} & \textbf{Asal} & \textbf{Objektif} & \textbf{Tahun 1} & \textbf{Tahun 2} &
+    \textbf{Tahun 3} & \textbf{Jumlah} \\ \hline
+    AC-01 pada 120 akun, G-01 & Bab 6 & DSS05 & 144 & 144 & 144 & 432 \\ \hline
+    144 uji pemulihan, G-03 & Bab 6 & DSS04 & 432 & 432 & 432 & 1.296 \\ \hline
+    Latihan pemberitahuan & Bab 7, Bab 8 & MEA03 & 96 & 96 & 96 & 288 \\ \hline
+    260 tinjauan catatan aktivitas & Bab 8 & DSS05 & 520 & 520 & 520 & 1.560 \\ \hline
+    BIA 36 baris & Bab 10 & DSS04 & 216 & 0 & 0 & 216 \\ \hline
+    \textit{Tabletop} 5 kali per tahun & Bab 10 & DSS04 & 35 & 35 & 35 & 105 \\ \hline
+    \textbf{Beban Bab 8 sesudah Bab 10} & & & \textbf{1.443} & \textbf{1.227} & \textbf{1.227} &
+    \textbf{3.897} \\ \hline
+    Rapat tiga forum & Bab 8 & APO12 & 400 & 400 & 400 & 1.200 \\ \hline
+    5 DPIA & Bab 7 & APO14 & 360 & 0 & 0 & 360 \\ \hline
+    Register 40 pemasok & Bab 9 & APO10 & 484 & 0 & 0 & 484 \\ \hline
+    Tinjauan 5 pemasok terperinci & Bab 9 & APO10 & 160 & 160 & 160 & 480 \\ \hline
+    Pembaruan 40 server, Infrastructure as a Service & Bab 9 & APO13 & 480 & 480 & 480 & 1.440 \\
+    \hline
+    \textbf{Di dalam GRC-01} & & & \textbf{3.327} & \textbf{2.267} & \textbf{2.267} &
+    \textbf{7.861} \\ \hline
+    Tata kelola AI, GRC-04 & Bab 11 & & 3.046 & 32 & 32 & 3.110 \\ \hline
+    Pengelola alat, GRC-05 & Bab ini & & 500 & 1.000 & 1.000 & 2.500 \\ \hline
+    \textbf{Jumlah jam} & & & \textbf{6.873} & \textbf{3.299} & \textbf{3.299} & \textbf{13.471} \\
+    \hline
+    \textbf{Nilai, juta rupiah} & Rp60.000 per jam & & \textbf{412,38} & \textbf{197,94} &
+    \textbf{197,94} & \textbf{808,26} \\ \hline
+  \end{tabularx}
+\end{table}
+
+Misalkan seluruh 3.327 jam Tahun 1 berada di dalam GRC-01, sehingga tidak ditambahkan lagi ke
+rupiah. Anggapan itu masuk akal, karena tiap objektif masih di bawah anggarannya. Pada Tahun 1,
+DSS05 memakai 664 jam, DSS04 683, APO10 644, APO13 480, APO12 400, APO14 360, MEA03 96, dan BAI06
+0. Beban terbesar, DSS04, bernilai Rp40,98 juta dari Rp120 juta, sedangkan APO12 bernilai Rp24
+juta dari Rp60 juta. Pembebanan ini juga pengandaian. Nilainya Rp199,62 juta, atau 27,7 persen dari
+Rp720 juta. Sisa Rp520,38 juta membiayai hal di luar waktu staf, seperti perbaikan prosedur,
+pelatihan, dan perangkat.
+
+Jumlah 6.873 jam setara 3,58 orang penuh waktu pada 1.920 jam kerja per tahun. Namun, 2.400 jam di
+antaranya tersebar pada 4.800 karyawan, masing-masing 30 menit. Beban kelompok kerja tinggal 4.473
+jam, atau 2,33 orang penuh waktu. Bab 6 mengingatkan beban ini tidak boleh bergantung pada tim
+platform 6 orang, karena 38,8 persen dari 11.520 jam kapasitasnya akan habis. Bila dibagi merata
+pada 52 staf TI, bebannya sekitar 4,5 persen dari 99.840 jam.
+
+\subsection*{Baris yang sengaja tidak dijumlahkan}
+
+Pertanyaan berikutnya: angka besar mana yang tidak masuk jumlah, dan mengapa?
+Tabel~\ref{tab:ch14-di-luar} menjawabnya. Baris itu tetap ditulis, supaya direksi tidak mengira
+angkanya terlupa.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Baris di luar jumlah peta jalan (misalkan)}\label{tab:ch14-di-luar}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.23\textwidth}|>{\raggedright\arraybackslash}p{0.25\textwidth}|>{\raggedright\arraybackslash}p{0.09\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Baris} & \textbf{Nilai} & \textbf{Asal} & \textbf{Alasan} \\ \hline
+    Rencana asurans, GRC-10 & 1.800 jam, Rp108 juta per tahun & Bab 12 & Kapasitas yang sudah ada
+    \\ \hline
+    Laporan satu halaman, GRC-11 & 384 jam, Rp23,04 juta per tahun & Bab 13 & Menggantikan 768 jam,
+    sehingga beban berkurang \\ \hline
+    Lisensi AI-01 & Rp150 juta per tahun & Bab 11 & Belum diputuskan; mandat komite pengarah TI \\
+    \hline
+    Pemeriksaan AI-01 penuh & 8.000 jam, Rp480 juta per tahun & Bab 11 & Dihitung sebelum perluasan
+    disetujui \\ \hline
+    Dukungan vendor dalam negeri & Rp25 juta per bulan, Rp300 juta per tahun & Bab 7, Bab 9 &
+    Keputusan terpisah; bandingkan dengan izin Pasal 972 \\ \hline
+    Investasi Medikara+ & Rp8.400 juta & Bab 2 & Program lain; dibandingkan pada subbagian berikut
+    \\ \hline
+  \end{tabularx}
+\end{table}
+
+Rencana asurans Bab 12 masuk peta jalan sebagai jadwal, bukan sebagai biaya baru. Kapasitasnya
+1.800 jam per tahun, dengan cadangan 20 persen, atau 360 jam, sehingga 1.440 jam terencana.
+\begin{enumerate}
+  \item Tahun 1: AC-01 600, pemulihan 480, insiden 240, saran KB-09 dan bacaan laporan 120, atau
+  1.440 jam.
+  \item Tahun 2: AI 480, jejak aktivitas 240, privasi 200, vendor 320, integrasi Badan Penyelenggara
+  Jaminan Sosial (BPJS) Kesehatan 200, atau 1.440 jam.
+  \item Tahun 3 belum dirancang Bab 12. Bab ini mencadangkan 480 jam untuk R-04 dan R-07 yang
+  ditunda, lalu 960 jam disusun dari hasil Tahun 2.
+\end{enumerate}
+
+\subsection*{Membaca anggaran terhadap Rp10 miliar}
+
+Biaya penuh belum sama dengan uang yang harus disediakan. Dua hal ini sering tertukar.
+Pembagiannya begini. Biaya penuh menghitung semua sumber daya, termasuk waktu staf yang sudah
+digaji. Uang baru hanya menghitung uang yang harus keluar di luar gaji. Dua baris terakhir
+Tabel~\ref{tab:ch14-anggaran} menurunkan yang kedua dari yang pertama: Rp1.500,38 juta pada Tahun
+1, Rp1.363,98 juta pada Tahun 2, dan Rp1.303,98 juta pada Tahun 3.
+
+Analogi tabungan renovasi rumah menjelaskan masalah sumber dana. Tabungan renovasi dapat membayar
+pemasangan atap baru. Tabungan itu tidak dapat terus membayar tagihan listrik setiap bulan.
+Tagihan berulang harus masuk pengeluaran rutin.
+
+Gambar~\ref{fig:ch14-anggaran} membandingkan uang baru dengan anggaran modernisasi Rp10 miliar. Bab
+2 memisalkan Rp8 miliar disetujui untuk Medikara+, lalu ditambah Rp400 juta menjadi Rp8,4 miliar,
+dengan batas Rp8,8 miliar. Sisanya Rp1.600 juta. Rp400 juta di antaranya masih menjadi ruang
+toleransi Medikara+, sehingga yang benar-benar tersedia adalah Rp1.200 juta.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch14-anggaran.tex}
+  \caption{Uang baru peta jalan dibandingkan anggaran modernisasi (misalkan)}
+  \label{fig:ch14-anggaran}
+\end{figure}
+
+Dua contoh pembacaan:
+\begin{enumerate}
+  \item Misalkan seluruh sisa Rp1.600 juta dipakai. Tahun 1 tertutup, dan tersisa Rp99,62 juta.
+  Namun, ruang toleransi Medikara+ ikut terpakai Rp300,38 juta. Bab 2 juga mencatat bila biaya Rp8
+  miliar naik 27 persen, nilainya Rp10,16 miliar. Pada keadaan itu, peta jalan dan Medikara+
+  berebut uang yang sudah tidak ada.
+  \item Bila peta jalan dan Medikara+ dihitung penuh, jumlahnya $8.400 + 4.976{,}60 =
+  13.376{,}60$, atau Rp13.376,60 juta. Angka itu melewati Rp10 miliar sebesar 33,8 persen, jauh di
+  atas toleransi 10 persen.
+\end{enumerate}
+
+Bacaan ini punya tiga konsekuensi. Pertama, peta jalan tidak muat dalam Rp10 miliar, dan hal itu
+harus ditulis terus terang. Bab ini mengusulkan Rp1.200 juta dari sisa modernisasi untuk Tahun 1,
+Rp300,38 juta dari anggaran operasi 2027, serta seluruh uang baru Tahun 2 dan Tahun 3 dari
+anggaran operasi. Kedua, biaya penuh Rp4.976,60 juta berada pada rentang keputusan direksi di Bab
+2, tetapi hanya Rp23,40 juta di bawah batas Rp5 miliar. Bila lisensi AI-01 berjalan pada Tahun 2
+dan Tahun 3, jumlahnya Rp5.276,60 juta, sehingga Bab 2 meminta persetujuan dewan komisaris.
+Memecahnya menjadi keputusan kecil tidak menghapus kewajiban itu. Ketiga, kenaikan di atas 10
+persen, yaitu di atas Rp5.474,26 juta, kembali ke pemutus awal.
+
+Dua angka anggaran antarmata kuliah juga perlu dipisahkan. Rp10 miliar adalah pengandaian mata
+kuliah ini untuk latihan kewenangan keputusan, dengan Medikara+ Rp8,4 miliar. IT40513 Bab 13
+memisalkan pagu Rp60 miliar untuk delapan inisiatif 2026 sampai 2030, dengan cadangan risiko Rp7
+miliar dan inisiatif kontrol akses I2. Rp10 miliar bukan baris di dalam Rp60 miliar, sehingga kedua
+angka tidak dijumlahkan.
+Saat peta jalan dilebur ke portofolio IT40513, tim menulis baris GRC sebagai pengeluaran operasi
+dan memeriksa hubungannya dengan I2, supaya pekerjaan AC-01 tidak dihitung dua kali.
+
+\subsection*{Apakah biayanya sepadan?}
+
+Pertanyaan yang jujur muncul berikutnya: apakah penurunan kerugian menutup biaya?
+Tabel~\ref{tab:ch14-manfaat} menjawabnya pada tiga skenario yang sudah dihitung bab sebelumnya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Harapan kerugian per tahun sebelum dan sesudah (misalkan)}\label{tab:ch14-manfaat}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}p{0.09\textwidth}|}
+    \hline
+    \textbf{Skenario dan tindakan} & \textbf{Sebelum} & \textbf{Sesudah} & \textbf{Turun} &
+    \textbf{Asal} \\ \hline
+    R-01 dengan AC-01 penuh & Rp100 juta & Rp25 juta & Rp75 juta & Bab 5 \\ \hline
+    R-05 dengan opsi B & Rp200 juta & Rp40 juta & Rp160 juta & Bab 10 \\ \hline
+    R-10 dengan uji ekspor & Rp80 juta & Rp30 juta & Rp50 juta & Bab 9 \\ \hline
+    \textbf{Jumlah} & \textbf{Rp380 juta} & \textbf{Rp95 juta} & \textbf{Rp285 juta} & \\ \hline
+  \end{tabularx}
+\end{table}
+
+Jawabannya tidak. Penurunan Rp285 juta per tahun jauh di bawah uang baru Tahun 2 sebesar Rp1.363,98
+juta. Selama tiga tahun, angkanya paling banyak Rp855 juta, atau 17,2 persen dari biaya penuh.
+Hitungan ini hanya mencakup 3 dari 12 skenario, tetapi kesimpulannya tidak boleh ditutupi. Peta
+jalan tidak dibela sebagai investasi yang kembali modal.
+
+Pembelaannya ada pada empat hal lain. Pertama, R-05 harus turun dari peluang 10 persen ke batas 2
+persen, karena batas itu sudah ditetapkan pada Bab 5. Kedua, K-01, K-02, K-04, dan K-05 adalah
+kewajiban, bukan pilihan untung rugi. Ketiga, harapan kerugian tidak mengukur cedera pasien pada
+R-11. Keempat, IT40513 menjadikan penutupan temuan akses dan penilaian vendor sebagai syarat K2
+dan P8. Direksi tetap boleh menolak sebagian peta jalan, asalkan penolakan beserta risiko sisanya
+dicatat.
+
+\subsection*{Indikator sebagai ukuran keberhasilan}
+
+Peta jalan memakai indikator Bab 13, bukan ukuran baru. Pemiliknya mengikuti
+\berkas{sources/chapter13/katalog-indikator.csv}. Tabel~\ref{tab:ch14-indikator} memuat posisi
+Oktober 2026, yaitu 3 merah, 2 kuning, 6 hijau, dan 1 tidak berlaku, lalu menyebut inisiatif yang
+diukur.
+
+\begin{table}[!htb]
+  \centering\footnotesize
+  \caption{Indikator keberhasilan peta jalan (misalkan)}\label{tab:ch14-indikator}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.07\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.19\textwidth}|>{\raggedright\arraybackslash}p{0.19\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|}
+    \hline
+    \textbf{Kode} & \textbf{Pemilik tindakan} & \textbf{Oktober 2026} & \textbf{Sasaran} &
+    \textbf{Inisiatif} \\ \hline
+    IK-01 & Kepala operasi TI & 1 akun, merah & 0 akun & GRC-02 \\ \hline
+    IK-02 & Kepala operasi TI & 0 akun, hijau & 0 akun & GRC-02 \\ \hline
+    IK-03 & Kepala operasi TI & 100 menit, kuning & Paling lama 90 menit & GRC-03, GRC-08 \\ \hline
+    IK-04 & Kepala risiko & 1 skenario, merah & 0 skenario & GRC-03 \\ \hline
+    IK-05 & Fungsi kepatuhan & 0 baris, hijau & 0 baris & GRC-01, GRC-07 \\ \hline
+    IK-06 & Pimpinan klinis & 0 laporan, hijau & 0 laporan & GRC-04 \\ \hline
+    IK-07 & Kepala operasi TI & 95 persen, hijau & Minimal 95; TA-01 100 & GRC-02 \\ \hline
+    IK-08 & Kepala operasi TI & 83,33 persen, merah & 100 persen & GRC-03, GRC-08 \\ \hline
+    IK-09 & Petugas pelindungan data & 100 persen, hijau & 100 persen & GRC-01 \\ \hline
+    IK-10 & Pemilik tiap temuan & 90 persen, hijau & Minimal 90 persen & GRC-02, GRC-10 \\ \hline
+    IK-11 & Petugas pelindungan data & Tidak berlaku & 100 persen & GRC-01 \\ \hline
+    IK-12 & Kepala pendaftaran & 28 menit, kuning & Paling lama 25 menit & Dipantau GRC-11 \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh pemakaiannya:
+\begin{enumerate}
+  \item IK-04 baru menjadi 0 skenario bila peluang R-05 turun ke 0,02. Peluang itu tetap dicatat
+  0,1 sampai syarat opsi B terpenuhi. Pembelian cadangan saja tidak mengubah warnanya.
+  \item IK-12 turun dari 34 ke 28 menit, dan bab ini tidak mengklaimnya sebagai hasil peta jalan
+  GRC. Waktu tunggu dipengaruhi jadwal dokter dan alur pendaftaran pada program Medikara+.
+  Mengklaimnya membuat peta jalan tampak berhasil tanpa dasar, dan Bab 13 sudah membahas bahaya
+  \textit{gaming} \cite{c13-bevan2006}.
+\end{enumerate}
+
+\subsection*{Perpanjangan tenggat TA-01}
+
+Bab 12 menyepakati tenggat 30 hari untuk TA-01, dan Bab 13 mencatat statusnya pada Oktober 2026:
+selesai menurut manajemen, belum lolos uji ulang. Tenggat itu sudah lewat. Standar 15.2 meminta
+auditor menanyakan keterlambatan, dan kepala audit internal menilai apakah manajemen senior sudah
+menerima risiko di atas toleransinya \cite{iia-gias2024}. Keterlambatan tanpa keputusan berarti
+risiko diterima tanpa disebut. Tabel~\ref{tab:ch14-ta01} karena itu mencatat perpanjangannya
+sebagai keputusan.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Catatan perpanjangan TA-01 (misalkan)}\label{tab:ch14-ta01}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.23\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Unsur} & \textbf{Isi} \\ \hline
+    Tenggat lama & 30 hari; temuan bertanggal acuan 31 Maret 2026; sudah lewat \\ \hline
+    Status Oktober 2026 & Selesai menurut manajemen; belum lolos uji ulang; 114 dari 120 akun \\
+    \hline
+    Tenggat baru & Uji ulang dengan tanggal acuan 31 Maret 2027 \\ \hline
+    Alasan & Kriteria 60 catatan memerlukan 5 rumah sakit selama 12 bulan; P1 IT40513 selesai pada
+    bulan yang sama \\ \hline
+    Kriteria penutupan & 120 dari 120 akun, 60 dari 60 catatan, 30 dari 30 akun sampel; tidak
+    berubah \\ \hline
+    Pemilik & Risiko: pemilik Medikara+. Tindakan: kepala operasi TI. Uji ulang: audit internal \\
+    \hline
+    Penerima risiko sisa & Direksi, tertulis, atas laporan kepala audit internal \\ \hline
+    Harga menunggu & Peluang R-01 0,0575, bukan 0,05: Rp28,75 juta, bukan Rp25 juta per tahun \\
+    \hline
+    Beban & Memakai 600 jam audit AC-01 Tahun 1; tidak menambah jam \\ \hline
+    Bila gagal & Kembali ke direksi; IK-10 tetap menghitung TA-01 belum tertutup \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{kasus}[title={Kasus Medikara Health: Mengapa Tenggat 30 Hari Terlalu Pendek}]
+Misalkan kepala audit internal membawa TA-01 ke direksi pada November 2026. Tenggat 30 hari cukup
+untuk memperbaiki daftar akun. Tenggat itu tidak cukup untuk menghasilkan 60 catatan, karena satu
+rumah sakit hanya menghasilkan satu catatan per bulan. Kesalahannya ada pada rancangan temuan:
+tenggat tindakan disamakan dengan tenggat pembuktian.
+
+Perpanjangan punya harga yang dapat dihitung. Selisih harapan kerugian R-01 adalah Rp3,75 juta per
+tahun, atau Rp1,25 juta selama 4 bulan. Peluang kerugian Rp1,5 miliar atau lebih masih 1,15 persen,
+di bawah batas 2 persen. Namun, batas nol akun vendor tanpa pemilik belum terpenuhi, karena IK-01
+masih 1 akun. Akun itu sudah dibekukan. Direksi menerima perpanjangan dengan syarat tidak ada
+catatan susulan. Bila satu catatan bulan lampau memang tidak ada, angka 60 tidak tercapai, dan
+hasilnya dilaporkan apa adanya.
+\end{kasus}
 
 \section{Manajemen Perubahan dan Budaya}
 
-% TODO
-% Cakupan: GRC sebagai perubahan perilaku, bukan hanya dokumen; peran teladan pimpinan; pelatihan dan kesadaran; bentuk resistensi yang umum dan cara menanganinya.
+Perubahan GRC berhasil ketika perilaku dan keputusan ikut berubah. Dokumen baru tidak cukup bila
+staf tidak memiliki waktu, alat, atau kewenangan. Pimpinan memberi teladan melalui keputusan yang
+mengikuti aturan, termasuk ketika biaya dan tenggat menekan. Beautement, Sasse, dan Wonham
+mengusulkan gagasan anggaran kepatuhan. Orang menimbang biaya dan manfaat dari mematuhi aturan
+keamanan, dan kesediaannya terbatas. Organisasi karena itu perlu mengarahkan kepatuhan pada tujuan
+keamanan yang utama dan menghapus kewajiban yang kurang penting \cite{c14-beautement2008}.
+
+Analogi antrean layanan menunjukkan dampak aturan yang tidak praktis. Jalur resmi yang lambat
+mendorong orang mencari jalan pintas. Memperbaiki alur dan memberi bantuan dapat lebih efektif
+daripada menambah larangan.
+
+Resistensi perlu diurai menurut penyebab: beban kerja, ketidakjelasan manfaat, konflik insentif,
+atau keterbatasan kemampuan. Pelatihan ditujukan pada keputusan tertentu. Keberhasilan dinilai
+melalui pelaksanaan kontrol dan pengurangan pengecualian, bukan jumlah peserta saja.
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan persetujuan akses memerlukan 12 hari, dan ada 30 permintaan per bulan. Staf yang
+  mengejar layanan tergoda memakai akun bersama, seperti contoh 12 petugas bangsal pada Bab 6. Tim
+  memperjelas pemilik dan batas waktu, sehingga persetujuan menjadi 2 hari. Waktu tunggu berkurang
+  300 hari per bulan.
+  \item Misalkan penutupan temuan dinilai dari banyaknya tiket selesai. Dari 10 temuan yang
+  dilaporkan selesai, 9 lolos uji ulang. Status pertama memberi 100 persen, dan status kedua memberi
+  90 persen. IK-10 memakai status kedua, sehingga penutupan administratif tidak menggantikan
+  perbaikan nyata.
+\end{enumerate}
+
+Tabel~\ref{tab:ch14-perubahan} merangkum hambatan, tindakan, dan ukuran hasilnya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Hambatan dan tindakan perubahan}\label{tab:ch14-perubahan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Hambatan} & \textbf{Tindakan} & \textbf{Ukuran hasil} \\ \hline
+    Tidak ada waktu & Masukkan tugas ke kapasitas kerja; 6.873 jam dibagi per unit & Tinjauan
+    selesai tepat waktu, IK-07 \\ \hline
+    Alur tidak jelas & Tetapkan pemilik dan jalur bantuan & Akun tanpa pemilik turun, IK-01 \\
+    \hline
+    Insentif salah & Uji ulang hasil penutupan & Temuan lolos uji ulang, IK-10 \\ \hline
+    Larangan tanpa alternatif & Alat alternatif Rp240 juta dan pelaporan tanpa hukuman & Baris
+    AI-06 berkurang; laporan sendiri naik \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua hal pada perubahan juga sering tertukar, yaitu menambah aturan dan menambah kepatuhan.
+Pembagiannya begini. Sembilan dokumen kebijakan belum tentu dijalankan bila beban kerja terus
+bertambah. Peta jalan ini sudah mengurangi dua beban: 368 jam dari permintaan bukti ganda, dan 384
+jam dari laporan yang lebih pendek. Jumlahnya 752 jam per tahun, atau 10,9 persen dari 6.873 jam.
+Penghematan itu tidak dikurangkan dari tabel jam, karena baru nyata bila jadwal kerja benar-benar
+diubah.
+
+Penundaan juga perlu pemilik. Misalkan G-04 baru selesai paling lambat bulan 30, Mei 2029. Akun
+bersama masih ada selama itu, dan R-02 berskor 12 tetap terbuka. Bab 8 meminta pemilik SIMRS
+menyetujui penundaan secara tertulis. Selama menunggu, T-13 meminta nol akun bersama pada sampel 2
+rumah sakit.
 
 \section{Mempresentasikan Rekomendasi kepada Direksi}
 
-% TODO
-% Cakupan: struktur presentasi C4 (masalah, rekomendasi, biaya, risiko bila tidak dijalankan, keputusan yang diminta); menjawab pertanyaan sulit; menyatukan pesan dengan tiga mata kuliah lain.
-% Kasus Medikara: presentasi kepada direksi fiktif Medikara tentang peta jalan "Satu Pasien, Satu Rekam Medis".
+\subsection*{Susunan yang meminta keputusan}
+
+Presentasi akhir mengajukan keputusan yang beralasan. Susunannya meliputi masalah, bukti, pilihan,
+rekomendasi, biaya, ketergantungan, risiko bila ditunda, dan keputusan yang diminta. Ketidakpastian
+dilaporkan sebagai asumsi dengan rencana validasi, bukan disembunyikan dalam skor.
+
+Analogi permohonan anggaran menunjukkan perlunya pilihan konkret. Pernyataan organisasi perlu lebih
+aman belum memberi dasar persetujuan. Usulan sumber daya untuk menutup kesenjangan tertentu pada
+tanggal tertentu dapat dinilai dan diputuskan.
+
+Pertanyaan sulit dijawab dengan bukti dan batas klaim. Tim tidak menjanjikan risiko nol atau
+kepatuhan sempurna. Jika anggaran dikurangi, tim menjelaskan inisiatif yang ditunda serta
+konsekuensinya. Keempat mata kuliah menyampaikan satu rancangan organisasi dengan keputusan yang
+konsisten. Tabel~\ref{tab:ch14-presentasi} merangkum isi keputusan C4.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Pertanyaan direksi dan jawaban C4 (misalkan)}\label{tab:ch14-presentasi}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.23\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Pertanyaan direksi} & \textbf{Bukti} & \textbf{Jawaban yang dapat ditinjau} \\ \hline
+    Mengapa sekarang? & 3 indikator merah; TA-01 lewat tenggat; R-05 10 persen, batas 2 persen &
+    Harga menunggu opsi B sekitar Rp40 juta per triwulan \\ \hline
+    Berapa biayanya? & Tabel biaya dan tabel jam & Rp4.976,60 juta biaya penuh; Rp4.168,34 juta uang
+    baru \\ \hline
+    Dari mana uangnya? & Sisa modernisasi Rp1.200 juta & Tahun 1 kurang Rp300,38 juta; sisanya
+    anggaran operasi \\ \hline
+    Bagaimana tahu berhasil? & IK-01 sampai IK-12; rencana asurans & Gerbang hasil, diuji audit
+    internal \\ \hline
+    Apa yang tetap berisiko? & R-02, R-04, R-07 & Pemilik dan tanggal tinjau tercatat \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Menjawab bila anggaran dipotong}
+
+Dua contoh pertanyaan sulit:
+\begin{enumerate}
+  \item Misalkan direksi hanya memberi Rp1.200 juta uang baru pada Tahun 1, sehingga Rp300,38 juta
+  harus dipangkas. Tabel~\ref{tab:ch14-pemotongan} menilai pilihannya. Baris pertama dan kedua
+  dipilih, dengan penghematan Rp300 juta. Sisa Rp0,38 juta diserap anggaran operasi. Total tiga
+  tahun turun Rp120 juta menjadi Rp4.856,60 juta, dan uang baru Tahun 2 naik Rp180 juta menjadi
+  Rp1.543,98 juta. Jadwal ikut diperbarui, bukan hanya totalnya.
+  \item Misalkan direksi meminta bukti semua vendor aman. Tim menyebut cakupan yang sudah diuji,
+  yaitu 40 hubungan pada tiga tingkat. Laporan System and Organization Controls (SOC) 2 Type 2 pada
+  Bab 9 memuat 3 pengecualian dari 25 sampel pencabutan akses, dan 9 dari 14 kontrol pelengkap
+  berjalan. Tim menjawab bahwa bukti itu tidak mendukung kata ``aman'', lalu menyebut audit vendor
+  320 jam pada Tahun 2.
+\end{enumerate}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Pilihan pemotongan uang baru Tahun 1 (misalkan)}\label{tab:ch14-pemotongan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedleft\arraybackslash}p{0.1\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.11\textwidth}|}
+    \hline
+    \textbf{Pilihan} & \textbf{Hemat, juta} & \textbf{Akibat} & \textbf{Putusan} \\ \hline
+    GRC-08 digeser ke Tahun 2 & 180 & Audit pemulihan Tahun 1 berjalan tanpa hasil latihan & Dipilih
+    \\ \hline
+    Alat alternatif mulai 6 bulan lebih lambat & 120 & AI-06 lebih lama tanpa alternatif kerja &
+    Dipilih \\ \hline
+    GRC-06 digeser setahun & 60 & R-10 tetap Rp80 juta; K-05 tetap tidak memenuhi & Ditolak \\
+    \hline
+    Tahap kedua opsi B dibatalkan & 180 & R-05 tetap 10 persen, melewati batas & Ditolak \\ \hline
+    AC-01 dikurangi & 60 & TA-01 gagal; syarat P1 IT40513 gagal & Ditolak \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Satu keputusan bersama empat mata kuliah}
+
+Peta jalan GRC menempel pada peta jalan transformasi IT40513, sehingga direksi menerima satu cetak
+biru. Tabel~\ref{tab:ch14-selaras} mencatat titik temu tanggalnya. Bila satu gerbang gagal, kedua
+jadwal ditinjau bersama. Gambar~\ref{fig:ch14-lintas-bab} memperlihatkan asal angka dari seluruh
+tonggak.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Titik temu peta jalan GRC dengan tiga mata kuliah lain}\label{tab:ch14-selaras}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.11\textwidth}|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.1\textwidth}|}
+    \hline
+    \textbf{Mata kuliah} & \textbf{Titik temu} & \textbf{Syarat dari peta jalan GRC} &
+    \textbf{Bulan} \\ \hline
+    IT40513 & P1 selesai Maret 2027 & TA-01 lolos uji ulang & 4 \\ \hline
+    IT40513 & K2 Oktober 2027 & Penilaian risiko vendor selesai, GRC-07 & 11 \\ \hline
+    IT40513 & K3 Maret 2029, K4 Oktober 2029 & Uji pemulihan lulus pada rumah sakit yang pindah &
+    28, 35 \\ \hline
+    IT40613 & P8 portal dan API mitra, masa rilis mulai Januari 2029 & Penilaian vendor; KB-05; gerbang agen memakai
+    KB-09 & 26 \\ \hline
+    IT40713 & Rancangan cloud dan pemulihan & BIA, RTO sistem 120 menit, profil target keamanan & 1
+    sampai 12 \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch14-lintas-bab.tex}
+  \caption{Asal angka peta jalan dari tonggak C1 sampai C4 (misalkan)}
+  \label{fig:ch14-lintas-bab}
+\end{figure}
+
+\begin{kasus}[title={Kasus Medikara Health: Lima Keputusan yang Diminta}]
+Misalkan kepala risiko dan kepala audit internal membawa satu halaman ke rapat direksi akhir
+November 2026. Halaman itu meminta lima keputusan.
+\begin{enumerate}
+  \item Setujui peta jalan tiga tahun dengan biaya penuh Rp4.976,60 juta dan uang baru Rp4.168,34
+  juta, bertahap menurut gerbang. Laporkan ke dewan komisaris tiap triwulan.
+  \item Tetapkan sumber dana. Tahun 1 memakai Rp1.200 juta dari sisa modernisasi dan Rp300,38 juta
+  dari anggaran operasi 2027. Tahun 2 dan Tahun 3 masuk anggaran operasi. Ruang toleransi Medikara+
+  Rp400 juta tidak disentuh.
+  \item Tahan tahap kedua opsi B Rp180 juta sampai uji ulang akhir Januari 2027: 5 dari 5 rumah
+  sakit di bawah 120 menit, dan 9 dari 9 uji akun terpisah berhasil.
+  \item Catat perpanjangan TA-01 sampai tanggal acuan 31 Maret 2027, dan terima risiko sisa R-01
+  secara tertulis selama masa itu.
+  \item Pakai spreadsheet terstruktur pada Tahun 1, dengan gerbang alat pada November 2027.
+\end{enumerate}
+
+Direksi dapat memilih lain. Bila keputusan 2 ditolak, Tabel~\ref{tab:ch14-pemotongan} menjadi jadwal
+baru. Bila keputusan 3 ditolak, uang keluar sebelum bukti. Tim tidak menjanjikan risiko nol. Tim
+menjanjikan bahwa setiap risiko sisa punya pemilik, tanggal tinjau, dan bukti.
+\end{kasus}
+
+Tonggak C4 selesai bila enam luaran tersedia dan angkanya saling cocok: rencana asurans 2.880 jam
+dan contoh uji 24 dari 30 akun; \textit{dashboard} dan laporan satu halaman dengan 12 indikator;
+pemetaan kontrol 196 objek; pilihan alat Rp230 juta; peta jalan Rp4.976,60 juta dengan 13.471 jam
+dan 11 inisiatif; serta materi presentasi dengan 5 keputusan.
 
 \section{Aktivitas: Peta Jalan GRC dan Gladi Presentasi C4}
 
-% TODO
-% Tujuan aktivitas: memadukan seluruh luaran semester menjadi rencana bertahap yang siap diputuskan direksi.
-% Peran dalam tim: semua peran terlibat; pemilik konteks memastikan rekomendasi realistis; analis risiko menjaga keselarasan dengan risk appetite; analis regulasi memeriksa kewajiban yang belum tertangani; analis teknologi menilai kelayakan alat GRC.
-% Langkah: kumpulkan luaran Bab 1 sampai 13; susun peta jalan GRC tiga tahun (gelombang, ketergantungan, pemilik, biaya, indikator); pilih pendekatan alat GRC beserta alasan dan trade-off; selaraskan dengan peta jalan IT40513; gladi presentasi C4 dengan format rapat direksi.
-% Luaran dan tonggak capstone: peta jalan GRC terpadu, pilihan alat GRC, dan materi presentasi akhir; masuk C4 yang dipresentasikan menjelang UAS.
-% Berkas sources yang direncanakan: sources/chapter14/peta-jalan-grc.xlsx, sources/chapter14/kriteria-alat-grc.xlsx, sources/chapter14/templat-presentasi-c4.md
+\textbf{Tujuan.} Tim memadukan seluruh luaran semester menjadi peta jalan GRC tiga tahun yang
+menempel pada peta jalan transformasi di IT40513, memilih pendekatan alat GRC, dan berlatih
+presentasi C4 dalam format rapat direksi.
+
+\textbf{Pembagian peran.} Pemilik konteks memastikan rekomendasi realistis bagi organisasinya.
+Analis risiko menjaga batas risiko dan risiko sisa. Analis regulasi menandai kewajiban yang belum
+tertangani dan memeriksa isi acuan. Analis teknologi menilai ketergantungan serta kemampuan alat.
+Semua anggota mempertahankan rekomendasi.
+
+\textbf{Langkah kerja.}
+\begin{enumerate}
+  \item Kumpulkan luaran Bab 1 sampai Bab 13, lalu tetapkan identitas bersama untuk risiko,
+  kewajiban, kontrol, bukti, serta tindakan. Hitung objek seperti
+  Tabel~\ref{tab:ch14-grc-terpadu}.
+  \item Isi \berkas{sources/chapter14/pemetaan-kontrol.csv} untuk satu kontrol. Baca isi tiap
+  acuan, lalu tulis yang dijawab dan yang belum dijawab kontrol itu.
+  \item Susun tiga tahun melalui \berkas{sources/chapter14/peta-jalan-grc.csv}. Cantumkan
+  ketergantungan, biaya per tahun, pemilik, indikator, dan gerbang selesai.
+  \item Isi \berkas{sources/chapter14/beban-jam-peta-jalan.csv}. Tandai baris yang berada di dalam
+  biaya lain, supaya jam dan rupiah tidak dijumlahkan dua kali.
+  \item Bandingkan biaya dengan anggaran. Pisahkan biaya penuh dari uang baru, dan biaya sekali
+  dari biaya berulang.
+  \item Bandingkan alat dengan \berkas{sources/chapter14/kriteria-alat-grc.csv}. Pisahkan syarat
+  wajib dari skor, hitung biaya pada periode sama, lalu uji kepekaan bobot.
+  \item Selaraskan gerbang dengan tiga mata kuliah lain, dan catat perpanjangan temuan memakai
+  \berkas{sources/chapter14/catatan-perpanjangan-ta01.md}.
+  \item Lakukan gladi menggunakan \berkas{sources/chapter14/templat-presentasi-c4.md}. Anggota lain
+  berperan sebagai direksi dan menguji bukti, biaya, serta konsekuensi penundaan.
+\end{enumerate}
+
+\textbf{Luaran.} Peta jalan terpadu, alasan pilihan alat, pemetaan kontrol, dan materi presentasi.
+
+\textbf{Kaitan dengan capstone.} Luaran menutup tonggak C4 Peta Jalan dan Tata Kelola, yang
+dipresentasikan menjelang Ujian Akhir Semester (UAS). Peta jalan GRC dilebur ke peta jalan dan
+portofolio inisiatif di IT40513.
+
+\textbf{Kriteria penilaian.} Integrasi dan keterlacakan 30 persen; urutan serta kelayakan biaya 30
+persen; pembandingan alat 20 persen; kualitas pembelaan keputusan 20 persen. Hasil tiap tim boleh
+berbeda dari contoh. Penilaian berfokus pada penalaran.
+
+\textbf{Berkas pendukung.} Daftar lengkap ada di \berkas{sources/chapter14/README.md}. Data
+organisasi nyata wajib seizin organisasi dan dianonimkan. Data pribadi pasien atau karyawan tidak
+boleh dipakai.
+
+\begin{pendalaman}
+Pendalaman teknis ini opsional. Jalankan \berkas{sources/chapter14/periksa_peta_jalan.py} untuk
+menghitung ulang semua jumlah biaya dan jam dari baris CSV. Tim juga dapat memasang CISO Assistant
+atau eramba pada lingkungan lokal, memuat kerangka ISO/IEC 27001 dan NIST CSF, lalu mengimpor
+register semester. Catat versi, lisensi, dukungan ekspor, dan biaya operasi sebelum memilih. Lisensi
+AGPL perlu dibaca fungsi hukum bila kode diubah. Pakai data sintetis saja. Pasang pada komputer
+sendiri, dan jangan memindai sistem milik orang lain tanpa izin tertulis.
+\end{pendalaman}
 
 \section{Ringkasan}
 
-% TODO
+GRC terpadu menghubungkan tujuan, risiko, kewajiban, kontrol, bukti, pengujian, dan tindakan.
+Identitas bersama mencegah duplikasi tanpa menghapus perbedaan persyaratan. Pada Medikara, 196 objek
+memerlukan satu kode dan satu pemilik. AC-01 berkontribusi pada empat pasal UU 27/2022, Annex A
+5.18, dan PR.AA-05, tetapi tidak memenuhi seluruh isinya. Bukti hanya dipakai ulang bila periode,
+cakupan, kriteria, dan keandalannya cocok.
+
+Alat dipilih setelah kebutuhan, pemilik, dan mutu data jelas. Biaya total mencakup perubahan proses
+dan operasi, bukan lisensi saja. Syarat wajib diuji sebelum skor, dan skor 3,70, 3,35, serta 3,55
+berbalik bila bobot bergeser 10 poin. Medikara memilih jalur bertahap Rp230 juta: spreadsheet
+terstruktur pada Tahun 1, lalu gerbang pada bulan 12.
+
+Peta jalan mempertimbangkan pengurangan risiko, kewajiban, ketergantungan, kapasitas, serta biaya.
+Sebelas inisiatif berjalan dalam tiga gelombang, dan biaya penuhnya Rp4.976,60 juta dengan 13.471
+jam. Baris AC-01, BIA, rencana asurans, dan laporan tidak dijumlahkan dua kali. Uang barunya
+Rp4.168,34 juta, sehingga peta jalan tidak muat dalam sisa Rp1.200 juta dari anggaran Rp10 miliar.
+Penurunan harapan kerugian Rp285 juta per tahun juga tidak menutup biaya, sehingga pembelaannya
+bertumpu pada batas risiko, kewajiban, keselamatan pasien, dan syarat lintas mata kuliah.
+
+Perubahan berhasil bila perilaku berubah. Jalur resmi yang lambat mendorong jalan pintas, dan
+kesediaan patuh terbatas. Karena itu, peta jalan juga mengurangi beban, yaitu 752 jam per tahun.
+Indikator IK-01 sampai IK-12 mengukur hasilnya, dan perpanjangan TA-01 sampai 31 Maret 2027 ditulis
+sebagai keputusan, bukan dibiarkan sebagai keterlambatan.
+
+Presentasi akhir meminta lima keputusan konkret dengan pilihan serta konsekuensinya, lalu tonggak C4
+ditutup dan dilebur ke portofolio IT40513. Pesan utama bab ini adalah bahwa tata kelola menjadi
+nyata ketika tanggung jawab, sumber daya, dan bukti perbaikan bertemu dalam keputusan organisasi.
 
 \section{Latihan}
 
+\subsection*{Latihan 1: Kelayakan Platform GRC}
+
+Organisasi dengan 300 karyawan ingin membeli platform GRC yang mahal. Argumen apa yang mendukung
+dan menolak keputusan itu? Latihan ini membuktikan bahwa keputusan alat bertumpu pada kebutuhan dan
+biaya yang sepadan, bukan pada jumlah karyawan saja.
 \begin{enumerate}
-  \item Organisasi dengan 300 karyawan ingin membeli platform GRC yang mahal. Argumen apa yang mendukung dan menolak keputusan itu?
-  \item Jelaskan gagasan ``satu kontrol untuk banyak kewajiban'' dengan contoh kontrol peninjauan hak akses yang sekaligus memenuhi UU PDP, ISO/IEC 27001, dan NIST CSF.
-  \item Susun tiga inisiatif \textit{quick win} GRC untuk Medikara Health pada enam bulan pertama, lalu jelaskan alasan urutannya.
+  \item Daftar kebutuhan wajib dan kapasitas pengelola.
+  \item Hitung biaya tiga tahun pada dua opsi, pada periode yang sama.
+  \item Hitung biaya per karyawan per tahun, lalu bandingkan dengan Medikara.
+  \item Nyatakan syarat yang membuat platform layak atau belum layak.
+\end{enumerate}
+
+Tabel~\ref{tab:ch14-lat1-contoh} memuat contoh terisi, dengan angka biaya dari
+Tabel~\ref{tab:ch14-biaya-alat}. Angka merupakan skenario pembelajaran.
+Tabel~\ref{tab:ch14-lat1-hasil} adalah lembar isian.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh terisi Latihan 1 (misalkan)}\label{tab:ch14-lat1-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Opsi} & \textbf{Rumus tiga tahun} & \textbf{Biaya} & \textbf{Per karyawan per tahun, 300
+    orang} & \textbf{Per karyawan per tahun, 4.800 orang} \\ \hline
+    Spreadsheet & $20 + 3 \times 30$ juta & Rp110 juta & Rp122.222 & Rp7.639 \\ \hline
+    Platform & $150 + 3 \times 100$ juta & Rp450 juta & Rp500.000 & Rp31.250 \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar isian Latihan 1}\label{tab:ch14-lat1-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Opsi} & \textbf{Rumus tiga tahun} & \textbf{Biaya} & \textbf{Per karyawan per tahun} &
+    \textbf{Syarat layak} \\ \hline
+    \dots & \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+Pertanyaan analisis:
+\begin{enumerate}
+  \item Manfaat apa yang harus menjelaskan selisih Rp340 juta?
+  \item Misalkan organisasi 300 karyawan mengelola data kesehatan pada banyak lokasi, sedangkan
+  organisasi 4.800 karyawan hanya punya satu lokasi. Mengapa jumlah pegawai saja tidak cukup
+  menentukan alat?
+\end{enumerate}
+
+\subsection*{Latihan 2: Satu Kontrol untuk Banyak Kewajiban}
+
+Jelaskan gagasan ``satu kontrol untuk banyak kewajiban'' dengan contoh kontrol peninjauan hak akses
+yang sekaligus memenuhi UU PDP, ISO/IEC 27001, dan NIST CSF. UU PDP adalah UU 27/2022 tentang
+Pelindungan Data Pribadi. Latihan ini membuktikan bahwa kata ``memenuhi'' pada kalimat itu perlu
+diuji, karena pemetaan menunjukkan kontribusi dan batasnya.
+\begin{enumerate}
+  \item Tuliskan tujuan AC-01 dan cakupan buktinya.
+  \item Baca isi tiap acuan dari sumbernya.
+  \item Petakan kontribusi AC-01 ke keamanan data, kontrol akses, serta hasil CSF.
+  \item Nyatakan bagian acuan yang belum tertutup oleh AC-01.
+\end{enumerate}
+
+Tabel~\ref{tab:ch14-lat2-contoh} memuat contoh terisi dari Tabel~\ref{tab:ch14-tiga-acuan}, dan
+Tabel~\ref{tab:ch14-lat2-hasil} adalah lembar isian.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh terisi Latihan 2 (misalkan)}\label{tab:ch14-lat2-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Acuan} & \textbf{Kontribusi AC-01} & \textbf{Bukti} & \textbf{Batas} \\ \hline
+    UU PDP Pasal 39 & Mendukung pencegahan akses tidak sah & 114 dari 120 akun, Oktober 2026 & Bukan
+    seluruh kewajiban PDP \\ \hline
+    ISO/IEC 27001 Annex A 5.18 & Mendukung pengelolaan hak akses & Catatan peninjauan bulanan &
+    Perlu konteks, SoA, dan bukti lain \\ \hline
+    NIST CSF PR.AA-05 & Mendukung peninjauan izin akses & Tiket pencabutan & Hak paling kecil belum
+    terjawab; bukan sertifikasi \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar isian Latihan 2}\label{tab:ch14-lat2-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Acuan} & \textbf{Kontribusi AC-01} & \textbf{Bukti} & \textbf{Batas} \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+Pertanyaan analisis:
+\begin{enumerate}
+  \item EV-AC01-2026-10 mencatat 114 dari 120 akun. Untuk acuan mana bukti itu cukup, dan untuk
+  keputusan mana tidak?
+  \item Mengapa pemetaan yang rapi tidak membuktikan efektivitas kontrol?
+\end{enumerate}
+
+\subsection*{Latihan 3: Urutan Quick Win}
+
+Susun tiga inisiatif \textit{quick win} GRC untuk Medikara Health pada enam bulan pertama, lalu
+jelaskan alasan urutannya. Latihan ini membuktikan bahwa urutan mengikuti ketergantungan dan dampak,
+serta dapat dihitung terhadap anggaran.
+\begin{enumerate}
+  \item Pilih tiga kesenjangan yang memiliki bukti.
+  \item Susun ketergantungan, pemilik, biaya enam bulan, dan gerbang selesai.
+  \item Jumlahkan biaya, lalu uji urutan terhadap batas anggaran dan kapasitas.
+\end{enumerate}
+
+Tabel~\ref{tab:ch14-lat3-contoh} memuat contoh terisi. Pengelola register dan AC-01 dihitung
+setengah biaya tahunannya. AC-01 sudah berada di dalam GRC-01. Tabel~\ref{tab:ch14-lat3-hasil}
+adalah lembar isian.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh terisi Latihan 3 (misalkan)}\label{tab:ch14-lat3-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.08\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Urutan} & \textbf{Inisiatif} & \textbf{Pemilik} & \textbf{Biaya, juta} & \textbf{Gerbang
+    selesai} \\ \hline
+    1 & Satu register & Kepala risiko & $20 + 15 = 35$ & 196 objek berpemilik \\ \hline
+    2 & Penutupan TA-01 & Kepala operasi TI & 30 & 120 dari 120 akun, 60 dari 60 catatan, 30 dari 30
+    sampel \\ \hline
+    3 & Uji ekspor V-01 & Pengelola vendor & 60 & Rekam sintetis terbaca; sisa manual dihitung \\
+    \hline
+    & \textbf{Jumlah} & & \textbf{125} & \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar isian Latihan 3}\label{tab:ch14-lat3-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.08\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Urutan} & \textbf{Inisiatif} & \textbf{Pemilik} & \textbf{Biaya, juta} & \textbf{Gerbang
+    selesai} \\ \hline
+    \dots & \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+Pertanyaan analisis:
+\begin{enumerate}
+  \item Apa akibat menempatkan \textit{dashboard} sebelum definisi data?
+  \item Uji ekspor Rp60 juta menurunkan harapan kerugian R-10 sebesar Rp50 juta per tahun. Berapa
+  lama biayanya tertutup? Apa yang berubah bila peluang R-10 hanya 0,05?
+  \item Inisiatif mana yang harus dipertahankan bila anggaran dikurangi?
 \end{enumerate}

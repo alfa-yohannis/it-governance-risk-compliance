@@ -1,0 +1,10 @@
+# Kegunaan: delapan akun sintetis satu rumah sakit untuk latihan AC-01 pada tanggal acuan 30 Oktober 2026, Bab 12. Cara memakai: periksa manual seluruh baris, lalu jalankan audit_hak_akses.py. Tidak memuat data pasien; seluruh identitas fiktif.
+akun,aktif,pemilik,jenis,terakhir_ditinjau,persetujuan
+USR001,ya,ROLE01,individual,2026-09-30,EV001
+USR002,ya,,individual,2026-09-30,EV002
+USR003,ya,VENDOR01,bersama,2026-06-30,EV003
+USR004,ya,ROLE04,individual,2026-09-25,EV004
+USR005,ya,ROLE05,individual,2026-07-15,EV005
+USR006,tidak,,individual,2026-01-01,EV006
+USR007,ya,ROLE07,layanan,2026-10-01,EV007
+USR008,ya,ROLE08,individual,2026-09-01,EV008

@@ -1,0 +1,39 @@
+\begin{tikzpicture}[
+  matkul/.style={draw,rounded corners,align=center,text width=2.5cm,
+    minimum height=1.25cm,font=\scriptsize,fill=blue!8},
+  tonggak/.style={draw,rounded corners,align=center,text width=2.5cm,
+    minimum height=1.25cm,font=\scriptsize,fill=praditagreen!15},
+  panah/.style={-{Stealth[length=2mm]},thick}
+]
+  \node[matkul] (ea) at (0,3.3)
+    {IT40513\\{\tiny\mdseries arsitektur \textit{enterprise}}};
+  \node[matkul] (api) at (3.1,3.3)
+    {IT40613\\{\tiny\mdseries platform dan API}};
+  \node[matkul] (cloud) at (6.2,3.3)
+    {IT40713\\{\tiny\mdseries layanan dan \textit{cloud}}};
+  \node[matkul,fill=orange!12] (grc) at (9.3,3.3)
+    {IT40813\\{\tiny\mdseries tata kelola, risiko,}\\{\tiny\mdseries dan kepatuhan}};
+
+  \node[draw,rounded corners,align=center,fill=green!10,text width=11.4cm,
+    minimum height=0.95cm,font=\scriptsize] (cetak) at (4.65,1.55)
+    {\textbf{Cetak Biru Transformasi Digital}\\
+     {\tiny\mdseries satu organisasi; nama layanan, sistem, data, dan biaya yang sama}};
+
+  \foreach \sumber in {ea,api,cloud,grc}
+    \draw[panah] (\sumber.south) -- (\sumber.south |- cetak.north);
+
+  \node[tonggak] (c1) at (0,0)
+    {\textbf{C1} Konteks dan Strategi\\{\tiny\mdseries Pertemuan 1 sampai 3}};
+  \node[tonggak] (c2) at (3.1,0)
+    {\textbf{C2} Kondisi Saat Ini\\{\tiny\mdseries Pertemuan 4 sampai 7}};
+  \node[tonggak] (c3) at (6.2,0)
+    {\textbf{C3} Kondisi Target\\{\tiny\mdseries Pertemuan 8 sampai 11}};
+  \node[tonggak] (c4) at (9.3,0)
+    {\textbf{C4} Peta Jalan dan Tata Kelola\\{\tiny\mdseries Pertemuan 12 sampai 14}};
+
+  \draw[panah] (c1) -- (c2);
+  \draw[panah] (c2) -- (c3);
+  \draw[panah] (c3) -- (c4);
+  \foreach \tonggak in {c1,c2,c3,c4}
+    \draw[panah] (\tonggak.north |- cetak.south) -- (\tonggak.north);
+\end{tikzpicture}

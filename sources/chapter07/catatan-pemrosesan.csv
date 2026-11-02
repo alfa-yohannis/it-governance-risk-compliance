@@ -1,0 +1,5 @@
+# Kegunaan: templat catatan pemrosesan Aktivitas Bab 7. Cara pakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, lalu isi satu baris per kegiatan.
+id,proses,tujuan,kategori_data,subjek,dasar_dan_rujukan,pengendali,prosesor,penerima,prosesor_lain,lokasi,transfer_keluar,retensi_dan_alasan,kontrol,penilaian_dampak,sumber_bukti,pemilik,tanggal_tinjau
+P-01,,,,,,,,,,,,,,,,,
+P-02,,,,,,,,,,,,,,,,,
+P-03,,,,,,,,,,,,,,,,,

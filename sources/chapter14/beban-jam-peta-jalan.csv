@@ -1,0 +1,15 @@
+# Kegunaan: beban jam peta jalan Bab 14, sama dengan tabel jam pada bab, dengan tarif Rp60.000 per jam. Cara memakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, ganti baris tim, tandai kelompok, lalu hitung ulang dengan periksa_peta_jalan.py. Seluruh angka pengandaian.
+kode,baris,asal,objektif,kelompok,jam_t1,jam_t2,jam_t3
+J-01,AC-01 pada 120 akun (G-01),Bab 6,DSS05,di dalam GRC-01,144,144,144
+J-02,144 uji pemulihan (G-03),Bab 6,DSS04,di dalam GRC-01,432,432,432
+J-03,Latihan pemberitahuan,Bab 7 dan Bab 8,MEA03,di dalam GRC-01,96,96,96
+J-04,260 tinjauan catatan aktivitas,Bab 8,DSS05,di dalam GRC-01,520,520,520
+J-05,BIA 36 baris,Bab 10,DSS04,di dalam GRC-01,216,0,0
+J-06,Tabletop 5 kali per tahun,Bab 10,DSS04,di dalam GRC-01,35,35,35
+J-07,Rapat tiga forum,Bab 8,APO12,di dalam GRC-01,400,400,400
+J-08,5 DPIA,Bab 7,APO14,di dalam GRC-01,360,0,0
+J-09,Register 40 pemasok,Bab 9,APO10,di dalam GRC-01,484,0,0
+J-10,Tinjauan 5 pemasok terperinci,Bab 9,APO10,di dalam GRC-01,160,160,160
+J-11,Pembaruan 40 server IaaS,Bab 9,APO13,di dalam GRC-01,480,480,480
+J-12,Tata kelola AI,Bab 11,,GRC-04,3046,32,32
+J-13,Pengelola alat GRC,Bab 14,,GRC-05,500,1000,1000

@@ -1,0 +1,10 @@
+# Kegunaan: daftar kebijakan pengandaian Medikara untuk Aktivitas Bab 08. Kode KB dipakai karena K-01 sampai K-16 sudah menjadi register kewajiban Bab 03. Cara memakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, ganti contoh, lalu isi kolom versi sampai pengecualian.
+id,tingkat,nama,celah_yang_ditutup,pemilik,penyetuju,siklus_tinjau_bulan,versi,tanggal_berlaku,bukti_sosialisasi,pengecualian_dan_kedaluwarsa
+KB-01,Kebijakan,Akses dan penggunaan data,G-01; G-04,Kepala rekam medis,Direksi,24,,,,
+KB-02,Standar,Akun vendor,G-01; CP-01,CISO,Komite pengarah TI,12,,,,
+KB-03,Prosedur,AC-01 dan pencabutan,G-01,Pemilik layanan,Kepala TI,12,,,,
+KB-04,Pedoman,Akses darurat klinis,R-05; R-11,Pimpinan klinis,Direktur pelayanan,12,,,,Paling lama 24 jam
+KB-05,Kebijakan,Berbagi data dengan mitra,CP-03,Direktur pelayanan,Direksi,24,,,,
+KB-06,Standar,Masa simpan catatan aktivitas,CP-05; G-02,CISO,Komite pengarah TI,12,,,,
+KB-07,Prosedur,Pemberitahuan insiden,CP-04; G-05,Fungsi hukum,Komite pengarah TI,12,,,,
+KB-08,Prosedur,Uji pemulihan,G-03,Pemilik layanan,Kepala TI,12,,,,

@@ -1,0 +1,32 @@
+\begin{tikzpicture}[
+  x=0.47cm, y=0.72cm,
+  font=\scriptsize,
+  label/.style={anchor=east, align=right},
+  hasil/.style={anchor=west, align=left, text width=2.5cm},
+  isi/.style={midway, font=\scriptsize}]
+  % Baris 1: penulisan manual sebagai ukuran awal.
+  \node[label] at (0,3.5) {Manual\\(ukuran awal)};
+  \draw[fill=blue!8] (0,3.2) rectangle (12,3.8) node[isi] {Menulis 12};
+  \node[hasil] at (14.3,3.5) {12 menit};
+  % Baris 2: klaim vendor mengabaikan waktu pemeriksaan.
+  \node[label] at (0,2.5) {Klaim vendor};
+  \draw[fill=green!10] (0,2.2) rectangle (2,2.8) node[isi] {Draf 2};
+  \node[hasil] at (14.3,2.5) {Klaim hemat 10};
+  % Baris 3: hasil uji dengan pemeriksaan 8 menit.
+  \node[label] at (0,1.5) {Hasil uji\\(periksa 8 menit)};
+  \draw[fill=green!10] (0,1.2) rectangle (2,1.8) node[isi] {Draf 2};
+  \draw[fill=orange!12] (2,1.2) rectangle (10,1.8) node[isi] {Periksa 8};
+  \node[hasil] at (14.3,1.5) {Hemat 2};
+  % Baris 4: pemeriksaan lebih panjang menghapus penghematan.
+  \node[label] at (0,0.5) {Diperpanjang\\(periksa 12 menit)};
+  \draw[fill=green!10] (0,0.2) rectangle (2,0.8) node[isi] {Draf 2};
+  \draw[fill=red!22] (2,0.2) rectangle (14,0.8) node[isi] {Periksa 12};
+  \node[hasil] at (14.3,0.5) {Lebih lama 2};
+  % Sumbu waktu dan batas manual.
+  \draw[-{Stealth[length=2mm]}, thick] (0,0) -- (14.6,0);
+  \foreach \menit in {0,2,4,6,8,10,12,14} {
+    \draw (\menit,0) -- (\menit,-0.1) node[below] {\menit};
+  }
+  \draw[dashed, thick] (12,0) -- (12,4.1) node[above] {Batas manual};
+  \node[below=3.5mm] at (7,0) {Menit per ringkasan (misalkan)};
+\end{tikzpicture}

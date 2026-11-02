@@ -1,0 +1,9 @@
+# Kegunaan: contoh peta asurans Medikara untuk Aktivitas Bab 12, sama dengan tabel peta pada bab. Cara memakai: salin berkas, tulis siapa memberi keyakinan pada tiap area, lalu tandai celah dan pengulangan. Seluruh isi pengandaian.
+area,lini_pertama,lini_kedua,audit_internal,pihak_luar,catatan_celah
+Akses vendor AC-01,60 catatan peninjauan per tahun,CISO memantau cakupan 120 akun,Tahun 1 awal,SOC 2 penyedia hanya sisi penyedia,sisi Medikara hanya dapat diuji di dalam
+Pemulihan DSS04,144 uji pemulihan per tahun,kepala risiko meninjau hasil triwulan,Tahun 1 akhir,tidak ada,hasil uji dibuat pelaksana sehingga perlu diulang sebagian
+Insiden dan pemberitahuan,prosedur KB-07,petugas pelindungan data memeriksa 2 latihan,Tahun 1 akhir,tidak ada,lini kedua sudah kuat sehingga audit menilai mutu pemeriksaannya
+Jejak aktivitas,tinjauan catatan aktivitas,CISO memeriksa 247 dari 260 tinjauan,Tahun 2,tidak ada,pelaksana dan penantang harus orang berbeda
+AI klinis,uji AI-01 dan AI-02,kepala risiko dan petugas pelindungan data,Tahun 2,tidak ada,saran KB-09 dipisahkan dari audit
+Vendor inti dan cloud,pengelola vendor,kepala risiko meninjau register pemasok,Tahun 2,SOC 2 Type 2 dan sertifikat,4 bulan belum tercakup; 5 kontrol pelengkap belum berjalan
+Laporan spreadsheet,rekonsiliasi manual,kepala risiko,ditunda,audit laporan keuangan untuk angka keuangan saja,laporan layanan belum tercakup

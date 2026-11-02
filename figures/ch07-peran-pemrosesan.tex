@@ -1,0 +1,24 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  simpul/.style={draw, rounded corners, align=center, minimum height=1.25cm},
+  panah/.style={-{Stealth[length=2mm]}, thick},
+  ket/.style={align=center, font=\tiny}]
+  \node[simpul, text width=1.45cm, fill=blue!8] (pasien) at (0,0) {Pasien\\ {\tiny\mdseries subjek
+    data}};
+  \node[simpul, text width=2.25cm, fill=praditagreen!15] (medikara) at (3.3,0) {Medikara\\
+    {\tiny\mdseries pengendali: menentukan tujuan dan kendali}};
+  \node[simpul, text width=2.25cm, fill=blue!8] (vendor) at (6.7,0) {Vendor Medikara+\\
+    {\tiny\mdseries prosesor: memproses atas perintah}};
+  \node[simpul, text width=2.05cm, fill=blue!8] (lain) at (10.0,0) {Prosesor lain\\
+    {\tiny\mdseries contoh: penyedia pendukung}};
+  \node[simpul, text width=3.1cm, fill=orange!12] (tetap) at (3.3,-2.15) {Tetap pada pengendali\\
+    {\tiny\mdseries mengawasi (Pasal 37), mencegah akses tidak sah (Pasal 39), memberi tahu
+    (Pasal 46)}};
+  \node[simpul, text width=3.1cm, fill=red!22] (luar) at (7.4,-2.15) {Di luar perintah dan tujuan\\
+    {\tiny\mdseries tanggung jawab prosesor (Pasal 51 ayat (6)), bila terbukti}};
+  \draw[panah] (pasien) -- node[ket, above] {data dan\\ hak} (medikara);
+  \draw[panah] (medikara) -- node[ket, above] {perintah} (vendor);
+  \draw[panah] (vendor) -- node[ket, above] {izin\\ tertulis} (lain);
+  \draw[panah] (medikara) -- (tetap);
+  \draw[panah] (vendor) -- (vendor |- luar.north);
+\end{tikzpicture}

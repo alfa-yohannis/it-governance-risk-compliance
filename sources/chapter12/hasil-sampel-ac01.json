@@ -1,0 +1,64 @@
+{
+  "tanggal_acuan": "2026-03-31",
+  "ukuran_sampel": 30,
+  "akun_sesuai": 24,
+  "akun_menyimpang": 6,
+  "daftar_menyimpang": [
+    "VND003",
+    "VND007",
+    "VND011",
+    "VND015",
+    "VND019",
+    "VND023"
+  ],
+  "persen_menyimpang": 20.0,
+  "populasi": 120,
+  "bacaan_sampel_bila_acak": [
+    {
+      "temuan": 6,
+      "perkiraan_titik": 24,
+      "batas_bawah": 13,
+      "batas_atas": 40
+    },
+    {
+      "temuan": 2,
+      "perkiraan_titik": 8,
+      "batas_bawah": 2,
+      "batas_atas": 21
+    },
+    {
+      "temuan": 0,
+      "perkiraan_titik": 0,
+      "batas_bawah": 0,
+      "batas_atas": 9
+    }
+  ],
+  "daya_deteksi_sampel_30": [
+    {
+      "akun_bermasalah": 24,
+      "peluang_tertangkap_persen": 99.96,
+      "sampel_minimal_95_persen": 13
+    },
+    {
+      "akun_bermasalah": 12,
+      "peluang_tertangkap_persen": 97.4,
+      "sampel_minimal_95_persen": 26
+    },
+    {
+      "akun_bermasalah": 6,
+      "peluang_tertangkap_persen": 82.95,
+      "sampel_minimal_95_persen": 47
+    },
+    {
+      "akun_bermasalah": 2,
+      "peluang_tertangkap_persen": 43.91,
+      "sampel_minimal_95_persen": 93
+    },
+    {
+      "akun_bermasalah": 1,
+      "peluang_tertangkap_persen": 25.0,
+      "sampel_minimal_95_persen": 114
+    }
+  ],
+  "batas_klaim": "Sampel contoh satu lokasi; batas statistik hanya bila acak"
+}

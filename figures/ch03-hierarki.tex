@@ -1,0 +1,36 @@
+\begin{tikzpicture}[
+  lapis/.style={draw,rounded corners,align=center,text width=3.7cm,
+    minimum height=0.7cm,font=\scriptsize,fill=blue!8},
+  contoh/.style={draw,rounded corners,align=center,text width=5.2cm,
+    minimum height=0.7cm,font=\scriptsize,fill=green!10},
+  kosong/.style={draw,rounded corners,align=center,text width=5.2cm,
+    minimum height=0.7cm,font=\scriptsize,fill=gray!35},
+  judulkolom/.style={align=center,font=\scriptsize\bfseries},
+  panah/.style={-{Stealth[length=2mm]},thick}
+]
+  \node[judulkolom] at (0,0.62) {Pasal 7 ayat (1): hierarki};
+  \node[judulkolom] at (4.8,0.62) {Contoh yang dibaca Medikara};
+  \node[lapis] (uud) at (0,0) {Undang-Undang Dasar 1945};
+  \node[lapis] (mpr) at (0,-0.95) {Ketetapan Majelis\\ Permusyawaratan Rakyat};
+  \node[lapis,fill=orange!12] (uu) at (0,-1.9) {UU atau Peraturan\\ Pemerintah Pengganti UU};
+  \node[lapis,fill=orange!12] (pp) at (0,-2.85) {Peraturan Pemerintah};
+  \node[lapis,fill=orange!12] (perpres) at (0,-3.8) {Peraturan Presiden};
+  \node[lapis] (perda) at (0,-4.75) {Peraturan Daerah provinsi\\ dan kabupaten atau kota};
+  \node[kosong] (k1) at (4.8,-0.47) {Dasar penafsiran, jarang menjadi baris register};
+  \node[contoh] (c1) at (4.8,-1.9) {UU 27/2022 PDP; UU ITE dan UU 1/2024;\\ UU 17/2023 Kesehatan};
+  \node[contoh] (c2) at (4.8,-2.85) {PP 71/2019 PSTE; PP 28/2024};
+  \node[contoh] (c3) at (4.8,-3.8) {Perpres 82/2022 IIV; Perpres 95/2018 SPBE};
+  \node[kosong] (c4) at (4.8,-4.75) {Diperiksa per lokasi fasilitas};
+  \node[draw,rounded corners,align=center,text width=9.6cm,minimum height=1.1cm,font=\scriptsize,
+    fill=praditagreen!15] (p8) at (2.3,-6.2) {\textbf{Pasal 8: peraturan lain yang diakui dan mengikat},
+    sepanjang diperintahkan peraturan lebih tinggi atau dibentuk berdasarkan kewenangan\\
+    Permenkes 24/2022; Permenkominfo 5/2020; Peraturan BSSN 1/2024; POJK 4/POJK.05/2021};
+  \draw[panah] (uu) -- (c1);
+  \draw[panah] (pp) -- (c2);
+  \draw[panah] (perpres) -- (c3);
+  \coordinate (tulang) at ($(uu.west)+(-0.3,0)$);
+  \draw[thick,dashed] (uu.west) -- (tulang);
+  \draw[thick,dashed] (pp.west) -- (tulang |- pp.west);
+  \draw[thick,dashed] (perpres.west) -- (tulang |- perpres.west);
+  \draw[panah,dashed] (tulang) -- (tulang |- p8.north);
+\end{tikzpicture}

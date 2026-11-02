@@ -1,0 +1,28 @@
+\begin{tikzpicture}[font=\scriptsize]
+  \begin{axis}[
+    width=11cm,
+    height=6cm,
+    xmin=0,
+    xmax=2000,
+    ymin=0,
+    ymax=25,
+    xtick={100,500,1500},
+    xticklabels={Rp100 juta, Rp500 juta, {Rp1,5 miliar}},
+    ytick={0,5,10,15,20,25},
+    xlabel={Kerugian tahunan R-01},
+    ylabel={Peluang melampaui (persen per tahun)},
+    legend style={draw=black, fill=white, font=\scriptsize, at={(0.98,0.96)},
+      anchor=north east},
+    legend cell align=left,
+    scaled ticks=false]
+    \addplot[very thick, draw=red!70!black]
+      coordinates {(0,20) (100,20) (100,10) (500,10) (500,4) (1500,4) (1500,0) (2000,0)};
+    \addlegendentry{Peluang awal 0,2}
+    \addplot[very thick, dashed, draw=praditagreen]
+      coordinates {(0,5) (100,5) (100,2.5) (500,2.5) (500,1) (1500,1) (1500,0) (2000,0)};
+    \addlegendentry{Setelah AC-01, peluang 0,05}
+    \addplot[only marks, mark=x, mark size=3.5pt, thick, draw=black]
+      coordinates {(1500,2)};
+    \addlegendentry{Batas \textit{risk appetite}: 2 persen}
+  \end{axis}
+\end{tikzpicture}

@@ -1,0 +1,29 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000},
+  kotak/.style={draw, rounded corners, align=center, text width=1.95cm,
+    minimum height=1.9cm, fill=blue!8},
+  pita/.style={draw, rounded corners, align=center, minimum height=0.55cm},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[pita, text width=11.5cm, fill=praditagreen!15] (tujuan) at (4.9,1.55)
+    {Tujuan: kerahasiaan data pasien. Pemilik risiko: pemilik Medikara+.
+    Pelaksana kontrol: kepala operasi TI.};
+  \node[kotak] (sebab) at (0,0)
+    {\textbf{Sebab}\\akun vendor aktif setelah penugasan berakhir};
+  \node[kotak, fill=green!10] (cegah) at (2.45,0)
+    {\textbf{Kontrol pencegah}\\AC-01 dan pencabutan 1 hari kerja};
+  \node[kotak, fill=orange!12] (kejadian) at (4.9,0)
+    {\textbf{Kejadian}\\R-01: akses vendor menyimpang};
+  \node[kotak, fill=green!10] (batas) at (7.35,0)
+    {\textbf{Kontrol pembatas}\\pemantauan \textit{log} dan prosedur $3 \times 24$ jam};
+  \node[kotak, fill=red!22] (akibat) at (9.8,0)
+    {\textbf{Akibat}\\data pasien terungkap, biaya, dan sanksi};
+  \node[pita, text width=5.55cm, fill=gray!35] (kiri) at (1.85,-1.45)
+    {Bekerja sebelum kejadian: menurunkan kemungkinan};
+  \node[pita, text width=5.55cm, fill=gray!35] (kanan) at (7.95,-1.45)
+    {Bekerja sesudah kejadian: membatasi dampak};
+  \draw[panah] (sebab) -- (cegah);
+  \draw[panah] (cegah) -- (kejadian);
+  \draw[panah] (kejadian) -- (batas);
+  \draw[panah] (batas) -- (akibat);
+\end{tikzpicture}

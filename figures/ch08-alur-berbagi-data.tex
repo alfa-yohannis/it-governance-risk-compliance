@@ -1,0 +1,26 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  tahap/.style={draw, rounded corners, align=center, text width=2.4cm,
+    minimum height=1.3cm, fill=blue!8},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[tahap] (n1) at (0,0)
+    {Usulan tujuan dan data minimum\\{\tiny\mdseries pemilik layanan, hari 1}};
+  \node[tahap] (n2) at (3,0)
+    {DPIA\\{\tiny\mdseries petugas pelindungan data, hari 2 sampai 4}};
+  \node[tahap] (n3) at (6,0)
+    {Tinjauan paralel\\{\tiny\mdseries hukum, keamanan, arsitektur, hari 5 sampai 9}};
+  \node[tahap, fill=orange!12] (n4) at (9,0)
+    {Keputusan tujuan\\{\tiny\mdseries direktur pelayanan, hari 10}};
+  \node[tahap, fill=red!22] (h1) at (3,-2.1)
+    {Dasar pemrosesan belum ada\\{\tiny\mdseries kepala rekam medis menghentikan}};
+  \node[tahap, fill=gray!35] (h2) at (6,-2.1)
+    {Risiko sisa di atas batas\\{\tiny\mdseries naik ke direksi}};
+  \node[tahap, fill=green!10] (h3) at (9,-2.1)
+    {Akses teknis mitra\\{\tiny\mdseries pemilik layanan, operasi TI}};
+  \draw[panah] (n1) -- (n2);
+  \draw[panah] (n2) -- (n3);
+  \draw[panah] (n3) -- (n4);
+  \draw[panah] (n2) -- (h1);
+  \draw[panah] (n4) -- (h2);
+  \draw[panah] (n4) -- (h3);
+\end{tikzpicture}

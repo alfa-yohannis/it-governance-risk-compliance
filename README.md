@@ -6,26 +6,28 @@ Mata kuliah ini membahas cara organisasi mengarahkan dan mengawasi pemakaian TI 
 
 Peserta mata kuliah ini berasal dari latar belakang yang beragam. Sebagian berlatar bisnis, manajemen, akuntansi, hukum, atau kesehatan. Sebagian lagi berlatar ilmu komputer, rekayasa perangkat lunak, atau TI. Seluruh materi inti dapat diikuti tanpa kemampuan memprogram. Mahasiswa berlatar teknis mendapat pendalaman teknis opsional di setiap pertemuan. Mata kuliah ini dijalankan bersama [IT40513 Enterprise Architecture & Digital Blueprint](https://github.com/alfa-yohannis/enterprise-architecture-digital-blueprint), [IT40613 Digital Platform & API Economy](https://github.com/alfa-yohannis/digital-platform-api-economy), dan [IT40713 Cloud-Native & Microservices Architecture](https://github.com/alfa-yohannis/cloud-native-microservices-architecture) sebagai satu proyek capstone. Tiap tim menyusun "Cetak Biru Transformasi Digital" untuk satu organisasi, dan mata kuliah ini menyumbang sisi tata kelola, risiko, dan kepatuhannya. Tatap muka hanya berlangsung pada hari Sabtu untuk membahas progres proyek. Karena itu modul dan slide disusun agar dapat dipelajari mandiri.
 
+**Berkas siap pakai.** [Modul PDF](module/it-governance-risk-compliance.pdf) memuat 14 bab. Slide setiap sesi tersedia melalui kolom Slide pada Peta Pertemuan di bawah. Seluruh PDF dibuat dengan XeLaTeX dan BibTeX dari sumber di repositori ini.
+
 ## Peta Pertemuan
 
-Urutan pertemuan mengikuti empat tonggak capstone. Pertemuan 1 sampai 3 membangun konteks: siapa yang memutuskan dan aturan apa yang mengikat. Pertemuan 4 sampai 7 memotret kondisi saat ini, lalu hasilnya ditinjau menjelang UTS (Ujian Tengah Semester). Pertemuan 8 sampai 11 merancang kondisi target. Pertemuan 12 sampai 14 menutup dengan asurans, pengukuran, dan peta jalan yang dipresentasikan menjelang UAS (Ujian Akhir Semester). Kolom terakhir menunjukkan luaran yang disumbangkan ke tiap tonggak.
+Urutan pertemuan mengikuti empat tonggak capstone. Pertemuan 1 sampai 3 membangun konteks: siapa yang memutuskan dan aturan apa yang mengikat. Pertemuan 4 sampai 7 memotret kondisi saat ini, lalu hasilnya ditinjau menjelang UTS (Ujian Tengah Semester). Pertemuan 8 sampai 11 merancang kondisi target. Pertemuan 12 sampai 14 menutup dengan asurans, pengukuran, dan peta jalan yang dipresentasikan menjelang UAS (Ujian Akhir Semester). Kolom Luaran Capstone menunjukkan artefak yang disumbangkan ke tonggak capstone, dan kolom Slide menautkan PDF slide sesi itu.
 
-| # | Pertemuan | Aktivitas | Luaran Capstone |
-| --- | --- | --- | --- |
-| 1 | **Orientasi Mata Kuliah dan Dasar-Dasar GRC** | Membentuk tim, memilih organisasi, lalu memetakan pemicu GRC dan pemangku kepentingan | C1: profil organisasi dan peta pemangku kepentingan |
-| 2 | Prinsip Tata Kelola TI dan Peran Direksi | Menyusun matriks hak keputusan TI dan rancangan piagam komite pengarah TI | C1: matriks hak keputusan dan piagam komite |
-| 3 | Lanskap Regulasi dan Kewajiban Kepatuhan | Menurunkan pasal UU PDP, aturan rekam medis, PSTE, dan BSSN menjadi kewajiban yang dapat diperiksa | C1: register kewajiban kepatuhan |
-| 4 | COBIT 2019: Sistem Tata Kelola dan Faktor Desain | Menerapkan faktor desain dan *goals cascade*, lalu menilai cepat kapabilitas saat ini | C2: objektif prioritas dan potret kapabilitas |
-| 5 | Manajemen Risiko Enterprise dan Risiko TI | Merumuskan *risk appetite* dan mengisi *risk register* kondisi saat ini | C2: pernyataan *risk appetite* dan *risk register* |
-| 6 | Keamanan Informasi: ISO/IEC 27001 dan NIST CSF 2.0 | Menyusun profil saat ini NIST CSF dan daftar celah kontrol ISO/IEC 27001 | C2: profil keamanan saat ini dan daftar celah |
-| 7 | Pelindungan Data Pribadi dalam Praktik | Mencatat kegiatan pemrosesan data pribadi dan menganalisis insiden kebocoran lewat vendor | C2: catatan pemrosesan data dan analisis celah PDP |
-| 8 | Merancang Sistem Tata Kelola Target | Merancang struktur, RACI, target kapabilitas, dan profil target keamanan | C3: model tata kelola target |
-| 9 | Risiko Pihak Ketiga dan Cloud | Mengklasifikasi vendor, mengisi matriks tanggung jawab cloud, dan menyusun DPIA berbagi data mitra | C3: kerangka risiko pihak ketiga dan DPIA |
-| 10 | Kelangsungan Bisnis dan Ketahanan Operasional | Melakukan BIA, menetapkan RTO dan RPO, lalu memilih strategi kelangsungan | C3: BIA dan strategi kelangsungan layanan |
-| 11 | Tata Kelola Kecerdasan Artifisial | Menginventaris kasus pemakaian AI, mengklasifikasi risikonya, dan merumuskan kebijakan AI | C3: inventaris AI dan kebijakan pemakaian AI |
-| 12 | Audit TI dan Asurans | Menyusun rencana asurans berbasis risiko dan menguji satu kontrol dengan bukti | C4: rencana asurans dan contoh pengujian kontrol |
-| 13 | KPI, KRI, dan Pelaporan ke Direksi | Merancang *dashboard* indikator dan laporan satu halaman untuk direksi | C4: *dashboard* GRC dan laporan direksi |
-| 14 | Alat GRC dan Peta Jalan Tata Kelola Terpadu | Memadukan luaran semester menjadi peta jalan GRC, memilih alat GRC, dan berlatih presentasi | C4: peta jalan GRC dan presentasi akhir |
+| # | Pertemuan | Aktivitas | Luaran Capstone | Slide |
+| --- | --- | --- | --- | --- |
+| 1 | **Orientasi Mata Kuliah dan Dasar-Dasar GRC** | Membentuk tim, memilih organisasi, lalu memetakan pemicu GRC dan pemangku kepentingan | C1: profil organisasi dan peta pemangku kepentingan | [PDF](slides/session01/session01.pdf) |
+| 2 | Prinsip Tata Kelola TI dan Peran Direksi | Menyusun matriks hak keputusan TI dan rancangan piagam komite pengarah TI | C1: matriks hak keputusan dan piagam komite | [PDF](slides/session02/session02.pdf) |
+| 3 | Lanskap Regulasi dan Kewajiban Kepatuhan | Menurunkan pasal UU PDP, aturan rekam medis, PSTE, dan BSSN menjadi kewajiban yang dapat diperiksa | C1: register kewajiban kepatuhan | [PDF](slides/session03/session03.pdf) |
+| 4 | COBIT 2019: Sistem Tata Kelola dan Faktor Desain | Menerapkan faktor desain dan *goals cascade*, lalu menilai cepat kapabilitas saat ini | C2: objektif prioritas dan potret kapabilitas | [PDF](slides/session04/session04.pdf) |
+| 5 | Manajemen Risiko Enterprise dan Risiko TI | Merumuskan *risk appetite* dan mengisi *risk register* kondisi saat ini | C2: pernyataan *risk appetite* dan *risk register* | [PDF](slides/session05/session05.pdf) |
+| 6 | Keamanan Informasi: ISO/IEC 27001 dan NIST CSF 2.0 | Menyusun profil saat ini NIST CSF dan daftar celah kontrol ISO/IEC 27001 | C2: profil keamanan saat ini dan daftar celah | [PDF](slides/session06/session06.pdf) |
+| 7 | Pelindungan Data Pribadi dalam Praktik | Mencatat kegiatan pemrosesan data pribadi dan menganalisis insiden kebocoran lewat vendor | C2: catatan pemrosesan data dan analisis celah PDP | [PDF](slides/session07/session07.pdf) |
+| 8 | Merancang Sistem Tata Kelola Target | Merancang struktur, RACI, target kapabilitas, dan profil target keamanan | C3: model tata kelola target | [PDF](slides/session08/session08.pdf) |
+| 9 | Risiko Pihak Ketiga dan Cloud | Mengklasifikasi vendor, mengisi matriks tanggung jawab cloud, dan menyusun DPIA berbagi data mitra | C3: kerangka risiko pihak ketiga dan DPIA | [PDF](slides/session09/session09.pdf) |
+| 10 | Kelangsungan Bisnis dan Ketahanan Operasional | Melakukan BIA, menetapkan RTO dan RPO, lalu memilih strategi kelangsungan | C3: BIA dan strategi kelangsungan layanan | [PDF](slides/session10/session10.pdf) |
+| 11 | Tata Kelola Kecerdasan Artifisial | Menginventaris kasus pemakaian AI, mengklasifikasi risikonya, dan merumuskan kebijakan AI | C3: inventaris AI dan kebijakan pemakaian AI | [PDF](slides/session11/session11.pdf) |
+| 12 | Audit TI dan Asurans | Menyusun rencana asurans berbasis risiko dan menguji satu kontrol dengan bukti | C4: rencana asurans dan contoh pengujian kontrol | [PDF](slides/session12/session12.pdf) |
+| 13 | KPI, KRI, dan Pelaporan ke Direksi | Merancang *dashboard* indikator dan laporan satu halaman untuk direksi | C4: *dashboard* GRC dan laporan direksi | [PDF](slides/session13/session13.pdf) |
+| 14 | Alat GRC dan Peta Jalan Tata Kelola Terpadu | Memadukan luaran semester menjadi peta jalan GRC, memilih alat GRC, dan berlatih presentasi | C4: peta jalan GRC dan presentasi akhir | [PDF](slides/session14/session14.pdf) |
 
 Keempat Bagian di bawah sejajar dengan tonggak capstone. Bagian I (1 sampai 3) menjawab dua pertanyaan dasar: siapa yang memutuskan dan aturan apa yang mengikat. Bagian II (4 sampai 7) memotret kondisi saat ini lewat empat lensa, yaitu tata kelola, risiko, keamanan, dan data pribadi. Bagian III (8 sampai 11) merancang kontrol untuk kondisi target. Bagian IV (12 sampai 14) memastikan rancangan itu dapat diperiksa, diukur, dan dijalankan bertahap.
 
@@ -76,7 +78,7 @@ Keempat Bagian di bawah sejajar dengan tonggak capstone. Bagian I (1 sampai 3) m
 2. Menurunkan pasal regulasi menjadi kewajiban yang dapat diperiksa, lengkap dengan pemilik dan buktinya.
 3. Membedakan kewajiban hukum, kewajiban kontrak, dan standar sukarela beserta akibat pelanggarannya.
 
-**Topik.** Masalah pembuka: aturan baru terbit, tetapi tidak ada yang tahu siapa yang harus bertindak. Hierarki peraturan perundang-undangan. Cara memeriksa status peraturan di JDIH (Jaringan Dokumentasi dan Informasi Hukum). UU 27/2022 tentang PDP (Pelindungan Data Pribadi) dan PP 33/2026 sebagai peraturan pelaksananya, dalam garis besar. UU ITE (Informasi dan Transaksi Elektronik) beserta perubahannya dan PP 71/2019 tentang PSTE (Penyelenggaraan Sistem dan Transaksi Elektronik). UU 17/2023 tentang Kesehatan, PP 28/2024, dan Permenkes 24/2022 tentang Rekam Medis. Peraturan BSSN (Badan Siber dan Sandi Negara) dan Perpres 82/2022 tentang Pelindungan Infrastruktur Informasi Vital. Regulasi OJK (Otoritas Jasa Keuangan) yang mengikat mitra asuransi. Evaluasi SPBE (Sistem Pemerintahan Berbasis Elektronik) bagi mitra sektor publik. Register kewajiban kepatuhan dan prinsip ISO 37301.
+**Topik.** Masalah pembuka: aturan baru terbit, tetapi tidak ada yang tahu siapa yang harus bertindak. Hierarki peraturan perundang-undangan. Cara memeriksa status peraturan di JDIH (Jaringan Dokumentasi dan Informasi Hukum). UU 27/2022 tentang PDP (Pelindungan Data Pribadi), putusan Mahkamah Konstitusi yang relevan, serta pemeriksaan status peraturan pelaksana melalui sumber resmi. UU ITE (Informasi dan Transaksi Elektronik) beserta perubahannya dan PP 71/2019 tentang PSTE (Penyelenggaraan Sistem dan Transaksi Elektronik). UU 17/2023 tentang Kesehatan, PP 28/2024, dan Permenkes 24/2022 tentang Rekam Medis. Peraturan BSSN (Badan Siber dan Sandi Negara) dan Perpres 82/2022 tentang Pelindungan Infrastruktur Informasi Vital. Regulasi OJK (Otoritas Jasa Keuangan) yang mengikat mitra asuransi. Evaluasi SPBE (Sistem Pemerintahan Berbasis Elektronik) bagi mitra sektor publik. Register kewajiban kepatuhan dan prinsip ISO 37301.
 
 **Aktivitas.** Tim menyusun register kewajiban kepatuhan untuk organisasinya. Analis regulasi memimpin pembacaan pasal, dan anggota berlatar hukum sangat membantu pada tahap ini. Tiap baris register berisi sumber aturan, pasal, kewajiban dalam kalimat sederhana, unit pemilik, bukti kepatuhan, dan status awal. Untuk Medikara Health, register minimal mencakup UU PDP, aturan rekam medis elektronik, PSTE, integrasi SATUSEHAT, dan pelaporan insiden siber. Analis teknologi menandai kewajiban yang berdampak pada sistem, misalnya masa simpan rekam medis atau notifikasi kegagalan pelindungan data pribadi. Luarannya masuk C1 dan dipakai ulang pada Pertemuan 5, 7, dan 12. *Pendalaman teknis (opsional):* menurunkan tiga kewajiban menjadi persyaratan sistem yang dapat diuji, misalnya kebutuhan *logging*, enkripsi, dan masa simpan data. Persyaratan itu lalu ditautkan ke *backlog* tim pengembang.
 
@@ -112,7 +114,7 @@ Keempat Bagian di bawah sejajar dengan tonggak capstone. Bagian I (1 sampai 3) m
 
 **Topik.** Masalah pembuka: daftar risiko yang panjang, tetapi tidak pernah mengubah keputusan apa pun. Prinsip, kerangka, dan proses ISO 31000:2018. COSO ERM (*Enterprise Risk Management*) 2017 dan kaitan risiko dengan strategi serta kinerja. *Risk appetite*, *risk tolerance*, dan kapasitas risiko. Risiko keamanan informasi menurut ISO/IEC 27005:2022, termasuk pendekatan berbasis peristiwa dan berbasis aset. *Risk register*: skenario, pemilik, dampak, kemungkinan, kontrol, dan rencana penanganan. Opsi penanganan risiko. Matriks risiko dan kelemahannya. Gambaran pengukuran risiko secara kuantitatif. Pengantar KRI (*Key Risk Indicator*), yang dirinci di Pertemuan 13.
 
-**Aktivitas.** Tim merumuskan pernyataan *risk appetite* untuk tiga sampai empat kategori, misalnya keselamatan pasien, kerahasiaan data, kelangsungan layanan, dan kepatuhan. Bahasanya dipilih agar dapat langsung dipakai direksi. Setelah itu tim mengisi *risk register* kondisi saat ini berisi 10 sampai 15 skenario risiko. Untuk Medikara Health, skenario wajib mencakup kebocoran data lewat vendor, kontrol akses yang lemah, gangguan integrasi BPJS Kesehatan, dan laporan manajemen yang bergantung pada spreadsheet. Analis risiko memimpin. Anggota berlatar akuntansi atau keuangan menilai dampak finansial. Analis teknologi menilai kemungkinan kejadian dan kontrol yang sudah ada. Luarannya masuk C2. *Pendalaman teknis (opsional):* mengkuantifikasi dua skenario dengan simulasi Monte Carlo sederhana di spreadsheet, mengikuti pendekatan Hubbard dan Seiersen, lalu menggambar *loss exceedance curve*.
+**Aktivitas.** Tim merumuskan pernyataan *risk appetite* untuk tiga sampai empat kategori, misalnya keselamatan pasien, kerahasiaan data, kelangsungan layanan, dan kepatuhan. Bahasanya dipilih agar dapat langsung dipakai direksi. Setelah itu tim mengisi *risk register* kondisi saat ini berisi 10 sampai 15 skenario risiko. Untuk Medikara Health, skenario wajib mencakup kebocoran data lewat vendor, kontrol akses yang lemah, gangguan integrasi BPJS Kesehatan, dan laporan manajemen yang bergantung pada spreadsheet. Analis risiko memimpin. Anggota berlatar akuntansi atau keuangan menilai dampak finansial. Analis teknologi menilai kemungkinan kejadian dan kontrol yang sudah ada. Luarannya masuk C2. *Pendalaman teknis (opsional):* mengkuantifikasi dua skenario dengan simulasi Monte Carlo sederhana di spreadsheet, dengan buku Hubbard dan Seiersen sebagai bacaan lanjutan, lalu menggambar *loss exceedance curve*.
 
 **Latihan.**
 1. Ubah pernyataan "Medikara tidak menoleransi kebocoran data" menjadi pernyataan *risk appetite* yang realistis dan dapat diukur.
@@ -138,13 +140,13 @@ Keempat Bagian di bawah sejajar dengan tonggak capstone. Bagian I (1 sampai 3) m
 #### Pertemuan 07 · Pelindungan Data Pribadi dalam Praktik
 
 **Tujuan.**
-1. Menjelaskan kewajiban pengendali dan prosesor data pribadi menurut UU 27/2022 dan PP 33/2026.
+1. Menjelaskan kewajiban pengendali dan prosesor data pribadi menurut UU 27/2022 dan ketentuan pelaksana yang terverifikasi.
 2. Menyusun catatan kegiatan pemrosesan data pribadi untuk satu proses layanan.
 3. Menganalisis insiden kebocoran data dan menilai apakah penanganannya memenuhi kewajiban notifikasi.
 
-**Topik.** Masalah pembuka: data pasien bocor lewat vendor, lalu muncul pertanyaan siapa yang bertanggung jawab. Data pribadi umum dan data pribadi yang bersifat spesifik, termasuk data kesehatan. Prinsip dan dasar pemrosesan. Hak subjek data. Pengendali, prosesor, dan pengendali bersama. Pejabat pelindungan data pribadi. Penilaian dampak pelindungan data pribadi. Notifikasi kegagalan pelindungan data pribadi. Transfer data ke luar wilayah hukum Indonesia. Sanksi administratif dan pidana. PP 33/2026 yang berlaku mulai 16 Januari 2027 beserta rincian teknisnya. Status lembaga pengawas pelindungan data pribadi. ISO/IEC 27701:2025 sebagai sistem manajemen privasi yang kini dapat berdiri sendiri.
+**Topik.** Masalah pembuka: data pasien bocor lewat vendor, lalu muncul pertanyaan siapa yang bertanggung jawab. Data pribadi umum dan data pribadi yang bersifat spesifik, termasuk data kesehatan. Prinsip dan dasar pemrosesan. Hak subjek data. Pengendali, prosesor, dan pengendali bersama. Petugas pelindungan data, yang dalam Pasal 53 UU PDP disebut pejabat atau petugas yang melaksanakan fungsi pelindungan data pribadi. Penilaian dampak pelindungan data pribadi. Notifikasi kegagalan pelindungan data pribadi. Transfer data ke luar wilayah hukum Indonesia. Sanksi administratif dan pidana. Status aturan pelaksana dan cara memeriksa naskah resmi sebelum menurunkan kewajiban. Putusan MK 151/PUU-XXII/2024 tentang kriteria penunjukan pejabat atau petugas tersebut. Status lembaga pengawas pelindungan data pribadi. ISO/IEC 27701:2025 sebagai sistem manajemen privasi yang kini dapat berdiri sendiri.
 
-**Aktivitas.** Tim memilih satu proses layanan, misalnya pendaftaran pasien dan telekonsultasi di Medikara+. Untuk proses itu, tim menyusun catatan kegiatan pemrosesan: jenis data, tujuan, dasar pemrosesan, pihak penerima, lokasi penyimpanan, masa simpan, dan kontrol. Tim kemudian menyusun garis waktu insiden kebocoran lewat vendor pada 2025, lalu menilai celahnya terhadap UU PDP dan PP 33/2026. Analis regulasi memimpin. Pemilik konteks memetakan alur data yang sebenarnya. Analis teknologi menelusuri sistem yang terlibat. Seluruh luaran Bagian II dirangkum menjadi C2 dan ditinjau menjelang UTS. *Pendalaman teknis (opsional):* merancang teknik pengurangan risiko privasi seperti pseudonimisasi, tokenisasi, dan klasifikasi data otomatis. Dilanjutkan dengan mempelajari cara persetujuan pasien direpresentasikan dalam sumber daya Consent pada HL7 FHIR (*Health Level Seven Fast Healthcare Interoperability Resources*), yang dibahas rinci di mata kuliah IT40613.
+**Aktivitas.** Tim memilih satu proses layanan, misalnya pendaftaran pasien dan telekonsultasi di Medikara+. Untuk proses itu, tim menyusun catatan kegiatan pemrosesan: jenis data, tujuan, dasar pemrosesan, pihak penerima, lokasi penyimpanan, masa simpan, dan kontrol. Tim kemudian menyusun garis waktu insiden kebocoran lewat vendor pada 2025, lalu menilai celahnya terhadap UU PDP dan ketentuan pelaksana yang terverifikasi. Analis regulasi memimpin. Pemilik konteks memetakan alur data yang sebenarnya. Analis teknologi menelusuri sistem yang terlibat. Seluruh luaran Bagian II dirangkum menjadi C2 dan ditinjau menjelang UTS. *Pendalaman teknis (opsional):* merancang teknik pengurangan risiko privasi seperti pseudonimisasi, tokenisasi, dan klasifikasi data otomatis. Dilanjutkan dengan mempelajari cara persetujuan pasien direpresentasikan dalam sumber daya Consent pada HL7 FHIR (*Health Level Seven Fast Healthcare Interoperability Resources*), yang dibahas rinci di mata kuliah IT40613.
 
 **Latihan.**
 1. Medikara memakai vendor untuk aplikasi Medikara+. Dalam hubungan ini, siapa pengendali dan siapa prosesor? Apa akibatnya terhadap tanggung jawab saat terjadi kebocoran?
@@ -160,7 +162,7 @@ Keempat Bagian di bawah sejajar dengan tonggak capstone. Bagian I (1 sampai 3) m
 2. Menetapkan target kapabilitas COBIT dan profil target NIST CSF yang selaras dengan *risk appetite*.
 3. Mengaitkan praktik ITIL 4 dengan objektif manajemen COBIT untuk menjalankan layanan TI sehari-hari.
 
-**Topik.** Masalah pembuka: semua orang setuju arah transformasi, tetapi tidak jelas siapa menyetujui apa. Langkah desain COBIT: menyempurnakan cakupan dan menyimpulkan rancangan. Penetapan target kapabilitas. Struktur organisasi tata kelola: komite pengarah TI, komite risiko, CISO (*Chief Information Security Officer*), pejabat pelindungan data pribadi, dan pemilik data. Matriks RACI (*Responsible, Accountable, Consulted, Informed*). Arsitektur kebijakan: kebijakan, standar, prosedur, dan pedoman. ITIL 4: sistem nilai layanan dan praktik seperti *change enablement*, *incident management*, dan *service level management*. Catatan tentang ITIL (Version 5) yang diterbitkan PeopleCert pada 2026. Profil target NIST CSF. Kaitan dengan *architecture board* dan prinsip arsitektur (dibahas rinci di mata kuliah IT40513).
+**Topik.** Masalah pembuka: semua orang setuju arah transformasi, tetapi tidak jelas siapa menyetujui apa. Langkah desain COBIT: menyempurnakan cakupan dan menyimpulkan rancangan. Penetapan target kapabilitas. Struktur organisasi tata kelola: komite pengarah TI, komite risiko, CISO (*Chief Information Security Officer*), petugas pelindungan data, dan pemilik data. Matriks RACI (*Responsible, Accountable, Consulted, Informed*). Arsitektur kebijakan: kebijakan, standar, prosedur, dan pedoman. ITIL 4: sistem nilai layanan dan praktik seperti *change enablement*, *incident management*, dan *service level management*. Catatan tentang ITIL (Version 5) yang diterbitkan PeopleCert pada 2026. Profil target NIST CSF. Kaitan dengan *architecture board* dan prinsip arsitektur (dibahas rinci di mata kuliah IT40513).
 
 **Aktivitas.** Berdasarkan kondisi target yang dirancang di tiga mata kuliah lain, tim merancang model tata kelola target. Isinya forum keputusan dan perannya, matriks RACI untuk 8 sampai 10 keputusan atau proses kunci, target kapabilitas untuk objektif prioritas, profil target NIST CSF, dan daftar kebijakan yang perlu dibuat atau direvisi. Untuk Medikara Health, model ini harus menjawab dua pertanyaan: siapa menyetujui pembukaan data ke mitra, dan siapa memegang akuntabilitas atas rekam medis terpadu. Pemilik konteks dan analis regulasi merancang struktur. Analis risiko menyelaraskan target dengan *risk appetite*. Analis teknologi memetakan praktik ITIL. Luarannya masuk C3. *Pendalaman teknis (opsional):* mengenal *policy as code*, misalnya Open Policy Agent, untuk menegakkan sebagian kebijakan secara otomatis. Dilanjutkan dengan merancang alur persetujuan perubahan yang menyatu dengan *pipeline* CI/CD (*Continuous Integration / Continuous Delivery*), yang dibahas rinci di mata kuliah IT40713.
 
@@ -178,7 +180,7 @@ Keempat Bagian di bawah sejajar dengan tonggak capstone. Bagian I (1 sampai 3) m
 
 **Topik.** Masalah pembuka: kebocoran terjadi di vendor, tetapi kerugian reputasi ditanggung organisasi. Rantai pasok digital dan pihak keempat. Siklus hidup risiko pihak ketiga: klasifikasi vendor, uji tuntas, klausul kontrak, pemantauan, dan strategi keluar. ISO/IEC 27036 tentang hubungan dengan pemasok. Model tanggung jawab bersama di cloud. CSA CCM (*Cloud Controls Matrix*) dan kuesioner CAIQ (*Consensus Assessments Initiative Questionnaire*). Lokasi data dan kewajiban PSE (Penyelenggara Sistem Elektronik) lingkup privat. Kewajiban prosesor menurut UU PDP. Risiko ekosistem mitra. DPIA (*Data Protection Impact Assessment*), yang dalam UU PDP disebut penilaian dampak pelindungan data pribadi, untuk berbagi data. Strategi migrasi cloud dan keamanan teknis API cukup disinggung, karena dibahas rinci di mata kuliah IT40713 dan IT40613.
 
-**Aktivitas.** Tim mengklasifikasi vendor dan mitra dalam rancangan target berdasarkan akses data dan kekritisan layanan. Contohnya penyedia cloud, vendor Medikara+, laboratorium mitra, asuransi, dan apotek daring. Untuk dua vendor paling kritis, tim menyusun daftar pertanyaan uji tuntas, klausul kontrak minimum, dan indikator pemantauan. Tim juga mengisi matriks tanggung jawab bersama untuk layanan cloud yang dipilih di IT40713. Terakhir, tim menyusun DPIA untuk satu alur berbagi data dengan mitra asuransi. Analis regulasi memimpin penyusunan klausul kontrak. Anggota berlatar bisnis menilai kekritisan vendor. Analis teknologi mengisi matriks cloud. Luarannya masuk C3. *Pendalaman teknis (opsional):* menilai kontrol vendor dengan CSA CCM v4, mempelajari SBOM (*Software Bill of Materials*) untuk risiko rantai pasok perangkat lunak, dan membaca bukti teknis seperti laporan uji penetrasi.
+**Aktivitas.** Tim mengklasifikasi vendor dan mitra dalam rancangan target berdasarkan akses data dan kekritisan layanan. Contohnya penyedia cloud, vendor Medikara+, laboratorium mitra, asuransi, dan apotek daring. Untuk dua vendor paling kritis, tim menyusun daftar pertanyaan uji tuntas, klausul kontrak minimum, dan indikator pemantauan. Tim juga mengisi matriks tanggung jawab bersama untuk layanan cloud yang dipilih di IT40713. Terakhir, tim menyusun DPIA untuk satu alur berbagi data dengan mitra asuransi. Analis regulasi memimpin penyusunan klausul kontrak. Anggota berlatar bisnis menilai kekritisan vendor. Analis teknologi mengisi matriks cloud. Luarannya masuk C3. *Pendalaman teknis (opsional):* menilai kontrol vendor dengan CSA CCM seri 4 (catat versi berkas yang dipakai), mempelajari SBOM (*Software Bill of Materials*) untuk risiko rantai pasok perangkat lunak, dan membaca bukti teknis seperti laporan uji penetrasi.
 
 **Latihan.**
 1. Jelaskan mengapa sertifikat ISO/IEC 27001 milik penyedia cloud tidak memindahkan seluruh tanggung jawab keamanan kepada penyedia.
@@ -299,25 +301,52 @@ Tim yang memakai organisasi tempat kerja tetap dapat memakai Medikara sebagai pe
 
 ## Struktur Repositori
 
-| Folder | Isi |
-| --- | --- |
-| `figures/` | Gambar untuk modul dan slide. `logo_universitas.png` dan `building.png` adalah symlink. |
-| `module/` | Naskah modul LaTeX: berkas utama `it-governance-risk-compliance.tex`, `titlepage.tex`, `chapter01.tex` sampai `chapter14.tex`, `references.bib` untuk rujukan inti, dan `bib/chapterNN.bib` untuk rujukan khusus tiap bab. `fonts/` adalah symlink. |
-| `slides/` | `preamble.tex` bersama, `theme/` (symlink), dan satu folder `sessionNN/` untuk tiap pertemuan. |
-| `sources/` | Berkas pendukung tiap bab di `chapter01/` sampai `chapter14/`: lembar kerja, templat, data kasus, dan berkas teknis opsional. |
+- `figures/`: gambar untuk modul dan slide, yaitu diagram TikZ `chNN-nama.tex`, diagram konsep `chNN-diagram-konsep.png` beserta `.svg`, ilustrasi JPG opsional `chNN-nama.jpg`, serta `logo_universitas.png` dan `building.png`. Daftar lengkapnya ada di [`figures/README.md`](figures/README.md).
+- `module/`: naskah modul LaTeX. Berkas utama `it-governance-risk-compliance.tex` memuat `titlepage.tex` dan `chapter01.tex` sampai `chapter14.tex`. Rujukan inti dan rujukan lintas bab ada di `references.bib`, sedangkan rujukan khusus satu bab ada di `bib/chapterNN.bib`. Folder `module/fonts` berisi font Titillium Web beserta lisensinya. PDF siap pakai ada di `module/it-governance-risk-compliance.pdf`.
+- `slides/`: slide per pertemuan di `slides/sessionNN/`, memakai `slides/preamble.tex` bersama. Folder `slides/theme` berisi tema Beamer. PDF siap pakai ada di `slides/sessionNN/sessionNN.pdf`.
+- `sources/`: berkas pendukung per bab di `sources/chapterNN/`, misalnya lembar kerja, templat, data kasus, dan skrip opsional yang dirujuk dari naskah modul. Ringkasannya ada di [`sources/README.md`](sources/README.md), dan panduan penggabungan luaran ada di [`sources/panduan-capstone.md`](sources/panduan-capstone.md).
+- `tools/`: `build.py` membangun modul dan slide, `check-materials.py` memeriksa kelengkapan materi, dan `render-diagrams.py` membangkitkan diagram konsep.
 
-Modul dan slide dikompilasi dengan XeLaTeX. Modul dikompilasi dengan perintah berikut di folder `module`:
+Font, tema, logo, dan foto gedung adalah berkas asli di dalam repositori, bukan symlink, sehingga kompilasi tidak membutuhkan repositori lain. Lisensi font ada di `module/fonts/OFL.txt` dan `slides/theme/fonts/OFL.txt`. Ilustrasi JPG bersifat opsional dan saat ini belum dipasang pada bab atau slide, sehingga kompilasi tidak bergantung padanya.
 
+Dari akar repositori, seluruh materi diperiksa lalu dibangun dengan:
+
+```bash
+python tools/check-materials.py
+python tools/build.py --engine xelatex
+# Alternatif: Tectonic mengurus BibTeX dan pengulangan secara otomatis.
+python tools/build.py --engine tectonic
 ```
+
+Opsi `--scope module` atau `--scope slides` membatasi dokumen yang dibangun. Jika mesin tidak ada di PATH, berikan `--executable` dengan jalur lengkapnya. Tectonic memerlukan koneksi internet pada build pertama untuk mengunduh paket TeX.
+
+Modul juga dapat dikompilasi manual di folder `module`:
+
+```bash
+cd module
 xelatex it-governance-risk-compliance
 bibtex it-governance-risk-compliance
 xelatex it-governance-risk-compliance
 xelatex it-governance-risk-compliance
 ```
 
-Slide dikompilasi dengan menjalankan `xelatex` dua kali di folder `slides/sessionNN`, misalnya `xelatex session01` sebanyak dua kali di `slides/session01`.
+Slide dikompilasi di folder setiap pertemuan, misalnya `slides/session01`:
 
-`module/fonts`, `slides/theme`, `figures/logo_universitas.png`, dan `figures/building.png` adalah symlink ke repo advanced-software-engineering. Repo itu perlu tersedia di lokasi yang dituju symlink. Di Windows, symlink sering muncul sebagai berkas teks biasa, sehingga aset aslinya perlu disalin ke lokasi tersebut sebelum kompilasi.
+```bash
+cd slides/session01
+xelatex session01
+xelatex session01
+```
+
+### Kompilasi dari TeXstudio dan VS Code
+
+Buka `module/it-governance-risk-compliance.tex` untuk buku. Bab terpisah menunjuk berkas induk melalui komentar `TeX root`. Berkas induk memuat penanda XeLaTeX dan BibTeX; PDFLaTeX tidak mendukung paket `fontspec` yang dipakai modul ini.
+
+Di TeXstudio, buka ulang berkas setelah perubahan header, lalu jalankan **Tools > Build & View (F5)**. Header proyek mengatur urutan XeLaTeX, BibTeX, XeLaTeX, dan XeLaTeX untuk buku, serta dua kali XeLaTeX untuk slide. Jika penanda tidak terbaca, pilih **Options > Configure TeXstudio > Build > Default Compiler > XeLaTeX** dan **Default Bibliography Tool > BibTeX**. Penanda per dokumen dijelaskan dalam [dokumentasi TeXstudio](https://texstudio-org.github.io/advanced.html#advanced-header-usage).
+
+Di VS Code, buka folder `it-governance-risk-compliance` agar `.vscode/settings.json` proyek dimuat. Jalankan **LaTeX Workshop: Build with recipe**, kemudian pilih **XeLaTeX + BibTeX + XeLaTeX x2** untuk buku atau **XeLaTeX x2 (slide)** untuk slide. Keluaran tetap berada di folder sumber. Komentar XeLaTeX dan BibTeX juga mendukung build biasa melalui Ctrl+Alt+B. Lihat [resep kompilasi LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop/wiki/Compile).
+
+Jika muncul `xelatex not found`, pastikan folder `MiKTeX/miktex/bin/x64` ada pada PATH pengguna, lalu buka ulang editor. Instalasi MiKTeX pengguna biasanya berada di `%LOCALAPPDATA%/Programs/MiKTeX/miktex/bin/x64`. Jika muncul kesalahan bookmark atau berkas bantu terpotong, hentikan build yang masih berjalan dan bersihkan berkas bantu melalui menu editor sebelum membangun ulang.
 
 ## Rujukan Utama
 
@@ -327,7 +356,7 @@ Daftar berikut adalah hasil penelusuran per 30 Oktober 2026. Versi dicantumkan k
 - ISO/IEC 38500:2024 (edisi ketiga), *Information technology: Governance of IT for the organization*. [iso.org](https://www.iso.org/standard/81684.html)
 - ISACA, *COBIT 2019 Framework: Introduction and Methodology* dan *COBIT 2019 Design Guide* (2018). [isaca.org/resources/cobit](https://www.isaca.org/resources/cobit)
 - ISACA, informasi transisi dari COBIT 2019 ke COBIT 7. [isaca.org](https://www.isaca.org/credentialing/cobit-foundation)
-- AXELOS, *ITIL Foundation: ITIL 4 Edition* (2019), dan PeopleCert, ITIL (Version 5) (2026). [peoplecert.org](https://www.peoplecert.org/news-and-announcements/itil-version-5-foundation-whats-new-guide)
+- AXELOS, *ITIL Foundation: ITIL 4 Edition* (2019), dan PeopleCert, ITIL (Version 5) (2026). [itil.com](https://www.itil.com/Itil-News-and-Announcements/itil-version-5-foundation-whats-new-guide)
 
 **Manajemen risiko**
 - ISO 31000:2018, *Risk management: Guidelines*. [iso.org](https://www.iso.org/standard/31000)
@@ -347,15 +376,15 @@ Daftar berikut adalah hasil penelusuran per 30 Oktober 2026. Versi dicantumkan k
 **Tata kelola AI**
 - ISO/IEC 42001:2023, *Artificial intelligence: Management system*. [iso.org](https://www.iso.org/standard/42001)
 - NIST AI 100-1, *Artificial Intelligence Risk Management Framework (AI RMF 1.0)* (2023). [doi.org](https://doi.org/10.6028/NIST.AI.100-1)
-- Regulation (EU) 2024/1689 (*Artificial Intelligence Act*), diubah dengan Regulation (EU) 2026/1744. [eur-lex.europa.eu](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- Regulation (EU) 2024/1689 (*Artificial Intelligence Act*), diubah dengan Regulation (EU) 2026/1744. [AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj), [perubahan jadwal](https://eur-lex.europa.eu/eli/reg/2026/1744/oj)
 
 **Audit dan asurans**
 - The IIA, *Global Internal Audit Standards* (terbit 2024, berlaku 9 Januari 2025). [theiia.org](https://www.theiia.org/en/standards/2024-standards/global-internal-audit-standards/)
-- The IIA, *Three Lines Model: Assurance and Advice in Support of Effective Governance*, *Statement of Position* (8 Juli 2026). [theiia.org](https://www.theiia.org/globalassets/site/resources/statements-of-position/tlm_assurance_advice_support_effective_gov_en.pdf)
+- The IIA, *Three Lines Model: Assurance and Advice in Support of Effective Governance*, *Statement of Position* (Juli 2026). [theiia.org](https://www.theiia.org/globalassets/site/resources/statements-of-position/tlm_assurance_advice_support_effective_gov_en.pdf)
 
 **Regulasi Indonesia**
 - UU 27/2022 tentang Pelindungan Data Pribadi. [JDIH BPK](https://peraturan.bpk.go.id/Details/229798/uu-no-27-tahun-2022)
-- PP 33/2026 tentang Peraturan Pelaksanaan UU 27/2022, ditetapkan 16 Juli 2026 dan berlaku 16 Januari 2027. [ringkasan Katadata](https://katadata.co.id/finansial/makro/6a9979b7c5745/pp-pelindungan-data-pribadi-berlaku-januari-2027-ini-aturan-baru-data-anak)
+- Status PP 33/2026: publikasi resmi BPOM menyebut pengundangan 16 Juli 2026. Publikasi itu menjadi petunjuk penelusuran; naskah pasal belum dipakai sebagai dasar kewajiban dalam modul. [BPOM](https://pusdatin.pom.go.id/berita/bpom-perkuat-kesiapan-penerapan-pelindungan-data-pribadi)
 - PP 71/2019 tentang Penyelenggaraan Sistem dan Transaksi Elektronik (berlaku). [JDIH BPK](https://peraturan.bpk.go.id/Details/122030/pp-no-71-tahun-2019)
 - PP 28/2024 tentang Peraturan Pelaksanaan UU 17/2023 tentang Kesehatan. [JDIH BPK](https://peraturan.bpk.go.id/Details/294077)
 - Permenkes 24/2022 tentang Rekam Medis (berlaku). [JDIH BPK](https://peraturan.bpk.go.id/Details/245544)
@@ -366,8 +395,8 @@ Daftar berikut adalah hasil penelusuran per 30 Oktober 2026. Versi dicantumkan k
 
 **Buku dan artikel**
 - De Haes, S., Van Grembergen, W., Joshi, A., dan Huygh, T. (2020). *Enterprise Governance of Information Technology: Achieving Alignment and Value in Digital Organizations* (edisi ketiga). Springer. [doi.org](https://doi.org/10.1007/978-3-030-25918-1)
-- Weill, P. dan Ross, J. W. (2004). *IT Governance: How Top Performers Manage IT Decision Rights for Superior Results*. Harvard Business School Press.
-- Wu, S. P.-J., Straub, D. W., dan Liang, T.-P. (2015). How IT Governance and Strategic Alignment Influence Organizational Performance. *MIS Quarterly*, 39(2), 497 sampai 518. [aisel.aisnet.org](https://aisel.aisnet.org/misq/vol39/iss2/12)
+- Weill, P. dan Ross, J. W. (2004). *IT Governance: How Top Performers Manage IT Decision Rights for Superior Results*. Harvard Business School Press. [MIT CISR](https://cisr.mit.edu/publication/it-governance-how-top-performers-manage-it-decision-rights-superior-results)
+- Wu, S. P.-J., Straub, D. W., dan Liang, T.-P. (2015). How Information Technology Governance Mechanisms and Strategic Alignment Influence Organizational Performance: Insights from a Matched Survey of Business and IT Managers. *MIS Quarterly*, 39(2), 497 sampai 518. [aisel.aisnet.org](https://aisel.aisnet.org/misq/vol39/iss2/12)
 - Hubbard, D. W. dan Seiersen, R. (2023). *How to Measure Anything in Cybersecurity Risk* (edisi kedua). Wiley. [oreilly.com](https://www.oreilly.com/library/view/-/9781119892304/)
 
 **Laporan industri**
@@ -380,80 +409,128 @@ Daftar berikut adalah hasil penelusuran per 30 Oktober 2026. Versi dicantumkan k
 - University of Melbourne, ISYS90038 *IS Strategy and Governance*, Master of Information Systems. [handbook.unimelb.edu.au](https://handbook.unimelb.edu.au/2025/subjects/isys90038)
 - Antwerp Management School bersama Maastricht University, *Executive Master in IT Governance & Assurance*. [antwerpmanagementschool.be](https://antwerpmanagementschool.be/en/program/executive-master-it-governance-assurance)
 
-**Catatan status per 30 Oktober 2026.** ISACA telah mengumumkan COBIT 7 dalam bentuk platform digital. Sertifikat COBIT 7 Foundation dijadwalkan menggantikan sertifikat COBIT 2019, tetapi halaman kerangka resmi ISACA masih menampilkan COBIT 2019. Karena itu modul memakai COBIT 2019 sebagai dasar dan mencatat perubahan COBIT 7. PeopleCert menerbitkan ITIL (Version 5) pada awal 2026, sementara ITIL 4 masih berlaku berdampingan. ISO/IEC 27001 belum terbit dalam edisi baru, sehingga acuannya tetap edisi 2022 beserta amandemen 2024. ISO 31000 dan ISO 22301 sedang direvisi. Jadwal kewajiban risiko tinggi dalam EU AI Act diundur oleh Regulation (EU) 2026/1744: sistem Annex III menjadi 2 Desember 2027, dan sistem dalam produk Annex I menjadi 2 Agustus 2028. Naskah PP 33/2026 dilaporkan media dan firma hukum, tetapi belum tampil di JDIH BPK saat penelusuran, sehingga naskah resminya perlu diperiksa ulang sebelum isi bab ditulis. RUU Keamanan dan Ketahanan Siber serta Perpres tentang AI masih dalam pembahasan menurut berita terakhir yang ditemukan.
+**Catatan status per 30 Oktober 2026.** Informasi produk dan chapter ISACA telah menyebut COBIT 7; halaman kerangka resmi masih menyediakan publikasi COBIT 2019. Catatan transisi tidak digunakan untuk menebak perubahan isi kerangka. Karena itu modul memakai COBIT 2019 sebagai dasar dan mencatat perubahan COBIT 7. PeopleCert menerbitkan ITIL (Version 5) pada awal 2026, sementara ITIL 4 masih berlaku berdampingan. ISO/IEC 27001 belum terbit dalam edisi baru, sehingga acuannya tetap edisi 2022 beserta amandemen 2024. ISO 31000 dan ISO 22301 sedang direvisi. Jadwal kewajiban risiko tinggi dalam EU AI Act diundur oleh Regulation (EU) 2026/1744: sistem Annex III menjadi 2 Desember 2027, dan sistem dalam produk Annex I menjadi 2 Agustus 2028. Publikasi BPOM menyebut PP 33/2026, tetapi naskah resmi pasalnya belum diperoleh dalam penelusuran ini. Modul menurunkan kewajiban dari UU PDP dan ketentuan resmi yang dirujuk, lalu mencatat aturan yang belum terverifikasi sebagai pekerjaan penelusuran. Rancangan peraturan tidak diperlakukan sebagai kewajiban yang sudah berlaku.
 
 ## Daftar Singkatan
 
 | Singkatan | Kepanjangan |
 | --- | --- |
+| AG | Alignment Goal (COBIT) |
+| AGPL | Affero General Public License |
+| AHA | American Hospital Association |
 | AI | Artificial Intelligence |
+| ALE | Annualized Loss Expectancy |
 | API | Application Programming Interface |
 | APO | Align, Plan and Organize (domain COBIT) |
+| AWS | Amazon Web Services |
 | BAI | Build, Acquire and Implement (domain COBIT) |
 | BIA | Business Impact Analysis |
 | BPJS | Badan Penyelenggara Jaminan Sosial |
 | BPK | Badan Pemeriksa Keuangan |
+| BPOM | Badan Pengawas Obat dan Makanan |
+| BSN | Badan Standardisasi Nasional |
 | BSSN | Badan Siber dan Sandi Negara |
 | CAIQ | Consensus Assessments Initiative Questionnaire |
 | CCM | Cloud Controls Matrix |
+| CIA | Confidentiality, Integrity, Availability |
 | CI/CD | Continuous Integration / Continuous Delivery |
 | CIS | Center for Internet Security |
 | CISO | Chief Information Security Officer |
+| CMMI | Capability Maturity Model Integration |
 | COBIT | Control Objectives for Information and Related Technologies |
 | COSO | Committee of Sponsoring Organizations of the Treadway Commission |
 | CSA | Cloud Security Alliance |
 | CSF | Cybersecurity Framework |
 | CSV | Comma-Separated Values |
+| DBIR | Data Breach Investigations Report |
+| DORA | Digital Operational Resilience Act |
 | DPIA | Data Protection Impact Assessment |
 | DSS | Deliver, Service and Support (domain COBIT) |
 | EA | Enterprise Architecture |
-| EDM | Evaluate, Direct and Monitor (domain COBIT) |
+| EDM | Evaluate, Direct, Monitor (model ISO/IEC 38500); Evaluate, Direct and Monitor (domain COBIT) |
+| EDPB | European Data Protection Board |
+| EG | Enterprise Goal (COBIT) |
 | ERM | Enterprise Risk Management |
 | ERP | Enterprise Resource Planning |
 | EU | European Union |
+| FAIR | Factor Analysis of Information Risk |
 | FHIR | Fast Healthcare Interoperability Resources |
+| FISCAM | Federal Information System Controls Audit Manual |
+| GDPR | General Data Protection Regulation |
+| GIAS | Global Internal Audit Standards |
 | GRC | Governance, Risk, and Compliance |
+| HIPAA | Health Insurance Portability and Accountability Act |
 | HL7 | Health Level Seven |
+| IaaS | Infrastructure as a Service |
+| IAASB | International Auditing and Assurance Standards Board |
 | IEC | International Electrotechnical Commission |
 | IGD | Instalasi Gawat Darurat |
 | IIA | The Institute of Internal Auditors |
+| IIV | Infrastruktur Informasi Vital |
+| IR | Interagency Report (NIST) |
+| ISAE | International Standard on Assurance Engagements |
 | ISMS | Information Security Management System |
 | ISO | International Organization for Standardization |
 | ITAF | IT Audit Framework |
 | ITE | Informasi dan Transaksi Elektronik |
 | ITIL | Information Technology Infrastructure Library |
 | JDIH | Jaringan Dokumentasi dan Informasi Hukum |
+| JSON | JavaScript Object Notation |
 | KCI | Key Control Indicator |
+| Komdigi | Kementerian Komunikasi dan Digital |
 | KPI | Key Performance Indicator |
 | KRI | Key Risk Indicator |
+| LJKNB | Lembaga Jasa Keuangan Nonbank |
 | LLM | Large Language Model |
+| MBCO | Minimum Business Continuity Objective |
 | MEA | Monitor, Evaluate and Assess (domain COBIT) |
 | MFA | Multi-Factor Authentication |
+| MK | Mahkamah Konstitusi |
+| MTD | Maximum Tolerable Downtime |
 | MTPD | Maximum Tolerable Period of Disruption |
+| NHS | National Health Service |
 | NIST | National Institute of Standards and Technology |
+| OCEG | Open Compliance and Ethics Group |
+| OCR | Office for Civil Rights |
 | OJK | Otoritas Jasa Keuangan |
 | OLIR | Online Informative References |
+| OMB | Office of Management and Budget |
+| O-RA | Risk Analysis (The Open Group) |
+| O-RT | Risk Taxonomy (The Open Group) |
 | OSCAL | Open Security Controls Assessment Language |
 | OWASP | Open Worldwide Application Security Project |
+| PaaS | Platform as a Service |
 | PDP | Pelindungan Data Pribadi |
 | Permenkes | Peraturan Menteri Kesehatan |
+| Permenkominfo | Peraturan Menteri Komunikasi dan Informatika |
 | Perpres | Peraturan Presiden |
+| PIMS | Privacy Information Management System |
 | POJK | Peraturan Otoritas Jasa Keuangan |
 | PP | Peraturan Pemerintah |
 | PSE | Penyelenggara Sistem Elektronik |
 | PSTE | Penyelenggaraan Sistem dan Transaksi Elektronik |
 | RACI | Responsible, Accountable, Consulted, Informed |
+| REST | Representational State Transfer |
 | RMF | Risk Management Framework |
+| RoPA | Records of Processing Activities |
 | RPO | Recovery Point Objective |
 | RTO | Recovery Time Objective |
+| SaaS | Software as a Service |
 | SBOM | Software Bill of Materials |
 | SIMRS | Sistem Informasi Manajemen Rumah Sakit |
+| SLE | Single Loss Expectancy |
 | SLO | Service Level Objective |
 | SoA | Statement of Applicability |
 | SOC 2 | System and Organization Controls 2 |
+| SP | Special Publication (NIST) |
 | SPBE | Sistem Pemerintahan Berbasis Elektronik |
+| TCO | Total Cost of Ownership |
 | TI | Teknologi Informasi |
 | UAS | Ujian Akhir Semester |
+| URL | Uniform Resource Locator |
 | UTS | Ujian Tengah Semester |
 | UU | Undang-Undang |
+| WHO | World Health Organization |
+| WIB | Waktu Indonesia Barat |
+| XML | Extensible Markup Language |
 | YAML | YAML Ain't Markup Language |

@@ -1,0 +1,24 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  kotak/.style={draw, rounded corners, align=center, text width=3.15cm, minimum height=1.2cm},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[kotak, fill=praditagreen!15] (a) at (0,0)
+    {\textbf{Mandat dan risiko}\\{\tiny\mdseries register R-01 sampai R-12}};
+  \node[kotak, fill=blue!8] (b) at (4,0)
+    {\textbf{Rencana asurans}\\{\tiny\mdseries area, waktu, dan jam}};
+  \node[kotak, fill=blue!8] (c) at (8,0)
+    {\textbf{Program audit}\\{\tiny\mdseries kriteria, populasi, prosedur}};
+  \node[kotak, fill=orange!12] (d) at (8,-2)
+    {\textbf{Bukti pengujian}\\{\tiny\mdseries rancangan dan operasi}};
+  \node[kotak, fill=orange!12] (e) at (4,-2)
+    {\textbf{Temuan}\\{\tiny\mdseries kondisi, kriteria, sebab, akibat}};
+  \node[kotak, fill=green!10] (f) at (0,-2)
+    {\textbf{Tindak lanjut terverifikasi}\\{\tiny\mdseries pemilik, tenggat, uji ulang}};
+  \draw[panah] (a) -- (b);
+  \draw[panah] (b) -- (c);
+  \draw[panah] (c) -- (d);
+  \draw[panah] (d) -- (e);
+  \draw[panah] (e) -- (f);
+  \draw[panah] (f) -- (a) node[midway, left, align=right]
+    {{\tiny\mdseries risiko}\\{\tiny\mdseries dinilai ulang}};
+\end{tikzpicture}

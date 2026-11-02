@@ -1,67 +1,1103 @@
+% !TeX root = it-governance-risk-compliance.tex
+% !TeX encoding = UTF-8
 \chapter{Manajemen Risiko Enterprise dan Risiko TI}
 
 \section*{Tujuan Pembelajaran}
 \begin{itemize}
-  \item Menerapkan proses ISO 31000 untuk mengidentifikasi, menganalisis, dan mengevaluasi risiko terkait TI.
+  \item Menerapkan proses ISO 31000 untuk mengidentifikasi, menganalisis, dan mengevaluasi risiko
+  terkait TI.
   \item Merumuskan pernyataan \textit{risk appetite} yang dapat dipakai untuk mengambil keputusan.
-  \item Membandingkan penilaian risiko kualitatif dan kuantitatif beserta keterbatasan masing-masing.
+  \item Membandingkan penilaian risiko kualitatif dan kuantitatif beserta keterbatasan
+  masing-masing.
 \end{itemize}
 
 \section{Pendahuluan}
 
-% TODO
-% Cakupan: organisasi punya daftar risiko yang panjang, tetapi daftar itu tidak pernah mengubah keputusan apa pun.
+Misalkan pada akhir 2025 register risiko Medikara berisi 86 baris dalam sebuah spreadsheet.
+Register itu dibuka dua kali setahun, menjelang audit. Setiap baris berwarna merah, kuning, atau
+hijau, tetapi tidak ada notulen komite yang merujuknya. Ketika kontrak vendor Medikara+ diperpanjang,
+tidak ada yang membuka baris tentang akun vendor. Masalahnya bukan jumlah baris, melainkan hubungan
+antara skenario, bukti, dan batas keputusan. Daftar risiko yang tidak pernah mengubah keputusan
+hanya menjadi arsip.
 
-\section{Konsep Dasar Risiko}
+Medikara mengalami kebocoran data skala kecil lewat vendor pada 2025, dan audit internal menemukan
+kontrol akses yang lemah. Penilaian risiko perlu menjelaskan tujuan yang terancam, kontrol yang
+benar-benar berjalan, dan pemilik risiko sisa. Perbaikan teknologi informasi (TI) harus dinilai
+bersama akibatnya terhadap pasien dan layanan. Hasil kerja bab ini adalah pernyataan \textit{risk
+appetite} dan \textit{risk register} kondisi saat ini untuk tonggak C2 capstone.
 
-% TODO
-% Cakupan: risiko sebagai efek ketidakpastian terhadap tujuan; ancaman dan peluang; risiko inheren dan risiko residual; peran kontrol.
+Bab ini memakai ISO 31000:2018 dari International Organization for Standardization (ISO) untuk
+proses penilaian. Hubungan risiko dengan strategi dan kinerja mengikuti Enterprise Risk Management
+(ERM) 2017 dari Committee of Sponsoring Organizations of the Treadway Commission (COSO). Risiko
+keamanan informasi merujuk ISO/IEC 27005:2022 dari ISO dan International Electrotechnical Commission
+(IEC). Naskah ketiganya berbayar, sehingga publikasi terbuka National Institute of Standards and
+Technology (NIST) dipakai untuk rincian yang dapat diperiksa mahasiswa. Seluruh hitungan merupakan
+contoh pembelajaran, bukan perkiraan kerugian Medikara yang telah diukur
+\cite{iso31000-2018,cosoerm2017,iso27005-2022,c05-nist-ir8286r1}.
 
-\section{ISO 31000:2018: Prinsip, Kerangka, dan Proses}
+\IfFileExists{../figures/ch05-diagram-konsep.png}{%
 
-% TODO
-% Cakupan: prinsip manajemen risiko; kerangka (kepemimpinan, integrasi, desain, implementasi, evaluasi, perbaikan); proses (konteks, identifikasi, analisis, evaluasi, penanganan, pemantauan, komunikasi); status revisi ISO 31000 yang sedang berjalan di ISO/TC 262 (periksa ulang).
+Gambar \ref{fig:ch05-ilustrasi-bab} merangkum hubungan komponen dan konsep utama bab ini.
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/ch05-diagram-konsep.png}
+  \caption{Skenario risiko dinilai terhadap tujuan dan kriteria}
+  \label{fig:ch05-ilustrasi-bab}
+\end{figure}
+}{}
 
-\section{COSO ERM dan Risk Appetite}
+\section{Risiko Berawal dari Tujuan Organisasi}
 
-% TODO
-% Cakupan: lima komponen dan 20 prinsip COSO ERM 2017; risk appetite, risk tolerance, dan kapasitas risiko; ciri pernyataan risk appetite yang dapat dipakai direksi.
-% Kasus Medikara: contoh pernyataan risk appetite untuk keselamatan pasien, kerahasiaan data, kelangsungan layanan, dan kepatuhan.
+\subsection*{Risiko dan ERM}
 
-\section{Risiko Keamanan Informasi menurut ISO/IEC 27005:2022}
+Daftar ancaman belum menjadi penilaian risiko. ISO 31000:2018 mendefinisikan risiko sebagai efek
+ketidakpastian terhadap tujuan \cite{iso31000-2018}. Definisi yang sama sudah dipakai pada Bab 1.
+Akibatnya, penilaian dimulai dari tujuan, bukan dari daftar hal buruk yang mungkin terjadi. ERM
+menghubungkan pilihan strategi dengan risiko portofolio, bukan sekadar mengumpulkan masalah
+departemen. COSO mendefinisikan ERM sebagai budaya, kapabilitas, dan praktik yang diintegrasikan
+organisasi dengan penetapan strategi dan diterapkan saat strategi dijalankan. Tujuannya mengelola
+risiko dalam menciptakan, menjaga, dan mewujudkan nilai \cite{cosoerm2017,c05-nist-ir8286r1}.
 
-% TODO
-% Cakupan: pendekatan berbasis peristiwa dan berbasis aset; kriteria penerimaan risiko; kaitan dengan klausul penilaian dan penanganan risiko pada ISO/IEC 27001 (dirinci di Bab 6).
+Analogi yang dekat ialah perjalanan ambulans. Hujan menjadi risiko bila jalan tergenang sehingga
+pasien terlambat mendapat pertolongan. Hujan yang sama tidak berarti apa-apa bagi ambulans yang
+sedang parkir. Tujuan, rute, waktu tempuh, dan alternatif jalan menentukan keputusan.
 
-\section{Risk Register dan Penanganan Risiko}
+Dua contoh memperjelas hubungan tersebut:
+\begin{enumerate}
+  \item Medikara melayani sekitar 1,2 juta kunjungan per tahun, atau sekitar 3.288 kunjungan per
+  hari. Misalkan layanan berjalan 12 jam per hari, sehingga ada sekitar 274 kunjungan per jam.
+  Gangguan pendaftaran selama 3 jam menyentuh sekitar 822 kunjungan. Gangguan itu dihitung sebagai
+  kunjungan tertunda dan waktu tunggu, bukan hanya jumlah server yang mati.
+  \item Misalkan penggabungan laporan 18 klinik memerlukan 3 hari kerja setiap bulan, dari 216
+  berkas per tahun. Satu klinik yang mengubah format tanpa pemberitahuan berarti 1 dari 18 berkas
+  bulanan, atau sekitar 5,6 persen, salah terbaca. Perubahan itu mengancam ketepatan laporan,
+  meskipun tidak ada sistem yang berhenti.
+\end{enumerate}
 
-% TODO
-% Cakupan: struktur risk register; menulis skenario risiko yang baik (sebab, peristiwa, akibat); opsi penanganan (menghindari, mengurangi, membagi, menerima); pemilik risiko dan risiko sisa.
-% Kasus Medikara: skenario kebocoran lewat vendor, kontrol akses lemah, gangguan integrasi BPJS Kesehatan, dan laporan manajemen berbasis spreadsheet.
+Tabel~\ref{tab:ch05-tujuan} merangkum hubungan tujuan, risiko, dan keputusan. Kode R-01 dan AC-01
+mengikuti Bab 1 dan tetap dipakai sampai Bab 14. BPJS adalah Badan Penyelenggara Jaminan Sosial.
 
-\section{Matriks Risiko dan Pengukuran Kuantitatif}
+\begin{table}[!htb]
+  \centering\small
+  \caption{Hubungan tujuan, risiko, dan keputusan}\label{tab:ch05-tujuan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.24\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Tujuan} & \textbf{Skenario} & \textbf{Keputusan} \\ \hline
+    Kerahasiaan data & R-01: akses vendor berlebihan menyebabkan pengungkapan data pasien & Batasi
+    akses dan tinjau AC-01 \\ \hline
+    Kelangsungan pendaftaran & R-03: integrasi BPJS Kesehatan terhenti ketika pasien datang &
+    Siapkan antrean pengganti \\ \hline
+    Laporan konsisten & R-04: versi spreadsheet berbeda & Tetapkan validasi dan pemilik definisi \\
+    \hline
+    Keselamatan pasien & R-11: riwayat alergi tidak terbaca lintas rumah sakit & Libatkan pimpinan
+    klinis dan perbaiki pertukaran data \\ \hline
+  \end{tabularx}
+\end{table}
 
-% TODO
-% Cakupan: kelemahan matriks risiko (skor yang menipu, kategori kasar); gambaran pengukuran kuantitatif seperti Open FAIR dan simulasi Monte Carlo; kapan pendekatan kualitatif sudah cukup; pengantar KRI (dirinci di Bab 13).
-% Pendalaman teknis: simulasi Monte Carlo di spreadsheet dan loss exceedance curve mengikuti Hubbard dan Seiersen (2023).
+Dua hal pada register sering tertukar: risiko dan temuan. Pembagiannya begini. Risiko masih
+mengandung ketidakpastian, sedangkan temuan sudah terjadi. Audit menemukan 6 dari 30 akun vendor
+sampel masih aktif setelah penugasan berakhir. Itu temuan. Kemungkinan salah satu akun itu dipakai
+mengakses data pasien adalah risiko. Keduanya saling berkaitan, tetapi menuntut hal yang berbeda.
+
+Pembedaan ini punya dua konsekuensi. Pertama, temuan memerlukan penutupan dengan bukti, seperti 24
+akun yang dicabut pada peninjauan bulan berikutnya. Risiko memerlukan keputusan: dikurangi, dibagi,
+dihindari, atau diterima. Kedua, register yang mencampur keduanya tampak panjang, tetapi tidak
+menunjukkan keputusan yang menunggu.
+
+\subsection*{COSO ERM: lima komponen}
+
+Pertanyaan kemudian muncul: bagaimana risiko dihubungkan dengan strategi? COSO ERM 2017 menyusun
+jawabannya dalam lima komponen yang saling terkait dan 20 prinsip \cite{cosoerm2017,c05-ncsu-coso}.
+Kelima komponen itu bukan tahap berurutan. Setiap komponen menjawab pertanyaan pimpinan yang
+berbeda. Tabel~\ref{tab:ch05-coso} menerapkan kelimanya pada Medikara. Nama komponen diterjemahkan
+bebas oleh bab ini, dan contohnya merupakan pengandaian.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lima komponen COSO ERM pada pengandaian Medikara}\label{tab:ch05-coso}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.29\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Komponen} & \textbf{Contoh penerapan pada Medikara} \\ \hline
+    Tata kelola dan budaya (\textit{Governance and Culture}) & Komite pengarah TI 9 anggota pada
+    Bab 2, dengan kuorum 6 anggota dan pemilik risiko wajib hadir \\ \hline
+    Strategi dan penetapan sasaran (\textit{Strategy and Objective-Setting}) & Strategi ``Satu
+    Pasien, Satu Rekam Medis'' dipakai untuk menurunkan pernyataan \textit{risk appetite} \\ \hline
+    Kinerja (\textit{Performance}) & Register 12 skenario dinilai, diprioritaskan, dan diberi
+    keputusan penanganan \\ \hline
+    Tinjauan dan revisi (\textit{Review and Revision}) & Insiden vendor 2025 dan temuan audit memicu
+    penilaian ulang R-01 \\ \hline
+    Informasi, komunikasi, dan pelaporan (\textit{Information, Communication, and Reporting}) &
+    Indikator dan laporan satu halaman untuk direksi pada Bab 13 \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Risiko TI di dalam risiko enterprise}
+
+Dua hal pada risiko TI juga sering tertukar: risiko pada sistem dan risiko pada organisasi.
+Pembagiannya begini. NIST Special Publication (SP) 800-39 memakai tiga tingkat: organisasi, proses
+misi dan bisnis, serta sistem informasi \cite{c05-nist-sp80039}. Pertanyaan pada tiap tingkat
+berbeda, sehingga pemiliknya juga berbeda. NIST Interagency Report (IR) 8286 Revisi 1 menjelaskan
+bahwa register dari sistem dan unit digabungkan, dinormalkan, dan diprioritaskan menjadi profil
+risiko pada tingkat lebih tinggi \cite{c05-nist-ir8286r1}. Tabel~\ref{tab:ch05-tingkat} menerapkan
+pembagian itu pada Medikara. SIMRS pada tabel adalah Sistem Informasi Manajemen Rumah Sakit.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Tiga tingkat risiko pada pengandaian Medikara}\label{tab:ch05-tingkat}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.25\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Tingkat} & \textbf{Pertanyaan} & \textbf{Pemeran} & \textbf{Keluaran} \\ \hline
+    Organisasi & Risiko mana yang menyentuh strategi? & Direksi, komite 9 anggota, kepala risiko &
+    \textit{Risk appetite} dan profil risiko \\ \hline
+    Proses misi dan bisnis & Layanan mana yang terdampak? & Pemilik Medikara+, kepala pendaftaran &
+    \textit{Risk tolerance} dan register layanan \\ \hline
+    Sistem informasi & Kontrol mana yang berjalan? & Kepala operasi TI, pengelola SIMRS & Bukti
+    kontrol dan register sistem \\ \hline
+  \end{tabularx}
+\end{table}
+
+Polanya mirip laporan keuangan grup usaha. Setiap cabang menyusun buku kas sendiri. Kantor pusat
+tidak membaca setiap kuitansi, tetapi menerima laporan gabungan dengan definisi akun yang sama.
+
+Dua contoh penerapannya:
+\begin{enumerate}
+  \item Misalkan 5 rumah sakit masing-masing mengirim 14 baris, sehingga terkumpul 70 baris. Delapan
+  baris menyebut hak akses SIMRS lokal dengan kata berbeda. Kantor pusat menggabungkannya menjadi
+  satu skenario R-02, karena pemilik dan penanganannya sama. Direksi membaca satu keputusan, bukan
+  delapan keluhan.
+  \item Akun vendor di Medikara+ terlihat sebagai urusan teknis pada tingkat sistem. Pada tingkat
+  layanan, akun itu berkaitan dengan 28.000 janji temu per bulan, atau 336.000 per tahun. Pada
+  tingkat organisasi, akun itu berkaitan dengan strategi ekosistem mitra. APO12 masuk enam objektif
+  awal COBIT pada Bab 4 karena R-01 memerlukan pemilik dan pemantauan yang sama pada semua fasilitas.
+\end{enumerate}
+
+\section{Proses ISO 31000 dan Konteks Penilaian}
+
+\subsection*{Prinsip, kerangka, dan proses}
+
+ISO 31000:2018 memberikan panduan, bukan persyaratan sertifikasi organisasi. Standar ini tersusun
+dari tiga bagian: prinsip, kerangka, dan proses \cite{iso31000-2018,c05-ncsu-iso}. Delapan prinsipnya
+meminta manajemen risiko terintegrasi, terstruktur dan menyeluruh, disesuaikan dengan organisasi,
+inklusif, dinamis, memakai informasi terbaik yang tersedia, memperhitungkan faktor manusia dan
+budaya, serta terus diperbaiki. Seksi ini berfokus pada prosesnya.
+
+Tim menetapkan cakupan, konteks, dan kriteria sebelum penilaian. Identifikasi mencari skenario,
+analisis menilai kemungkinan dan dampak, sedangkan evaluasi membandingkannya dengan kriteria
+keputusan. Penanganan memilih tindakan. Komunikasi dan konsultasi, pantau dan tinjau, serta
+pencatatan dan pelaporan menyertai seluruh proses. NIST mencatat kerangka dari COSO, Office of
+Management and Budget (OMB) Amerika Serikat, dan ISO pada umumnya memuat langkah serupa
+\cite{c05-nist-ir8286r1}. Gambar~\ref{fig:ch05-proses} merupakan ringkasan pembelajaran, bukan
+reproduksi gambar standar.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch05-proses-risiko.tex}
+  \caption{Proses dari konteks hingga keputusan risiko}
+  \label{fig:ch05-proses}
+\end{figure}
+
+Analogi pemeriksaan kendaraan memisahkan tahapnya. Ban tipis adalah temuan awal. Peluang tergelincir
+pada rute hujan merupakan analisis. Keputusan bahwa ban itu melewati batas aman merupakan evaluasi.
+Mengganti ban sebelum berangkat adalah keputusan penanganan.
+
+Dua penerapan menunjukkan pentingnya batas penilaian:
+\begin{enumerate}
+  \item Misalkan cakupannya Medikara+ selama 12 bulan, dengan 336.000 janji temu dan 120 akun vendor.
+  Tim menelusuri kontrak, akun vendor, akses data, dan pemilik layanan. Temuan rumah sakit lain
+  menjadi konteks, bukan bukti otomatis.
+  \item Misalkan cakupannya pelaporan 18 klinik selama 12 bulan, dengan 216 berkas. Tim menelusuri
+  penggabungan data dan versi berkas. Daftar ancaman internet yang tidak berhubungan dengan proses
+  itu tidak dijadikan titik awal.
+\end{enumerate}
+
+\subsection*{Kriteria risiko ditetapkan sebelum skor}
+
+Pertanyaan kemudian muncul: skor 3 itu artinya apa? Kriteria menjawabnya. Kriteria menetapkan periode,
+arti tiap nilai, dan tindakan pada tiap kelompok skor. NIST SP 800-30 Revisi 1 menekankan bahwa nilai
+perlu didefinisikan jelas atau diberi contoh bermakna. Tanpa itu, ahli yang berbeda dapat memberi
+hasil yang jauh berbeda. Penilaian juga perlu menyebut periode waktunya
+\cite{c05-nist-sp80030r1}. Tabel~\ref{tab:ch05-skala} adalah contoh pembelajaran, bukan skala baku.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh skala penilaian Medikara untuk periode 12 bulan (misalkan)}\label{tab:ch05-skala}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.07\textwidth}|>{\raggedright\arraybackslash}p{0.25\textwidth}|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Nilai} & \textbf{Kemungkinan} & \textbf{Dampak finansial per kejadian} & \textbf{Dampak
+    layanan} \\ \hline
+    1 & Kurang dari 5 persen & Di bawah Rp10 juta & Pekerjaan pulih dalam unit \\ \hline
+    2 & 5 sampai kurang dari 15 persen & Rp10 juta sampai kurang dari Rp50 juta & Gangguan lokal
+    terkendali \\ \hline
+    3 & 15 sampai kurang dari 40 persen & Rp50 juta sampai kurang dari Rp200 juta & Layanan penting
+    tertunda \\ \hline
+    4 & 40 sampai kurang dari 70 persen & Rp200 juta sampai kurang dari Rp1 miliar & Gangguan lintas
+    lokasi \\ \hline
+    5 & 70 persen atau lebih & Rp1 miliar atau lebih & Layanan utama tidak berjalan \\ \hline
+  \end{tabularx}
+\end{table}
+
+Keputusan menetapkan kriteria lebih dahulu punya dua konsekuensi. Pertama, tim tidak dapat mengubah
+skala setelah melihat hasil supaya risiko tampak lebih rendah. Kedua, keselamatan, hak pasien, dan
+kepatuhan dinilai dalam kolom terpisah. Risiko cedera berat langsung dieskalasikan kepada pimpinan
+klinis, meskipun skor gabungannya rendah. Batas rupiah tidak dipakai untuk mengizinkan pelanggaran.
+
+\subsection*{Mulai dari peristiwa atau aset?}
+
+Pertanyaan berikutnya: apakah penilaian harus dimulai dari aset? Tidak selalu. ISO/IEC 27005:2022
+memandu pengelolaan risiko keamanan informasi \cite{iso27005-2022}. Pendekatan berbasis aset memulai
+dari data dan ketergantungannya. Pendekatan berbasis peristiwa memulai dari kejadian. Keduanya harus
+menghasilkan skenario berisi sebab, kejadian, dan akibat. NIST SP 800-30 Revisi 1 memberi peringatan
+yang berguna. Titik awal yang berbeda dapat membuat sebagian risiko tidak teridentifikasi, sehingga
+memakai sudut pandang kedua meningkatkan ketelitian analisis \cite{c05-nist-sp80030r1}.
+Tabel~\ref{tab:ch05-pendekatan} membandingkan keduanya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Pendekatan berbasis peristiwa dan berbasis aset pada Medikara}\label{tab:ch05-pendekatan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Unsur} & \textbf{Berbasis peristiwa} & \textbf{Berbasis aset} \\ \hline
+    Titik awal & Kejadian dan akibatnya pada tujuan & Data, sistem, dan ketergantungan \\ \hline
+    Contoh Medikara & Insiden vendor 2025 dan gangguan integrasi BPJS Kesehatan & Rekam medis, SIMRS
+    di 5 rumah sakit, Medikara+ \\ \hline
+    Mudah terlewat & Aset yang belum pernah terkena masalah & Kejadian lintas aset, misalnya dua
+    vendor dengan satu subpenyedia \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh penerapannya:
+\begin{enumerate}
+  \item Misalkan jalur peristiwa menghasilkan 9 skenario dan jalur aset menghasilkan 8 skenario.
+  Sebanyak 5 skenario sama, sehingga register memuat 12 skenario unik. Tiga skenario hanya muncul
+  dari jalur aset, dan empat hanya muncul dari jalur peristiwa.
+  \item R-05 tentang cadangan yang belum diuji muncul dari jalur aset, karena belum pernah ada
+  kejadian pemulihan gagal. R-08 tentang dua vendor dengan satu subpenyedia muncul dari jalur
+  peristiwa, karena daftar aset menempatkan kedua vendor pada baris terpisah.
+\end{enumerate}
+
+\section{Risk Appetite, Risk Tolerance, dan Kapasitas Risiko}
+
+\subsection*{Tiga istilah, tiga fungsi}
+
+\textit{Risk appetite} menyatakan arah risiko yang bersedia diambil organisasi. NIST menggambarkannya
+sebagai panduan tentang jenis dan jumlah risiko, pada tingkat umum, yang bersedia diterima pimpinan
+senior untuk mengejar tujuan. Pernyataan ini dapat bersifat kualitatif atau kuantitatif. \textit{Risk
+tolerance} menerjemahkannya menjadi batas operasional. Definisi OMB yang dikutip NIST menyebutnya
+tingkat variasi kinerja yang dapat diterima terhadap pencapaian tujuan
+\cite{c05-nist-ir8286ar1}. Kapasitas risiko, dalam rumusan umum bab ini, adalah batas yang mampu
+ditanggung organisasi. Mampu membayar kerugian tidak berarti boleh melanggar kewajiban hukum atau
+mengabaikan keselamatan.
+
+Analogi anggaran keluarga membantu membedakan ketiganya. Keluarga memilih anggaran perjalanan,
+menetapkan batas penyimpangan, dan menyisakan dana kebutuhan pokok. Mampu menghabiskan tabungan tidak
+membuat pilihan itu sesuai tujuan keluarga.
+
+Dua usulan berikut adalah skenario pembelajaran:
+\begin{enumerate}
+  \item Misalkan semua akun vendor harus memiliki penanggung jawab dan masa berlaku. Satu akun tanpa
+  keduanya diblokir, walaupun hanya 1 dari 120 akun, atau sekitar 0,8 persen. Pengecualian darurat
+  hanya disetujui pemilik layanan dan berakhir paling lambat 24 jam. Batas ini sejalan dengan aturan
+  pencabutan 1 hari kerja pada Bab 2.
+  \item Misalkan gangguan pendaftaran dibatasi 2 jam per bulan, atau 24 jam per tahun. Dengan 12 jam
+  layanan per hari, batas itu setara sekitar 0,55 persen dari 4.380 jam layanan setahun. Dua jam
+  gangguan menyentuh sekitar 548 kunjungan. Pelanggaran memicu tinjauan mingguan. Risiko cedera berat
+  langsung dieskalasikan tanpa menunggu batas bulanan terlewati.
+\end{enumerate}
+
+Gambar~\ref{fig:ch05-batas} memperlihatkan hubungan keempat lapis tersebut untuk R-01. KRI pada gambar
+adalah Key Risk Indicator, yang dibahas pada seksi penanganan. Angka kapasitas Rp5 miliar dipilih sama
+dengan batas delegasi Bab 2, karena keputusan di atas angka itu sudah melibatkan dewan komisaris bila
+anggaran dasar menetapkan.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch05-batas-risiko.tex}
+  \caption{Kapasitas, \textit{risk appetite}, \textit{risk tolerance}, dan indikator untuk R-01
+  (misalkan)}
+  \label{fig:ch05-batas}
+\end{figure}
+
+Pertanyaan kemudian muncul: mengapa kapasitas perlu dicatat bila batas lain sudah ada? Pengandaian
+Bab 3 memberi jawabannya. Denda administratif paling tinggi 2 persen dari Rp500 miliar sama dengan
+Rp10 miliar \cite{uu27-2022-pdp}. Angka itu dua kali kapasitas Rp5 miliar. Skenario dengan peluang
+kecil tetap perlu dibahas direksi bila akibat terburuknya melewati kapasitas. Angka Rp10 miliar
+adalah batas atas untuk diskusi, bukan perkiraan denda.
+
+\subsection*{Appetite dan tolerance sering tertukar}
+
+Dua hal ini sering tertukar. Pembagiannya begini. Pernyataan \textit{risk appetite} memberi arah umum
+dan berasal dari pimpinan tertinggi. Pernyataan \textit{risk tolerance} selalu lebih spesifik dan
+harus berada di dalam batas arah itu. NIST memberi contoh penyedia layanan kesehatan. Direksinya
+menyatakan \textit{risk appetite} rendah untuk paparan keamanan siber akibat kontrol akses atau
+autentikasi yang tidak memadai. Pernyataan \textit{risk tolerance}-nya mengakui sebagian perangkat
+belum mendukung autentikasi lanjutan, tetapi 100 persen aplikasi bisnis kesehatan yang kritis wajib
+memakai Multi-Factor Authentication (MFA) \cite{c05-nist-ir8286ar1}. Pernyataan pertama memberi arah.
+Pernyataan kedua dapat diperiksa.
+
+NIST SP 800-39 mengingatkan bahwa tidak ada tingkat toleransi risiko yang benar untuk semua
+organisasi. Organisasi yang terlalu menghindari risiko dapat gagal mencapai kemampuan yang dibutuhkan.
+Organisasi yang terlalu berani dapat mengejar efisiensi jangka pendek dan menyiapkan kegagalan di
+kemudian hari \cite{c05-nist-sp80039}. Tabel~\ref{tab:ch05-appetite} merangkum usulan batas keputusan
+Medikara. Seluruh angkanya pengandaian, bukan batas hukum.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Usulan batas keputusan Medikara (misalkan)}\label{tab:ch05-appetite}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.21\textwidth}|}
+    \hline
+    \textbf{Kategori} & \textbf{Arah} & \textbf{Ukuran} & \textbf{Pemicu tindakan} \\ \hline
+    Keselamatan pasien & Tidak menukar risiko cedera berat dengan kecepatan atau biaya & Setiap risiko
+    cedera berat ditinjau dalam 1 hari kerja & Libatkan pimpinan klinis segera \\ \hline
+    Kerahasiaan & Rendah untuk akses tidak sah pada data pasien & Nol akun vendor aktif tanpa pemilik
+    dan masa berlaku & Bekukan akun yang tidak sesuai \\ \hline
+    Kelangsungan & Menerima gangguan singkat bila prosedur pengganti berjalan & Pendaftaran terganggu
+    paling lama 2 jam per bulan & Pemilik layanan menyiapkan perbaikan \\ \hline
+    Kepatuhan & Rendah untuk kewajiban hukum yang terlewat & K-01 sampai K-16 memiliki pemilik; nol
+    baris lewat tenggat tanpa keputusan & Catat penyimpangan dan tindakan \\ \hline
+    Finansial & Menerima kerugian kecil yang sering; membatasi kerugian besar & Peluang kerugian Rp1,5
+    miliar atau lebih paling tinggi 2 persen per tahun per skenario & Laporkan ke komite pengarah TI
+    \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Menguji pernyataan risk appetite}
+
+Pernyataan ``Medikara tidak menoleransi kebocoran data'' belum memberi aturan kerja. Organisasi dapat
+menolak pemrosesan tanpa dasar yang sah, sambil mengakui ketidakpastian teknis. Indikator, pemilik
+tindakan, dan jalur pengecualian membuat arah kebijakan dapat dipakai. Tabel~\ref{tab:ch05-uji}
+memuat empat pertanyaan uji. Daftar ini disusun bab ini sebagai alat bantu, bukan kutipan standar.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Empat pertanyaan uji pernyataan \textit{risk appetite}}\label{tab:ch05-uji}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Pertanyaan} & \textbf{Pernyataan lemah} & \textbf{Pernyataan yang lolos} \\ \hline
+    Apakah menyebut yang diterima dan ditolak? & Tidak menoleransi kebocoran & Vendor boleh mengakses
+    data bila ada dasar tugas tercatat \\ \hline
+    Apakah ada ukuran? & Akses dijaga dengan baik & Nol akun aktif tanpa pemilik \\ \hline
+    Apakah memicu tindakan dan menyebut pemilik? & Masalah dilaporkan & Pemilik Medikara+ membekukan
+    akun dalam 1 hari kerja \\ \hline
+    Apakah sejalan dengan kewajiban hukum? & Biaya kontrol lebih besar daripada kerugian, jadi
+    diabaikan & K-01 tetap dipenuhi walaupun manfaat finansial negatif \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{kasus}[title={Kasus Medikara Health: Batas Risiko yang Disahkan Direksi}]
+Misalkan komite pengarah TI membahas batas kerahasiaan pada rapat bulanan dengan 7 dari 9 anggota
+hadir, sehingga kuorum 6 anggota terpenuhi. Pemilik Medikara+ hadir sebagai pemilik R-01. Direksi lalu
+mengesahkan batas pada Tabel~\ref{tab:ch05-appetite}.
+
+Sebulan kemudian, vendor meminta 4 akun tetap aktif selama 10 hari setelah penugasan berakhir supaya
+perbaikan lebih cepat. Paparannya 40 akun-hari. Pemilik Medikara+ menolak dan memberi satu pengecualian
+darurat 24 jam untuk keempat akun. Paparannya turun menjadi 4 akun-hari, atau berkurang 90 persen.
+
+Keputusan ini punya dua konsekuensi. Pertama, perbaikan vendor berjalan lebih lambat, dan tenggat
+perbaikan digeser 3 hari. Itulah harga yang diterima dalam \textit{tradeoff} ini. Kedua, percakapan
+berubah. Yang dibahas bukan lagi siapa yang paling hati-hati, melainkan apakah bukti pengecualian
+tersedia dan siapa yang menyetujuinya. Tanpa batas tertulis, permintaan seperti ini diputuskan lewat
+pesan singkat dan tidak meninggalkan jejak.
+\end{kasus}
+
+\section{Skenario, Kontrol, dan Risk Register}
+
+\subsection*{Register menyimpan alasan keputusan}
+
+\textit{Risk register} menyimpan alasan keputusan. OMB, seperti dikutip NIST, mendefinisikannya
+sebagai tempat penyimpanan informasi risiko, termasuk data yang dipahami tentang risiko dari waktu ke
+waktu \cite{c05-nist-ir8286r1}. Satu baris memuat pengenal, tujuan, sebab, kejadian, akibat, pemilik
+risiko, bukti, kontrol berjalan, penilaian, dan rencana tindakan. Pemilik risiko berwenang mengelola
+akibatnya, sedangkan pelaksana kontrol teknis dapat berbeda. NIST menyebut pemilik risiko sebagai
+pihak yang bertanggung jawab dan akuntabel, dan pemilik itu dapat bekerja dengan pengelola yang
+memantau penanganan.
+
+Analogi buku piutang menunjukkan peran rincian. Catatan bahwa pelanggan berisiko tidak menggerakkan
+pekerjaan apa pun. Jumlah, jatuh tempo, penagih, dan tindakan berikutnya membuat catatan itu berguna.
+
+Dua contoh membedakan bukti dari rencana:
+\begin{enumerate}
+  \item R-01 menyebut akses vendor yang berlebihan menyebabkan pengungkapan data pasien. AC-01 adalah
+  peninjauan akses. Daftar persetujuan dan bukti pencabutan menunjukkan apakah kontrol tersebut
+  bekerja. Audit menemukan 6 dari 30 akun sampel bermasalah, atau 20 persen. Peninjauan berikutnya
+  mencabut 24 dari 120 akun, juga 20 persen. Pengandaian Bab 4 menambahkan kelemahan lain: daftar
+  peninjau hanya memuat 108 akun, sehingga 12 akun, atau 10 persen, luput. Rencana membeli alat
+  belum membuktikan apa pun tentang 12 akun itu.
+  \item Misalkan R-04 menyebut petugas menyalin angka dari berkas lama sehingga laporan 18 klinik
+  berbeda. Rekonsiliasi bulanan menurunkan kesalahan, tetapi belum menyelesaikan perbedaan definisi
+  data. Bila rekonsiliasi memerlukan 3 hari kerja per bulan, kontrol itu menghabiskan 36 hari kerja
+  per tahun tanpa menghilangkan sebabnya.
+\end{enumerate}
+
+Gambar~\ref{fig:ch05-skenario} menguraikan R-01 menjadi sebab, kejadian, dan akibat. Kontrol di sisi
+kiri menurunkan kemungkinan, sedangkan kontrol di sisi kanan membatasi dampak. Pasal 46 Undang-Undang
+(UU) 27/2022 tentang Pelindungan Data Pribadi (PDP) menetapkan pemberitahuan tertulis paling lambat
+$3 \times 24$ jam, seperti dicatat pada Bab 3 \cite{uu27-2022-pdp}.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch05-skenario-r01.tex}
+  \caption{Skenario R-01: sebab, kejadian, akibat, dan letak kontrol}
+  \label{fig:ch05-skenario}
+\end{figure}
+
+\begin{kasus}[title={Kasus Medikara Health: Dari 86 Baris ke 12 Skenario}]
+Misalkan analis risiko memeriksa 86 baris register lama bersama pemilik layanan. Sebanyak 38 baris
+digabung karena menggambarkan skenario yang sama. Sebanyak 21 baris dipindahkan ke daftar temuan
+karena sudah terjadi. Sebanyak 15 baris dikeluarkan karena berada di luar cakupan 12 bulan. Tersisa 12
+skenario, masing-masing dengan satu pemilik.
+
+Fakta dasar menyebut insiden vendor pada 2025 dan kontrol akses yang lemah, tanpa jumlah data dan
+kerugian. Data latihan Bab 1 memakai 1.240 rekam dan biaya langsung Rp23,7 juta, tetapi register
+tidak memakainya sebagai hasil investigasi. Tim menulis ``belum ada bukti'' untuk unsur tersebut.
+Angka tambahan dalam contoh adalah asumsi pembelajaran.
+
+Keputusan ini punya dua konsekuensi. Pertama, komite dapat membaca seluruh register dalam rapat 2 jam,
+sehingga register benar-benar masuk agenda. Kedua, rincian tidak hilang. Baris yang digabung tetap
+terlacak lewat pengenal lama, supaya audit dapat menelusuri asal setiap skenario. Bukti kontrol yang
+dipakai tetap dipisahkan dari rencana. Baris R-01 menulis ``AC-01 sebagian'', bukan ``AC-01 ada''.
+\end{kasus}
+
+\subsection*{Kolom yang diperlukan}
+
+Pertanyaan kemudian muncul: kolom apa saja yang diperlukan? NIST IR 8286 Revisi 1 memberi templat
+register keamanan siber yang dapat dijadikan pembanding \cite{c05-nist-ir8286r1}.
+Tabel~\ref{tab:ch05-kolom} memetakan kolom berkas \berkas{sources/chapter05/risk-register.csv} ke
+elemen templat itu. Bab ini menambahkan kolom bukti, keselamatan, dan kepatuhan, karena ketiganya
+dibutuhkan pada kasus layanan kesehatan. NIST menggabungkan kemungkinan dan dampak sebagai
+\textit{exposure}, sedangkan ISO 31000 menyebutnya tingkat risiko.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Kolom register dan pertanyaan yang dijawab}\label{tab:ch05-kolom}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}p{0.27\textwidth}|}
+    \hline
+    \textbf{Kolom pada berkas} & \textbf{Pertanyaan} & \textbf{Elemen NIST} \\ \hline
+    \texttt{id}, \texttt{kategori}, \texttt{prioritas} & Risiko yang mana? & ID, Risk Category,
+    Priority \\ \hline
+    \texttt{tujuan}, \texttt{sebab}, \texttt{peristiwa}, \texttt{akibat} & Apa yang dapat terjadi? &
+    Risk Description \\ \hline
+    \texttt{kemungkinan}, \texttt{dampak}, \texttt{skor} & Seberapa serius? & Likelihood, Impact,
+    Exposure Rating \\ \hline
+    \texttt{kontrol\_berjalan}, \texttt{bukti}, \texttt{keselamatan}, \texttt{kepatuhan} & Apa yang
+    terbukti? Apa yang tidak boleh ditukar? & Tambahan bab ini \\ \hline
+    \texttt{jenis\_penanganan}, \texttt{rencana}, \texttt{biaya\_rupiah}, \texttt{tenggat} & Apa
+    keputusannya? & Risk Response Type, Cost, Description \\ \hline
+    \texttt{pemilik\_risiko}, \texttt{pemilik\_tindakan}, \texttt{pemberi\_persetujuan},
+    \texttt{risiko\_sisa}, \texttt{status} & Siapa menanggung? Apa sisanya? & Risk Owner, Status \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+Tabel~\ref{tab:ch05-register} menampilkan enam dari 12 baris register contoh di
+\berkas{sources/chapter05/contoh-risk-register-medikara.csv}. Keempat skenario wajib Medikara ada di
+sini: kebocoran lewat vendor (R-01), kontrol akses yang lemah (R-02), gangguan integrasi BPJS
+Kesehatan (R-03), dan laporan berbasis spreadsheet (R-04). Pemilik R-01 mengikuti register Bab 1.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Bagian register kondisi saat ini (misalkan)}\label{tab:ch05-register}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{ID dan pemilik} & \textbf{Skenario} & \textbf{Skor} & \textbf{Kontrol dan pemeriksaan} \\
+    \hline
+    R-01, pemilik Medikara+ & Akses vendor berlebihan menyebabkan pengungkapan data pasien & $3 \times
+    4 = 12$ & AC-01 belum lengkap; cocokkan 120 akun dengan penugasan \\ \hline
+    R-02, pemilik SIMRS & Hak akses lokal berbeda antar-rumah sakit, data berubah tanpa hak & $3 \times
+    4 = 12$ & Persetujuan lokal; periksa persetujuan dan pencabutan \\ \hline
+    R-03, kepala pendaftaran & Integrasi BPJS Kesehatan terhenti, antrean tertunda & $3 \times 3 = 9$ &
+    Antrean manual belum dilatih; uji gangguan integrasi \\ \hline
+    R-04, kepala pelaporan & Versi spreadsheet berbeda, angka salah digabung & $4 \times 3 = 12$ &
+    Rekonsiliasi bulanan; tetapkan pengendalian versi \\ \hline
+    R-05, pemilik layanan & Cadangan belum diuji, pemulihan gagal & $2 \times 5 = 10$ & Cadangan malam;
+    uji pemulihan \\ \hline
+    R-11, direktur pelayanan & Riwayat alergi tidak terbaca lintas rumah sakit, kesalahan obat & $3
+    \times 4 = 12$, keselamatan & Pemeriksaan manual; tinjauan klinis \\ \hline
+  \end{tabularx}
+\end{table}
+
+\section{Matriks Risiko dan Kelemahannya}
+
+Matriks kemungkinan dan dampak membantu diskusi awal. Tim menempatkan skenario pada kisi $5 \times 5$
+dan mengalikan kedua nilai. Angkanya berskala urut. Perkalian skor tidak menghasilkan rupiah atau
+peluang. Risiko keselamatan juga tidak boleh tersamarkan oleh satu nilai gabungan. NIST menyebut
+batas kelompok skor dapat ditetapkan sebagai bagian dari tata kelola organisasi
+\cite{c05-nist-ir8286r1}. Gambar~\ref{fig:ch05-matriks} menempatkan 12 skenario register contoh.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch05-matriks-risiko.tex}
+  \caption{Matriks $5 \times 5$ dengan 12 skenario register contoh (misalkan)}
+  \label{fig:ch05-matriks}
+\end{figure}
+
+Analogi peringkat lomba menjelaskan batasnya. Peserta peringkat kedua tidak berlari dua kali lebih
+cepat daripada peserta peringkat keempat. Dampak 4 juga tidak otomatis dua kali dampak 2. Menurut
+Tabel~\ref{tab:ch05-skala}, dampak 2 mulai dari Rp10 juta, sedangkan dampak 4 mulai dari Rp200 juta.
+Selisihnya 20 kali, bukan 2 kali.
+
+Dua contoh berikut menggunakan asumsi terbuka:
+\begin{enumerate}
+  \item Misalkan kesalahan obat (R-11) mendapat kemungkinan 3 dan dampak 4, sedangkan laporan terlambat
+  (R-04) kemungkinan 4 dan dampak 3. Keduanya berskor 12, tetapi jalur eskalasinya harus berbeda.
+  R-11 masuk ke pimpinan klinis pada hari yang sama. R-04 masuk rencana perbaikan pelaporan.
+  \item Tabel~\ref{tab:ch05-skor-harapan} menaksir peluang dan kerugian tiga skenario sesuai skala.
+  R-01 dan R-04 sama-sama berskor 12, tetapi harapan kerugiannya berbeda sekitar 3,3 kali. R-05 berskor
+  lebih rendah daripada keduanya, tetapi harapan kerugiannya paling besar.
+\end{enumerate}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Skor urut dan harapan kerugian tiga skenario (misalkan)}\label{tab:ch05-skor-harapan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.11\textwidth}|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}p{0.18\textwidth}|}
+    \hline
+    \textbf{Skenario} & \textbf{Peluang per tahun} & \textbf{Kerugian bersyarat} & \textbf{Skor} &
+    \textbf{Harapan per tahun} \\ \hline
+    R-01 akses vendor & 0,2 & Rp500 juta & $3 \times 4 = 12$ & Rp100 juta \\ \hline
+    R-04 laporan spreadsheet & 0,5 & Rp60 juta & $4 \times 3 = 12$ & Rp30 juta \\ \hline
+    R-05 pemulihan gagal & 0,1 & Rp2 miliar & $2 \times 5 = 10$ & Rp200 juta \\ \hline
+  \end{tabularx}
+\end{table}
+
+Kelemahan ini sudah dibahas dalam literatur. Cox menunjukkan empat keterbatasan matriks risiko.
+Resolusinya buruk, sehingga risiko yang jauh berbeda dapat memperoleh peringkat sama. Matriks dapat
+memberi peringkat lebih tinggi pada risiko yang secara kuantitatif lebih kecil. Kategorinya tidak
+mendukung alokasi sumber daya yang efektif. Masukan dan keluarannya juga memerlukan tafsir subjektif
+\cite{c05-cox2008}. Thomas dan rekan meninjau 30 makalah Society of Petroleum Engineers serta beberapa
+standar pada sektor minyak dan gas. Mereka berargumen bahwa struktur matriks menghasilkan keputusan
+yang arbitrer, lalu menganjurkan metode analisis risiko dan keputusan \cite{c05-thomas2014}. Buku
+Hubbard dan Seiersen menjadi bacaan lanjutan untuk pengukuran risiko keamanan siber. Naskahnya
+berbayar, sehingga rinciannya tidak diuraikan di sini \cite{hubbard2023}.
+
+Pertanyaan kemudian muncul: apakah matriks harus ditinggalkan? Penafsiran bab ini: tidak harus.
+Matriks tetap berguna sebagai alat penyaring dan bahan diskusi lintas peran. Empat aturan membuatnya
+lebih aman dipakai:
+\begin{enumerate}
+  \item Definisi skala ditulis sebelum penilaian, dengan periode yang sama untuk semua baris.
+  \item Keselamatan pasien dan kepatuhan dinilai pada kolom terpisah, bukan dilebur ke dalam skor.
+  \item Skor yang sama tidak otomatis berarti anggaran yang sama.
+  \item Skenario dengan skor tinggi atau kerugian besar dihitung lagi sebelum kontrol dibeli.
+\end{enumerate}
+
+NIST SP 800-30 Revisi 1 membagi cara menilai menjadi kualitatif, kuantitatif, dan semi-kuantitatif
+\cite{c05-nist-sp80030r1}. Matriks $5 \times 5$ dengan skala angka termasuk semi-kuantitatif, karena
+angkanya hanya bermakna dalam konteks penilaian itu. Tabel~\ref{tab:ch05-metode} merangkum
+perbandingannya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Perbandingan pendekatan penilaian menurut NIST SP 800-30 Revisi 1}\label{tab:ch05-metode}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Pendekatan} & \textbf{Bentuk nilai} & \textbf{Kekuatan} & \textbf{Keterbatasan} \\ \hline
+    Kualitatif & Kategori bukan angka, seperti rendah, sedang, tinggi & Mudah disampaikan kepada
+    pengambil keputusan & Rentang nilai kecil; hasil antarahli berbeda bila definisi kabur \\ \hline
+    Semi-kuantitatif & Skala atau kelompok angka yang maknanya hanya berlaku dalam konteks itu & Mudah
+    diterjemahkan menjadi kategori; dapat membandingkan secara relatif & Ketelitian turun bila
+    penilaian subjektif tersembunyi \\ \hline
+    Kuantitatif & Angka yang makna dan proporsinya terjaga di dalam dan di luar konteks penilaian &
+    Paling mendukung analisis biaya dan manfaat & Asumsi perlu dijelaskan; biaya keahlian dan alat
+    dapat melebihi manfaat \\ \hline
+  \end{tabularx}
+\end{table}
+
+\section{Gambaran Pengukuran Kuantitatif}
+
+\subsection*{Dua pertanyaan: seberapa sering dan seberapa besar}
+
+Pengukuran kuantitatif memecah risiko menjadi dua pertanyaan: seberapa sering kerugian terjadi, dan
+seberapa besar kerugian bila terjadi. NIST menyebut kerugian per kejadian sebagai Single Loss
+Expectancy (SLE), dan total kerugian setahun sebagai Annualized Loss Expectancy (ALE)
+\cite{c05-nist-ir8286ar1}. Open Factor Analysis of Information Risk (Open FAIR) dari The Open Group
+menyediakan taksonomi faktor risiko dan proses analisis, sehingga pernyataan risiko dapat dibandingkan
+dalam ukuran ekonomi \cite{c05-openfair-bok}. Versi terbarunya, Risk Taxonomy (O-RT) 3.1 dan Risk
+Analysis (O-RA) 2.1, terbit Mei 2025 \cite{c05-openfair-2025}.
+
+Analogi prakiraan cuaca membantu. Peluang hujan 30 persen bukan janji bahwa hari ini akan hujan.
+Angka itu tetap berguna untuk memutuskan apakah payung dibawa. O-RT yang dikutip NIST menyatakan
+analisis risiko bukan ramalan masa depan. Tidak ada yang tahu hasil lemparan dadu berikutnya, tetapi
+mengetahui peluangnya 1 banding 36 tetap berguna \cite{c05-nist-ir8286ar1}.
+
+Dua contoh berikut menggunakan asumsi terbuka:
+\begin{enumerate}
+  \item Misalkan peluang satu insiden vendor setahun 0,2 dan kerugian bersyarat rata-rata Rp500 juta.
+  Kerugian harapan tahunan menjadi $0{,}2 \times$ Rp500 juta $=$ Rp100 juta. Model ini hanya mencakup
+  satu kejadian dan kerugian finansial.
+  \item NIST menjelaskan perkiraan tiga titik: optimistis, paling mungkin, dan pesimistis
+  \cite{c05-nist-ir8286ar1}. Misalkan analis keuangan memberi Rp100 juta, Rp400 juta, dan Rp1,5 miliar.
+  Rata-rata sederhana ketiganya sekitar Rp667 juta. Rumus yang memberi bobot empat pada nilai paling
+  mungkin menghasilkan $(100 + 4 \times 400 + 1.500) / 6$, atau sekitar Rp533 juta. Pada peluang 0,2,
+  harapannya masing-masing sekitar Rp133 juta dan Rp107 juta. Pilihan rumus saja menggeser hasil
+  sekitar Rp27 juta.
+\end{enumerate}
+
+Angka industri tidak dapat langsung dijadikan kerugian bersyarat. Rata-rata 4,99 juta dolar Amerika
+Serikat per pelanggaran pada laporan IBM 2026, yang dikutip Bab 1, berasal dari populasi dan cara
+hitung yang berbeda \cite{ibm-cdb2026}. Angka itu membantu bertanya, bukan mengisi sel register.
+
+\subsection*{Dari rata-rata ke kurva kerugian}
+
+Dua hal pada hitungan ini sering tertukar: harapan kerugian dan kerugian yang akan terjadi.
+Pembagiannya begini. Harapan Rp100 juta per tahun tidak berarti Medikara rugi Rp100 juta setiap
+tahun. Pada sebagian besar tahun, kerugiannya nol. Pada tahun terjadinya insiden, kerugiannya jauh
+lebih besar. Karena itu, rata-rata perlu ditemani sebaran. Tabel~\ref{tab:ch05-sebaran} mengandaikan
+tiga tingkat kerugian. Rata-ratanya tetap Rp500 juta, yaitu jumlah Rp50, Rp150, dan Rp300 juta.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Sebaran kerugian bersyarat R-01 per kejadian (misalkan)}\label{tab:ch05-sebaran}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}p{0.14\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Tingkat} & \textbf{Kerugian} & \textbf{Peluang bersyarat} & \textbf{Hasil kali} &
+    \textbf{Rincian pengandaian} \\ \hline
+    Terbatas & Rp100 juta & 0,5 & Rp50 juta & Penelusuran, pemberitahuan, perbaikan akses \\ \hline
+    Sedang & Rp500 juta & 0,3 & Rp150 juta & Ditambah pengaduan dan pendampingan hukum \\ \hline
+    Berat & Rp1,5 miliar & 0,2 & Rp300 juta & Ditambah sengketa, penghentian vendor, penurunan
+    kunjungan \\ \hline
+  \end{tabularx}
+\end{table}
+
+Sebaran itu menghasilkan \textit{loss exceedance curve}, yaitu kurva peluang kerugian melampaui suatu
+angka. NIST memberi contoh membaca kurva ini: organisasi fiktif memiliki peluang sekitar 38 persen
+kehilangan 5 juta dolar atau lebih setiap tahun \cite{c05-nist-ir8286r1}. Pada R-01, peluang kerugian
+Rp500 juta atau lebih sama dengan 0,2 dikali 0,5, yaitu 10 persen. Peluang kerugian Rp1,5 miliar atau
+lebih sama dengan 0,2 dikali 0,2, yaitu 4 persen. Dengan peluang setelah AC-01 sebesar 0,05, ketiga
+ambang menghasilkan 5, 2,5, dan 1 persen. Gambar~\ref{fig:ch05-kurva} menunjukkan kedua kurva, dan
+hitungannya ada di \berkas{sources/chapter05/kurva-kerugian.csv}.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch05-kurva-kerugian.tex}
+  \caption{\textit{Loss exceedance curve} R-01 sebelum dan sesudah AC-01 (misalkan)}
+  \label{fig:ch05-kurva}
+\end{figure}
+
+Pembacaan kurva punya dua konsekuensi. Pertama, batas pada Tabel~\ref{tab:ch05-appetite} dapat
+diperiksa langsung. Peluang 4 persen melewati batas 2 persen, sedangkan 1 persen berada di dalamnya.
+Kedua, pembicaraan dengan direksi berubah. Pertanyaannya bukan lagi ``risiko ini merah atau kuning'',
+melainkan ``apakah peluang 1 persen untuk kerugian Rp1,5 miliar dapat diterima dengan biaya Rp60 juta
+per tahun''.
+
+\subsection*{Asumsi mana yang mengubah keputusan?}
+
+Misalkan kontrol Rp60 juta per tahun menurunkan peluang dari 0,2 menjadi 0,05. Kerugian harapan menjadi
+Rp25 juta. Pengurangan Rp75 juta memberi manfaat harapan bersih Rp15 juta. Jika peluang awal hanya 0,1,
+manfaat bersih menjadi minus Rp35 juta. Tabel~\ref{tab:ch05-sensitivitas} memperlihatkan ketiga asumsi
+peluang. Rumusnya harapan awal dikurangi harapan sisa, lalu dikurangi biaya kontrol.
+
+\begin{table}[!htb]
+  \centering\footnotesize
+  \caption{Sensitivitas manfaat bersih AC-01 terhadap peluang awal (misalkan)}
+  \label{tab:ch05-sensitivitas}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.09\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Peluang awal} & \textbf{Harapan awal} & \textbf{Harapan sisa} & \textbf{Pengurangan} &
+    \textbf{Biaya} & \textbf{Manfaat bersih} \\ \hline
+    0,1 & Rp50 juta & Rp25 juta & Rp25 juta & Rp60 juta & Minus Rp35 juta \\ \hline
+    0,2 & Rp100 juta & Rp25 juta & Rp75 juta & Rp60 juta & Rp15 juta \\ \hline
+    0,4 & Rp200 juta & Rp25 juta & Rp175 juta & Rp60 juta & Rp115 juta \\ \hline
+  \end{tabularx}
+\end{table}
+
+Tabel itu memberi tiga pembacaan:
+\begin{enumerate}
+  \item Titik impasnya berada pada peluang awal 0,17, karena $(0{,}17 - 0{,}05) \times$ Rp500 juta sama
+  dengan Rp60 juta. Pada peluang 0,2, titik impasnya kerugian bersyarat Rp400 juta.
+  \item Efektivitas kontrol juga asumsi. Bila kontrol hanya menurunkan peluang menjadi 0,1, manfaat
+  bersihnya minus Rp10 juta.
+  \item Ekor sebaran dapat menggeser hasil. Pengandaian Bab 3 memuat denda paling tinggi Rp10 miliar.
+  Bila tingkat Rp10 miliar diberi peluang bersyarat 0,01 dan tingkat terbatas menjadi 0,49, rata-rata
+  bersyaratnya naik menjadi Rp599 juta. Harapan tahunan menjadi Rp119,8 juta, dan manfaat bersih
+  menjadi Rp29,85 juta. Peluang melewati kapasitas Rp5 miliar sebesar 0,2 persen per tahun sebelum
+  kontrol dan 0,05 persen sesudahnya.
+\end{enumerate}
+
+Kewajiban hukum dan keselamatan tetap berlaku meskipun manfaat finansial harapan negatif. Pasal 39 UU
+PDP, yang pada register Bab 3 tercatat sebagai K-01, mengatur pencegahan akses tidak sah
+\cite{uu27-2022-pdp}. Pada peluang 0,1, AC-01 tidak terbayar secara finansial, tetapi kontrol akses
+tetap harus ada. Hitungan yang demikian berguna untuk memilih cara yang paling hemat, bukan untuk
+meniadakan kewajiban. NIST SP 800-30 Revisi 1 juga mengingatkan bahwa ketelitian kuantifikasi menurun
+ketika penilaian subjektif tersembunyi atau ketidakpastiannya besar \cite{c05-nist-sp80030r1}.
+
+\begin{pendalaman}
+Buka \berkas{sources/chapter05/analisis-sensitivitas.csv}. Hitung ulang tiga asumsi peluang. NIST
+menjelaskan simulasi Monte Carlo sebagai pengambilan nilai acak berulang untuk melihat rentang hasil,
+dan menyebut bahwa simulasi tidak selalu diperlukan \cite{c05-nist-ir8286ar1}. Simulasi sederhana
+dapat dibuat di spreadsheet. Kolom A dan
+B berisi \texttt{=RAND()}, lalu kolom C memakai rumus berikut untuk 100, 500, atau 1.500 juta rupiah.
+
+\begin{center}
+  \small\texttt{=IF(A2<0.2,IF(B2<0.5,100,IF(B2<0.8,500,1500)),0)}
+\end{center}
+
+Berkas \berkas{sources/chapter05/simulasi-kerugian.py} menjalankan model yang sama dengan Python.
+Dengan 200.000 tahun simulasi dan benih 2026, peluang awal menghasilkan rata-rata Rp100,8 juta serta
+peluang melampaui ambang 20,13, 10,06, dan 4,04 persen. Hitungan tangan memberi Rp100 juta serta 20,
+10, dan 4 persen. Setelah AC-01, hasilnya rata-rata Rp24,3 juta serta 4,93, 2,42, dan 0,97 persen.
+
+Skrip juga menggabungkan R-01 dengan R-03, yang diandaikan tidak terkait. R-03 berpeluang 0,3 dengan
+kerugian bersyarat rata-rata Rp95 juta, sehingga harapannya Rp28,5 juta. Harapan dapat dijumlahkan
+menjadi Rp128,5 juta. Peluang melampaui tidak dapat dijumlahkan: peluang kerugian gabungan Rp100 juta
+atau lebih sama dengan 32 persen, bukan 50 persen.
+
+Untuk simulasi Monte Carlo, catat distribusi, alasan rentang, jumlah sampel, dan cara mengulang hasil.
+Kurva peluang kerugian melampaui batas bukan jaminan bahwa kerugian maksimum diketahui.
+\end{pendalaman}
+
+\section{Penanganan, Risiko Sisa, dan Pemantauan}
+
+\subsection*{Empat pilihan penanganan}
+
+Organisasi dapat menghindari kegiatan, mengurangi kemungkinan atau dampak, membagi sebagian
+konsekuensi, atau menerima risiko melalui pihak berwenang. NIST IR 8286 Revisi 1 mencatat empat jenis
+tanggapan yang serupa: terima, alihkan, kurangi, dan hindari \cite{c05-nist-ir8286r1}. Kontrak dan
+asuransi tidak memindahkan seluruh akuntabilitas. NIST SP 800-39 menegaskan bahwa pengalihan risiko
+tidak menurunkan kemungkinan kejadian maupun akibatnya \cite{c05-nist-sp80039}. Sebagian akibat juga
+tidak dapat dialihkan, misalnya hilangnya kepercayaan pelanggan \cite{c05-nist-ir8286r1}.
+
+Analogi payung menunjukkan pilihan yang berbeda. Menunda perjalanan menghindari paparan. Payung
+mengurangi dampak hujan. Asuransi membantu biaya tertentu. Tetap berangkat berarti menerima sebagian
+paparan.
+
+Dua contoh menunjukkan mengapa risiko perlu ditinjau kembali:
+\begin{enumerate}
+  \item Misalkan AC-01 dijalankan bulanan dan akses vendor dibatasi. Penyalahgunaan akun sah tetap
+  mungkin. Pemilik layanan memantau akses menyimpang dan menguji sampel hasil peninjauan, misalnya 30
+  dari 120 akun setiap triwulan. Penanganan juga dapat memunculkan risiko baru. NIST mencontohkan MFA
+  yang dapat menurunkan produktivitas ketika pengguna kesulitan memakainya \cite{c05-nist-ir8286r1}.
+  \item Misalkan Medikara mengganti vendor aplikasi. Ketergantungan belum hilang bila data tidak bisa
+  diekspor atau vendor baru memakai subpenyedia yang sama. Dalam migrasi darurat 3 bulan, 84.000 janji
+  temu ikut terdampak.
+\end{enumerate}
+
+Tabel~\ref{tab:ch05-penanganan} merangkum opsi penanganan R-01 dan bukti keputusannya. Pada opsi bagi,
+misalkan premi asuransi Rp40 juta per tahun menanggung 60 persen kerugian. Harapan yang ditanggung sama
+dengan 60 persen dari Rp100 juta, yaitu Rp60 juta, sehingga manfaat bersihnya Rp20 juta.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Opsi penanganan R-01 dan bukti keputusan (misalkan)}\label{tab:ch05-penanganan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.1\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Opsi} & \textbf{Contoh keputusan} & \textbf{Hitungan} & \textbf{Bukti dan risiko sisa} \\
+    \hline
+    Hindari & Tunda pengiriman data berlebih & Tidak dihitung; manfaat layanan ikut hilang & Alur
+    dinonaktifkan; kebutuhan layanan tersisa \\ \hline
+    Kurangi & Akses terbatas dan AC-01, Rp60 juta per tahun & Peluang 0,2 menjadi 0,05; manfaat bersih
+    Rp15 juta & Bukti pencabutan; akun sah tetap berisiko \\ \hline
+    Bagi & Klausul tanggung jawab dan asuransi, Rp40 juta per tahun & Peluang tetap 0,2; manfaat bersih
+    Rp20 juta & Cakupan dan pengecualian kontrak; kepercayaan pasien tidak berpindah \\ \hline
+    Terima & Persetujuan direksi sesuai Bab 2 & Harapan Rp100 juta; peluang 4 persen melewati batas 2
+    persen & Alasan, tenggat, dan kondisi tinjau \\ \hline
+  \end{tabularx}
+\end{table}
+
+Opsi bagi tampak lebih untung Rp5 juta daripada opsi kurangi. Inilah \textit{tradeoff} yang perlu
+dibaca. Asuransi tidak mengubah peluang, sehingga skor tetap 12, dan peluang 4 persen untuk kejadian
+berat tetap melewati batas. K-01 juga belum terpenuhi. Hitungan rupiah saja akan memilih jawaban yang
+keliru. Medikara memilih opsi kurangi lebih dahulu. Asuransi dapat ditambahkan kemudian untuk kerugian
+yang tersisa.
+
+\subsection*{Risiko sisa dinilai setelah kontrol terbukti}
+
+Risiko sisa dinilai setelah kontrol terbukti berjalan. COSO, seperti dikutip NIST, membedakan risiko
+inheren, sasaran risiko sisa, dan risiko sisa aktual. Risiko sisa aktual adalah risiko yang tersisa
+setelah manajemen bertindak, dan semestinya sama dengan atau di bawah sasaran
+\cite{cosoerm2017,c05-nist-ir8286r1}. Tabel~\ref{tab:ch05-sisa} memakai pengandaian kasar: penurunan
+peluang sebanding dengan cakupan kontrol. Dari peluang 0,2 menuju 0,05, penurunan penuhnya 0,15.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Risiko sisa R-01 menurut cakupan bukti AC-01 (misalkan)}\label{tab:ch05-sisa}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.11\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}p{0.14\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|}
+    \hline
+    \textbf{Keadaan} & \textbf{Peluang} & \textbf{Skor} & \textbf{Harapan} & \textbf{Manfaat bersih} \\
+    \hline
+    Risiko saat ini, AC-01 sebagian & 0,2 & $3 \times 4 = 12$ & Rp100 juta & Belum dihitung \\ \hline
+    Bukti pada 1 dari 5 rumah sakit & 0,17 & $3 \times 4 = 12$ & Rp85 juta & Minus Rp45 juta \\ \hline
+    Daftar peninjau 108 dari 120 akun & 0,065 & $2 \times 4 = 8$ & Rp32,5 juta & Rp7,5 juta \\ \hline
+    Sasaran, cakupan penuh & 0,05 & $2 \times 4 = 8$ & Rp25 juta & Rp15 juta \\ \hline
+  \end{tabularx}
+\end{table}
+
+Tabel ini memberi dua pelajaran:
+\begin{enumerate}
+  \item Biaya Rp60 juta sudah keluar pada baris kedua, tetapi skornya tidak berubah. Pada cakupan 20
+  persen, peluang 0,17 masih masuk kemungkinan 3. Kemungkinan baru turun bila cakupan di atas sekitar
+  33 persen. Register yang menulis ``AC-01 sudah dibeli'' pada keadaan ini menyesatkan pembacanya.
+  \item Baris ketiga dan keempat sama-sama berskor 8, tetapi harapan kerugiannya berbeda Rp7,5 juta.
+  Risiko sisa aktual masih di atas sasaran. Selisih itu hanya tampak bila 12 akun yang luput dihitung.
+\end{enumerate}
+
+\subsection*{Pantau dan tinjau lewat KRI}
+
+Pertanyaan kemudian muncul: bagaimana organisasi tahu batas mulai terlewati? Key Risk Indicator (KRI)
+memberi peringatan dini. NIST menyebut ukuran seperti KRI menunjukkan bagian yang melewati toleransi
+atau yang masih berada di dalamnya \cite{c05-nist-ir8286r1}. Misalkan akun vendor melewati masa berlaku
+naik dari 1 menjadi 5 dalam sebulan. Perubahan itu memicu pemeriksaan sebelum insiden terulang. Bab 13
+membedakan KRI, ukuran kinerja, dan ukuran efektivitas kontrol. Tabel~\ref{tab:ch05-kri} memberi
+pengantar yang ambangnya sejalan dengan Bab 13.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Pengantar indikator untuk R-01 (misalkan)}\label{tab:ch05-kri}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.3\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Indikator} & \textbf{Ambang} & \textbf{Tindakan} \\ \hline
+    Akun vendor aktif tanpa pemilik & Nol hijau; lebih dari nol merah & Validasi 1 hari kerja, lalu
+    bekukan \\ \hline
+    Akun melewati masa berlaku per bulan & Nol hijau; lebih dari nol merah & Pemilik Medikara+
+    memeriksa penyebab \\ \hline
+    Cakupan peninjauan AC-01 & Minimal 95 persen hijau; 90 sampai kurang dari 95 kuning; kurang dari
+    90 merah & Periksa kelengkapan daftar akun \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua indikator pertama termasuk KRI. Indikator ketiga mengukur pelaksanaan kontrol, sehingga Bab 13
+menyebutnya Key Control Indicator (KCI). Daftar 108 dari 120 akun menghasilkan cakupan 90 persen dan
+berstatus kuning. Status itu tidak meniadakan merah pada dua indikator pertama, karena keduanya
+menjawab pertanyaan yang berbeda.
+
+\begin{kasus}[title={Kasus Medikara Health: Rp60 Juta untuk AC-01}]
+Misalkan kepala risiko membawa hitungan AC-01 ke komite. Biaya Rp60 juta per tahun berada di bawah
+batas Rp100 juta pada Bab 2, sehingga kepala TI memutuskan dengan masukan pemilik layanan.
+Ringkasannya dilaporkan ke komite setiap triwulan. Pemilik R-01 tetap pemilik Medikara+. Kepala
+operasi TI menjalankan AC-01, staf TI mencabut akun paling lambat 1 hari kerja, dan audit internal
+memeriksa kontrolnya. Direksi menerima risiko sisa R-01, sesuai pembagian hak pada Bab 2.
+
+Keputusan ini punya dua konsekuensi. Pertama, vendor yang mengerjakan sebagian peninjauan tidak
+memindahkan akuntabilitas. Bila 12 akun luput lagi, pemilik Medikara+ yang menjawab, bukan vendor.
+Kedua, anggaran Rp60 juta belum tentu cukup. Bila biaya naik di atas 10 persen, atau di atas Rp66
+juta, keputusan kembali ke pemutus awal sesuai Bab 2. Ketika R-01 dibahas pada Bab 9, kerangka
+risiko pihak ketiga memakai pemilik dan bukti yang sama.
+\end{kasus}
 
 \section{Aktivitas: Risk Appetite dan Risk Register Kondisi Saat Ini}
 
-% TODO
-% Tujuan aktivitas: menetapkan batas risiko yang dapat diterima dan memotret risiko utama organisasi saat ini.
-% Peran dalam tim: analis risiko memimpin; anggota berlatar akuntansi atau keuangan menilai dampak finansial; analis teknologi menilai kemungkinan dan kontrol yang ada; analis regulasi menautkan risiko ke register kewajiban dari Bab 3.
-% Langkah: rumuskan risk appetite untuk tiga sampai empat kategori; identifikasi 10 sampai 15 skenario; nilai dampak dan kemungkinan; catat kontrol yang ada; tetapkan pemilik dan opsi penanganan awal.
-% Luaran dan tonggak capstone: pernyataan risk appetite dan risk register kondisi saat ini; masuk C2.
-% Berkas sources yang direncanakan: sources/chapter05/templat-risk-appetite.md, sources/chapter05/risk-register.xlsx, sources/chapter05/simulasi-monte-carlo.xlsx
+\textbf{Tujuan.} Tim menghasilkan pernyataan \textit{risk appetite} untuk tiga sampai empat kategori
+dan \textit{risk register} kondisi saat ini berisi 10 sampai 15 skenario. Bahasanya dipilih supaya
+dapat langsung dipakai direksi. Tim memakai organisasi nyata dengan izin dan data yang dianonimkan,
+atau kasus Medikara Health.
+
+\textbf{Pembagian peran.} Analis risiko memimpin perumusan skenario dan menjaga konsistensi skala.
+Pemilik konteks memeriksa tujuan, layanan, dan keterbacaan bagi direksi. Analis regulasi menandai
+kewajiban dari register C1. Analis teknologi menilai kemungkinan kejadian dan kontrol yang sudah ada.
+Anggota berlatar akuntansi atau keuangan menilai dampak finansial dan menguji asumsi kerugian.
+
+\textbf{Langkah kerja.}
+\begin{enumerate}
+  \item Baca profil C1, register kewajiban Bab 3, dan celah kapabilitas Bab 4. Pilih periode 12 bulan
+  dan sumber bukti.
+  \item Isi \berkas{sources/chapter05/risk-appetite.md} untuk tiga atau empat kategori, misalnya
+  keselamatan pasien, kerahasiaan data, kelangsungan layanan, dan kepatuhan. Cantumkan arah, ukuran,
+  pemicu, pemilik, dan pemberi persetujuan.
+  \item Sepakati skala di \berkas{sources/chapter05/kriteria-risiko.md} sebelum menilai skenario.
+  \item Salin \berkas{sources/chapter05/risk-register.csv}. Susun 10 sampai 15 skenario dari jalur
+  peristiwa dan jalur aset. Untuk Medikara, skenario wajib mencakup kebocoran data lewat vendor,
+  kontrol akses yang lemah, gangguan integrasi BPJS Kesehatan, dan laporan manajemen yang bergantung
+  pada spreadsheet.
+  \item Bedakan kontrol berjalan dari rencana perbaikan. Tulis ``belum ada bukti'' bila bukti memang
+  belum tersedia.
+  \item Bandingkan dua skenario dengan \berkas{sources/chapter05/analisis-sensitivitas.csv}. Catat
+  asumsi yang mengubah keputusan.
+  \item Pilih tiga prioritas beserta pemilik, jenis penanganan, dan tenggat. Uji satu penyimpangan
+  terhadap pernyataan \textit{risk appetite}.
+  \item Tulis memo satu halaman tentang keputusan yang berubah karena penilaian.
+\end{enumerate}
+
+\textbf{Luaran.} Pernyataan \textit{risk appetite}, \textit{risk register}, dan memo satu halaman.
+Contoh pembanding tersedia di \berkas{sources/chapter05/contoh-risk-register-medikara.csv}. Pada
+contoh itu, prioritas Medikara adalah R-11 karena keselamatan pasien, R-01 karena insiden 2025 dan
+K-01, serta R-05 karena harapan kerugiannya paling besar walaupun skornya 10.
+
+\textbf{Kaitan dengan capstone.} Luaran masuk tonggak C2 Kondisi Saat Ini, yang ditinjau menjelang
+Ujian Tengah Semester. Register dipakai lagi pada Bab 6 untuk menautkan celah kontrol, Bab 8 untuk
+target kapabilitas, Bab 9 untuk risiko pihak ketiga, Bab 10 untuk kelangsungan layanan, dan Bab 13
+untuk ambang KRI.
+
+\textbf{Kriteria penilaian.} Skenario dan bukti 30 persen; batas keputusan 30 persen; penanganan 25
+persen; asumsi 15 persen.
+
+\textbf{Berkas pendukung.} Daftar lengkap ada di \berkas{sources/chapter05/README.md}. Data
+organisasi nyata wajib seizin organisasi dan dianonimkan. Data pribadi pasien atau karyawan tidak
+boleh dipakai.
+
+\textbf{Pendalaman teknis (opsional).} Kuantifikasi dua skenario dengan simulasi Monte Carlo
+sederhana di spreadsheet atau dengan \berkas{sources/chapter05/simulasi-kerugian.py}. Buku Hubbard
+dan Seiersen dapat dipakai sebagai bacaan lanjutan \cite{hubbard2023}. Gambar \textit{loss
+exceedance curve}, lalu bandingkan dengan \berkas{sources/chapter05/kurva-kerugian.csv}.
 
 \section{Ringkasan}
 
-% TODO
+Risiko terkait dengan tujuan. Gangguan teknologi memiliki arti organisasi ketika akibatnya terhadap
+layanan, pasien, kewajiban, dan nilai dijelaskan. ERM menghubungkan penilaian itu dengan strategi.
+Risiko TI pada sistem naik menjadi bahan keputusan lewat register yang digabungkan pada tingkat
+layanan dan organisasi. Risiko juga berbeda dari temuan. Temuan memerlukan penutupan, sedangkan
+risiko memerlukan keputusan.
+
+Konteks dan kriteria mendahului skor. Identifikasi, analisis, evaluasi, dan penanganan memerlukan
+bukti serta komunikasi. Pernyataan \textit{risk appetite} berguna bila memicu tindakan dengan pemilik
+yang jelas. Pernyataan \textit{risk tolerance} menerjemahkannya menjadi batas yang dapat diperiksa,
+seperti nol akun vendor aktif tanpa pemilik. Kapasitas risiko mengingatkan bahwa sebagian akibat
+tidak mampu ditanggung, sedangkan keselamatan dan kewajiban hukum tidak ditukar dengan rupiah.
+
+Register menyimpan skenario dan alasan keputusan. Kontrol yang direncanakan berbeda dari kontrol yang
+telah bekerja. Pemilik risiko tetap bertanggung jawab ketika pelaksana kontrol adalah vendor.
+Register Medikara yang semula 86 baris menjadi 12 skenario yang dapat dibaca komite dalam satu rapat.
+
+Matriks membantu diskusi, sementara model kuantitatif membantu membandingkan biaya dengan asumsi
+kerugian. Keduanya memiliki batas. Skor 12 yang sama dapat menyembunyikan harapan kerugian Rp30 juta
+dan Rp100 juta, atau keselamatan pasien dan laporan terlambat. Hitungan rupiah juga memiliki batas:
+manfaat bersih AC-01 berubah dari Rp15 juta menjadi minus Rp35 juta hanya karena peluang awal berubah
+dari 0,2 menjadi 0,1. Karena itu, asumsi ditulis terbuka dan diuji.
+
+Penanganan memilih antara menghindari, mengurangi, membagi, dan menerima. Risiko sisa baru dinilai
+setelah kontrol terbukti berjalan, lalu dipantau lewat indikator. Pesan utama bab ini sederhana:
+penilaian risiko harus mengubah pilihan dan ditinjau ketika bukti berubah.
 
 \section{Latihan}
 
+\subsection*{Latihan 1: Pernyataan Appetite}
+
+Ubah pernyataan ``Medikara tidak menoleransi kebocoran data'' menjadi pernyataan \textit{risk
+appetite} yang realistis dan dapat diukur. Latihan ini membuktikan bahwa batas baru berguna bila
+terhubung dengan tindakan.
+
 \begin{enumerate}
-  \item Ubah pernyataan ``Medikara tidak menoleransi kebocoran data'' menjadi pernyataan \textit{risk appetite} yang realistis dan dapat diukur.
-  \item Dua risiko sama-sama mendapat skor 12 pada matriks 5 x 5, tetapi hanya satu yang berdampak pada keselamatan pasien. Jelaskan kelemahan matriks risiko dari contoh ini.
-  \item Tentukan opsi penanganan yang paling tepat untuk risiko ketergantungan pada vendor aplikasi Medikara+, beserta alasan dan risiko sisanya.
+  \item Pilih satu alur data vendor pada Medikara+ dan tetapkan cakupannya.
+  \item Tulis arah: apa yang diterima dan apa yang ditolak.
+  \item Tetapkan indikator, ambang, pemilik, dan pemberi persetujuan.
+  \item Uji satu penyimpangan dan catat keputusan yang dihasilkan.
+\end{enumerate}
+
+Tabel~\ref{tab:ch05-lat1-contoh} memuat contoh analisis, dan Tabel~\ref{tab:ch05-lat1-hasil} merupakan
+lembar hasil.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh analisis Latihan 1 (skenario pembelajaran)}\label{tab:ch05-lat1-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Pernyataan} & \textbf{Ukuran (misalkan)} & \textbf{Keputusan} \\ \hline
+    Rendah untuk akses tidak sah; vendor boleh mengakses data bila ada dasar tugas tercatat & Nol akun
+    vendor aktif tanpa pemilik; pencabutan paling lambat 1 hari kerja & 1 dari 120 akun tanpa pemilik
+    (sekitar 0,8 persen): bekukan akun, pemilik Medikara+ memutuskan dalam 1 hari kerja \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar hasil Latihan 1}\label{tab:ch05-lat1-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Pernyataan} & \textbf{Ukuran (misalkan)} & \textbf{Keputusan} \\ \hline
+    \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+\textbf{Pertanyaan analisis.}
+\begin{enumerate}
+  \item Apakah ukuran pada tabel menangkap insiden atau penyebabnya?
+  \item Bila 1 dari 120 akun hanya sekitar 0,8 persen, mengapa statusnya tetap merah?
+  \item Bukti apa menunjukkan aturan dipakai ketika layanan sibuk?
+\end{enumerate}
+
+\subsection*{Latihan 2: Skor Sama}
+
+Dua risiko sama-sama mendapat skor 12 pada matriks $5 \times 5$, tetapi hanya satu yang berdampak
+pada keselamatan pasien. Jelaskan kelemahan matriks risiko dari contoh ini. Latihan ini membuktikan
+bahwa skor yang sama dapat menuntut keputusan yang berbeda.
+
+\begin{enumerate}
+  \item Definisikan skala kemungkinan dan dampak dengan Tabel~\ref{tab:ch05-skala}.
+  \item Bandingkan dampak pada pasien dan pada laporan.
+  \item Taksir peluang dan kerugian bersyarat dengan asumsi terbuka.
+  \item Tetapkan jalur eskalasi untuk tiap skenario.
+\end{enumerate}
+
+Tabel~\ref{tab:ch05-lat2-contoh} memuat contoh analisis, dan Tabel~\ref{tab:ch05-lat2-hasil} merupakan
+lembar hasil.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh analisis Latihan 2 (skenario pembelajaran)}\label{tab:ch05-lat2-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.14\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Skenario (misalkan)} & \textbf{Skor} & \textbf{Akibat utama} & \textbf{Keputusan} \\ \hline
+    R-11 kesalahan obat & $3 \times 4 = 12$ & Cedera pasien; tidak cukup dinyatakan dalam rupiah &
+    Tinjauan klinis pada hari yang sama \\ \hline
+    R-04 laporan terlambat & $4 \times 3 = 12$ & Harapan Rp30 juta per tahun & Perbaikan pelaporan
+    dalam 60 hari \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar hasil Latihan 2}\label{tab:ch05-lat2-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.14\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Skenario (misalkan)} & \textbf{Skor} & \textbf{Akibat utama} & \textbf{Keputusan} \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+\textbf{Pertanyaan analisis.}
+\begin{enumerate}
+  \item Apakah skor yang sama membenarkan anggaran yang sama?
+  \item Informasi apa yang membedakan risiko jarang tetapi berakibat berat dari risiko sering tetapi
+  ringan?
+  \item Pada Tabel~\ref{tab:ch05-skor-harapan}, urutan prioritas mana yang berubah bila memakai harapan
+  kerugian, bukan skor?
+\end{enumerate}
+
+\subsection*{Latihan 3: Ketergantungan Vendor}
+
+Tentukan opsi penanganan yang paling tepat untuk risiko ketergantungan pada vendor aplikasi
+Medikara+, beserta alasan dan risiko sisanya. Latihan ini membuktikan bahwa pilihan penanganan
+bergantung pada bagian risiko yang ingin diubah.
+
+\begin{enumerate}
+  \item Petakan data dan keahlian yang hanya dimiliki vendor.
+  \item Tulis skenario R-10 dengan sebab, kejadian, dan akibat.
+  \item Bandingkan dua opsi dengan biaya, perubahan peluang, dan perubahan kerugian.
+  \item Pilih bukti keberhasilan, pemutus sesuai delegasi Bab 2, dan tanggal tinjau.
+\end{enumerate}
+
+Tabel~\ref{tab:ch05-lat3-contoh} memuat contoh analisis, dan Tabel~\ref{tab:ch05-lat3-hasil}
+merupakan lembar hasil. Misalkan peluang terkunci 0,1 per tahun. Kerugian bersyarat Rp800 juta berasal
+dari migrasi darurat 3 bulan pada 84.000 janji temu, atau sekitar Rp9.500 per janji temu. Harapan
+awalnya Rp80 juta per tahun, dan skornya pada register $2 \times 4 = 8$. Biaya pada tabel adalah biaya
+sekali, bukan biaya per tahun. Bab 9 dan Bab 14 memakai perlakuan yang sama.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh analisis Latihan 3 (skenario pembelajaran)}\label{tab:ch05-lat3-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Opsi (misalkan)} & \textbf{Biaya dan manfaat} & \textbf{Risiko sisa} \\ \hline
+    Uji ekspor dan pendampingan & Rp60 juta sekali, keputusan kepala TI; kerugian bersyarat
+    menjadi Rp300 juta, harapan Rp30 juta & Keahlian dan waktu migrasi \\ \hline
+    Ganti vendor segera & Rp300 juta sekali, keputusan komite; peluang menjadi 0,05, harapan Rp40
+    juta &
+    Data tidak lengkap dan subpenyedia yang sama \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar hasil Latihan 3}\label{tab:ch05-lat3-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Opsi (misalkan)} & \textbf{Biaya dan manfaat} & \textbf{Risiko sisa} \\ \hline
+    \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+\textbf{Pertanyaan analisis.}
+\begin{enumerate}
+  \item Apakah pilihan pada tabel mengurangi kemungkinan atau dampak?
+  \item Berapa manfaat bersih tiap opsi pada tahun pertama, dan mengapa angka itu belum cukup?
+  \item Kondisi apa yang membuat pilihan lain layak?
 \end{enumerate}

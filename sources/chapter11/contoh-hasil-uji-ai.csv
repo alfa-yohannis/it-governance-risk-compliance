@@ -1,0 +1,5 @@
+# Kegunaan: contoh laporan uji AI-01 per kelompok, sama dengan tabel hasil uji pada Bab 11. Cara memakai: ganti angka dengan hasil tim pada kasus sintetis; buang baris komentar ini bila aplikasi tidak mengenalinya. Seluruh angka pengandaian. Baris terakhir adalah total. Kriteria: keseluruhan tidak melebihi pembanding manual 1 persen dan tidak ada kelompok di atas 3 persen.
+kelompok,kasus,kesalahan_kritis_putaran_1,persen_putaran_1,kesalahan_kritis_putaran_2,persen_putaran_2
+di bawah 60 tahun,60,1,1.7,0,0.0
+60 tahun ke atas,40,3,7.5,1,2.5
+seluruh kasus,100,4,4.0,1,1.0

@@ -1,0 +1,29 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  kotak/.style={draw, rounded corners, align=center, text width=3cm, minimum height=1.1cm},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[draw, rounded corners, align=center, text width=10.5cm, minimum height=0.9cm,
+    fill=praditagreen!15] (bp) at (0,0)
+    {\textbf{Badan pengarah}\\Dewan komisaris mengawasi; direksi memutuskan sesuai kewenangan};
+  \node[kotak, fill=blue!8] (fa) at (-3.75,-1.75)
+    {\textbf{Forum arsitektur}\\standar dan pola integrasi};
+  \node[kotak, fill=blue!8] (kp) at (0,-1.75)
+    {\textbf{Komite pengarah TI}\\9 anggota, sampai Rp400 juta};
+  \node[kotak, fill=blue!8] (kr) at (3.75,-1.75)
+    {\textbf{Komite risiko}\\5 anggota, rekomendasi risiko};
+  \node[kotak, fill=orange!12, minimum height=1.5cm] (l1) at (-3.75,-3.85)
+    {\textbf{Lini pertama}\\direktur pelayanan, pemilik layanan, kepala rekam medis, operasi TI};
+  \node[kotak, fill=blue!8, minimum height=1.5cm] (l2) at (0,-3.85)
+    {\textbf{Lini kedua}\\CISO, petugas pelindungan data, kepala risiko, hukum};
+  \node[kotak, fill=green!10, minimum height=1.5cm] (l3) at (3.75,-3.85)
+    {\textbf{Lini ketiga}\\audit internal, asurans independen};
+  \draw[panah] (fa) -- (kp);
+  \draw[panah] (kp) -- (kp |- bp.south);
+  \draw[panah] (kr) -- (kr |- bp.south);
+  \draw[panah] (l1) -- (fa);
+  \draw[panah] (l1.north east) -- (kp.south west);
+  \draw[panah] (l2.north east) -- (kr.south west);
+  \draw[panah] (l2.south) -- ++(0,-0.3) -| (l1.south)
+    node[pos=0.25, below] {{\tiny\mdseries memantau dan menantang}};
+  \draw[panah] (l3.east) -- ++(0.28,0) |- (bp.east);
+\end{tikzpicture}

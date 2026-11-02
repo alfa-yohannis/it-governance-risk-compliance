@@ -1,0 +1,34 @@
+\begin{tikzpicture}[
+  kotak/.style={draw,rounded corners,align=center,minimum height=1cm,
+    font=\scriptsize,fill=blue!8},
+  panah/.style={-{Stealth[length=2mm]},thick}
+]
+  \node[kotak,fill=praditagreen!15,text width=10.4cm,minimum height=0.8cm] (tujuan)
+    at (5.4,4.5) {\textbf{Tujuan layanan}: manfaat dan pihak terdampak};
+
+  \node[kotak,text width=3cm] (g) at (1.8,2.85)
+    {\textbf{Tata kelola}\\{\tiny\mdseries arah dan hak keputusan}};
+  \node[kotak,text width=3cm] (r) at (5.4,2.85)
+    {\textbf{Risiko}\\{\tiny\mdseries ketidakpastian serta batas}};
+  \node[kotak,text width=3cm] (c) at (9,2.85)
+    {\textbf{Kepatuhan}\\{\tiny\mdseries kewajiban yang berlaku}};
+
+  \node[kotak,fill=orange!12,text width=10.4cm] (reg) at (5.4,1.2)
+    {\textbf{Satu register bersama}\\
+     {\tiny\mdseries ID tetap: pemicu P-01, risiko R-01, kontrol AC-01, kewajiban,
+     bukti, dan pemilik}};
+
+  \node[kotak,fill=green!10,text width=10.4cm,minimum height=0.8cm] (bukti) at (5.4,-0.4)
+    {\textbf{Bukti dan asurans}: cakupan dan hasil uji};
+
+  \draw[panah] (g.north |- tujuan.south) -- (g.north);
+  \draw[panah] (r.north |- tujuan.south) -- (r.north);
+  \draw[panah] (c.north |- tujuan.south) -- (c.north);
+  \draw[panah] (g.south) -- (g.south |- reg.north);
+  \draw[panah] (r.south) -- (r.south |- reg.north);
+  \draw[panah] (c.south) -- (c.south |- reg.north);
+  \draw[panah] (reg) -- (bukti);
+  \draw[panah,dashed] (bukti.east) -- ++(0.45,0) |- (tujuan.east);
+  \node[font=\tiny,rotate=90,fill=white,inner sep=1pt] at (11.05,2.05)
+    {dasar peninjauan};
+\end{tikzpicture}

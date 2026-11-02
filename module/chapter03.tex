@@ -1,67 +1,994 @@
+% !TeX root = it-governance-risk-compliance.tex
+% !TeX encoding = UTF-8
 \chapter{Lanskap Regulasi dan Kewajiban Kepatuhan}
 
 \section*{Tujuan Pembelajaran}
 \begin{itemize}
-  \item Mengidentifikasi regulasi dan standar yang mengikat sebuah organisasi berdasarkan sektor, jenis data, dan model bisnisnya.
-  \item Menurunkan pasal regulasi menjadi kewajiban yang dapat diperiksa, lengkap dengan pemilik dan buktinya.
-  \item Membedakan kewajiban hukum, kewajiban kontrak, dan standar sukarela beserta akibat pelanggarannya.
+  \item Mengidentifikasi regulasi dan standar yang mengikat sebuah organisasi
+  berdasarkan sektor, jenis data, dan model bisnisnya.
+  \item Menurunkan pasal regulasi menjadi kewajiban yang dapat diperiksa, lengkap dengan
+  pemilik dan buktinya.
+  \item Membedakan kewajiban hukum, kewajiban kontrak, dan standar sukarela beserta
+  akibat pelanggarannya.
 \end{itemize}
 
 \section{Pendahuluan}
 
-% TODO
-% Cakupan: aturan baru terbit, tetapi tidak ada yang tahu siapa yang harus bertindak; kepatuhan baru dikerjakan menjelang audit.
+Misalkan pada akhir Juli 2026 sebuah tautan berita tentang aturan pelaksana baru beredar di
+grup pesan pimpinan Medikara. Direktur pelayanan mengira urusan itu milik teknologi informasi
+(TI). Kepala TI menunggu penjelasan fungsi hukum. Fungsi hukum menunggu daftar sistem dari TI.
+Tiga bulan kemudian, belum ada yang membaca naskahnya. Pada saat yang sama, aturan rekam medis
+yang lebih lama juga belum tuntas. Unit layanan menganggap penyimpanan merupakan tanggung jawab
+vendor. Vendor menyediakan tempat penyimpanan, sedangkan kontrak tidak menjelaskan bukti
+pencadangan dan pemulihan. Ketika audit datang, kedua pihak menunjukkan dokumen yang berbeda.
+Masalah kepatuhan muncul karena kewajiban belum diterjemahkan menjadi pekerjaan dengan pemilik
+dan bukti.
+
+Analisis dimulai dari bentuk organisasi, sektor, jenis data, lokasi pemrosesan, dan hubungan
+mitra. Satu organisasi dapat menghadapi beberapa lapis kewajiban sekaligus. Medikara memiliki
+36 fasilitas layanan dengan sekitar 1,2 juta kunjungan pasien per tahun, sehingga satu aturan
+dapat menyentuh banyak unit. Kelonggaran pada aturan umum juga tidak otomatis menghapus
+persyaratan yang lebih khusus pada layanan kesehatan. Hasil kerja bab ini adalah register
+kewajiban untuk tonggak C1 capstone. Bab ini membantu menyusun pertanyaan dan register, bukan
+memberi nasihat hukum. Penerapan pada organisasi nyata tetap perlu ditinjau penasihat hukum
+yang berwenang. Bagian yang merupakan tafsir penulis ditandai dengan frasa ``penafsiran bab
+ini''.
+
+Bab ini memakai rujukan utama berikut: Undang-Undang (UU) 27/2022 tentang Pelindungan Data
+Pribadi (PDP), Peraturan Pemerintah (PP) 71/2019 tentang Penyelenggaraan Sistem dan Transaksi
+Elektronik (PSTE), UU 17/2023 tentang Kesehatan beserta PP 28/2024, Peraturan Menteri Kesehatan
+(Permenkes) 24/2022, Peraturan Presiden (Perpres) 82/2022, serta Peraturan Badan Siber dan
+Sandi Negara (BSSN) 1/2024. Kerangka register mengikuti ISO 37301:2021 dari International
+Organization for Standardization (ISO). Naskah asli dan statusnya menjadi dasar register;
+berita hanya membantu menemukan perkembangan yang perlu diverifikasi
+\cite{uu27-2022-pdp,pp71-2019-pste,c03-uu17,pp28-2024-kesehatan,permenkes24-2022,perpres82-2022-iiv,bssn1-2024,c03-iso37301}.
+
+\IfFileExists{../figures/ch03-diagram-konsep.png}{%
+
+Gambar \ref{fig:ch03-ilustrasi-bab} merangkum hubungan komponen dan konsep utama bab ini.
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/ch03-diagram-konsep.png}
+  \caption{Menurunkan sumber hukum menjadi kewajiban yang dapat diuji}
+  \label{fig:ch03-ilustrasi-bab}
+\end{figure}
+}{}
 
 \section{Membaca Regulasi Indonesia}
 
-% TODO
-% Cakupan: hierarki peraturan perundang-undangan menurut UU 12/2011 beserta perubahannya; beda UU, PP, Perpres, peraturan menteri, peraturan lembaga, dan surat edaran; cara memeriksa status berlaku di JDIH BPK dan peraturan.go.id.
+\subsection*{Mulai dari cakupan organisasi}
+
+Pertanyaan pertama bukan ``aturan apa yang terbaru'', melainkan ``organisasi ini siapa''.
+Cakupan organisasi ditentukan oleh sektor, jenis data, lokasi pemrosesan, model bisnis, dan
+mitra. Setiap jawaban membuka atau menutup satu kelompok aturan. Daftar aturan yang disusun
+tanpa langkah ini biasanya menjadi salinan daftar milik organisasi lain.
+
+Cara kerjanya seperti mengurus izin warung makan. Warung di rumah sendiri dan warung dalam
+kantin sekolah sama-sama menjual makanan, tetapi syaratnya tidak sama. Pemilik warung lebih
+dulu menjelaskan apa yang dijual, di mana, dan kepada siapa. Barulah jelas kantor mana yang
+perlu didatangi.
+
+Dua contoh penerapannya:
+\begin{enumerate}
+  \item Pasal 3 ayat (2) Permenkes 24/2022 menyebut klinik, rumah sakit, apotek, dan
+  laboratorium kesehatan sebagai fasilitas pelayanan kesehatan \cite{permenkes24-2022}.
+  Medikara memiliki 5 rumah sakit, 18 klinik pratama, 1 laboratorium rujukan, dan 12 apotek,
+  atau 36 fasilitas. Register yang hanya mencatat rumah sakit melewatkan 31 fasilitas, atau
+  sekitar 86 persen.
+  \item Misalkan klinik mitra memiliki 60 karyawan dan 2 staf TI, seperti contoh Bab 2. Ukuran
+  kecil tidak menghapus kewajiban rekam medis elektronik. Ukuran itu memengaruhi cara
+  pemenuhannya. Pasal 22 Permenkes 24/2022 membuka kerja sama penyimpanan ketika sumber daya
+  fasilitas terbatas.
+\end{enumerate}
+
+Tabel~\ref{tab:ch03-cakupan} menerapkan lima pertanyaan cakupan pada Medikara. Kolom ketiga
+adalah titik awal penelusuran. Tim tetap membuktikan keberlakuannya pada tiap baris register.
+Pada tabel itu, Permenkominfo adalah Peraturan Menteri Komunikasi dan Informatika, dan BPJS
+adalah Badan Penyelenggara Jaminan Sosial.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lima pertanyaan cakupan pada Medikara}\label{tab:ch03-cakupan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Pertanyaan} & \textbf{Keadaan Medikara} & \textbf{Titik awal penelusuran} \\ \hline
+    Sektor & Layanan kesehatan swasta dengan 36 fasilitas & UU 17/2023, PP 28/2024, Permenkes
+    24/2022, Perpres 82/2022 \\ \hline
+    Jenis data & Data kesehatan dari sekitar 1,2 juta kunjungan per tahun; data sekitar 4.800
+    karyawan & UU PDP, terutama data pribadi spesifik \\ \hline
+    Lokasi & Sistem di tiap rumah sakit, rencana modernisasi ke \textit{cloud}, dukungan vendor
+    & PP 71/2019, PP 28/2024, Pasal 56 UU PDP \\ \hline
+    Model bisnis & Medikara+ untuk janji temu dan telekonsultasi, 28.000 janji temu per bulan &
+    PP 71/2019, Permenkominfo 5/2020, Pasal 4 Permenkes 24/2022 \\ \hline
+    Mitra & BPJS Kesehatan, SATUSEHAT, asuransi, klinik mitra, instansi pemerintah & Kontrak,
+    aturan yang mengikat mitra, ketentuan integrasi \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Hierarki peraturan}
+
+Setelah cakupan jelas, tim perlu tahu kedudukan tiap aturan. UU 12/2011 beserta perubahannya
+mengatur pembentukan peraturan. Pasal 7 ayat (1) memuat tujuh tingkat hierarki, dan ayat (2)
+menyatakan kekuatan hukumnya mengikuti hierarki itu. Pasal 8 mengatur jenis lain, termasuk
+peraturan yang ditetapkan menteri dan badan atau lembaga setingkat. Peraturan tersebut diakui
+dan mengikat sepanjang diperintahkan peraturan lebih tinggi atau dibentuk berdasarkan
+kewenangan. Peraturan menteri dan lembaga tidak boleh dianggap tidak mengikat hanya karena
+tidak tercantum pada daftar Pasal 7 \cite{c03-uu12}. Gambar~\ref{fig:ch03-hierarki} menempatkan
+aturan yang dibaca Medikara pada susunan itu. Singkatan ITE, IIV, SPBE, dan POJK pada gambar
+dijelaskan pada seksi masing-masing.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch03-hierarki.tex}
+  \caption{Kedudukan aturan yang dibaca Medikara menurut Pasal 7 dan Pasal 8 UU 12/2011}
+  \label{fig:ch03-hierarki}
+\end{figure}
+
+Membaca regulasi mirip membaca kontrak sewa. Pembacaan memerlukan naskah yang ditandatangani
+dan lampiran perubahan. Ringkasan iklan properti membantu mencari tempat, tetapi tidak cukup
+untuk menyimpulkan kewajiban penyewa.
+
+\subsection*{Memeriksa status di JDIH}
+
+Jaringan Dokumentasi dan Informasi Hukum (JDIH) membantu mencari naskah serta metadata. Tim
+memeriksa nomor, judul, tanggal penetapan, tanggal pengundangan, tanggal berlaku, perubahan,
+pencabutan, dan putusan yang relevan. Halaman metadata dan naskah lengkap perlu dibaca
+bersama. Status belum ditemukan berbeda dari tidak berlaku. Tabel~\ref{tab:ch03-membaca}
+merangkum pemeriksaan sumber hukum.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Pemeriksaan sumber hukum}\label{tab:ch03-membaca}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Unsur} & \textbf{Yang diperiksa} & \textbf{Hasil pencatatan} \\ \hline
+    Identitas & Nomor, tahun, dan judul & Rujukan tepat \\ \hline
+    Waktu & Pengundangan, mulai berlaku, dan ketentuan penutup & Tenggat dengan dasar \\ \hline
+    Status & Perubahan, pencabutan, putusan & Versi yang dipakai \\ \hline
+    Cakupan & Subjek dan kondisi penerapan & Alasan berlaku atau bersyarat \\ \hline
+    Jejak & Sumber resmi dan tanggal akses & Dapat diperiksa ulang orang lain \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh penerapannya:
+\begin{enumerate}
+  \item Bagian menimbang Permenkes 24/2022 menyebut pelaksanaan Pasal 47 ayat (3) UU 29/2004,
+  sedangkan JDIH Badan Pemeriksa Keuangan (BPK) mencatat UU 17/2023 mencabut UU 29/2004. Apakah
+  Permenkes itu gugur? Pasal 453 UU 17/2023 menyatakan peraturan pelaksanaan undang-undang lama
+  tetap berlaku sepanjang tidak bertentangan. Pasal 787 PP 28/2024 menyerahkan rincian rekam
+  medis elektronik kepada peraturan menteri. Pada 31 Oktober 2026, JDIH BPK mencatat Permenkes
+  24/2022 berstatus berlaku. Satu baris register memerlukan empat pemeriksaan ini
+  \cite{permenkes24-2022,c03-uu17,pp28-2024-kesehatan}.
+  \item Publikasi resmi Badan Pengawas Obat dan Makanan (BPOM) menyebut PP 33/2026 diundangkan
+  pada 16 Juli 2026 \cite{bpom-pp33-2026-status}. Basis data nonresmi mencatat judulnya sebagai
+  peraturan pelaksanaan UU PDP dengan tanggal mulai berlaku 16 Januari 2027, atau enam bulan
+  sesudah pengundangan \cite{c03-pp33-nonresmi}. Bila tanggal itu benar, sisa waktu dari 31
+  Oktober 2026 adalah 77 hari. Penelusuran bab ini belum memperoleh naskah resmi. Tim mencatat
+  angka itu sebagai pemantauan, lalu mencari ketentuan penutup pada naskah resmi sebelum
+  memasukkannya sebagai tenggat.
+\end{enumerate}
+
+Surat edaran, panduan teknis, rancangan peraturan, dan undang-undang memiliki fungsi berbeda.
+Dokumen yang masih berupa rancangan dicatat sebagai pemantauan perubahan. Bila naskah resmi
+belum tersedia, tim mencatat ketidakpastian beserta penanggung jawab penelusuran, bukan
+mengarang isi pasal. Dua salinan aturan dengan judul sama juga perlu dibedakan. Tim menyimpan
+nomor, versi, sumber resmi, dan tanggal akses, sehingga kesimpulan tidak bergantung pada nama
+berkas.
+
+\begin{kasus}[title={Kasus Medikara Health: Tautan di Grup Pesan}]
+Misalkan direksi menyelesaikan kebingungan pada awal bab dengan tiga keputusan. Analis regulasi
+menjadi pemilik pemantauan aturan baru. Setiap temuan masuk daftar pemantauan paling lambat 5
+hari kerja, lengkap dengan sumber dan status pembacaannya. Pemilik proses terdampak memutuskan
+pekerjaan lanjutan, bukan analis yang mengisi tabel.
+
+Keputusan ini punya dua konsekuensi. Pertama, tautan berita tidak lagi berhenti di grup pesan.
+Tautan itu menjadi satu baris dengan pemilik dan tanggal. Kedua, kekosongan tetap terlihat.
+Baris PP 33/2026 berstatus ``teks belum diperiksa'', sehingga tidak ada yang keliru
+menganggapnya sudah patuh, dan tidak ada yang keliru menganggapnya belum ada.
+\end{kasus}
 
 \section{Pelindungan Data Pribadi dan Sistem Elektronik}
 
-% TODO
-% Cakupan: UU 27/2022 dan PP 33/2026 dalam garis besar (rincian di Bab 7); UU ITE beserta perubahan terakhir melalui UU 1/2024; PP 71/2019 tentang PSTE: PSE lingkup publik dan privat, pendaftaran, keandalan dan keamanan sistem.
+\subsection*{UU PDP: dipetakan di sini, dirinci di Bab 7}
+
+UU PDP mengatur pemrosesan data pribadi, termasuk dasar pemrosesan dan pertanggungjawaban
+pengendali. Pasal 4 ayat (2) menempatkan data dan informasi kesehatan sebagai data pribadi yang
+bersifat spesifik. Pasal 46 ayat (1) mengatur pemberitahuan tertulis kegagalan pelindungan data
+pribadi paling lambat $3 \times 24$ jam kepada subjek data dan lembaga, dan ayat (2) menetapkan
+isi minimumnya \cite{uu27-2022-pdp}. Bab 7 mengambil rincian pelaksanaan itu. Bab ini cukup
+memetakan pasal ke baris register, seperti pada Tabel~\ref{tab:ch03-peta-pdp}.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Pemetaan UU PDP ke register dan bab yang merincinya}\label{tab:ch03-peta-pdp}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}p{0.14\textwidth}|}
+    \hline
+    \textbf{Pasal} & \textbf{Isi ringkas} & \textbf{Register} & \textbf{Rincian} \\ \hline
+    Pasal 4 & Data kesehatan termasuk data spesifik & Kolom cakupan & Bab 7 \\ \hline
+    Pasal 20 & Dasar pemrosesan & K-16 & Bab 7 \\ \hline
+    Pasal 39 & Mencegah akses tidak sah & K-01 & Bab 6, Bab 7 \\ \hline
+    Pasal 46 & Pemberitahuan tertulis $3 \times 24$ jam & K-04 & Bab 7 \\ \hline
+    Pasal 56 & Transfer ke luar wilayah hukum & K-13 & Bab 7 \\ \hline
+    Pasal 57 & Sanksi administratif & Kolom akibat & Bab ini \\ \hline
+    Pasal 74 & Masa penyesuaian 2 tahun & Catatan status & Bab ini \\ \hline
+  \end{tabularx}
+\end{table}
+
+Status juga mencakup putusan pengadilan. Putusan Mahkamah Konstitusi (MK) Nomor
+151/PUU-XXII/2024, yang diucapkan 30 Juli 2025, menyatakan kata ``dan'' pada Pasal 53 ayat (1)
+huruf b tidak mengikat secara bersyarat sepanjang tidak dimaknai ``dan/atau'' \cite{c07-mk151}.
+Membaca UU PDP tanpa putusan ini menghasilkan kriteria yang keliru. Bab 7 membahas akibatnya
+pada fungsi pelindungan data.
+
+Pertanyaan kemudian muncul: seberapa berat akibatnya bila kewajiban dilewatkan? UU PDP memberi
+dua angka yang perlu dicatat.
+\begin{enumerate}
+  \item Pasal 57 ayat (3) menetapkan denda administratif paling tinggi 2 persen dari pendapatan
+  atau penerimaan tahunan terhadap variabel pelanggaran \cite{uu27-2022-pdp}. Misalkan
+  pendapatan yang menjadi variabel pelanggaran di Medikara adalah Rp500 miliar. Batas atas
+  dendanya Rp10 miliar, sama dengan anggaran modernisasi pengandaian Bab 1. Cara menetapkan
+  variabel itu perlu dibaca pada aturan pelaksana, sehingga angka ini hanya alat diskusi.
+  \item Pasal 74 memberi masa penyesuaian paling lama 2 tahun sejak pengundangan pada 17 Oktober
+  2022. Masa itu berakhir pada 17 Oktober 2024. Insiden vendor Medikara terjadi pada 2025,
+  sehingga alasan ``masih masa penyesuaian'' tidak tersedia. Pembacaan ini adalah penafsiran
+  bab ini.
+\end{enumerate}
+
+\subsection*{PP 71/2019: siapa penyelenggara dan apa kewajibannya}
+
+PP 71/2019 membedakan Penyelenggara Sistem Elektronik (PSE) lingkup publik dan privat pada
+Pasal 2. Lingkup privat antara lain mencakup penyelenggara yang diatur atau diawasi kementerian
+atau lembaga, serta penyelenggara yang memiliki portal, situs, atau aplikasi untuk penawaran
+barang dan jasa. Pasal 6 mewajibkan pendaftaran sebelum sistem mulai digunakan pengguna. Pasal
+24 mewajibkan prosedur dan sarana pengamanan. Pasal 24 ayat (3) juga mewajibkan laporan dalam
+kesempatan pertama kepada aparat penegak hukum serta kementerian atau lembaga terkait, bila
+kegagalan berdampak serius terjadi akibat perbuatan pihak lain. Pasal 100 memuat sanksi
+administratif \cite{pp71-2019-pste}.
+
+Permenkominfo 5/2020 merinci pendaftaran PSE lingkup privat. Pasal 2 ayat (2) huruf b angka 6
+mencakup pemrosesan data pribadi untuk kegiatan operasional melayani masyarakat yang terkait
+transaksi elektronik. Pasal 5 mewajibkan perubahan informasi pendaftaran dilaporkan. Pasal 7
+ayat (2) menetapkan pemutusan akses (\textit{access blocking}) bagi PSE yang tidak mendaftar
+\cite{c03-pm5-2020}. Penafsiran bab ini: Medikara+ termasuk lingkup privat, karena Medikara
+berbadan usaha swasta dan aplikasinya melayani masyarakat secara daring.
+
+UU Informasi dan Transaksi Elektronik (ITE), yaitu UU 11/2008, telah diubah dengan UU 19/2016
+dan UU 1/2024. Undang-undang ini perlu dibaca pada persoalan sistem serta transaksi elektronik
+yang relevan, dalam versi yang sudah memuat perubahan terakhir \cite{c03-uu1-2024}. Tim juga
+tidak menyatukan semua tenggat pelaporan insiden ke dalam satu angka. Notifikasi PDP, pelaporan
+siber, dan pemberitahuan kontrak dapat memiliki penerima serta pemicu yang berbeda.
+
+Satu kejadian kerusakan kendaraan dapat memerlukan laporan kepada pemilik, perusahaan asuransi,
+dan petugas jalan. Menghubungi salah satu pihak tidak otomatis memenuhi kewajiban kepada pihak
+lain.
+
+Dua contoh penerapannya:
+\begin{enumerate}
+  \item Varian uji kontrak, sama dengan Bab 7: misalkan kontrak mewajibkan vendor melapor dalam
+  12 jam, dan vendor memberi tahu kebocoran setelah 30 jam. Kontrak terlewati 18 jam. Bila
+  kegagalan dan penemuan terjadi bersamaan, sisa rentang Pasal 46 tinggal 42 jam dari 72 jam. Bab 7
+  mengingatkan bahwa Pasal 46 ayat (1) tidak secara eksplisit memakai frasa sejak diketahui,
+  sehingga tim mencatat waktu kejadian dan waktu diketahui secara terpisah, lalu fungsi hukum
+  menetapkan batas operasional yang konservatif. Salinan pihak ketiga PP 33/2026 Pasal 114 ayat (2)
+  hanya dipantau, karena naskah resminya belum diperoleh \cite{c03-pp33-nonresmi}.
+  \item Misalkan aplikasi pasien dengan 28.000 janji temu per bulan, atau 336.000 per tahun,
+  memakai pusat data luar negeri. Tim memeriksa aliran data aktual, salinan cadangan, dukungan
+  jarak jauh, serta aturan sektor. Lokasi server utama saja belum menjelaskan seluruh
+  pemrosesan.
+\end{enumerate}
+
+Tabel~\ref{tab:ch03-pdp} merangkum lapisan penilaian data dan sistem.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lapisan penilaian data dan sistem}\label{tab:ch03-pdp}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Lapisan} & \textbf{Pertanyaan} & \textbf{Bukti} \\ \hline
+    UU PDP & Data apa, untuk tujuan apa, dengan dasar apa? & Catatan pemrosesan \\ \hline
+    PSTE dan ITE & Siapa PSE, sudah terdaftar, dan bagaimana sistem dikelola? & Tanda daftar dan
+    dokumen penyelenggaraan \\ \hline
+    Aturan sektor & Apakah ada syarat khusus penyimpanan? & Naskah aturan dan kontrak \\ \hline
+    Perkembangan aturan & Apakah teks baru sudah diverifikasi? & Catatan pemantauan regulasi \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{kasus}[title={Kasus Medikara Health: Siapa PSE untuk Medikara+?}]
+Medikara+ dibuat vendor, tetapi janji temu dan telekonsultasi melayani pasien Medikara. Misalkan
+tanda daftar PSE tercatat atas nama vendor. Misalkan pula pimpinan menyimpulkan seluruh
+kewajiban sudah pindah ke vendor.
+
+Kesimpulan itu mencampur dua pertanyaan. Pertanyaan pertama: siapa yang wajib mendaftar sebagai
+PSE? Pertanyaan kedua: siapa pengendali data pribadi? Tanda daftar vendor belum menjawab
+pertanyaan kedua. Pasal 962 PP 28/2024 menyatakan setiap penyelenggara Sistem Informasi
+Kesehatan merupakan pengendali data pribadi, dan Pasal 946 menyebut fasilitas pelayanan kesehatan
+sebagai salah satu penyelenggaranya \cite{pp28-2024-kesehatan}. Pasal 37 UU PDP juga mewajibkan
+pengendali mengawasi pihak yang terlibat dalam pemrosesan di bawah kendalinya
+\cite{uu27-2022-pdp}. Tim mencatat K-10 untuk pendaftaran dan K-16 untuk dasar pemrosesan, lalu
+meminta tinjauan fungsi hukum atas peran tiap pihak.
+\end{kasus}
 
 \section{Regulasi Sektor Kesehatan}
 
-% TODO
-% Cakupan: UU 17/2023 tentang Kesehatan dan PP 28/2024; Permenkes 24/2022 tentang Rekam Medis: kewajiban rekam medis elektronik, masa simpan, kerahasiaan, dan interoperabilitas dengan SATUSEHAT; aturan Kemenkes lain yang relevan (periksa status terbaru saat menulis isi).
-% Kasus Medikara: integrasi point-to-point ke SATUSEHAT dan BPJS Kesehatan serta SIMRS yang berbeda versi di tiap rumah sakit.
+\subsection*{Rantai tiga tingkat}
+
+Kewajiban rekam medis tersusun dalam tiga tingkat. UU 17/2023 menetapkan pokoknya. PP 28/2024
+menjabarkannya. Permenkes 24/2022 memberi rincian operasional. Pasal 296 ayat (2) UU 17/2023
+menempatkan penyelenggaraan rekam medis sebagai tanggung jawab fasilitas, kecuali praktik
+mandiri. Pasal 779 PP 28/2024 mewajibkan rekam medis diselenggarakan secara elektronik. Pasal
+781 mewajibkan integrasi dengan Sistem Informasi Kesehatan Nasional. Pasal 45 Permenkes 24/2022
+menetapkan batas penyelenggaraan paling lambat 31 Desember 2023, sehingga masa peralihan itu
+sudah lewat \cite{c03-uu17,pp28-2024-kesehatan,permenkes24-2022}. Tabel~\ref{tab:ch03-rantai}
+merangkum rantai tersebut.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Rantai aturan rekam medis dan data kesehatan}\label{tab:ch03-rantai}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.12\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Aturan} & \textbf{Pasal} & \textbf{Isi ringkas} \\ \hline
+    UU 17/2023 & 296 & Tanggung jawab fasilitas; penyimpanan dan kerahasiaan \\ \hline
+    UU 17/2023 & 297 & Dokumen milik fasilitas; pasien berhak mengakses informasinya \\ \hline
+    PP 28/2024 & 779, 781 & Wajib elektronik; integrasi dengan sistem nasional; berlaku juga untuk
+    telemedisin \\ \hline
+    PP 28/2024 & 966 & Pusat data di dalam wilayah Indonesia; syarat jasa pihak lain \\ \hline
+    PP 28/2024 & 972 & Transfer ke luar wilayah hukum: tujuan spesifik, izin Menteri \\ \hline
+    Permenkes 24/2022 & 20 & Keamanan penyimpanan, media tersertifikasi, cadangan \\ \hline
+    Permenkes 24/2022 & 21 & Terhubung dengan platform Kementerian Kesehatan \\ \hline
+    Permenkes 24/2022 & 22 & Kerja sama penyimpanan dengan PSE berfasilitas dalam negeri \\ \hline
+    Permenkes 24/2022 & 39 & Penyimpanan paling singkat 25 tahun sejak kunjungan terakhir \\ \hline
+    Permenkes 24/2022 & 42 & Sanksi administratif atas pelanggaran Pasal 3 \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Empat kewajiban yang sering tertukar}
+
+Empat hal pada rekam medis sering tertukar: retensi, cadangan, interoperabilitas, dan pelaporan.
+Pembagiannya begini. Retensi menjawab berapa lama data dipertahankan. Cadangan membantu memulihkan
+data ketika salinan utama rusak. Interoperabilitas menjawab apakah data sampai dan terbaca di
+sistem tujuan. Pelaporan menjawab siapa perlu diberi tahu ketika ada kejadian. Sistem dapat
+memiliki cadangan harian tetapi gagal mempertahankan rekam medis selama jangka yang diperlukan.
+Interoperabilitas juga berbeda dari pengiriman yang berhasil. Organisasi perlu memeriksa data
+yang dikirim, kesesuaian tujuan, hasil pemrosesan, dan penanganan kegagalan.
+
+Pasal 20 ayat (4) dan (5) Permenkes 24/2022 mewajibkan cadangan data di tempat berbeda dari
+lokasi fasilitas, dilakukan secara periodik, dan dituangkan dalam standar prosedur operasional.
+Pasal 21 mewajibkan rekam medis elektronik terhubung dengan platform yang dikelola Kementerian
+Kesehatan. Pasal 39 menetapkan penyimpanan paling singkat 25 tahun sejak kunjungan terakhir
+pasien \cite{permenkes24-2022}. Bab ini memperlakukan SATUSEHAT sebagai platform yang dimaksud
+Pasal 21. Itu penafsiran bab ini, mengikuti fakta kasus. Dokumentasi teknis SATUSEHAT dipakai
+pada mata kuliah platform; register tata kelola, risiko, dan kepatuhan menjaga keterkaitan
+kewajiban dengan pemilik serta buktinya.
+
+Arsip kontrak yang disimpan selama bertahun-tahun memerlukan indeks dan cara membacanya kembali.
+Menaruh salinan di lemari kedua membantu saat lemari pertama rusak, tetapi tidak menjamin seluruh
+kontrak tetap terbaca sampai akhir masa simpan.
+
+Dua contoh penerapannya:
+\begin{enumerate}
+  \item Misalkan lima rumah sakit memakai versi Sistem Informasi Manajemen Rumah Sakit (SIMRS)
+  berbeda. Satu prosedur retensi korporat perlu diterjemahkan ke bukti konfigurasi dan pemulihan
+  pada tiap sistem. Dengan sekitar 1,2 juta kunjungan per tahun, data 25 tahun mencapai sekitar
+  30 juta catatan kunjungan bila jumlahnya tetap. Pasien yang terakhir berkunjung pada 2 Maret
+  2026 memiliki batas simpan paling singkat sampai 2 Maret 2051.
+  \item Misalkan klinik mengirim 1.000 catatan dan 40 ditolak platform, atau 4 persen. Bukti
+  pengiriman 1.000 catatan belum membuktikan seluruh kewajiban interoperabilitas terlaksana. Bila
+  keadaan yang sama terjadi di 18 klinik, 720 dari 18.000 catatan perlu ditelusuri.
+\end{enumerate}
+
+Tabel~\ref{tab:ch03-kesehatan} merangkum kewajiban rekam medis dan contoh bukti.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Kewajiban rekam medis dan contoh bukti}\label{tab:ch03-kesehatan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.24\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Dasar} & \textbf{Kewajiban ringkas} & \textbf{Bukti contoh} \\ \hline
+    Permenkes Pasal 20 & Penyimpanan aman dan cadangan & Prosedur serta hasil uji pemulihan \\
+    \hline
+    Permenkes Pasal 21 & Interoperabilitas platform kementerian & Rekonsiliasi hasil integrasi \\
+    \hline
+    Permenkes Pasal 22 & Syarat kerja sama penyimpanan & Kontrak, lokasi, rekomendasi, dan akses
+    data \\ \hline
+    Permenkes Pasal 30 & Hak akses ditetapkan pimpinan fasilitas & Daftar hak akses dan hasil
+    peninjauan \\ \hline
+    Permenkes Pasal 39 & Retensi sedikitnya 25 tahun & Jadwal retensi dan uji akses arsip \\ \hline
+    PP 28/2024 Pasal 966 & Pusat data di dalam wilayah Indonesia & Inventaris lokasi data dan
+    cadangan \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Bolehkah disimpan di luar negeri?}
+
+Pertanyaan kemudian muncul: bolehkah rekam medis disimpan di luar negeri? Aturan umum dan aturan
+sektor perlu dibaca bersama. Pasal 21 PP 71/2019 mengizinkan PSE lingkup privat mengelola sistem
+dan data di dalam atau di luar wilayah Indonesia, dengan kewajiban memastikan efektivitas
+pengawasan dan penegakan hukum \cite{pp71-2019-pste}. Ketentuan umum ini tidak otomatis
+membolehkan seluruh rekam medis disimpan di luar negeri, karena aturan kesehatan lebih khusus.
+
+Pasal 781 PP 28/2024 menempatkan rekam medis elektronik sebagai bagian Sistem Informasi Kesehatan
+fasilitas. Untuk penyimpanan data kesehatan, Pasal 966 ayat (2) menyatakan pangkalan data berupa
+pusat data yang berada di dalam wilayah Indonesia. Ayat (5) mengizinkan jasa pihak lain bila
+dilaksanakan di dalam wilayah Indonesia, berdasarkan perjanjian kerja sama, dengan data yang
+dimiliki dan dikendalikan penuh oleh penyelenggara. Pasal 972 mengatur transfer ke luar wilayah
+hukum untuk tujuan spesifik dan terbatas, dengan izin Menteri, serta memenuhi syarat transfer
+data pribadi \cite{pp28-2024-kesehatan}. Pasal 22 Permenkes 24/2022 menambahkan kerja sama
+penyimpanan dengan PSE berfasilitas dalam negeri, dalam hal fasilitas memiliki keterbatasan sumber
+daya, dengan rekomendasi unit data Kementerian Kesehatan \cite{permenkes24-2022}.
+
+Gambar~\ref{fig:ch03-lokasi-data} menyusun bacaan itu sebagai pertanyaan desain. Urutannya adalah
+penafsiran bab ini, termasuk perlakuan salinan cadangan sebagai bagian dari penyimpanan. Pasal 966
+tidak menyebut lokasi cadangan secara tersendiri. Hubungan aturan umum dan aturan khusus pada kasus
+nyata tetap perlu dinilai penasihat hukum.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch03-lokasi-data.tex}
+  \caption{Pertanyaan desain untuk penyimpanan rekam medis oleh pihak lain (penafsiran bab)}
+  \label{fig:ch03-lokasi-data}
+\end{figure}
+
+\begin{kasus}[title={Kasus Medikara Health: Satu Data, Beberapa Lapis Kewajiban}]
+Medikara memiliki integrasi SATUSEHAT, aplikasi pasien buatan vendor, dan sistem rumah sakit yang
+berbeda versi. Misalkan vendor menawarkan penyimpanan baru di luar negeri seharga Rp420 juta per
+tahun. Biaya penyimpanan saat ini Rp600 juta per tahun, sehingga penghematannya Rp180 juta, atau
+30 persen. Nilai kontrak Rp420 juta melewati batas Rp400 juta pada Bab 2, sehingga keputusan naik
+ke direksi.
+
+Tim memeriksa jenis data, dasar pemrosesan dan transfer, ketentuan penyimpanan rekam medis, akses
+jarak jauh, cadangan, serta syarat kontrak. Pada Gambar~\ref{fig:ch03-lokasi-data}, usulan berhenti
+pada pertanyaan pertama. Penawaran harga yang lebih rendah tidak cukup menjadi alasan menerima
+desain sebelum kewajiban sektor dinilai. Direksi menerima dua pilihan: tawar ulang dengan fasilitas
+dalam negeri, atau pisahkan data bukan rekam medis yang memang boleh dipindahkan setelah dinilai.
+Keduanya tercatat sebagai keputusan beserta \textit{tradeoff}-nya.
+\end{kasus}
 
 \section{Keamanan Siber Nasional dan Infrastruktur Informasi Vital}
 
-% TODO
-% Cakupan: peran BSSN; Perpres 82/2022 tentang Pelindungan Infrastruktur Informasi Vital dan posisi sektor kesehatan; Peraturan BSSN 1/2024 tentang Pengelolaan Insiden Siber; status RUU Keamanan dan Ketahanan Siber (periksa ulang).
+BSSN memiliki peran pada keamanan siber nasional. Perpres 82/2022 mendefinisikan Infrastruktur
+Informasi Vital (IIV) sebagai sistem elektronik yang menunjang sektor strategis, dan gangguannya
+berdampak serius terhadap kepentingan umum, pelayanan publik, pertahanan dan keamanan, atau
+perekonomian nasional. Pasal 4 ayat (1) huruf e memasukkan kesehatan sebagai sektor IIV. Status
+sektor berbeda dari penetapan sistem tertentu sebagai IIV. Pasal 6 mewajibkan setiap penyelenggara
+sistem elektronik lingkup sektor IIV melakukan identifikasi paling sedikit 1 kali dalam 1 tahun dan
+melaporkan hasilnya. Kementerian atau lembaga memverifikasi laporan itu, lalu menetapkan sistem dan
+penyelenggaranya \cite{perpres82-2022-iiv}.
+
+Peraturan BSSN 1/2024 mencakup tim tanggap insiden, pelaporan, penanganan, dan kesiapan insiden
+siber. Pasal 7 dan Pasal 8 meminta penyelenggara IIV dan penyelenggara sistem elektronik lainnya
+membentuk tim tanggap insiden organisasi. Pasal 15 ayat (3) membatasi insiden yang dilaporkan pada
+insiden yang paling sedikit berisiko tinggi. Pasal 15 ayat (4) menetapkan isi minimum: kontak
+pelapor, deskripsi, kronologi, dan dampak serangan. Pasal 15 ayat (5) menetapkan batas $1 \times 24$
+jam setelah ditemukan bila insiden terjadi pada IIV \cite{bssn1-2024}. Bukti komunikasi, kronologi,
+klasifikasi, dan tindakan pemulihan perlu dipelihara.
+
+Masuk kawasan rawan banjir tidak berarti setiap bangunan memiliki tingkat risiko yang sama. Pemetaan
+dan penetapan objek tertentu menentukan tindakan yang lebih khusus, sementara seluruh kawasan tetap
+memerlukan kesiapsiagaan.
+
+Tim tidak menyimpulkan bahwa semua server rumah sakit otomatis berstatus IIV. Bab ini juga tidak
+mengasumsikan sistem Medikara sudah ditetapkan, karena fakta kasus tidak menyebutnya. Register
+memisahkan kewajiban identifikasi pada lingkup sektor dan kewajiban khusus setelah penetapan. Status
+rancangan undang-undang keamanan siber dicatat dalam daftar pemantauan bila belum tersedia naskah
+yang telah diundangkan.
+
+Dua contoh penerapannya:
+\begin{enumerate}
+  \item Misalkan sistem pendaftaran berhenti selama dua jam di 1 dari 18 klinik. Tim
+  mengklasifikasikan dampak dan memeriksa jalur pelaporan yang sesuai, tanpa menganggap semua
+  gangguan memiliki kewajiban yang identik. Hasil klasifikasi di bawah risiko tinggi tidak masuk
+  Pasal 15 ayat (3), tetapi tetap dicatat sebagai bukti penilaian.
+  \item Misalkan layanan klinis lintas 5 rumah sakit dan sekitar 640 dokter bergantung pada satu
+  layanan identitas. Ketergantungan itu masuk bahan identifikasi tahunan Pasal 6 dan penilaian
+  status sistem.
+\end{enumerate}
+
+Tabel~\ref{tab:ch03-siber} merangkum pemisahan status dan respons insiden.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Pemisahan status dan respons insiden}\label{tab:ch03-siber}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.27\textwidth}|}
+    \hline
+    \textbf{Aspek} & \textbf{Pemeriksaan} & \textbf{Pemilik bukti} \\ \hline
+    Sektor kesehatan & Cakupan Pasal 4 Perpres 82/2022 & Analis regulasi \\ \hline
+    Sistem tertentu & Identifikasi tahunan dan keputusan penetapan & Pemilik sistem \\ \hline
+    Insiden siber & Risiko, jalur, penerima laporan & Koordinator insiden \\ \hline
+    Kegagalan PDP & Kewajiban notifikasi tersendiri & Fungsi privasi dan hukum \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Satu kejadian, beberapa jam}
+
+Dua hal pada insiden sering tertukar: insiden siber dan kegagalan pelindungan data pribadi.
+Pembagiannya begini. Insiden siber menurut Pasal 1 Perpres 82/2022 mengganggu atau mengancam
+berjalannya sistem elektronik. Kegagalan pelindungan data pribadi menurut Penjelasan Pasal 46 UU PDP
+adalah kegagalan melindungi kerahasiaan, integritas, dan ketersediaan data pribadi. Kedua pengertian
+dapat bertemu pada satu kejadian, tetapi pemicu, penerima, dan batas waktunya berbeda
+\cite{perpres82-2022-iiv,uu27-2022-pdp}.
+
+Gambar~\ref{fig:ch03-jam-pelaporan} menyusun batas waktu itu pada satu garis. Skala garis tidak
+proporsional. Asumsinya sama dengan contoh Bab 7: kegagalan terjadi dan ditemukan bersamaan pada Jumat
+pukul 20.00 WIB. Tabel~\ref{tab:ch03-jam} memuat dasar tiap batas.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch03-jam-pelaporan.tex}
+  \caption{Batas waktu pelaporan yang berbeda pada satu kejadian (angka kontrak adalah pengandaian)}
+  \label{fig:ch03-jam-pelaporan}
+\end{figure}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Dasar, pemicu, dan penerima tiap batas waktu}\label{tab:ch03-jam}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Dasar} & \textbf{Batas} & \textbf{Pemicu} & \textbf{Dari dan kepada} \\ \hline
+    Kontrak mitra (K-12) & 1 jam (misalkan) & Gangguan layanan & Medikara ke mitra asuransi \\ \hline
+    Kontrak vendor (K-05) & 12 jam (misalkan) & Insiden pada vendor & Vendor ke Medikara \\ \hline
+    Perpres 82/2022 Pasal 13; BSSN 1/2024 Pasal 15 & $1 \times 24$ jam & Insiden pada sistem yang
+    ditetapkan IIV & Tim tanggap organisasi ke tim sektoral, tembusan tim nasional \\ \hline
+    UU PDP Pasal 46 & $3 \times 24$ jam & Kegagalan pelindungan data pribadi & Pengendali ke subjek
+    data dan lembaga \\ \hline
+    PP 71/2019 Pasal 24 ayat (3) & Kesempatan pertama & Kegagalan berdampak serius akibat pihak lain
+    & PSE ke aparat penegak hukum dan kementerian atau lembaga \\ \hline
+    POJK Pasal 31 & 5 hari kerja & Kejadian kritis pada TI mitra & Mitra asuransi ke OJK \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{kasus}[title={Kasus Medikara Health: Satu Insiden Vendor, Beberapa Jam}]
+Kasus ini varian uji kontrak yang juga dipakai Bab 7, bukan kronologi insiden 2025. Misalkan vendor
+Medikara+ menemukan akun dukungan dipakai di luar penugasan pada Jumat pukul 20.00
+WIB, tetapi baru memberi tahu Medikara setelah 30 jam, yaitu Minggu pukul 02.00 WIB. Kontrak 12 jam
+sudah terlewati 18 jam. Dengan asumsi Bab 7, batas Pasal 46 berakhir Senin pukul 20.00 WIB, sehingga
+tersisa 42 jam. Koordinator insiden membuka tiga baris: K-04 untuk pemberitahuan, K-05 untuk
+pelanggaran kontrak, dan K-09 untuk penilaian insiden siber.
+
+Tim tidak memakai satu laporan untuk semua penerima. Pemberitahuan kepada pasien memuat data yang
+terungkap, kapan dan bagaimana terungkapnya, serta penanganannya. Laporan insiden siber memuat kontak,
+deskripsi, kronologi, dan dampak serangan. Data latihan Bab 1 memberi peringatan tambahan: akun dukungan
+memanggil data selama 8 malam dan baru diketahui pada hari ke-11. Rentang 72 jam setara 3 hari, sehingga
+tim mencatat waktu kejadian dan waktu diketahui, lalu meminta fungsi hukum menetapkan batas operasional
+konservatif.
+\end{kasus}
 
 \section{Regulasi yang Mengikat Mitra: OJK dan SPBE}
 
-% TODO
-% Cakupan: POJK 4/POJK.05/2021 bagi mitra asuransi sebagai lembaga jasa keuangan nonbank; kewajiban mitra yang mengalir ke Medikara lewat kontrak; Perpres 95/2018 dan evaluasi SPBE bagi mitra rumah sakit pemerintah (arsitektur SPBE dibahas rinci di mata kuliah IT40513).
-% Kasus Medikara: mitra asuransi dan layanan kesehatan karyawan perusahaan dalam rencana ekosistem.
+Otoritas Jasa Keuangan (OJK) mengatur lembaga jasa keuangan sesuai cakupan peraturannya. Peraturan OJK
+(POJK) 4/POJK.05/2021 membahas manajemen risiko penggunaan TI oleh Lembaga Jasa Keuangan Nonbank (LJKNB).
+Pasal 2 menyebut perusahaan asuransi sebagai salah satu LJKNB. Pasal 21 mewajibkan LJKNB tetap bertanggung
+jawab atas manajemen risiko, mengawasi penyedia jasa TI, dan memberi akses kepada auditor serta OJK. Pasal
+31 mewajibkan laporan kejadian kritis paling lambat 5 hari kerja setelah diketahui \cite{c03-pojk4}.
+Medikara perlu memeriksa ketentuan yang relevan bagi mitra asuransi dan kewajiban yang diteruskan melalui
+kontrak. Rumah sakit tidak otomatis menjadi lembaga jasa keuangan karena menerima pembayaran klaim.
+
+Sistem Pemerintahan Berbasis Elektronik (SPBE) menjadi konteks bagi mitra instansi pemerintah berdasarkan
+Perpres 95/2018. Pasal 70 menetapkan pemantauan dan evaluasi SPBE untuk mengukur kemajuan dan meningkatkan
+kualitas SPBE di instansi pusat dan pemerintah daerah. Sasaran evaluasi itu adalah instansi, bukan rumah sakit swasta
+\cite{perpres95-2018-spbe}. Kerja sama dapat menuntut tata cara integrasi, keamanan, dan bukti tertentu.
+Arsitektur SPBE dibahas pada IT40513. Bab ini membedakan kewajiban langsung organisasi dari persyaratan
+kerja sama yang mengalir lewat kontrak. Gambar~\ref{fig:ch03-aliran-mitra} memperlihatkan pembedaan itu.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch03-aliran-mitra.tex}
+  \caption{Aturan yang mengikat langsung dan syarat yang mengalir lewat kontrak}
+  \label{fig:ch03-aliran-mitra}
+\end{figure}
+
+Pemasok makanan kepada sekolah perlu memenuhi aturan usahanya sendiri dan spesifikasi kontrak sekolah.
+Menjadi pemasok tidak mengubahnya menjadi sekolah, tetapi kontrak dapat mensyaratkan mutu dan jadwal yang
+lebih ketat.
+
+Dua contoh penerapannya:
+\begin{enumerate}
+  \item Misalkan mitra asuransi meminta laporan gangguan dalam satu jam. Tim mencatatnya sebagai kewajiban
+  kontrak dan memeriksa apakah organisasi mampu memenuhinya. Misalkan dari 12 gangguan terakhir, hanya 2 yang
+  dilaporkan dalam satu jam, atau sekitar 17 persen. Status barisnya ``tidak memenuhi'', dan tim membawa
+  pilihan kepada pemilik mitra: perbaiki deteksi atau tawar ulang klausul.
+  \item Misalkan rumah sakit pemerintah meminta format bukti integrasi tertentu sebagai bagian dari 3
+  dokumen kerja sama. Tim menelusuri dasar permintaan dan memasukkannya pada cakupan kerja sama, bukan
+  menganggap semua aturan internal mitra langsung berlaku.
+\end{enumerate}
+
+\subsection*{Hukum, kontrak, dan standar sukarela}
+
+Perbedaan tersebut memengaruhi pihak yang berwenang mengubah syarat dan akibat pelanggarannya. Kewajiban
+hukum tidak dapat dihapus melalui kesepakatan vendor. Syarat kontrak dapat lebih ketat daripada minimum hukum,
+selama tidak bertentangan dengan ketentuan yang mengikat. Standar sukarela mengikat karena organisasi memilihnya,
+lalu berubah menjadi kewajiban kontrak bila disebut dalam perjanjian. Tabel~\ref{tab:ch03-mitra} merangkum jenis
+kewajiban dalam kerja sama.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Jenis kewajiban dalam kerja sama}\label{tab:ch03-mitra}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Jenis} & \textbf{Sumber} & \textbf{Yang dapat mengubah} & \textbf{Akibat utama} \\ \hline
+    Hukum langsung & Aturan yang mencakup Medikara & Pembentuk aturan atau putusan & Sanksi sesuai aturan \\
+    \hline
+    Kontrak & Perjanjian mitra atau vendor & Para pihak & Akibat perjanjian \\ \hline
+    Standar sukarela & Pilihan organisasi & Organisasi & Komitmen yang ditetapkan; sertifikat dapat hilang \\
+    \hline
+    Syarat standar di kontrak & Standar disebut pada perjanjian & Para pihak & Menjadi kewajiban kontrak \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+Akibat pelanggaran juga berbeda besarnya. Tabel~\ref{tab:ch03-akibat} memuat akibat yang tertulis pada aturan.
+Baris kontrak dan standar adalah pengandaian, karena isinya mengikuti perjanjian dan skema sertifikasi
+masing-masing.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Akibat pelanggaran menurut sumber kewajiban}\label{tab:ch03-akibat}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Sumber} & \textbf{Akibat} \\ \hline
+    UU PDP Pasal 57 & Peringatan tertulis, penghentian sementara pemrosesan, penghapusan data, denda paling
+    tinggi 2 persen \\ \hline
+    UU PDP Pasal 67 & Pidana bagi setiap orang yang sengaja dan melawan hukum, misalnya mengungkapkan data
+    bukan miliknya \\ \hline
+    PP 71/2019 Pasal 100 & Teguran tertulis, denda administratif, penghentian sementara, pemutusan akses,
+    dikeluarkan dari daftar \\ \hline
+    Permenkominfo 5/2020 Pasal 7 & Pemutusan akses bagi PSE yang tidak mendaftar \\ \hline
+    Permenkes 24/2022 Pasal 42 & Teguran tertulis, rekomendasi pencabutan atau pencabutan status akreditasi \\
+    \hline
+    Kontrak mitra (misalkan) & Denda layanan, kewajiban perbaikan, penghentian kerja sama \\ \hline
+    Standar sukarela (misalkan) & Temuan audit sertifikasi, pembekuan atau pencabutan sertifikat \\ \hline
+  \end{tabularx}
+\end{table}
 
 \section{Register Kewajiban Kepatuhan}
 
-% TODO
-% Cakupan: struktur register (sumber, pasal, kewajiban, pemilik, bukti, status); cara menurunkan pasal menjadi kewajiban yang dapat diperiksa; prinsip ISO 37301 tentang sistem manajemen kepatuhan; beda kewajiban hukum, kontrak, dan sukarela.
-% Pendalaman teknis: menautkan kewajiban ke persyaratan sistem yang dapat diuji (logging, enkripsi, masa simpan) dan ke backlog tim pengembang.
+Register kewajiban menerjemahkan aturan menjadi siapa melakukan apa, pada kondisi atau tenggat apa, dan bukti
+apa yang menunjukkan pelaksanaannya. Satu pasal dapat menghasilkan beberapa baris. Satu kontrol juga dapat
+mendukung beberapa kewajiban, tetapi masing-masing kewajiban tetap perlu dinilai dalam cakupannya. Urutan kerjanya
+mengikuti Gambar~\ref{fig:ch03-ilustrasi-bab}: cakupan organisasi, naskah dan status resmi, register kewajiban,
+kontrol dan pemilik, pemeriksaan bukti, lalu status kepatuhan.
+
+ISO 37301:2021 memberi kerangka sistem manajemen kepatuhan untuk mengidentifikasi dan mengelola kewajiban serta
+memperbaiki pelaksanaan. Istilah \textit{compliance obligations} pada standar itu mencakup yang wajib dan yang
+dipilih organisasi. Register adalah salah satu alat operasionalnya, bukan pengganti keseluruhan sistem manajemen
+\cite{c03-iso37301}. Medikara memakainya sebagai acuan cara kerja, bukan sebagai sertifikat yang dikejar pada C1.
+
+Daftar tugas pindah kantor menjadi berguna ketika setiap tugas memiliki penanggung jawab, tenggat, dan tanda
+penerimaan. Daftar judul pekerjaan tanpa pemilik hanya memindahkan kebingungan ke dokumen.
+
+Dua contoh penerapannya:
+\begin{enumerate}
+  \item K-01 menurunkan Pasal 39 UU PDP tentang pencegahan akses tidak sah. Tim menautkannya ke kontrol AC-01 dan
+  risiko R-01, supaya perubahan bukti diperiksa pada tiga artefak. Bab 1 sudah memberi datanya: 6 dari 30 akun
+  vendor sampel belum dicabut, dan peninjauan berikutnya mencabut 24 dari 120 akun.
+  Gambar~\ref{fig:ch03-alur} memperlihatkan jejak baris itu.
+  \item Misalkan register contoh berisi 16 kewajiban. Sebanyak 7 baris belum memiliki bukti, atau sekitar 44
+  persen. Tim melaporkan 7 baris belum diverifikasi, bukan menyimpulkan 9 lainnya otomatis patuh hanya karena
+  kolomnya terisi.
+\end{enumerate}
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch03-alur.tex}
+  \caption{Jejak satu baris register dari pasal sampai status}
+  \label{fig:ch03-alur}
+\end{figure}
+
+\subsection*{Satu pasal, beberapa baris}
+
+Bagaimana satu pasal diurai? Tim memisahkan setiap tindakan wajib, lalu menulis pihak, tindakan, kondisi, tenggat,
+dan bukti. Cara mengujinya sederhana. Pemeriksa yang tidak menulis baris itu harus dapat menyimpulkan status tanpa
+menebak maksud penulis. Tabel~\ref{tab:ch03-uraian} mengurai Pasal 20 ayat (4) dan (5) Permenkes 24/2022. Satu
+kalimat ``wajib memiliki cadangan data'' menghasilkan tiga hal yang harus dapat diuji.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Uraian Pasal 20 ayat (4) dan (5) Permenkes 24/2022 menjadi unsur yang dapat diuji}
+  \label{tab:ch03-uraian}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.22\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Unsur pasal} & \textbf{Tindakan yang diuji} & \textbf{Bukti} \\ \hline
+    Tempat berbeda & Cadangan berada di luar lokasi tiap fasilitas & Inventaris lokasi cadangan per fasilitas \\
+    \hline
+    Periodik & Cadangan berjalan sesuai jadwal & Catatan pekerjaan cadangan dan uji pemulihan \\ \hline
+    Prosedur tertulis & Prosedur ditetapkan tiap fasilitas & Standar prosedur operasional yang disahkan \\ \hline
+  \end{tabularx}
+\end{table}
+
+Pasal itu menyebut ``masing-masing'' fasilitas. Misalkan satu prosedur dan satu uji pemulihan per fasilitas per
+triwulan. Medikara memerlukan 36 prosedur atau satu prosedur korporat dengan lampiran tiap fasilitas, serta 144 uji
+dalam setahun. Angka 144 menjadi dasar menilai beban kerja 52 staf TI, sehingga kewajiban tidak berhenti sebagai
+kalimat register.
+
+\subsection*{Status dan pemilik}
+
+Status perlu dibedakan: terverifikasi memenuhi, memenuhi sebagian, tidak memenuhi, belum diverifikasi, serta tidak
+berlaku dengan alasan. Status hijau tanpa bukti dan tanggal penilaian tidak membantu auditor. Kolom pemilik harus
+menunjuk fungsi yang menerima tanggung jawab, bukan hanya nama analis yang mengisi tabel. Tabel~\ref{tab:ch03-status}
+memuat arti tiap status dan sebarannya pada register contoh.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lima status pada register contoh berisi 16 kewajiban}\label{tab:ch03-status}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.11\textwidth}|}
+    \hline
+    \textbf{Status} & \textbf{Arti} & \textbf{Jumlah} \\ \hline
+    Terverifikasi memenuhi & Bukti diperiksa, cakupan dan tanggal jelas & 2 \\ \hline
+    Memenuhi sebagian & Sebagian cakupan terbukti, sisanya tertulis & 4 \\ \hline
+    Tidak memenuhi & Bukti menunjukkan kewajiban tidak terpenuhi & 2 \\ \hline
+    Belum diverifikasi & Bukti belum ada atau belum diperiksa & 7 \\ \hline
+    Tidak berlaku & Tidak mencakup organisasi, dengan alasan tertulis & 1 \\ \hline
+  \end{tabularx}
+\end{table}
+
+Baris ``tidak berlaku'' pun memerlukan alasan. K-15 mencatat Pasal 31 POJK 4/POJK.05/2021 tidak berlaku langsung,
+karena Medikara bukan LJKNB. Alasan itu dapat diperiksa dan dapat berubah bila bentuk usaha berubah.
+Tabel~\ref{tab:ch03-register} merangkum contoh register yang dapat diuji. Berkas lengkapnya ada di
+\berkas{sources/chapter03/register-kewajiban.csv}.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh register yang dapat diuji}\label{tab:ch03-register}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{ID dan dasar} & \textbf{Pemilik dan tindakan} & \textbf{Bukti serta status} \\ \hline
+    K-01, UU PDP Pasal 39 & Pemilik Medikara+ mencegah akses tidak sah & Hasil AC-01; memenuhi sebagian \\ \hline
+    K-02, Permenkes Pasal 20 & TI dan rekam medis menguji cadangan & Laporan uji; belum diverifikasi \\ \hline
+    K-03, Permenkes Pasal 39 & Rekam medis menjaga retensi & Jadwal retensi; memenuhi sebagian \\ \hline
+    K-04, UU PDP Pasal 46 & Pengendali menyiapkan pemberitahuan & Kronologi dan salinan; belum diverifikasi \\
+    \hline
+    K-05, kontrak vendor & Pengelola vendor menagih laporan 12 jam & Rekam komunikasi; tidak memenuhi \\ \hline
+    K-15, POJK Pasal 31 & Analis regulasi mencatat alasan & Pasal 2 POJK; tidak berlaku \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Batas bukti sertifikat}
+
+Sertifikat sering dipakai sebagai jalan pintas. ISO/IEC 27001:2022, terbitan ISO dan International Electrotechnical
+Commission (IEC), menjadi dasar penilaian sistem manajemen keamanan informasi dalam ruang lingkup tertentu
+\cite{iso27001-2022}. Sertifikat itu tidak menjawab dasar pemrosesan Medikara, pemberitahuan kepada pasien, atau
+masa simpan 25 tahun. Satu sertifikat
+tidak menggantikan pemeriksaan cakupan. Bukti sertifikat tetap berguna sebagai masukan untuk baris keamanan, selama
+lingkup dan masa berlakunya tercatat. Latihan 3 menguji batas ini.
+
+\begin{pendalaman}
+Register yang baik dapat diturunkan menjadi persyaratan sistem. Contoh tiga kewajiban:
+\begin{enumerate}
+  \item Masa simpan (K-03) menjadi kriteria penerimaan: catatan yang berusia 25 tahun dalam data uji masih dapat
+  dibuka, dan penghapusan otomatis ditolak sebelum batas itu.
+  \item Cadangan (K-02) menjadi jadwal, pemisahan lokasi, dan uji pemulihan dengan hasil yang disetujui pemilik
+  layanan. Enkripsi cadangan dicatat sebagai keputusan desain untuk mendukung kerahasiaan pada Pasal 29 Permenkes
+  24/2022.
+  \item Pencatatan aktivitas (\textit{logging}) untuk K-01 ditautkan ke bukti peninjauan: setiap akses akun vendor
+  tercatat dengan identitas, waktu, dan tujuan.
+\end{enumerate}
+Cantumkan ID kewajiban pada \textit{backlog} pengembang agar alasan kontrol tetap terlihat. Penelitian rekayasa
+kebutuhan menempuh jalan serupa. Breaux dan Antón menyajikan metode mengekstrak hak akses dan kewajiban langsung dari
+teks regulasi, lalu menerapkannya pada seluruh Privacy Rule dalam Health Insurance Portability and Accountability Act
+(HIPAA) Amerika Serikat \cite{c03-breaux2008}. Artikel Massey dan rekan membahas evaluasi kebutuhan keamanan dan privasi
+yang sudah ada terhadap kepatuhan hukum \cite{c03-massey2010}. Hukumnya berbeda dari hukum Indonesia,
+sehingga yang dipinjam adalah metodenya, bukan isinya. Berkas \berkas{sources/chapter03/periksa-register.py} memeriksa
+kelengkapan kolom register dan menghitung sebaran status.
+\end{pendalaman}
 
 \section{Aktivitas: Register Kewajiban Kepatuhan}
 
-% TODO
-% Tujuan aktivitas: memiliki satu daftar kewajiban yang jelas pemilik dan buktinya, sebagai dasar seluruh pekerjaan kepatuhan semester ini.
-% Peran dalam tim: analis regulasi memimpin pembacaan pasal (anggota berlatar hukum sangat membantu); pemilik konteks menunjuk unit pemilik; analis teknologi menandai kewajiban yang berdampak pada sistem; analis risiko menilai akibat bila kewajiban dilanggar.
-% Langkah: tentukan sektor, jenis data, dan model bisnis; daftar regulasi yang berlaku; turunkan pasal penting menjadi kewajiban; isi pemilik, bukti, dan status awal; tandai kewajiban berdampak sistem.
-% Luaran dan tonggak capstone: register kewajiban kepatuhan; masuk C1 dan dipakai ulang pada Bab 5, 7, dan 12.
-% Berkas sources yang direncanakan: sources/chapter03/register-kewajiban.xlsx, sources/chapter03/daftar-regulasi-medikara.md
+\textbf{Tujuan.} Menyusun satu daftar kewajiban yang jelas cakupan, pemilik, dan buktinya, untuk organisasi nyata yang
+memberi izin atau untuk Medikara.
+
+\textbf{Pembagian peran.} Tim memakai latar belakang anggotanya.
+\begin{itemize}
+  \item Analis regulasi memimpin pembacaan pasal. Anggota berlatar hukum membantu pada tahap ini.
+  \item Pemilik konteks menetapkan fungsi pemilik dan memastikan fungsi itu menerima tanggung jawabnya.
+  \item Analis teknologi menilai implikasi sistem, misalnya masa simpan rekam medis atau notifikasi kegagalan
+  pelindungan data pribadi.
+  \item Analis risiko menuliskan konsekuensi dan keterkaitan skenario, termasuk R-01 bila memakai kasus Medikara.
+\end{itemize}
+
+\textbf{Langkah kerja.}
+\begin{enumerate}
+  \item Tentukan bentuk organisasi, sektor, kategori PSE, jenis data, lokasi pemrosesan, dan model kerja sama.
+  \item Periksa sumber resmi serta status tiap aturan; simpan URL, tanggal akses, dan catatan perubahan.
+  \item Pilih sedikitnya 10 kewajiban prioritas dan pecah setiap pasal menjadi tindakan yang dapat diuji. Untuk
+  Medikara, register minimal mencakup UU PDP, aturan rekam medis elektronik, PSTE, integrasi SATUSEHAT, dan pelaporan
+  insiden siber.
+  \item Isi pemilik, kondisi pemicu, tenggat, bukti, status, ID kontrol, dan penanggung jawab verifikasi.
+  \item Tinjau satu baris bersama anggota lain: buktikan bahwa pemeriksa dapat menyimpulkan status tanpa menebak maksud
+  penulis.
+  \item Gabungkan register ke C1 dan tandai kewajiban yang perlu diperiksa kembali pada penilaian risiko, privasi, dan
+  audit.
+\end{enumerate}
+
+\textbf{Luaran dan kaitan capstone.} Register dan daftar regulasi masuk C1. Kewajiban hukum, kontrak, serta standar
+sukarela diberi kategori terpisah dan dipakai ulang pada Bab 5, Bab 7, dan Bab 12. Baris kontrak vendor juga berguna
+pada Bab 9.
+
+\textbf{Kriteria penilaian.} Ketepatan cakupan serta sumber 30 persen; kewajiban yang dapat diuji 30 persen; pemilik
+dan bukti 25 persen; konsistensi status dan keterkaitan kontrol 15 persen.
+
+\textbf{Berkas pendukung.} \berkas{sources/chapter03/register-kewajiban.csv},
+\berkas{sources/chapter03/daftar-regulasi-medikara.md},
+\berkas{sources/chapter03/panduan-menurunkan-pasal.md},
+\berkas{sources/chapter03/periksa-register.py}.
+
+\textbf{Etika.} Data organisasi nyata wajib seizin organisasi dan dianonimkan. Data pribadi pasien atau karyawan tidak
+boleh masuk register. Register menyimpan rujukan ke bukti, bukan salinan bukti yang memuat data pribadi. Register tim
+bukan pendapat hukum; simpulan hukum pada organisasi nyata ditinjau pihak yang berwenang.
+
+\textbf{Pendalaman teknis (opsional).} Turunkan tiga kewajiban menjadi persyaratan sistem yang dapat diuji, seperti pada
+kotak pendalaman, lalu tautkan ke \textit{backlog} tim pengembang.
 
 \section{Ringkasan}
 
-% TODO
+Kepatuhan dimulai dari identifikasi cakupan, bukan dari daftar sertifikat. Jenis organisasi, sektor, data, lokasi, dan
+hubungan mitra menentukan aturan yang perlu diperiksa. Pada Medikara, pertanyaan cakupan memperluas perhatian dari 5
+rumah sakit menjadi 36 fasilitas, dan dari satu undang-undang menjadi beberapa lapis aturan.
+
+Naskah resmi, metadata status, putusan, serta ketentuan penutup perlu dibaca bersama. Hierarki menjelaskan kedudukan
+aturan, sedangkan peraturan menteri dan badan tetap mengikat sepanjang memenuhi syarat Pasal 8 UU 12/2011. Perkembangan
+yang belum memiliki teks terverifikasi, seperti PP 33/2026 pada penelusuran bab ini, dicatat sebagai pekerjaan
+pemantauan.
+
+Rekam medis, data pribadi, penyelenggaraan sistem elektronik, dan pelaporan siber memiliki persyaratan yang saling
+melengkapi. Memenuhi satu persyaratan tidak menghilangkan yang lain. Retensi 25 tahun tidak sama dengan cadangan, batas
+$3 \times 24$ jam tidak sama dengan $1 \times 24$ jam, dan aturan umum tentang lokasi sistem tidak menghapus ketentuan
+pusat data pada PP 28/2024.
+
+Sumber kewajiban menentukan akibatnya. Hukum langsung membawa sanksi menurut aturan. Kontrak membawa akibat perjanjian dan
+dapat lebih ketat daripada minimum hukum. Standar sukarela mengikat karena dipilih, lalu menjadi kewajiban kontrak bila
+disebut dalam perjanjian. Aturan yang mengikat mitra asuransi atau instansi pemerintah tidak otomatis mengikat Medikara,
+tetapi syaratnya dapat mengalir lewat kontrak.
+
+Register yang berguna menerjemahkan pasal menjadi tindakan, pemilik, kondisi, dan bukti, lalu memberi status dengan
+cakupan dan tanggal yang jelas. Pesan utama bab ini adalah bahwa kewajiban baru dapat diperiksa setelah organisasi
+menjelaskan pekerjaan yang harus dilakukan dan cara membuktikannya.
 
 \section{Latihan}
 
+\subsection*{Latihan 1: Penyimpanan Rekam Medis Lintas Negara}
+
+Sebuah klinik mitra menyimpan rekam medis di layanan \textit{cloud} luar negeri. Kewajiban apa saja yang perlu diperiksa,
+dan pada peraturan mana?
+
+Latihan ini membuktikan kemampuan membaca aturan umum bersama aturan sektor, tanpa menyimpulkan izin hanya dari satu
+ketentuan.
 \begin{enumerate}
-  \item Sebuah klinik mitra menyimpan rekam medis di layanan cloud luar negeri. Kewajiban apa saja yang perlu diperiksa, dan pada peraturan mana?
-  \item Tulis ulang satu pasal UU PDP menjadi kewajiban yang dapat diperiksa auditor: siapa melakukan apa, kapan, dan apa buktinya.
-  \item Jelaskan mengapa sertifikat ISO/IEC 27001 tidak otomatis membuktikan kepatuhan pada UU PDP.
+  \item Gambar aliran data, termasuk cadangan dan dukungan jarak jauh.
+  \item Identifikasi kategori data, pihak pemroses, dan tujuan transfer.
+  \item Petakan kewajiban UU PDP, PSTE, dan aturan kesehatan, lalu tulis bukti yang masih dibutuhkan.
+  \item Bandingkan hasilnya dengan Gambar~\ref{fig:ch03-lokasi-data}, lalu tulis keputusan yang diusulkan.
+\end{enumerate}
+
+Tabel~\ref{tab:ch03-lat1-contoh} merangkum contoh terisi Latihan 1 pada klinik mitra pengandaian dengan sekitar 40.000
+kunjungan per tahun.
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh terisi Latihan 1}\label{tab:ch03-lat1-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.22\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Aspek} & \textbf{Dasar penelusuran} & \textbf{Bukti yang diminta} \\ \hline
+    Lokasi pusat data & PP 28/2024 Pasal 966 ayat (2) dan (5) & Daftar lokasi data dan cadangan \\ \hline
+    Transfer ke luar & PP 28/2024 Pasal 972; UU PDP Pasal 56 & Izin Menteri, tujuan, dan penilaian perlindungan \\
+    \hline
+    Kerja sama penyimpanan & Permenkes Pasal 22 & Lokasi fasilitas PSE, rekomendasi, dan perjanjian \\ \hline
+    Cadangan dan retensi & Permenkes Pasal 20 dan 39 & Prosedur, hasil uji, jadwal retensi \\ \hline
+    Kategori PSE & PP 71/2019 Pasal 2, Pasal 6, dan Pasal 21 & Tanda daftar dan kesiapan akses pengawasan \\ \hline
+  \end{tabularx}
+\end{table}
+
+Tabel~\ref{tab:ch03-lat1-hasil} merangkum lembar isian Latihan 1.
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar isian Latihan 1}\label{tab:ch03-lat1-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.22\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Aspek} & \textbf{Dasar penelusuran} & \textbf{Bukti yang diminta} \\ \hline
+    \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+\textbf{Pertanyaan analisis.}
+\begin{enumerate}
+  \item Mengapa persetujuan pasien saja belum menjawab syarat penyimpanan sektor? Tunjuk baris tabel yang mendukung
+  jawaban.
+  \item Bagaimana jawaban berubah bila server utama di Indonesia tetapi cadangan di luar negeri?
+  \item Klinik contoh memiliki sekitar 40.000 kunjungan per tahun. Berapa catatan yang perlu dipindahkan bila data 5
+  tahun harus kembali ke pusat data dalam negeri, dan siapa yang memutuskan biayanya?
+\end{enumerate}
+
+\subsection*{Latihan 2: Dari Pasal ke Pengujian}
+
+Tulis ulang satu pasal UU PDP menjadi kewajiban yang dapat diperiksa auditor: siapa melakukan apa, kapan, dan apa
+buktinya.
+
+Latihan ini membuktikan bahwa rumusan kewajiban harus memberi dasar penilaian yang dapat diulang.
+\begin{enumerate}
+  \item Pilih satu pasal dari naskah resmi dan catat cakupannya. Bab 7 sudah memakai Pasal 20, 34, 46, dan 56.
+  \item Pecah menjadi pihak, tindakan, kondisi pemicu, tenggat, dan bukti.
+  \item Uji rumusan menggunakan satu skenario pengandaian dan tandai informasi yang belum diketahui.
+  \item Minta anggota tim lain menyimpulkan status dari rumusan itu, tanpa penjelasan tambahan.
+\end{enumerate}
+
+Tabel~\ref{tab:ch03-lat2-contoh} merangkum contoh terisi Latihan 2 dengan varian uji kontrak: vendor melapor setelah 30 jam.
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh terisi Latihan 2}\label{tab:ch03-lat2-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.22\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Unsur} & \textbf{Contoh Pasal 46} & \textbf{Bukti} \\ \hline
+    Pihak dan tindakan & Pengendali memberi pemberitahuan tertulis & Salinan serta penerima \\ \hline
+    Pemicu & Kegagalan pelindungan data pribadi & Kronologi dan analisis kejadian \\ \hline
+    Waktu & Paling lambat $3 \times 24$ jam; sisa 42 jam bila vendor melapor pada jam ke-30 & Waktu kejadian, waktu
+    diketahui, waktu pengiriman \\ \hline
+    Penerima & Subjek data dan lembaga & Daftar penerima dan tanda kirim \\ \hline
+    Isi & Data terungkap, waktu dan cara, penanganan & Naskah pemberitahuan \\ \hline
+    Yang belum diketahui & Kanal lembaga yang berwenang & Catatan penelusuran dan pemilik \\ \hline
+  \end{tabularx}
+\end{table}
+
+Tabel~\ref{tab:ch03-lat2-hasil} merangkum lembar isian Latihan 2.
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar isian Latihan 2}\label{tab:ch03-lat2-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.22\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Unsur} & \textbf{Pasal yang dipilih} & \textbf{Bukti} \\ \hline
+    \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+\textbf{Pertanyaan analisis.}
+\begin{enumerate}
+  \item Informasi apa yang diperlukan untuk menguji tenggat pada insiden nyata? Tunjukkan dengan angka dari skenario.
+  \item Mengapa kata ``sudah ditangani'' tidak cukup untuk menyatakan patuh?
+\end{enumerate}
+
+\subsection*{Latihan 3: Batas Bukti Sertifikat}
+
+Jelaskan mengapa sertifikat ISO/IEC 27001 tidak otomatis membuktikan kepatuhan pada UU PDP.
+
+Latihan ini membuktikan bahwa ruang lingkup penilaian perlu dibandingkan dengan kewajiban yang harus dibuktikan.
+\begin{enumerate}
+  \item Catat ruang lingkup, masa berlaku, dan entitas pada sertifikat pengandaian.
+  \item Pilih dua kewajiban UU PDP dan tentukan apakah bukti sertifikat menilainya secara langsung.
+  \item Tulis bukti tambahan dan simpulkan batas keyakinan yang wajar.
+\end{enumerate}
+
+Tabel~\ref{tab:ch03-lat3-contoh} merangkum contoh terisi Latihan 3 pada sertifikat vendor pengandaian yang mencakup 1
+pusat data dan belum mencakup aplikasi Medikara+.
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh terisi Latihan 3}\label{tab:ch03-lat3-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Keadaan pengandaian} & \textbf{Sertifikat membuktikan} & \textbf{Yang masih diperiksa} \\ \hline
+    Sertifikat mencakup pusat data vendor & Penilaian sistem manajemen dalam lingkup itu & Dasar pemrosesan Medikara
+    (K-16) \\ \hline
+    Sertifikat masih berlaku & Status sertifikasi pada tanggal terkait & Notifikasi insiden dan hak subjek data (K-04)
+    \\ \hline
+    Medikara+ di luar lingkup & Tidak ada kesimpulan untuk aplikasi & Hasil AC-01 pada 120 akun vendor (K-01) \\ \hline
+  \end{tabularx}
+\end{table}
+
+Tabel~\ref{tab:ch03-lat3-hasil} merangkum lembar isian Latihan 3.
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar isian Latihan 3}\label{tab:ch03-lat3-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Keadaan pengandaian} & \textbf{Sertifikat membuktikan} & \textbf{Yang masih diperiksa} \\ \hline
+    \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+\textbf{Pertanyaan analisis.}
+\begin{enumerate}
+  \item Apa akibatnya bila aplikasi pasien berada di luar ruang lingkup sertifikasi?
+  \item Kontrol mana dapat dipakai bersama tanpa menyamakan dua jenis kesimpulan? Tunjuk barisnya pada tabel.
 \end{enumerate}

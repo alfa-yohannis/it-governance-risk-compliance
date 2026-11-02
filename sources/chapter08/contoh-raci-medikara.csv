@@ -1,0 +1,12 @@
+# Kegunaan: contoh RACI pengandaian Medikara untuk Aktivitas Bab 08, sama dengan tabel RACI pada bab. Cara memakai: baca sebagai pembanding, jangan disalin sebagai keputusan organisasi; tanda - berarti peran tidak terlibat; buang baris komentar ini bila aplikasi tidak mengenalinya.
+keputusan,direksi,direktur_pelayanan,pemilik_layanan,kepala_rekam_medis,operasi_ti,keamanan_ciso,petugas_pelindungan_data,hukum,forum_arsitektur,alasan_dan_delegasi
+Aturan rekam medis terpadu,I,A,C,R,C,C,C,C,C,Direktur pelayanan pemilik manfaat layanan dan pemilik R-11
+Tujuan berbagi data mitra,I,A,R,C,I,C,C,C,C,Kepala rekam medis memegang hak henti sempit bila dasar pemrosesan belum ada
+Akses teknis mitra,-,I,A,C,R,C,I,I,C,Dijalankan setelah tujuan disetujui; terpisah dari baris tujuan
+Peninjauan akses AC-01,I,I,A,-,R,C,I,-,-,Pelaksana tidak menyetujui haknya sendiri; bulanan pada 5 rumah sakit
+Pencabutan akun vendor,-,-,A,-,R,C,I,-,-,Paling lambat 1 hari kerja setelah penugasan berakhir
+Perubahan darurat SIMRS,I,C,A,C,R,C,I,-,I,Pengecualian paling lama 24 jam; pengganti pemilik layanan ditunjuk
+Penerimaan risiko di atas batas,A,C,R,C,C,C,C,C,I,Direksi sesuai kewenangan; pemilik risiko menyiapkan usulan
+Uji pemulihan,I,I,A,C,R,C,-,-,I,Pemilik layanan mengesahkan hasil; 144 uji per tahun
+Pemberitahuan insiden data,I,C,C,C,C,R,R,A,-,R-12 berpemilik fungsi hukum; naskah siap sebelum jam ke-60
+Subprosesor dan penghentian vendor,I,C,A,C,R,C,C,C,C,Uji ekspor dan pemusnahan; nilai di atas Rp400 juta naik ke direksi

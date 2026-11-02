@@ -1,67 +1,1134 @@
+% !TeX root = it-governance-risk-compliance.tex
+% !TeX encoding = UTF-8
 \chapter{Audit TI dan Asurans}
 
 \section*{Tujuan Pembelajaran}
 \begin{itemize}
-  \item Menjelaskan pembagian peran dalam Three Lines Model dan posisi audit internal yang independen.
+  \item Menjelaskan pembagian peran dalam Three Lines Model dan posisi audit internal yang
+  independen.
   \item Menyusun rencana asurans berbasis risiko untuk program transformasi digital.
   \item Menguji rancangan dan efektivitas satu kontrol dengan bukti yang memadai.
 \end{itemize}
 
 \section{Pendahuluan}
 
-% TODO
-% Cakupan: direksi menerima laporan "semua aman" dari unit TI, padahal audit menemukan sebaliknya; direksi butuh keyakinan yang independen.
+Misalkan direksi Medikara menerima laporan dari unit Teknologi Informasi (TI): peninjauan
+akses vendor berjalan, dan 108 dari 108 akun sudah ditinjau. Audit internal memeriksa 30 dari
+120 akun vendor dan menemukan 6 akun masih aktif setelah penugasan berakhir. Kedua pernyataan
+dapat benar bersamaan. Unit TI menghitung akun pada daftar yang diterimanya. Auditor memulai
+dari daftar penugasan. Daftar unit TI hanya memuat 108 akun, sehingga 12 akun tidak pernah
+masuk hitungan. Dengan penyebut yang benar, cakupannya 90 persen, bukan 100 persen.
+
+Direksi karena itu membutuhkan keyakinan yang tidak berasal dari pihak yang menjalankan
+pekerjaan. Bab ini menjawab tiga pertanyaan: siapa yang boleh memberi keyakinan, area mana yang
+diperiksa lebih dahulu, dan bukti apa yang cukup untuk menutup temuan. Bab 8 sampai Bab 11 sudah
+merancang kontrol beserta bukti penerimaannya. Bab ini memastikan rancangan itu dapat diperiksa,
+sekaligus membuka tonggak C4 Peta Jalan dan Tata Kelola. Hasil kerjanya adalah rencana asurans
+dua tahun dan contoh pengujian satu kontrol.
+
+Bab ini merujuk Global Internal Audit Standards dari The Institute of Internal Auditors (IIA),
+yang berlaku sejak 9 Januari 2025, serta Three Lines Model dalam \textit{Statement of Position}
+IIA tahun 2026. IT Audit Framework (ITAF) dari ISACA melengkapi metode audit TI. Naskah ITAF
+berbayar, sehingga perannya ditulis secara umum. Cara menguji kontrol mengambil contoh dari
+Federal Information System Controls Audit Manual (FISCAM) revisi 2026, yang terbuka untuk
+dibaca. FISCAM ditulis untuk audit instansi federal Amerika Serikat, sehingga dipakai sebagai
+contoh metode dan tidak mengikat Medikara. Seluruh angka tambahan tentang Medikara merupakan
+contoh pembelajaran \cite{iia-gias2024,iia-tlm2026,c12-itaf,c12-fiscam2026}.
+
+\IfFileExists{../figures/ch12-diagram-konsep.png}{%
+
+Gambar \ref{fig:ch12-ilustrasi-bab} merangkum hubungan komponen dan konsep utama bab ini.
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/ch12-diagram-konsep.png}
+  \caption{Pengelolaan risiko dan asurans independen mempunyai peran berbeda}
+  \label{fig:ch12-ilustrasi-bab}
+\end{figure}
+}{}
 
 \section{Konsep Asurans}
 
-% TODO
-% Cakupan: asurans dan bedanya dengan konsultasi; pihak yang terlibat (pemilik tanggung jawab, penilai, pengguna hasil); asurans internal dan eksternal; tingkat keyakinan yang dapat diberikan.
+\subsection*{Keyakinan yang punya batas}
+
+Asurans adalah pernyataan yang dimaksudkan untuk menaikkan keyakinan pemangku kepentingan atas
+tata kelola, manajemen risiko, kepatuhan, dan kontrol organisasi \cite{iia-tlm2026}. Cara
+kerjanya melibatkan tiga pihak. Pihak yang bertanggung jawab menjalankan kegiatan, penilai
+memeriksanya terhadap kriteria, dan pengguna hasil mengambil keputusan. Keyakinan selalu
+memiliki batas ruang lingkup, periode, populasi, dan metode.
+
+Analogi pemeriksaan kendaraan menunjukkan batas itu. Pemeriksaan rem pada tanggal tertentu
+memberi bukti tentang kondisi yang diperiksa, bukan jaminan bahwa kendaraan tidak akan pernah
+mengalami kecelakaan. Laporan yang baik menyebut hal yang diperiksa dan hal yang belum dapat
+disimpulkan.
+
+Pertanyaan kemudian muncul: apakah laporan ``semua aman'' dapat diterima? Laporan itu perlu
+menjawab lima pertanyaan pada Tabel~\ref{tab:ch12-lima-pertanyaan}. Keyakinan tanpa batas klaim
+tidak membantu direksi menimbang risiko sisa.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lima pertanyaan atas laporan ``semua aman'' pada AC-01 (misalkan)}
+  \label{tab:ch12-lima-pertanyaan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Pertanyaan} & \textbf{Laporan unit TI} & \textbf{Pengujian audit internal} \\
+    \hline
+    Kriteria & Akun pada daftar sudah ditinjau & Akun dicabut paling lambat 1 hari kerja
+    setelah penugasan berakhir \\ \hline
+    Populasi & 108 akun pada daftar peninjau & 120 akun pada daftar penugasan \\ \hline
+    Periode & Satu bulan terakhir, tanpa tanggal & Tanggal acuan 31 Maret 2026 \\ \hline
+    Metode & Pernyataan pelaksana & Pencocokan dokumen dan 30 akun sampel \\ \hline
+    Pengecualian & Tidak disebut & Sampel satu lokasi; 4 rumah sakit lain belum punya bukti \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh menunjukkan akibat batas klaim:
+\begin{enumerate}
+  \item Klaim 108 dari 108 benar untuk daftar, tetapi salah untuk Medikara. Bila penyebutnya
+  120 akun, cakupannya $108 / 120 = 90$ persen. Selisih 12 akun atau 10 persen tidak pernah
+  ditinjau. Bab 5 menghitung cakupan ini masih menyisakan harapan kerugian Rp32,5 juta, bukan
+  Rp25 juta.
+  \item Misalkan audit mencakup 7 akun aktif pada 30 Oktober 2026 di satu rumah sakit. Hasilnya
+  tidak otomatis berlaku bagi akun di empat rumah sakit lain, dan tidak menjelaskan 11 bulan
+  sebelumnya.
+\end{enumerate}
+
+\subsection*{Asurans dan konsultasi}
+
+Dua hal pada audit internal sering tertukar: asurans dan konsultasi. Pembagiannya begini.
+Asurans menghasilkan kesimpulan objektif tentang efektivitas proses atau kontrol. Konsultasi
+memberi saran tanpa memberi asurans dan tanpa mengambil tanggung jawab manajemen
+\cite{iia-gias2024}. IIA menegaskan asurans tidak kredibel bila penilai merancang atau
+menjalankan prosesnya, menilai keputusannya sendiri, atau terpengaruh preferensi manajemen. Masa
+paling sedikit 12 bulan antara tanggung jawab atas suatu proses dan pemberian asurans atas
+proses itu biasanya memadai untuk menjaga objektivitas \cite{iia-tlm2026}.
+
+Analogi guru les dan penguji membantu membedakan keduanya. Guru les membantu murid belajar.
+Penguji menilai jawaban murid. Satu orang boleh memegang keduanya pada waktu yang berbeda, tetapi
+tidak menilai jawaban yang ia diktekan sendiri.
+
+Tabel~\ref{tab:ch12-asurans} merangkum perbedaannya. Baris pengaman mengikuti pernyataan IIA:
+peran konsultasi didefinisikan jelas, penasihat tidak mengambil keputusan manajemen, dan badan
+pengarah mengetahui sifat serta ruang lingkup pekerjaannya \cite{iia-tlm2026}.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Asurans dan konsultasi}\label{tab:ch12-asurans}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Aspek} & \textbf{Asurans} & \textbf{Konsultasi} \\ \hline
+    Tujuan & Menilai terhadap kriteria & Membantu perbaikan \\ \hline
+    Kriteria & Wajib ditetapkan & Dapat tidak diperlukan, sesuai kesepakatan \\ \hline
+    Keluaran & Kesimpulan dan temuan & Saran dan pilihan \\ \hline
+    Tanggung jawab kontrol & Tetap pada manajemen & Tetap pada manajemen \\ \hline
+    Pengaman & Penilai tidak menjalankan proses yang dinilai & Peran jelas; keputusan pada
+    manajemen; badan pengarah diberi tahu \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan pada Tahun 1 audit internal memberi saran selama 40 jam untuk kebijakan
+  pemakaian AI (KB-09, Bab 11). Pemilik KB-09 tetap direktur pelayanan, dan penyetujunya tetap
+  direksi. Audit AI pada Tahun 2 dipimpin auditor yang tidak memberi saran itu, dan dewan
+  komisaris mengetahui pemisahannya.
+  \item Misalkan seorang petugas operasi TI menjalankan AC-01 sampai 31 Maret 2026, lalu pindah
+  ke audit internal. Dengan acuan 12 bulan, ia sebaiknya tidak menguji AC-01 sebelum 1 April
+  2027. Bila auditor lain tersedia, penugasan dialihkan sejak awal.
+\end{enumerate}
 
 \section{Three Lines Model}
 
-% TODO
-% Cakupan: peran badan pengatur, manajemen (lini pertama dan kedua), dan audit internal (lini ketiga); Statement of Position IIA tanggal 8 Juli 2026 yang menggantikan position paper 2020; independensi dan pengamanannya; kesalahan umum penerapan.
-% Kasus Medikara: unit manajemen risiko yang melapor kepada direktur TI.
+\subsection*{Empat peran pada satu kontrol}
 
-\section{Global Internal Audit Standards}
+Three Lines Model membedakan badan pengarah, manajemen sebagai lini pertama, peran pendukung dan
+spesialis sebagai lini kedua, serta audit internal sebagai lini ketiga. Lini pertama memiliki
+risiko sehari-hari, merancang, dan menjalankan kontrol. Lini kedua memberi keahlian, dukungan,
+pemantauan, dan tantangan. Lini ketiga memberi asurans independen, termasuk atas lini kedua,
+serta saran tanpa mengambil tanggung jawab manajemen. Pembagiannya merupakan peran, bukan
+kewajiban memiliki tiga departemen \cite{iia-tlm2026}.
 
-% TODO
-% Cakupan: lima domain dan 15 prinsip; berlaku sejak 9 Januari 2025; implikasi bagi fungsi audit internal yang kecil; ITAF dari ISACA dan sertifikasi profesi audit TI sebagai rujukan pelengkap.
+Analogi pengelolaan pertandingan membantu membedakan fungsi. Pemain menjalankan strategi, pelatih
+memantau dan memberi koreksi, sedangkan penilai independen memeriksa apakah aturan diterapkan.
+Pihak yang membuat keputusan operasi tidak sekaligus memberi penilaian independen atas
+keputusannya sendiri.
+
+Gambar~\ref{fig:ch12-tiga-lini} menerapkan model itu pada AC-01. Bab 1 sudah memperkenalkan empat
+peran ini, dan Bab 8 menempatkan Chief Information Security Officer (CISO) pada lini kedua.
+Auditor eksternal dan regulator bukan bagian dari tiga lini. Mereka melayani pihak di luar
+organisasi, tetapi hasilnya dapat dipakai untuk memahami kecukupan kontrol \cite{iia-tlm2026}.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch12-tiga-lini.tex}
+  \caption{Three Lines Model pada kontrol AC-01 (misalkan)}
+  \label{fig:ch12-tiga-lini}
+\end{figure}
+
+Diagram konsep pada awal bab meringkas hubungan yang sama. Badan pengarah memberi arah dan
+akuntabilitas kepada lini pertama. Lini kedua memberi dukungan dan tantangan. Audit internal
+menguji menurut kriteria dan menyampaikan laporan independen kepada badan pengarah. Catatan
+operasi lini pertama menjadi bukti pengujian, atas rancangan dan atas operasi. Temuan yang
+terverifikasi lalu masuk ke tindak lanjut manajemen, lengkap dengan pemilik dan tenggat.
+
+Tiap peran punya kekuatan dan batasnya sendiri. Dokumen IIA menyebut tidak ada satu lini yang
+dapat memaksimalkan semua sifat sekaligus \cite{iia-tlm2026}. Tabel~\ref{tab:ch12-three-lines}
+memperlihatkan akibatnya pada Medikara.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Pemetaan peran AC-01 pada Medikara dan batas tiap peran}\label{tab:ch12-three-lines}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}p{0.23\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Peran} & \textbf{Contoh pemilik} & \textbf{Tanggung jawab} & \textbf{Batas yang perlu
+    dibaca} \\ \hline
+    Badan pengarah & Dewan komisaris dan direksi sesuai kewenangan & Menetapkan arah, mengawasi
+    mandat dan hasil & Bergantung pada informasi yang andal dan berimbang \\ \hline
+    Lini pertama & Pemilik Medikara+, kepala operasi TI, pemilik SIMRS & Menjalankan AC-01 & Dekat
+    dengan risiko, tetapi dapat meremehkan kelemahan kontrolnya \\ \hline
+    Lini kedua & CISO, kepala risiko, petugas pelindungan data & Memantau dan menantang & Kadang
+    terganggu karena melapor lewat manajemen; dapat berhenti pada kepatuhan prosedur \\ \hline
+    Lini ketiga & Audit internal & Menguji secara independen & Berkala dan berbasis risiko,
+    sehingga area berisiko rendah jarang diperiksa \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Bab 8 membagi AC-01 menjadi empat tugas: pengelola vendor mengusulkan, pemilik Medikara+
+  menyetujui, operasi TI menjalankan, dan audit internal menguji. Bila CISO ikut menjalankan
+  tinjauan catatan aktivitas pada G-02, ia tidak dapat sekaligus menantang hasil tinjauan yang
+  sama. Pada 260 tinjauan per tahun, kedua tugas itu dipegang orang berbeda.
+  \item Misalkan kepala audit internal diminta menyetujui akses vendor selama 3 bulan karena
+  petugas kosong. IIA menyebut keadaan audit internal menjalankan tugas lini kedua sebagai ancaman
+  menilai diri sendiri. Pengamannya adalah alasan tertulis, pengungkapan kepada badan pengarah,
+  dan asurans dari pihak independen lain selama tumpang tindih itu berlangsung
+  \cite{iia-tlm2026}. Area AC-01 pada 3 bulan tersebut diuji oleh pihak lain.
+\end{enumerate}
+
+\subsection*{Independensi dan jalur pelaporan}
+
+Independensi organisasi ditentukan posisi peran dalam struktur tata kelola dan sejauh mana peran
+itu bekerja tanpa campur tangan. IIA menyebut lima unsur: jalur pelaporan dan wewenang, otonomi
+atas ruang lingkup, akses tanpa batas, kendali atas sumber daya, serta perlindungan dari tekanan.
+Posisi itu umumnya berarti pelaporan fungsional kepada badan pengarah dan pelaporan administratif
+kepada pimpinan eksekutif. Independensi juga tidak berarti terisolasi \cite{iia-tlm2026}.
+
+Medikara memiliki dua organ, yaitu dewan komisaris yang mengawasi dan direksi yang memutuskan.
+Bila ada lebih dari satu organ, istilah badan pengarah merujuk organ yang berwenang memberi mandat
+\cite{iia-tlm2026}. Misalkan audit internal melapor secara fungsional kepada dewan komisaris lewat
+komite audit, dan secara administratif kepada direktur utama. Tabel~\ref{tab:ch12-independensi}
+menguji kelima unsur tersebut.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lima unsur independensi pada audit internal Medikara (misalkan)}
+  \label{tab:ch12-independensi}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.23\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Unsur} & \textbf{Bukti yang diperiksa} & \textbf{Tanda masalah} \\ \hline
+    Jalur pelaporan dan wewenang & Piagam audit; laporan ke komite audit & Laporan harus melewati
+    kepala TI \\ \hline
+    Otonomi ruang lingkup & Rencana disetujui dewan komisaris & Area AC-01 dicoret oleh pihak yang
+    diperiksa \\ \hline
+    Akses tanpa batas & Hak meminta daftar penugasan langsung & Daftar hanya datang dari operasi
+    TI \\ \hline
+    Kendali sumber daya & Jam dan keahlian tercatat pada rencana & Jam dipotong tanpa dilaporkan
+    \\ \hline
+    Perlindungan dari tekanan & Catatan perubahan laporan audit & Temuan diubah atas permintaan
+    pemilik proses \\ \hline
+  \end{tabularx}
+\end{table}
+
+Pertanyaan kemudian muncul: bolehkah unit risiko melapor kepada direktur TI? IIA menulis lini
+kedua melapor kepada anggota manajemen senior atau komite setingkat badan pengarah. IIA juga
+mencatat objektivitas lini kedua kadang terganggu karena melapor lewat manajemen
+\cite{iia-tlm2026}. Jabatan atasan saja belum membuktikan pelanggaran. Masalah muncul bila
+mandatnya seluruh organisasi, sementara ruang lingkup, pelaporan, dan tantangannya dibatasi unit
+yang diawasi. Latihan 1 menguji hal ini.
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan auditor hanya menerima daftar akun dari operasi TI, yaitu 108 akun. IIA menyebut
+  independensi terganggu bila akses ke bukti disaring atau dikendalikan \cite{iia-tlm2026}. Auditor
+  meminta daftar penugasan dari pengelola vendor dan menemukan 120 akun. Hak akses itu menambah 12
+  akun ke populasi.
+  \item Misalkan unit risiko hanya mengelola risiko operasi TI. Pelaporan kepada direktur TI dapat
+  sesuai, tetapi hasilnya bukan penilaian independen. Bila mandatnya mencakup 12 skenario register,
+  pelaporan itu perlu akses langsung ke komite risiko pada 4 rapat per tahun.
+\end{enumerate}
+
+\section{Standar Profesi: GIAS dan ITAF}
+
+Global Internal Audit Standards (GIAS) mengatur tujuan audit internal, etika dan profesionalisme,
+tata kelola fungsi audit, pengelolaan fungsi audit, serta pelaksanaan layanan. Standar yang
+diterbitkan 2024 ini berlaku sejak 9 Januari 2025, dan memuat 5 domain, 15 prinsip, serta 52
+standar \cite{iia-gias2024}. Ukuran tim tidak menghilangkan kebutuhan mandat, kompetensi,
+dokumentasi, dan komunikasi.
+
+Analogi klinik kecil menunjukkan perlunya mutu yang proporsional. Ukuran organisasi dapat mengubah
+cara dokumentasi dan pembagian tugas, tetapi tidak membenarkan pemeriksaan tanpa catatan atau
+pelaporan yang menyembunyikan hasil.
+
+Tabel~\ref{tab:ch12-standar-audit} memilih enam standar yang paling dekat dengan pekerjaan bab
+ini. Uraiannya merupakan ringkasan bab ini, bukan terjemahan resmi.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Enam standar GIAS dan buktinya pada Medikara}\label{tab:ch12-standar-audit}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.09\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.33\textwidth}|}
+    \hline
+    \textbf{Standar} & \textbf{Ketentuan ringkas} & \textbf{Bukti contoh} \\ \hline
+    7.1 & Independensi dikonfirmasi kepada badan pengarah paling sedikit setahun sekali &
+    Pernyataan tahunan dan catatan gangguan \\ \hline
+    8.4 & Penilaian mutu eksternal paling sedikit sekali dalam lima tahun & Rencana penilaian yang
+    dibahas dengan badan pengarah \\ \hline
+    9.4 & Rencana audit berdasar penilaian terdokumentasi atas strategi, tujuan, dan risiko, paling
+    sedikit setahun sekali & Tabel~\ref{tab:ch12-semesta} \\ \hline
+    9.5 & Koordinasi dengan penyedia asurans lain; dasar kepercayaan didokumentasikan &
+    Tabel~\ref{tab:ch12-peta-asurans} \\ \hline
+    14.1 & Informasi relevan, andal, dan cukup untuk diulang orang lain dengan kesimpulan sama &
+    Kertas kerja 30 akun \\ \hline
+    15.2 & Pelaksanaan rekomendasi dikonfirmasi dan statusnya dilacak & Status penutupan TA-01 \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan area vendor dan cloud memerlukan 320 jam, dan 60 jam di antaranya memerlukan
+  keahlian konfigurasi. Tim memakai spesialis independen untuk 60 jam itu, dan tetap menyetujui
+  ruang lingkup serta kesimpulan. Standar 9.5 menempatkan tanggung jawab kesimpulan tetap pada
+  kepala audit internal \cite{iia-gias2024}.
+  \item Misalkan seorang auditor memimpin proyek SIMRS Bekasi sampai 6 bulan lalu, dan audit akses
+  SIMRS dijadwalkan bulan depan. Selisih itu masih di bawah acuan 12 bulan. Konflik dinilai sebelum
+  penugasan, bukan setelah hasil diperdebatkan. Standar 7.1 meminta gangguan independensi beserta
+  pengamannya dilaporkan kepada badan pengarah \cite{iia-gias2024}.
+\end{enumerate}
+
+Pertanyaan berikutnya: di mana posisi ITAF? ITAF adalah kerangka ISACA untuk audit dan asurans TI.
+Edisi kelimanya dijual ISACA \cite{c12-itaf}, sehingga bab ini tidak menguraikan isinya. Fungsi
+audit yang memakainya perlu mencocokkan butir ketentuan ke naskah berlisensi. Mahasiswa tanpa
+akses naskah itu tetap dapat berlatih memakai FISCAM untuk pengujian kontrol dan Government
+Auditing Standards untuk unsur temuan \cite{c12-fiscam2026,c12-gagas2024}. Keduanya terbuka, tetapi
+ditulis untuk audit pemerintah Amerika Serikat. Sertifikasi profesi menunjukkan kompetensi
+tertentu, sedangkan mutu tiap penugasan tetap dinilai dari kertas kerjanya.
 
 \section{Perencanaan Audit Berbasis Risiko}
 
-% TODO
-% Cakupan: semesta audit; prioritas audit dari risk register dan register kewajiban; rencana asurans untuk program transformasi; koordinasi dengan penyedia asurans lain seperti auditor eksternal dan lembaga sertifikasi.
+\subsection*{Dari semesta audit ke prioritas}
+
+Semesta audit adalah daftar area yang dapat diperiksa. Rencana berbasis risiko memilih prioritas
+dengan mempertimbangkan dampak, perubahan, kewajiban, insiden, dan cakupan asurans yang sudah ada.
+Standar 9.4 meminta rencana itu berdasar penilaian terdokumentasi yang diperbarui paling sedikit
+setahun sekali, dengan masukan badan pengarah dan manajemen senior \cite{iia-gias2024}.
+Gambar~\ref{fig:ch12-alur} memperlihatkan posisi rencana dalam siklus asurans.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch12-alur.tex}
+  \caption{Siklus asurans dari mandat sampai tindak lanjut terverifikasi}
+  \label{fig:ch12-alur}
+\end{figure}
+
+Analogi pemeriksaan rumah menunjukkan prioritas. Retakan pada struktur dan lampu hias yang mati
+tidak diperiksa dengan prioritas sama. Riwayat perbaikan dan rencana renovasi ikut menentukan
+lokasi yang diperiksa lebih dahulu.
+
+Bab ini memakai rumus pembelajaran yang sederhana. Prioritas sama dengan skor risiko Bab 5,
+ditambah nilai perubahan, ditambah nilai kewajiban, lalu dikurangi nilai asurans lain yang dapat
+diandalkan. Ketiga nilai tambahan memakai skala 0 sampai 5 dan bersifat pengandaian. Rumus ini
+bukan ketentuan standar. Tabel~\ref{tab:ch12-semesta} menerapkannya pada sepuluh area, diurutkan
+dari prioritas tertinggi.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Semesta audit Medikara dan skor prioritas (misalkan)}\label{tab:ch12-semesta}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|c|c|c|c|c|c|c|}
+    \hline
+    \textbf{Area} & \textbf{Risiko} & \textbf{Skor} & \textbf{Ubah} & \textbf{Wajib} &
+    \textbf{Lain} & \textbf{Prioritas} & \textbf{Jam} \\ \hline
+    Akses vendor AC-01 & R-01 & 12 & 3 & 5 & 1 & 19 & 600 \\ \hline
+    AI klinis AI-01, AI-02 & R-11 & 12 & 5 & 3 & 1 & 19 & 480 \\ \hline
+    Pemulihan DSS04 & R-05 & 10 & 5 & 2 & 1 & 16 & 480 \\ \hline
+    Jejak aktivitas KB-06 & R-02 & 12 & 3 & 3 & 2 & 16 & 240 \\ \hline
+    Privasi dan retensi & R-09 & 9 & 3 & 5 & 2 & 15 & 200 \\ \hline
+    Insiden dan pemberitahuan & R-12 & 8 & 3 & 5 & 2 & 14 & 240 \\ \hline
+    Vendor inti dan cloud & R-08 & 8 & 5 & 3 & 3 & 13 & 320 \\ \hline
+    Integrasi BPJS Kesehatan & R-03 & 9 & 3 & 2 & 1 & 13 & 200 \\ \hline
+    Laporan spreadsheet & R-04 & 12 & 1 & 1 & 4 & 10 & 240 \\ \hline
+    Rilis Medikara+ & R-07 & 9 & 2 & 1 & 2 & 10 & 240 \\ \hline
+    \textbf{Jumlah} & & & & & & & \textbf{3.240} \\ \hline
+  \end{tabularx}
+\end{table}
+
+Kapasitas membatasi pilihan. Misalkan Medikara menyediakan 1 auditor TI selama 1.200 jam dan 1
+auditor umum selama 600 jam per tahun, atau 1.800 jam. Dua tahun berarti 3.600 jam. Cadangan 20
+persen untuk tindak lanjut dan audit mendadak mengambil 720 jam, sehingga jam terencana hanya
+2.880. Kebutuhan 3.240 jam melebihinya sebesar 360 jam. Dua area berprioritas terendah, yaitu
+laporan spreadsheet dan rilis Medikara+, senilai 480 jam, ditunda. Jam terencana terpakai 2.760
+dan tersisa 120 jam.
+
+Keputusan ini punya dua konsekuensi. Pertama, risiko pada area yang ditunda tetap ada. R-04
+berskor 12 dengan harapan kerugian Rp30 juta per tahun, dan area itu hanya dipantau lini pertama
+dan lini kedua. Kepala audit internal melaporkan celah cakupan ini kepada dewan komisaris. Membuka
+kembali kedua area memerlukan 360 jam tambahan, atau Rp21,6 juta dalam dua tahun dengan tarif
+Rp60.000 per jam. Kedua, kapasitas 1.800 jam senilai Rp108 juta per tahun adalah sumber daya yang
+sudah ada. Angka ini bukan anggaran baru dan tidak menambah beban 3.046 jam pada peta jalan Bab 14.
+
+Dua contoh menunjukkan skor tidak boleh diikuti secara mekanis:
+\begin{enumerate}
+  \item Akses vendor dan AI klinis sama-sama berprioritas 19. AC-01 diuji lebih dahulu karena
+  sudah berjalan, sedangkan AI-01 dan AI-02 belum berjalan pada Tahun 1. Skor juga tidak boleh
+  menutupi keselamatan pasien. Misalkan muncul satu kejadian cedera berat terkait ringkasan AI
+  pada masa uji. Bab 5 meminta peninjauan dalam 1 hari kerja, dan audit khusus 120 jam memakai
+  cadangan 360 jam tahun itu tanpa menunggu urutan skor.
+  \item Pemulihan berprioritas 16, tetapi dijadwalkan pada akhir Tahun 1 karena mendahului
+  perpindahan ke \textit{cloud}. Menempatkannya setelah migrasi mengurangi kesempatan mencegah kegagalan.
+  R-05 juga berharapan kerugian Rp200 juta, terbesar pada Bab 5, walaupun skornya lebih rendah dari
+  R-01. Biaya audit 480 jam hanya Rp28,8 juta.
+\end{enumerate}
+
+\begin{kasus}[title={Kasus Medikara Health: Rencana Asurans Dua Tahun}]
+Misalkan kepala audit internal menyusun rencana pada Tabel~\ref{tab:ch12-rencana}. Tahun 1 memakai
+1.440 jam terencana, termasuk sisa 120 jam untuk saran KB-09 selama 40 jam dan pembacaan laporan
+pihak luar selama 80 jam. Tahun 2 juga memakai 1.440 jam.
+
+Misalkan direktur keuangan memangkas kapasitas menjadi 1.200 jam per tahun. Jam terencana turun
+menjadi $1.200 \times 0{,}8 = 960$ jam. Akses vendor 600 jam dan pemulihan 480 jam berjumlah 1.080
+jam, sehingga audit pemulihan tidak muat sebelum migrasi. IIA meminta keterbatasan sumber daya yang
+memengaruhi asurans dilaporkan kepada pihak yang tepat \cite{iia-tlm2026}. Pemangkasan itu karena
+itu masuk laporan ke komite audit, bukan diselesaikan diam-diam dengan mengurangi area.
+\end{kasus}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh rencana asurans dua tahun (misalkan)}\label{tab:ch12-rencana}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.08\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Waktu} & \textbf{Area dan pemicu} & \textbf{Jam} & \textbf{Keputusan yang didukung} \\
+    \hline
+    Tahun 1 awal & Akses vendor AC-01, R-01, insiden 2025 & 600 & Kesiapan perluasan mitra \\ \hline
+    Tahun 1 akhir & Pemulihan DSS04, sebelum migrasi & 480 & Kesiapan kelangsungan \\ \hline
+    Tahun 1 akhir & Insiden dan pemberitahuan, K-04 & 240 & Kesiapan pemberitahuan \\ \hline
+    Sepanjang Tahun 1 & Saran KB-09 dan pembacaan laporan pihak luar & 120 & Rancangan kebijakan AI;
+    dasar kepercayaan \\ \hline
+    Tahun 2 & AI klinis AI-01, AI-02, KB-09 & 480 & Batas perluasan AI \\ \hline
+    Tahun 2 & Jejak aktivitas KB-06 & 240 & Keandalan penelusuran \\ \hline
+    Tahun 2 & Privasi dan retensi & 200 & Batas pemakaian data \\ \hline
+    Tahun 2 & Vendor inti dan cloud, V-01 dan V-02 & 320 & Perpanjangan kontrak \\ \hline
+    Tahun 2 & Integrasi BPJS Kesehatan & 200 & Kelangsungan pendaftaran \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Peta asurans}
+
+Pertanyaan berikutnya: siapa saja yang sudah memeriksa area yang sama? Peta asurans adalah dokumen
+tingkat tinggi yang memperlihatkan cakupan risiko oleh berbagai penyedia asurans, sehingga celah
+dan pengulangan terlihat \cite{iia-tlm2026}. Standar 9.5 meminta kepala audit internal berkoordinasi
+dan mempertimbangkan pekerjaan penyedia lain. Bila audit internal mengandalkan pekerjaan itu,
+dasarnya didokumentasikan dan tanggung jawab atas kesimpulan tetap pada audit internal
+\cite{iia-gias2024}. Tabel~\ref{tab:ch12-peta-asurans} menerapkannya pada Medikara.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Peta asurans Medikara (misalkan)}\label{tab:ch12-peta-asurans}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.11\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|}
+    \hline
+    \textbf{Area} & \textbf{Lini pertama} & \textbf{Lini kedua} & \textbf{Audit internal} &
+    \textbf{Pihak luar} \\ \hline
+    Akses vendor AC-01 & 60 catatan per tahun & CISO memantau 120 akun & Tahun 1 & SOC 2, sisi
+    penyedia saja \\ \hline
+    Pemulihan DSS04 & 144 uji per tahun & Kepala risiko meninjau hasil & Tahun 1 & Tidak ada \\
+    \hline
+    Insiden & Prosedur KB-07 & Petugas pelindungan data memeriksa 2 latihan & Tahun 1 & Tidak ada
+    \\ \hline
+    Jejak aktivitas & Tinjauan catatan aktivitas & CISO memeriksa 247 dari 260 tinjauan & Tahun 2 &
+    Tidak ada \\ \hline
+    AI klinis & Uji AI-01, AI-02 & Kepala risiko, petugas pelindungan data & Tahun 2 & Tidak ada \\
+    \hline
+    Vendor dan cloud & Pengelola vendor & Kepala risiko meninjau register pemasok & Tahun 2 & SOC 2
+    Type 2, sertifikat \\ \hline
+    Laporan spreadsheet & Rekonsiliasi manual & Kepala risiko & Ditunda & Audit keuangan, angka
+    keuangan saja \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Bab 1 menghitung tiga fungsi yang masing-masing meminta daftar akun kepada 23 fasilitas
+  setiap triwulan menghasilkan 276 permintaan per tahun. Satu jadwal bersama menurunkannya menjadi
+  92 permintaan. Dengan 2 jam per permintaan, fasilitas menghemat 368 jam, atau Rp22,08 juta per
+  tahun. Audit internal tetap menilai mutu daftar itu sendiri.
+  \item Bab 8 menetapkan petugas pelindungan data memeriksa Paket C dan CISO memeriksa Paket D.
+  Audit internal menilai mutu pemeriksaan keduanya, sehingga nilai asurans lain pada kedua area
+  itu 2. Bila mutunya tidak memenuhi harapan, audit internal dapat memilih tidak mengandalkannya
+  \cite{iia-tlm2026}. Nilai itu turun menjadi 0, dan prioritas jejak aktivitas naik dari 16 menjadi
+  18.
+\end{enumerate}
 
 \section{Program Audit dan Pengujian Kontrol}
 
-% TODO
-% Cakupan: tujuan, kriteria, dan prosedur audit; uji rancangan dan uji efektivitas kontrol; teknik sampling; kecukupan dan keandalan bukti.
-% Kasus Medikara: peninjauan hak akses SIMRS yang menjadi temuan audit internal.
-% Pendalaman teknis: teknik audit berbantuan komputer pada log akses (akun tanpa pemilik, akun bersama, akses di luar jam kerja) dan konsep continuous control monitoring.
+\subsection*{Uji rancangan dan uji efektivitas}
+
+Program audit menyatakan tujuan, kriteria, populasi, prosedur, bukti, dan cara menyimpulkan hasil.
+Uji rancangan menilai apakah kontrol, bila dijalankan sesuai rencana, dapat menangani risiko. Uji
+efektivitas operasi memeriksa apakah kontrol benar-benar dijalankan selama periode yang dipilih.
+FISCAM menegaskan dokumen proses, diagram alur, dan prosedur memberi bukti tentang rancangan,
+tetapi tidak membuktikan kontrol sudah diterapkan dan bekerja \cite{c12-fiscam2026}.
+
+Analogi pemeriksaan pintu menunjukkan perbedaannya. Rancangan kunci dapat memadai, tetapi bukti
+bahwa pintu dikunci setiap malam memerlukan catatan dan pengamatan pelaksanaan. Membaca prosedur
+tidak membuktikan kepatuhan setiap hari.
+
+Kedua uji menghasilkan empat keadaan pada Gambar~\ref{fig:ch12-rancangan-operasi}. Keadaan kiri
+bawah paling sering menipu. Kontrol dijalankan rajin, laporannya rapi, tetapi tujuannya meleset.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch12-rancangan-operasi.tex}
+  \caption{Empat keadaan kontrol menurut hasil uji rancangan dan uji operasi}
+  \label{fig:ch12-rancangan-operasi}
+\end{figure}
+
+Dua contoh pada AC-01:
+\begin{enumerate}
+  \item Bab 6 menemukan tanggal berakhir penugasan tidak masuk daftar peninjau, dan daftar itu
+  hanya memuat 108 dari 120 akun. Walaupun peninjau bekerja sempurna, cakupan paling tinggi 90
+  persen. Ini kelemahan rancangan. Menambah frekuensi peninjauan tidak menyelesaikannya.
+  \item AC-01 berjalan bulanan pada 5 rumah sakit, sehingga seharusnya ada $5 \times 12 = 60$
+  catatan per tahun. Catatan yang tersedia hanya 12, seluruhnya dari 1 rumah sakit. Rancangan yang
+  baik pada rumah sakit itu tidak membuktikan operasi pada 4 rumah sakit lain. Ini kelemahan
+  operasi.
+\end{enumerate}
+
+Tabel~\ref{tab:ch12-uji-kontrol} menyusun keduanya menjadi program audit singkat. Rincian
+prosedurnya ada di \berkas{sources/chapter12/program-audit-hak-akses.md}.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Program audit AC-01 dan hasil contoh (misalkan)}\label{tab:ch12-uji-kontrol}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.14\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.21\textwidth}|}
+    \hline
+    \textbf{Pertanyaan} & \textbf{Jenis uji} & \textbf{Bukti} & \textbf{Hasil contoh} \\ \hline
+    Siapa boleh menyetujui dan menjalankan? & Rancangan & Prosedur KB-03 dan pemisahan tugas Bab 8
+    & Ada pemisahan tugas \\ \hline
+    Apakah daftar peninjau lengkap? & Rancangan & Daftar peninjau dan daftar penugasan & 108 dari
+    120 akun \\ \hline
+    Apakah peninjauan berjalan bulanan di 5 rumah sakit? & Operasi & Catatan bulanan per lokasi &
+    12 dari 60 catatan \\ \hline
+    Apakah akun dicabut paling lambat 1 hari kerja? & Operasi & Sampel 30 akun dan tiket pencabutan
+    & 24 sesuai, 6 menyimpang \\ \hline
+    Apakah pengecualian ditutup? & Tindak lanjut & Tiket dan verifikasi ulang & 24 akun dicabut,
+    lalu 9, 5, dan 2 \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Kriteria ditetapkan sebelum data dibuka}
+
+Standar 13.4 meminta auditor memakai kriteria yang paling relevan. Bila kriteria dari manajemen
+tidak memadai, kriteria yang tepat dibahas dengan badan pengarah atau manajemen senior
+\cite{iia-gias2024}. Urutannya penting. Kriteria yang ditetapkan sesudah melihat data dapat digeser
+mengikuti hasil yang diinginkan.
+
+\begin{kasus}[title={Kasus Medikara Health: Potret Delapan Baris}]
+Berkas \berkas{sources/chapter12/data-contoh-hak-akses.csv} memuat 8 akun sintetis pada satu rumah
+sakit, dengan tanggal acuan 30 Oktober 2026. Aturan skenarionya: setiap akun aktif punya pemilik,
+akun bersama manusia tidak dipakai, dan tinjauan paling lama 90 hari. Batas 90 hari bukan kewajiban
+standar. Satu akun tidak aktif dikeluarkan, sehingga populasinya 7 akun aktif. USR002 tidak punya
+pemilik. USR003 akun bersama dengan umur tinjauan 122 hari, dan umur tinjauan USR005 107 hari.
+Jumlahnya 3 akun berindikasi dan 4 indikasi. Tinjauan tepat waktu $5 / 7 = 71{,}43$ persen.
+
+Angka ini punya dua konsekuensi. Pertama, 3 akun dan 4 indikasi berbeda penyebutnya, sehingga USR003
+tidak dihitung dua kali sebagai akun. Kedua, hasil bergantung pada kriteria. AC-01 berjalan bulanan.
+Bila batasnya 31 hari sesuai siklus itu, USR004 dengan 35 hari dan USR008 dengan 59 hari ikut
+terlambat, dan hasilnya turun menjadi $3 / 7 = 42{,}86$ persen. Keputusan batas ditulis lebih
+dahulu. Indikasi ini memicu pemeriksaan lanjutan, bukan vonis penyalahgunaan.
+\end{kasus}
+
+\section{Bukti dan Sampel}
+
+\subsection*{Mutu bukti}
+
+Standar 14.1 meminta informasi yang relevan, andal, dan cukup. Relevan berarti sejalan dengan tujuan
+dan ruang lingkup penugasan. Andal berarti faktual dan terkini, dan keandalannya naik bila informasi
+diperoleh langsung atau dari sumber independen, serta dikuatkan sumber lain. Cukup berarti orang
+lain yang cermat dapat mengulang pekerjaan itu dan sampai pada kesimpulan yang sama
+\cite{iia-gias2024}.
+
+Analogi kas warung menunjukkan empat cara memperoleh bukti. Pemilik dapat bertanya kepada kasir,
+mengamati kasir pada satu sore, membaca buku kas, atau menghitung ulang uang dan nota. Keempatnya
+berbeda kekuatan. Hanya cara terakhir yang tidak bergantung pada ucapan kasir. FISCAM memakai
+pembagian serupa \cite{c12-fiscam2026}, dan Tabel~\ref{tab:ch12-jenis-uji} menerapkannya pada AC-01.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Empat jenis uji pada AC-01}\label{tab:ch12-jenis-uji}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Jenis} & \textbf{Cara pada AC-01} & \textbf{Batasnya} \\ \hline
+    Bertanya & Kepala operasi TI menjelaskan cara peninjauan & Tidak cukup bila berdiri sendiri \\
+    \hline
+    Mengamati & Auditor mendampingi peninjauan satu rumah sakit pada satu bulan & Tidak membuktikan
+    kontrol berjalan pada waktu lain \\ \hline
+    Memeriksa dokumen & Membaca catatan bulanan dan tiket pencabutan & Dokumen prosedur hanya
+    membuktikan rancangan \\ \hline
+    Mengulang & Auditor sendiri mencocokkan akun dengan daftar penugasan & Memerlukan akses data dan
+    pemeriksaan kelengkapan data \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Bab 4 memisalkan kepala TI menyatakan peninjauan akses vendor sudah berjalan baik.
+  Pernyataan itu bukti dari orang yang bertanggung jawab atas kontrol. Bukti tertulis hanya ada pada
+  1 dari 5 rumah sakit, sehingga kesimpulan untuk 4 rumah sakit lain belum dapat ditarik.
+  \item Bab 10 mencatat 29 dari 36 uji pemulihan lulus, atau 80,6 persen. Pada 5 rumah sakit, hanya
+  3 yang lulus, atau 60 persen. Pada 31 fasilitas lain, 26 lulus, atau 83,9 persen. FISCAM meminta
+  auditor menimbang pemisahan populasi ketika beberapa lokasi menjalankan kontrol yang sama
+  \cite{c12-fiscam2026}. Hasil uji juga dibuat pelaksana, sehingga auditor mengulang sebagian uji
+  SIMRS sendiri.
+\end{enumerate}
+
+\subsection*{Populasi lebih dahulu}
+
+Pertanyaan kemudian muncul: sampel diambil dari mana? FISCAM meminta auditor menjelaskan populasi
+dan sumbernya, serta menguji apakah data dari manajemen lengkap, akurat, dan sah
+\cite{c12-fiscam2026}. Sampel sebaik apa pun tidak dapat memuat akun yang tidak ada pada daftar.
+Sampel 30 akun dari daftar 108 tidak mungkin menyentuh 12 akun yang luput.
+Gambar~\ref{fig:ch12-populasi-sampel} memperlihatkan tiga jalur dari satu populasi.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch12-populasi-sampel.tex}
+  \caption{Tiga pemeriksaan dari populasi 120 akun vendor}
+  \label{fig:ch12-populasi-sampel}
+\end{figure}
+
+Dua angka 24 pada AC-01 sering tertukar. Pembagiannya begini. Angka pertama adalah 24 dari 30 akun
+sampel yang sesuai, atau 80 persen, seperti pada Bab 4 dan Bab 6. Angka kedua adalah 24 dari 120
+akun yang dicabut pada peninjauan penuh bulan berikutnya, atau 20 persen. Keduanya sama-sama 24
+karena 6 dari 30 dan 24 dari 120 sama-sama 20 persen. Yang pertama menghitung akun sesuai, dan yang
+kedua menghitung akun bermasalah.
+
+\subsection*{Sampel statistik dan sampel terarah}
+
+Sampel memakai dua pendekatan. Sampel statistik dimaksudkan mewakili populasi dan dapat
+diproyeksikan kepadanya. Pemilihannya acak sederhana atau sistematis, dengan awal yang acak. Sampel
+terarah dipilih berdasarkan pertimbangan auditor dan tidak dimaksudkan untuk diproyeksikan
+\cite{c12-fiscam2026}. Sampel terarah tidak salah, selama kesimpulannya tidak melampaui itemnya.
+
+Analogi mencicipi sayur menjelaskan bedanya. Satu sendok dari panci yang sudah diaduk dapat mewakili
+isi panci. Satu sendok dari permukaan panci yang belum diaduk hanya menjelaskan permukaannya.
+
+Sampel 30 akun pada Bab 4 hanya mewakili satu lokasi. Medikara karena itu tidak memproyeksikan
+angka 20 persen ke 120 akun. Angka 24 dari 120 berasal dari peninjauan penuh, bukan dari proyeksi.
+Misalkan audit ulang memakai sampel acak bertingkat per rumah sakit. Populasi Jakarta 40, Bekasi
+24, Depok 20, Bogor 20, dan Bandung 16 akun menghasilkan alokasi 10, 6, 5, 5, dan 4 akun, atau
+seperempat tiap lokasi. Pemisahan ini layak karena tiap lokasi menjalankan versi SIMRS berbeda.
+
+Pertanyaan berikutnya: apa yang dapat dikatakan sampel acak? Tabel~\ref{tab:ch12-baca-sampel} dan
+Tabel~\ref{tab:ch12-daya-deteksi} memberi jawabannya. Hitungan memakai sebaran hipergeometrik karena
+akun tidak dikembalikan setelah terpilih. Batas bawah dan batas atas masing-masing memakai keyakinan
+95 persen satu sisi. Berkas \berkas{sources/chapter12/hasil-sampel-ac01.json} memuat seluruh
+hasilnya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Membaca hasil sampel 30 dari 120 akun, bila sampel acak}\label{tab:ch12-baca-sampel}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|c|c|c|}
+    \hline
+    \textbf{Hasil pada sampel} & \textbf{Perkiraan titik} & \textbf{Batas bawah} & \textbf{Batas
+    atas} \\ \hline
+    6 dari 30 menyimpang & 24 akun & 13 akun & 40 akun \\ \hline
+    2 dari 30 menyimpang & 8 akun & 2 akun & 21 akun \\ \hline
+    0 dari 30 menyimpang & 0 akun & 0 akun & 9 akun \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Daya deteksi sampel pada populasi 120 akun}\label{tab:ch12-daya-deteksi}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|c|c|}
+    \hline
+    \textbf{Akun bermasalah pada populasi} & \textbf{Peluang tertangkap sampel 30} &
+    \textbf{Sampel minimal 95 persen} \\ \hline
+    24 akun & 99,96 persen & 13 akun \\ \hline
+    12 akun & 97,40 persen & 26 akun \\ \hline
+    6 akun & 82,95 persen & 47 akun \\ \hline
+    2 akun & 43,91 persen & 93 akun \\ \hline
+    1 akun & 25,00 persen & 114 akun \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh cara membacanya:
+\begin{enumerate}
+  \item Bila 6 dari 30 berasal dari sampel acak, perkiraannya 24 akun, dengan rentang 13 sampai 40
+  akun. Lebar rentang itu 27 akun, atau hampir seperempat populasi. Sampel cukup untuk menyimpulkan
+  ada masalah, tetapi tidak cukup untuk menyatakan jumlah pastinya.
+  \item Bab 8 menargetkan 30 dari 30 akun sampel sesuai. Hasil sempurna itu pun masih menyisakan
+  kemungkinan sampai 9 akun bermasalah. Bila hanya 1 akun bermasalah, sampel 30 hanya menangkapnya
+  dengan peluang 25 persen. \textit{Risk appetite} Bab 5 adalah nol akun vendor tanpa pemilik,
+  sehingga sampel saja tidak dapat membuktikannya. Karena itu Bab 8 juga menuntut 120 dari 120 akun
+  cocok.
+\end{enumerate}
+
+Keputusan ini punya dua konsekuensi. Pertama, untuk toleransi nol, seluruh populasi diuji. FISCAM
+menyebut alat otomatis memungkinkan pengujian tiap item pada populasi \cite{c12-fiscam2026}. Bila
+satu akun diuji manual 20 menit, 120 akun memakan 40 jam atau Rp2,4 juta. Misalkan skrip dengan
+persiapan data 8 jam menandai 12 akun untuk ditelusuri manual selama 4 jam. Totalnya 12 jam, atau
+Rp720 ribu. Biaya itu kecil dibanding harapan kerugian R-01 sebesar Rp100 juta per tahun.
+
+Kedua, sampel tetap berguna untuk hal yang tidak dapat dibaca mesin, misalnya keaslian persetujuan.
+Catatan bulanan juga populasi kecil. FISCAM memberi panduan 2 sampai 4 item untuk 12 pelaksanaan
+kontrol bulanan \cite{c12-fiscam2026}, atau 10 sampai 20 item bila kelima rumah sakit dipisahkan.
+Bab 8 menuntut 60 dari 60 catatan, dan membaca seluruhnya dengan 15 menit per catatan hanya memakan
+15 jam. Medikara memilih membaca semuanya.
+
+\begin{pendalaman}
+\textbf{Rumus peluang.} Peluang sampel berukuran $n$ dari populasi $N$ tidak memuat satu pun dari
+$K$ akun bermasalah adalah $\binom{N-K}{n} / \binom{N}{n}$. Pada $N = 120$, $n = 30$, dan $K = 1$,
+hasilnya $90 / 120 = 0{,}75$, sehingga peluang tertangkap 25 persen. Batas atas pada
+Tabel~\ref{tab:ch12-baca-sampel} adalah $K$ terbesar yang masih memberi peluang paling sedikit 5
+persen untuk menghasilkan temuan sebanyak itu atau lebih sedikit.
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize,columns=fullflexible,frame=lines,breaklines=true,
+  caption={Peluang sampel tanpa temuan, tersedia di \berkas{sources/chapter12/uji_sampel_ac01.py}},
+  label={lst:ch12-peluang}]
+def peluang_nol_temuan(akun_bermasalah, ukuran_sampel, populasi):
+  """Hitung peluang sampel acak tidak memuat satu pun akun bermasalah."""
+  cara_tanpa_masalah = comb(populasi - akun_bermasalah, ukuran_sampel)
+  return cara_tanpa_masalah / comb(populasi, ukuran_sampel)
+\end{lstlisting}
+Skrip pada folder sumber hanya membaca berkas sintetis. FISCAM meminta pemeriksaan teknis bahwa alat
+dipakai dengan tepat dan hasilnya lengkap serta akurat \cite{c12-fiscam2026}. Skrip memberi bahan
+pemeriksaan. Auditor tetap memvalidasi pemilik, pengecualian layanan, dan bukti persetujuan.
+\end{pendalaman}
 
 \section{Pelaporan Temuan dan Tindak Lanjut}
 
-% TODO
-% Cakupan: format kondisi, kriteria, sebab, akibat, dan rekomendasi; peringkat temuan; pemantauan tindak lanjut; memanfaatkan laporan asurans pihak ketiga seperti SOC 2.
+\subsection*{Unsur temuan}
+
+Temuan menghubungkan kondisi, kriteria, sebab, akibat, dan rekomendasi. Government Auditing
+Standards menjelaskan kriteria sebagai keadaan yang disyaratkan atau diharapkan, kondisi sebagai
+keadaan yang ada, sebab sebagai faktor di balik selisih keduanya, dan akibat sebagai konsekuensi
+nyata atau potensial \cite{c12-gagas2024}. Standar 14.3 meminta auditor menilai signifikansi dari
+peluang dan dampak, mencari akar sebab bersama manajemen, lalu memberi prioritas tiap temuan
+\cite{iia-gias2024}. Sebab yang belum terbukti ditulis sebagai dugaan yang perlu dikonfirmasi.
+
+Analogi laporan kebocoran atap menunjukkan kelengkapan temuan. Pernyataan lantai basah belum
+menjelaskan kriteria bangunan, asal air, akibat, dan perbaikan yang diperlukan. Menambah ember
+mungkin mengurangi dampak sementara, tetapi belum mengatasi penyebab.
+
+Gambar~\ref{fig:ch12-unsur-temuan} memperlihatkan hubungan keenam unsur, dan
+Tabel~\ref{tab:ch12-temuan} menuliskannya untuk temuan TA-01. Kolom terakhir memisahkan yang sudah
+terbukti dari yang belum. Contoh lengkapnya ada di \berkas{sources/chapter12/contoh-temuan-ta01.md}.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch12-unsur-temuan.tex}
+  \caption{Hubungan unsur temuan pada TA-01 (misalkan)}
+  \label{fig:ch12-unsur-temuan}
+\end{figure}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Temuan TA-01 pada AC-01, tanggal acuan 31 Maret 2026 (misalkan)}\label{tab:ch12-temuan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|}
+    \hline
+    \textbf{Unsur} & \textbf{Isi} & \textbf{Status} \\ \hline
+    Kondisi & 6 dari 30 akun sampel masih aktif setelah penugasan berakhir. Daftar peninjau memuat
+    108 dari 120 akun. Catatan AC-01 tersedia 12 dari 60. & Terbukti pada sampel satu lokasi \\
+    \hline
+    Kriteria & Akun dicabut paling lambat 1 hari kerja (Bab 2). Nol akun vendor aktif tanpa pemilik
+    (Bab 5). Peninjauan bulanan pada 5 rumah sakit (Bab 6). & Disetujui \\ \hline
+    Sebab & Tanggal berakhir tidak masuk daftar. Daftar diambil dari sistem yang diperiksa. Belum
+    ada peninjau lintas lokasi. & Dua terkonfirmasi, satu dugaan \\ \hline
+    Akibat & Nyata: 24 akun dicabut bulan berikutnya. Potensi: R-01 berskor 12, peringkat Tinggi. &
+    Nyata dipisahkan dari potensi \\ \hline
+    Rekomendasi & Masukkan tanggal berakhir, tarik populasi dari daftar penugasan, dan terapkan pada
+    5 rumah sakit. & Menuju sebab \\ \hline
+    Pemilik dan tenggat & Pemilik risiko pemilik Medikara+; pemilik tindakan kepala operasi TI; 30
+    hari. & Disepakati \\ \hline
+    Verifikasi penutupan & 120 dari 120 akun cocok, 60 dari 60 catatan, 30 dari 30 akun sampel
+    sesuai. & Belum diuji \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh menunjukkan batas temuan:
+\begin{enumerate}
+  \item Temuan TA-01 tidak menyatakan 6 akun itu dipakai membocorkan data. Audit menuliskan bukti,
+  membatasi kesimpulan pada populasi yang diperiksa, lalu menilai dampaknya pada R-01. Bab 5 memberi
+  harganya. Pada bukti 1 dari 5 rumah sakit, peluang R-01 masih 0,17 dan harapan kerugian Rp85
+  juta. Register yang menulis cakupan penuh akan mencatat Rp25 juta. Selisih Rp60 juta itu lebih
+  besar dari biaya audit area ini, yaitu 600 jam atau Rp36 juta.
+  \item Misalkan pemilik akun vendor kosong pada 1 dari 120 akun. Persentasenya sekitar 0,8 persen,
+  tetapi statusnya tetap merah menurut Bab 5. Signifikansi temuan dinilai dari peluang dan dampak
+  terhadap batas risiko, bukan dari besar persentasenya.
+\end{enumerate}
+
+\subsection*{Tindak lanjut sampai terverifikasi}
+
+Penutupan berdasarkan janji atau unggahan dokumen belum membuktikan perbaikan berjalan. Standar 15.2
+meminta auditor mengonfirmasi pelaksanaan rekomendasi: menanyakan kemajuan, melakukan penilaian
+lanjutan berbasis risiko, dan memperbarui status pada sistem pelacakan. Bila manajemen terlambat,
+auditor meminta penjelasan, dan kepala audit internal menilai apakah manajemen senior sudah menerima
+risiko di atas toleransinya karena penundaan atau tidak bertindak \cite{iia-gias2024}. Keterlambatan
+tanpa keputusan berarti risiko diterima tanpa disebut.
+
+Analogi resep dokter menjelaskan bedanya. Resep yang sudah ditulis bukan bukti pasien sembuh. Dokter
+meminta pasien kembali dan memeriksa ulang, karena yang dinilai adalah hasil, bukan selembar kertas.
+Pada TA-01, temuan melewati empat status: terbuka, selesai menurut manajemen, diuji ulang, dan
+ditutup. Status kedua dan keempat sering dianggap sama.
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan manajemen menyatakan perbaikan selesai setelah prosedur KB-03 terbit. Audit meminta
+  bukti peninjauan periode berikutnya pada 5 rumah sakit sebelum menyimpulkan efektivitas operasi.
+  Statusnya berhenti pada selesai menurut manajemen, dan belum ditutup.
+  \item Bab 6 mencatat pencabutan turun dari 24 menjadi 9, 5, dan 2 akun, atau turun sekitar 92
+  persen. Penurunan itu baik, tetapi bukan bukti penutupan. Bila daftarnya masih 108 akun, angka 2
+  hanya berlaku untuk akun yang terlihat. Auditor memeriksa penyebutnya lebih dahulu.
+\end{enumerate}
+
+\subsection*{Membaca laporan audit nyata}
+
+Laporan audit publik melatih cara membaca angka. Office for Civil Rights (OCR) pada Department of
+Health and Human Services Amerika Serikat mengaudit kepatuhan Health Insurance Portability and
+Accountability Act (HIPAA) pada 2016 sampai 2017. Menurut ringkasan Lazzarotti dan Atrakchi, audit
+itu mencakup 166 penyedia layanan kesehatan dan 41 mitra usaha. Hanya 14 persen penyedia layanan
+yang dinilai memenuhi secara substansial tanggung jawab analisis risiko, dan hanya 6 persen pada
+manajemen risiko \cite{c12-lazzarotti2021}.
+
+Bacaan ini memberi dua pelajaran bagi Medikara, tanpa menyalin angkanya:
+\begin{enumerate}
+  \item Laporan yang baik menyebut populasi dan skala. Angka 14 persen hanya bermakna bila pembaca
+  tahu penyebutnya 166 penyedia dan penilaiannya memakai peringkat 1 sampai 5.
+  \item Menganalisis berbeda dari mengelola. Angka manajemen risiko lebih rendah dari analisis
+  risiko. Pola ini mirip jarak antara register risiko Bab 5 dan bukti operasi pada bab ini.
+\end{enumerate}
+
+\section{Audit Eksternal, Sertifikasi, dan Laporan Pihak Ketiga}
+
+\subsection*{Bentuk asurans dari luar}
+
+Asurans dari luar berbeda tujuan dan pembacanya. Auditor eksternal memberi pendapat bagi pemangku
+kepentingan di luar organisasi, umumnya atas laporan keuangan, dan tujuannya bukan menggantikan
+penyedia asurans internal. Regulator dan lembaga akreditasi menegakkan kepatuhan pada ketentuan
+tertentu \cite{iia-tlm2026}. Laporan System and Organization Controls 2 (SOC 2) membantu pengguna
+menilai risiko alih daya pada kategori keamanan, ketersediaan, integritas pemrosesan, kerahasiaan,
+atau privasi \cite{c09-aicpa-soc}. Bab 6 dan Bab 9 sudah membaca sertifikat dan laporan SOC 2. Bab
+ini membahas keputusan berikutnya: seberapa jauh audit internal boleh mengandalkannya.
+
+Analogi hasil pemeriksaan kesehatan calon karyawan membantu menjelaskannya. Perusahaan membaca
+tanggal pemeriksaan, jenis pemeriksaan, dan klinik penerbitnya. Hasil pemeriksaan mata tidak
+menjawab pertanyaan tentang jantung, dan hasil tahun lalu tidak menjawab kondisi hari ini.
+
+International Standard on Assurance Engagements (ISAE) 3402 dari International Auditing and
+Assurance Standards Board (IAASB) mengatur laporan asurans atas kontrol pada organisasi jasa.
+Laporan Type 1 menilai uraian sistem dan kecukupan rancangan kontrol. Laporan Type 2 menambahkan
+apakah kontrol bekerja efektif selama periode tertentu. Ruang lingkupnya kontrol yang relevan dengan
+pengendalian internal pengguna atas pelaporan keuangan \cite{c12-isae3402}. Ringkasan staf IAASB itu
+tidak mengikat, sehingga rincian ketentuan perlu dicocokkan ke naskah standarnya.
+Tabel~\ref{tab:ch12-asurans-luar} membandingkan bentuk-bentuk tersebut. Baris SOC 2 mengikuti
+pembacaan Bab 9 \cite{c09-deloitte-soc}.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Bentuk asurans dari luar dan cara memakainya}\label{tab:ch12-asurans-luar}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Bentuk} & \textbf{Yang dijawab} & \textbf{Yang belum dijawab} \\ \hline
+    Audit laporan keuangan & Keandalan laporan keuangan & Apakah akun vendor Medikara+ sudah dicabut
+    \\ \hline
+    Inspeksi regulator, akreditasi & Kepatuhan pada ketentuan tertentu & Efektivitas seluruh
+    kontrol TI \\ \hline
+    Sertifikat ISO/IEC 27001 & Sistem manajemen pada ruang lingkup itu & Kontrol di luar ruang
+    lingkup \\ \hline
+    SOC 2 Type 1 & Rancangan dan penerapan pada satu tanggal & Operasi sepanjang periode \\ \hline
+    SOC 2 Type 2 & Operasi kontrol penyedia selama periode & Sisa waktu setelah periode; kontrol
+    pelengkap pengguna \\ \hline
+    ISAE 3402 Type 2 & Kontrol terkait pelaporan keuangan pengguna & Kerahasiaan data pasien, bila
+    di luar ruang lingkup \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Keputusan mengandalkan laporan}
+
+Dua contoh memperlihatkan keputusannya:
+\begin{enumerate}
+  \item Bab 9 memisalkan laporan SOC 2 Type 2 mencakup 1 Januari sampai 30 Juni 2026 dan dibaca pada
+  1 November 2026, sehingga sekitar 4 bulan belum tercakup. Pengujiannya memuat 3 pengecualian dari
+  25 sampel pencabutan akses, atau 12 persen. Medikara baru menjalankan 9 dari 14 kontrol pelengkap.
+  Audit internal tidak mengurangi uji pencabutan, dan menguji sendiri 5 kontrol pelengkap yang belum
+  berjalan. Bila laporan itu tidak dapat diandalkan sama sekali, nilai asurans lain pada area vendor
+  turun dari 3 menjadi 0, dan prioritasnya naik dari 13 menjadi 16.
+  \item Misalkan laboratorium mitra V-03 mengirim laporan ISAE 3402 Type 2 untuk layanan penagihan.
+  Laporan itu dapat membantu pemeriksaan angka tagihan. Laporan itu tidak otomatis menjawab
+  kerahasiaan hasil laboratorium, atau salah alamat 1 dari 2.000 pengiriman pada Bab 9.
+\end{enumerate}
+
+Bab 9 juga menyerahkan klausul kontrak untuk diuji sebagai bukti audit. Klausul pencabutan 1 hari
+kerja diuji dengan 120 dari 120 akun cocok, bukan dengan membaca kontraknya saja. Perjanjian vendor
+yang memuat 6 dari 11 butir menunjukkan rancangan yang belum lengkap. Laporan pihak ketiga tidak
+menggantikan evaluasi risiko vendor oleh Medikara, karena pengalihan pekerjaan tidak mengubah
+akuntabilitas badan pengarah \cite{iia-tlm2026}.
 
 \section{Aktivitas: Rencana Asurans dan Pengujian Satu Kontrol}
 
-% TODO
-% Tujuan aktivitas: memastikan peta jalan transformasi dapat diperiksa secara independen dan berlatih menguji kontrol dengan bukti.
-% Peran dalam tim: anggota berlatar akuntansi atau audit memimpin; analis teknologi menyiapkan dan menganalisis data; pemilik konteks menilai apakah rekomendasi dapat dijalankan; analis risiko menautkan rencana asurans ke risk register.
-% Langkah: petakan lini pertama, kedua, dan ketiga di organisasi; susun rencana asurans dua tahun pertama peta jalan; pilih satu kontrol penting; susun program audit singkat; uji kontrol dengan data contoh; tulis temuan dalam format baku.
-% Luaran dan tonggak capstone: rencana asurans berbasis risiko dan contoh pengujian kontrol beserta temuan; masuk C4.
-% Berkas sources yang direncanakan: sources/chapter12/rencana-asurans.xlsx, sources/chapter12/program-audit-hak-akses.md, sources/chapter12/data-contoh-hak-akses.csv
+\textbf{Tujuan.} Tim menilai apakah program transformasi memiliki pemeriksaan independen yang
+memadai, lalu membuktikannya pada satu kontrol. Tim memakai organisasi nyata dengan izin dan data
+yang dianonimkan, atau kasus Medikara Health.
+
+\textbf{Pembagian peran.} Anggota berlatar akuntansi atau audit memimpin. Analis teknologi
+menyiapkan dan menganalisis data. Analis risiko mengaitkan area audit dengan register risiko.
+Pemilik konteks menilai apakah rekomendasi dapat dijalankan, tanpa menentukan kesimpulan auditor.
+
+\textbf{Langkah kerja.}
+\begin{enumerate}
+  \item Petakan peran lini pertama, kedua, ketiga, dan badan pengarah. Catat konflik beserta
+  pengamannya. Isi \berkas{sources/chapter12/peta-asurans.csv}.
+  \item Susun semesta audit dari register risiko dan kewajiban. Isi
+  \berkas{sources/chapter12/rencana-asurans.csv} untuk dua tahun pertama peta jalan, hitung
+  prioritas, lalu cocokkan jam dengan kapasitas.
+  \item Pilih satu kontrol penting, misalnya peninjauan hak akses SIMRS. Baca
+  \berkas{sources/chapter12/program-audit-hak-akses.md}. Tetapkan kriteria, populasi, dan tanggal
+  acuan sebelum membuka data.
+  \item Uji rancangan kontrol: kewenangan, pemisahan tugas, dan kelengkapan daftar.
+  \item Uji operasi dengan \berkas{sources/chapter12/sampel-ac01-30-akun.csv} dan
+  \berkas{sources/chapter12/data-contoh-hak-akses.csv}. Pisahkan akun tidak aktif dari populasi, dan
+  hitung akun bermasalah tanpa menggandakan akun dengan dua indikasi.
+  \item Konfirmasikan bukti tambahan yang diperlukan. Tulis satu temuan dengan
+  \berkas{sources/chapter12/templat-temuan-audit.md}, lalu bandingkan dengan
+  \berkas{sources/chapter12/contoh-temuan-ta01.md}.
+  \item Tetapkan tindakan, pemilik, tenggat, dan pengujian ulang. Presentasikan batas kesimpulan
+  beserta risiko sisanya.
+\end{enumerate}
+
+\textbf{Luaran.} Peta peran dan peta asurans, rencana asurans dua tahun, program uji satu kontrol,
+hasil pemeriksaan, dan satu temuan lengkap.
+
+\textbf{Kaitan dengan capstone.} Luaran masuk tonggak C4 Peta Jalan dan Tata Kelola. Bab 13 memakai
+kriteria dan hasil uji sebagai bahan indikator. Bab 14 memasukkan rencana asurans ke peta jalan.
+
+\textbf{Kriteria penilaian.} Ketepatan kriteria 25 persen; kecukupan bukti dan perhitungan 35
+persen; kualitas temuan 25 persen; batas klaim dan tindak lanjut 15 persen. Hasil tiap tim boleh
+berbeda dari contoh. Penilaian berfokus pada penalaran.
+
+\textbf{Berkas pendukung.} Daftar lengkap ada di \berkas{sources/chapter12/README.md}. Data
+organisasi nyata wajib berizin dan dianonimkan. Data pribadi pasien atau karyawan tidak boleh
+dipakai.
+
+\begin{pendalaman}[title={Pendalaman Teknis (Opsional): Teknik Audit Berbantuan Komputer}]
+Jalankan \texttt{python uji\_sampel\_ac01.py} dan \texttt{python audit\_hak\_akses.py} dari folder
+sumber Bab 12. Tim berlatar teknis dapat menerapkan cara yang sama pada \textit{log} akses sintetis,
+misalnya mencari akun tanpa pemilik, akun bersama, dan akses di luar jam kerja. Berkas contoh tidak
+memuat jam akses, sehingga kesimpulan tentang jam kerja memerlukan \textit{log} tambahan. Pada
+organisasi nyata, pekerjaan ini hanya memakai data berizin tertulis yang sudah dianonimkan, dan
+tidak boleh berupa pemindaian sistem milik pihak lain.
+
+Langkah berikutnya adalah \textit{continuous control monitoring}, yaitu pemeriksaan kontrol yang
+berjalan otomatis dan terus-menerus. Chiu, Liu, dan Vasarhelyi menelaah perkembangan penelitian
+audit otomatis yang berjalan mendekati waktu nyata \cite{c12-chiu2014}. Satu keputusan perlu diambil
+lebih dahulu: siapa pemilik pemantauan. Bila audit internal memiliki pemantauan harian atas AC-01,
+ia menjalankan tugas lini kedua dan menilai pekerjaannya sendiri \cite{iia-tlm2026}. Pada Medikara,
+lini pertama atau lini kedua memiliki pemantauan, sedangkan audit internal menguji mutu datanya.
+\end{pendalaman}
 
 \section{Ringkasan}
 
-% TODO
+Asurans memberikan keyakinan berdasarkan kriteria dan bukti, dengan batas ruang lingkup, periode,
+populasi, dan metode yang jelas. Laporan 108 dari 108 akun dan cakupan 108 dari 120 akun dapat benar
+bersamaan, karena penyebutnya berbeda. Konsultasi dapat membantu perbaikan tanpa memindahkan
+tanggung jawab manajemen kepada auditor.
+
+Three Lines Model membagi peran pengelolaan, dukungan dan tantangan, serta penilaian independen.
+Struktur pelaporan dinilai menurut mandat dan pengamannya, bukan dari jabatan atasan saja. Audit
+internal melapor secara fungsional kepada badan pengarah. Global Internal Audit Standards memberi
+kerangka mutu bagi fungsi audit dengan ukuran apa pun.
+
+Rencana audit berangkat dari risiko, kewajiban, perubahan, dan asurans yang sudah ada. Pada contoh
+Medikara, kebutuhan 3.240 jam melebihi 2.880 jam terencana, sehingga dua area ditunda dan celah
+cakupannya dilaporkan kepada dewan komisaris. Skor membantu mengurutkan, tetapi waktu migrasi dan
+keselamatan pasien dapat mengubah urutannya.
+
+Uji rancangan berbeda dari uji efektivitas operasi. Daftar yang hanya memuat 108 akun adalah
+kelemahan rancangan, sedangkan 12 dari 60 catatan adalah kelemahan operasi. Populasi ditetapkan
+sebelum sampel. Hasil 30 dari 30 akun sesuai masih menyisakan kemungkinan sampai 9 akun bermasalah,
+sehingga toleransi nol diuji pada seluruh 120 akun. Laporan pihak luar dipakai setelah tanggal,
+ruang lingkup, pengecualian, dan kontrol pelengkapnya dibaca.
+
+Temuan yang lengkap menghubungkan kondisi dengan kriteria, sebab, akibat, dan rekomendasi, serta
+memisahkan fakta dari dugaan. Pesan utama bab ini adalah bahwa keyakinan lahir dari bukti yang dapat
+diulang orang lain, dan penutupan temuan memerlukan bukti perbaikan, bukan hanya pernyataan selesai.
 
 \section{Latihan}
 
+\subsection*{Latihan 1: Mandat dan Jalur Pelaporan}
+
+Unit manajemen risiko di sebuah rumah sakit melapor kepada direktur TI. Apa masalahnya menurut Three
+Lines Model, dan bagaimana memperbaikinya? Latihan ini membuktikan bahwa konflik dinilai dari
+mandat, akses, dan pengaman, bukan dari bagan organisasi saja.
 \begin{enumerate}
-  \item Unit manajemen risiko di sebuah rumah sakit melapor kepada direktur TI. Apa masalahnya menurut Three Lines Model, dan bagaimana memperbaikinya?
-  \item Jelaskan perbedaan uji rancangan dan uji efektivitas dengan contoh kontrol peninjauan hak akses.
-  \item Tulis satu temuan audit lengkap untuk kasus kebocoran data lewat vendor Medikara pada 2025.
+  \item Tentukan apakah mandat unit risiko hanya TI atau seluruh rumah sakit.
+  \item Hitung skenario risiko yang menyangkut sistem di bawah atasan unit itu.
+  \item Petakan siapa dapat membatasi laporan, ruang lingkup, dan eskalasi.
+  \item Usulkan pengaman tanpa menyamakan lini kedua dengan audit independen.
+\end{enumerate}
+
+Misalkan rumah sakit memakai 12 skenario register Bab 5, dan 8 skenario menyangkut sistem di bawah
+direktur TI. Pada $8 / 12 = 66{,}7$ persen skenario, unit risiko menantang atasannya sendiri. Empat
+skenario lain, termasuk R-11, berada di luar kewenangan direktur TI. Medikara memakai sebutan kepala
+TI untuk jabatan serupa. Tabel~\ref{tab:ch12-lat1-contoh} memberi contoh terisi, dan
+Tabel~\ref{tab:ch12-lat1-hasil} adalah lembar isiannya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh terisi Latihan 1 (misalkan)}\label{tab:ch12-lat1-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Mandat} & \textbf{Masalah yang diperiksa} & \textbf{Bukti} & \textbf{Perbaikan} \\
+    \hline
+    Hanya risiko TI & Tantangan terhadap keputusan direktur TI pada 8 skenario & Notulen tantangan
+    yang ditolak & Akses eskalasi ke komite risiko, 4 rapat per tahun \\ \hline
+    Seluruh rumah sakit & 4 skenario, termasuk R-11, di luar kewenangan atasan & Jalur laporan R-11
+    dan waktu tinjauannya & Pindahkan pelaporan ke direktur utama atau kepala risiko \\ \hline
+    Diminta menggantikan audit & Lini kedua dianggap independen & Piagam dan laporan ke komite
+    audit & Audit internal tetap menguji lini kedua \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar isian Latihan 1}\label{tab:ch12-lat1-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Mandat} & \textbf{Masalah yang diperiksa} & \textbf{Bukti} & \textbf{Perbaikan} \\
+    \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+\textbf{Pertanyaan analisis.}
+\begin{enumerate}
+  \item Pada contoh, 8 dari 12 skenario menyangkut sistem atasan unit. Berapa jumlah yang membuat
+  pemindahan pelaporan lebih tepat daripada menambah akses eskalasi, dan mengapa?
+  \item Mengapa jabatan atasan saja belum cukup membuktikan pelanggaran model?
+  \item Data apa yang membuktikan pengaman benar-benar berjalan selama setahun?
+\end{enumerate}
+
+\subsection*{Latihan 2: Rancangan dan Operasi AC-01}
+
+Jelaskan perbedaan uji rancangan dan uji efektivitas dengan contoh kontrol peninjauan hak akses.
+Latihan ini membuktikan bahwa kesimpulan harus cocok dengan jenis uji dan buktinya.
+\begin{enumerate}
+  \item Tuliskan rancangan AC-01 dan penanggung jawabnya.
+  \item Tetapkan kriteria, populasi, dan tanggal acuan sebelum membuka data.
+  \item Periksa data \berkas{sources/chapter12/sampel-ac01-30-akun.csv} dan
+  \berkas{sources/chapter12/data-contoh-hak-akses.csv}.
+  \item Bedakan kesimpulan tentang rancangan dan pelaksanaan, lalu tulis bukti tambahannya.
+\end{enumerate}
+
+Tabel~\ref{tab:ch12-lat2-contoh} memberi contoh terisi, dan Tabel~\ref{tab:ch12-lat2-hasil} adalah
+lembar isiannya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh terisi Latihan 2 (misalkan)}\label{tab:ch12-lat2-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.14\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Uji} & \textbf{Bukti contoh} & \textbf{Hasil} & \textbf{Kesimpulan terbatas} \\ \hline
+    Rancangan & Daftar peninjau dan daftar penugasan & 108 dari 120 akun & Rancangan belum
+    memastikan kelengkapan \\ \hline
+    Rancangan & Prosedur KB-03 dan pemisahan tugas & Empat tugas terpisah & Memadai di atas kertas;
+    pelaksanaan diperiksa \\ \hline
+    Operasi & Catatan bulanan & 12 dari 60 catatan & Terbukti pada 1 dari 5 rumah sakit \\ \hline
+    Operasi & Sampel 30 akun, 31 Maret 2026 & 24 sesuai, 6 menyimpang & Berlaku untuk satu lokasi,
+    tidak diproyeksikan \\ \hline
+    Operasi & 7 akun aktif, 30 Oktober 2026 & 5 dari 7 tepat waktu & 2 akun terlambat pada satu
+    tanggal \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar isian Latihan 2}\label{tab:ch12-lat2-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.14\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Uji} & \textbf{Bukti contoh} & \textbf{Hasil} & \textbf{Kesimpulan terbatas} \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+\textbf{Pertanyaan analisis.}
+\begin{enumerate}
+  \item Mengapa kebijakan tidak membuktikan seluruh akun telah ditinjau?
+  \item Hasil turun dari 5 dari 7 menjadi 3 dari 7 bila batas 90 hari diganti 31 hari. Batas mana
+  yang tepat bagi AC-01, dan siapa yang berwenang menetapkannya?
+  \item Bila 12 dari 60 catatan seluruhnya dari satu rumah sakit, apa yang dapat dan tidak dapat
+  disimpulkan?
+\end{enumerate}
+
+\subsection*{Latihan 3: Temuan Vendor}
+
+Tulis satu temuan audit lengkap untuk kasus kebocoran data lewat vendor Medikara pada 2025. Latihan
+ini membuktikan bahwa temuan dapat ditelusuri ke bukti, dan bahwa fakta terpisah dari dugaan.
+\begin{enumerate}
+  \item Pisahkan fakta dasar kasus dari data latihan dan dari dugaan. Fakta dasar hanya menyebut
+  kebocoran skala kecil lewat vendor pada 2025. Angka kronologi mengikuti data latihan Bab 7.
+  \item Tulis kondisi, kriteria, sebab, akibat, dan rekomendasi.
+  \item Tetapkan bukti konfirmasi, pemilik tindakan, dan verifikasi penutupan.
+\end{enumerate}
+
+Tabel~\ref{tab:ch12-lat3-contoh} memberi contoh terisi, dan Tabel~\ref{tab:ch12-lat3-hasil} adalah
+lembar isiannya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh terisi Latihan 3 (data latihan Bab 7)}\label{tab:ch12-lat3-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.14\textwidth}|>{\raggedright\arraybackslash}p{0.23\textwidth}|}
+    \hline
+    \textbf{Unsur} & \textbf{Contoh isian} & \textbf{Status} & \textbf{Bukti yang diperlukan} \\
+    \hline
+    Kondisi & Akun dukungan aktif setelah kontrak selesai; selama 8 malam memanggil data dua rumah
+    sakit, 155 panggilan per malam, 1.240 rekam & Data latihan & Catatan insiden tersanitasi dan
+    rekap harian \\ \hline
+    Kriteria & K-01 pencegahan akses tidak sah; pencabutan 1 hari kerja; K-05 vendor melapor dalam
+    12 jam & Register & Register kewajiban, kontrak, AC-01 \\ \hline
+    Sebab & Tanggal berakhir tidak masuk daftar; catatan aktivitas tidak ditinjau, 0 dari 260 &
+    Dugaan untuk insiden ini & Riwayat persetujuan dan tinjauan \\ \hline
+    Akibat & Diketahui hari ke-11 lewat keluhan pasien; 620 rekam terlacak, 620 tinggal jumlah &
+    Data latihan & Kronologi dan hasil pelacakan \\ \hline
+    Rekomendasi & Cocokkan akun dengan daftar penugasan; tinjau catatan aktivitas; lengkapi 11 butir
+    perjanjian & Usulan & Tiket, pemilik, tenggat \\ \hline
+    Verifikasi & 120 dari 120 akun cocok; 247 dari 260 tinjauan; latihan laporan 12 jam & Belum
+    diuji & Hasil uji ulang, tanpa data pasien asli \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar isian Latihan 3}\label{tab:ch12-lat3-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.14\textwidth}|>{\raggedright\arraybackslash}p{0.23\textwidth}|}
+    \hline
+    \textbf{Unsur} & \textbf{Contoh isian} & \textbf{Status} & \textbf{Bukti yang diperlukan} \\
+    \hline
+    Kondisi & \dots & \dots & \dots \\ \hline
+    Kriteria & \dots & \dots & \dots \\ \hline
+    Sebab & \dots & \dots & \dots \\ \hline
+    Akibat & \dots & \dots & \dots \\ \hline
+    Rekomendasi & \dots & \dots & \dots \\ \hline
+    Verifikasi & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+\textbf{Pertanyaan analisis.}
+\begin{enumerate}
+  \item Unsur mana yang belum boleh dinyatakan sebagai fakta, dan mengapa?
+  \item Sebanyak 620 rekam tinggal berupa jumlah. Apa akibatnya bagi pernyataan dampak pada temuan?
+  \item Bagaimana menilai perbaikan tanpa mengakses data pasien asli?
 \end{enumerate}

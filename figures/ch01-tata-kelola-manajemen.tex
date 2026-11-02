@@ -1,0 +1,34 @@
+\begin{tikzpicture}[
+  pita/.style={draw,rounded corners,fill=praditagreen!15,minimum width=11.4cm,
+    minimum height=1.95cm},
+  pita2/.style={pita,fill=orange!12},
+  judul/.style={font=\scriptsize\bfseries,anchor=north west},
+  tahap/.style={draw,rounded corners,align=center,minimum height=0.85cm,
+    font=\scriptsize,fill=blue!8},
+  panah/.style={-{Stealth[length=2mm]},thick}
+]
+  \node[pita] (atas) at (5.7,3.55) {};
+  \node[judul] at (atas.north west) {Tata kelola: badan pengarah};
+  \node[tahap,text width=3cm] at (1.8,3.3)
+    {\textit{Evaluate}\\{\tiny\mdseries menilai pilihan dan akibat}};
+  \node[tahap,text width=3cm] at (5.7,3.3)
+    {\textit{Direct}\\{\tiny\mdseries memberi arah dan batas}};
+  \node[tahap,text width=3cm] at (9.6,3.3)
+    {\textit{Monitor}\\{\tiny\mdseries memantau hasil dan kepatuhan}};
+
+  \node[pita2] (bawah) at (5.7,0) {};
+  \node[judul] at (bawah.north west) {Manajemen: pelaksana sesuai mandat};
+  \node[tahap,text width=2.2cm] at (1.35,-0.25)
+    {\textit{Plan}\\{\tiny\mdseries merencanakan}};
+  \node[tahap,text width=2.2cm] at (4.25,-0.25)
+    {\textit{Build}\\{\tiny\mdseries membangun}};
+  \node[tahap,text width=2.2cm] at (7.15,-0.25)
+    {\textit{Run}\\{\tiny\mdseries menjalankan}};
+  \node[tahap,text width=2.2cm] at (10.05,-0.25)
+    {\textit{Monitor}\\{\tiny\mdseries memantau operasi}};
+
+  \draw[panah] (3.1,2.56) -- node[left,font=\scriptsize,align=right]
+    {mandat, prioritas,\\dan batas} (3.1,1);
+  \draw[panah] (8.3,1) -- node[right,font=\scriptsize,align=left]
+    {bukti pelaksanaan\\dan masalah baru} (8.3,2.56);
+\end{tikzpicture}

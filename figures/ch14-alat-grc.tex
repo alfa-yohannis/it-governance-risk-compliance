@@ -1,0 +1,17 @@
+\begin{tikzpicture}[node distance=5mm and 4mm, kotak/.style={draw, rounded corners, align=center, text width=2.35cm, minimum height=1.25cm, font=\scriptsize}, panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[kotak,fill=orange!12] (wajib) {Syarat wajib:\\akses bukti dan ekspor};
+  \node[kotak,fill=blue!8,right=of wajib] (biaya) {Biaya tiga tahun\\pada periode sama};
+  \node[kotak,fill=blue!8,right=of biaya] (skor) {Skor berbobot\\dan uji kepekaan};
+  \node[kotak,fill=blue!8,right=of skor] (uji) {Uji pada AC-01:\\120 akun, 60 catatan};
+  \node[kotak,fill=red!22,below=of wajib] (gugur) {Gugur, walaupun skornya tinggi};
+  \node[kotak,fill=praditagreen!15,below=of biaya] (awal) {Tahun 1: spreadsheet terstruktur, Rp50 juta};
+  \node[kotak,fill=orange!12,below=of skor] (gerbang) {Gerbang bulan 12\\(November 2027)};
+  \node[kotak,fill=green!10,below=of uji] (lulus) {Tahun 2 dan 3: Rp180 juta sumber terbuka, atau Rp60 juta tetap};
+  \draw[panah] (wajib) -- (biaya);
+  \draw[panah] (biaya) -- (skor);
+  \draw[panah] (skor) -- (uji);
+  \draw[panah] (wajib) -- node[right,font=\tiny] {gagal} (gugur);
+  \draw[panah] (uji.south west) -- (awal.north east);
+  \draw[panah] (awal) -- (gerbang);
+  \draw[panah] (gerbang) -- (lulus);
+\end{tikzpicture}

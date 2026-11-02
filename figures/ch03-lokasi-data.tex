@@ -1,0 +1,34 @@
+\begin{tikzpicture}[
+  tanya/.style={draw,rounded corners,align=center,text width=6.0cm,
+    minimum height=1.0cm,font=\scriptsize,fill=orange!12},
+  mulai/.style={draw,rounded corners,align=center,text width=6.0cm,
+    minimum height=0.8cm,font=\scriptsize,fill=blue!8},
+  hasil/.style={draw,rounded corners,align=center,text width=6.0cm,
+    minimum height=0.8cm,font=\scriptsize,fill=green!10},
+  henti/.style={draw,rounded corners,align=center,text width=3.7cm,
+    minimum height=1.0cm,font=\scriptsize,fill=red!22},
+  perbaiki/.style={draw,rounded corners,align=center,text width=3.7cm,
+    minimum height=1.0cm,font=\scriptsize,fill=gray!35},
+  label/.style={font=\scriptsize,fill=white,inner sep=1pt},
+  panah/.style={-{Stealth[length=2mm]},thick}
+]
+  \node[mulai] (a) at (0,0) {Usulan: rekam medis atau Data Kesehatan disimpan memakai jasa pihak lain};
+  \node[tanya] (b) at (0,-1.75) {Pusat data, termasuk salinan cadangan, berada di dalam wilayah
+    Indonesia?\\ {\tiny\mdseries PP 28/2024 Pasal 966 ayat (2) dan (5) huruf a}};
+  \node[tanya] (c) at (0,-3.7) {Perjanjian memuat kerahasiaan dan tingkat layanan, dan data tetap
+    dikendalikan penuh oleh penyelenggara?\\ {\tiny\mdseries PP 28/2024 Pasal 966 ayat (5) huruf b sampai d}};
+  \node[tanya] (d) at (0,-5.65) {PSE mendapat rekomendasi Kementerian Kesehatan dan menandatangani
+    larangan pemanfaatan data?\\ {\tiny\mdseries Permenkes 24/2022 Pasal 22 ayat (2) sampai (4)}};
+  \node[hasil] (e) at (0,-7.35) {Lanjut ke penilaian teknis, uji pemulihan, dan pengumpulan bukti};
+  \node[henti] (b2) at (5.6,-1.75) {Ini transfer ke luar wilayah: tujuan spesifik, izin Menteri, syarat
+    transfer data pribadi\\ {\tiny\mdseries PP 28/2024 Pasal 972; UU PDP Pasal 56}};
+  \node[perbaiki] (c2) at (5.6,-3.7) {Perbaiki perjanjian sebelum persetujuan kontrak};
+  \node[perbaiki] (d2) at (5.6,-5.65) {Lengkapi rekomendasi sebelum kerja sama dimulai};
+  \draw[panah] (a) -- (b);
+  \draw[panah] (b) -- node[label,right] {Ya} (c);
+  \draw[panah] (c) -- node[label,right] {Ya} (d);
+  \draw[panah] (d) -- node[label,right] {Ya} (e);
+  \draw[panah] (b) -- node[label,above] {Tidak} (b2);
+  \draw[panah] (c) -- node[label,above] {Tidak} (c2);
+  \draw[panah] (d) -- node[label,above] {Tidak} (d2);
+\end{tikzpicture}

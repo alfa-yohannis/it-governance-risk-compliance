@@ -1,66 +1,1098 @@
+% !TeX root = it-governance-risk-compliance.tex
+% !TeX encoding = UTF-8
 \chapter{Kelangsungan Bisnis dan Ketahanan Operasional}
 
 \section*{Tujuan Pembelajaran}
 \begin{itemize}
-  \item Melakukan BIA (\textit{Business Impact Analysis}) untuk menentukan layanan kritis beserta RTO dan RPO-nya.
+  \item Melakukan BIA (\textit{Business Impact Analysis}) untuk menentukan layanan kritis
+  beserta RTO dan RPO-nya.
   \item Memilih strategi kelangsungan yang sepadan dengan dampak dan biaya.
   \item Merancang skenario latihan krisis yang menguji keputusan, bukan hanya teknologi.
 \end{itemize}
 
 \section{Pendahuluan}
 
-% TODO
-% Cakupan: SIMRS mati selama enam jam, antrean pasien mengular, dan tidak ada yang tahu prosedur manual mana yang berlaku.
+Misalkan Sistem Informasi Manajemen Rumah Sakit (SIMRS) di rumah sakit Bekasi berhenti enam
+jam, dari pukul 08.00 sampai 14.00. Antrean pendaftaran mengular. Petugas masih dapat menerima
+pasien dengan formulir kertas, tetapi tidak dapat membaca obat yang sudah diberikan di unit
+lain. Pukul 14.00 server kembali hidup. Pasien yang menunggu belum hilang, dan catatan kertas
+belum masuk ke sistem. Menghidupkan server saja belum memulihkan layanan. Organisasi juga perlu
+memastikan keselamatan pasien, rekonsiliasi catatan manual, dan komunikasi antarfasilitas.
+
+Kelangsungan bisnis mempertahankan layanan pada kapasitas yang dapat diterima selama gangguan.
+Pemulihan teknologi mendukung tujuan tersebut. Analisis dampak bisnis atau Business Impact
+Analysis (BIA) menentukan prioritas berdasarkan konsekuensi gangguan, bukan berdasarkan sistem
+yang paling mudah dipulihkan. Target waktu dan kehilangan data disepakati pemilik layanan
+sebelum teknologi dipilih. Bab ini menuntaskan pekerjaan yang ditunda bab sebelumnya. Bab 4
+menunda objektif DSS04 \textit{Managed continuity} dari Control Objectives for Information and
+Related Technologies (COBIT) sampai BIA tersedia. Bab 3 mencatat 144 uji pemulihan per tahun,
+dan Bab 5 mencatat R-05, pemulihan yang belum diuji, sebagai skenario dengan harapan kerugian
+terbesar. Hasil kerja bab ini adalah BIA, strategi kelangsungan, dan skenario latihan untuk
+tonggak C3 capstone. Gambar~\ref{fig:ch10-alur} memperlihatkan urutan keputusannya.
+
+Bab ini memakai ISO 22301:2019 beserta Amandemen 1:2024 sebagai kerangka sistem manajemen
+kelangsungan bisnis. Naskah International Organization for Standardization (ISO) berbayar,
+sehingga rinciannya ditulis ringkas dan perlu dicocokkan ke naskah berlisensi sebelum dipakai
+untuk audit. Panduan National Institute of Standards and Technology (NIST) SP 800-34 Rev. 1
+terbuka dan memberi langkah BIA yang dapat diperiksa mahasiswa. Peraturan Badan Siber dan Sandi
+Negara (BSSN) 1/2024 dan 2/2024 melengkapi pembahasan tanggung jawab dan koordinasi, tanpa
+menyamakan setiap insiden rumah sakit dengan krisis siber nasional. Digital Operational
+Resilience Act (DORA) dari Uni Eropa dipakai sebagai pembanding, karena berlaku bagi sektor
+keuangan, bukan bagi Medikara. Seluruh angka tambahan tentang Medikara merupakan contoh
+pembelajaran
+\cite{iso22301-2019,c10-iso22301-amd2024,c10-nist80034,bssn1-2024,c10-bssn2-2024,c10-dora}.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch10-alur.tex}
+  \caption{Alur keputusan kelangsungan bisnis dan ketahanan operasional}
+  \label{fig:ch10-alur}
+\end{figure}
+
+\IfFileExists{../figures/ch10-diagram-konsep.png}{%
+
+Gambar \ref{fig:ch10-ilustrasi-bab} merangkum hubungan komponen dan konsep utama bab ini.
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/ch10-diagram-konsep.png}
+  \caption{Kelangsungan layanan memerlukan jalur bisnis dan teknologi}
+  \label{fig:ch10-ilustrasi-bab}
+\end{figure}
+}{}
 
 \section{Ketahanan Operasional sebagai Tanggung Jawab Direksi}
 
-% TODO
-% Cakupan: beda manajemen insiden, kelangsungan bisnis, dan pemulihan bencana; layanan kritis di rumah sakit dan kaitannya dengan keselamatan pasien; peran direksi dalam menetapkan toleransi gangguan.
+\subsection*{Tiga disiplin pada satu kejadian}
 
-\section{ISO 22301:2019}
+Ketahanan operasional adalah kemampuan mempertahankan hasil layanan penting ketika terjadi
+gangguan. Tiga disiplin menopangnya. Manajemen insiden membatasi kejadian dan memulihkan operasi
+yang terganggu. Kelangsungan bisnis menyiapkan cara melayani selama pemulihan. Pemulihan bencana
+atau \textit{disaster recovery}, yang dijalankan fungsi Teknologi Informasi (TI), mengembalikan
+teknologi dan data. NIST memisahkan rencana kelangsungan bisnis, yang berfokus pada proses bisnis
+selama dan sesudah gangguan, dari rencana pemulihan bencana, yang berfokus pada sistem
+\cite{c10-nist80034}. Ketiganya berhubungan, tetapi keputusan dan buktinya berbeda.
 
-% TODO
-% Cakupan: struktur sistem manajemen kelangsungan bisnis; Amandemen 1:2024 tentang perubahan iklim; revisi ISO 22301 yang sedang berjalan (periksa ulang); kaitan dengan kontrol kelangsungan pada ISO/IEC 27001.
+Analogi sederhana terdapat pada toko yang kehilangan listrik. Teknisi memperbaiki instalasi.
+Pengelola toko mengatur transaksi manual dan batas jumlah pembeli. Pemilik toko memutuskan kapan
+operasi perlu dihentikan karena risikonya terlalu tinggi.
+
+Dua contoh memperlihatkan pembagian itu:
+\begin{enumerate}
+  \item Misalkan pukul 08.15 tim memutus jaringan tiga unit di Bekasi. Pukul 08.35 direktur
+  rumah sakit mengaktifkan formulir kertas. Pemulihan SIMRS kemudian berjalan 90 menit. Satu
+  kejadian menghasilkan tiga keputusan, tiga pemilik, dan tiga bukti. Laporan yang hanya menulis
+  ``SIMRS pulih dalam 90 menit'' menjawab satu dari tiga pertanyaan pada
+  Tabel~\ref{tab:ch10-tiga-disiplin}.
+  \item Misalkan gangguan 30 menit pada laporan manajemen masih dapat diterima, sedangkan
+  gangguan 30 menit pada identifikasi pasien menuntut prosedur darurat. Kedua fungsi berjalan
+  pada SIMRS yang sama, tetapi prioritasnya mengikuti dampak layanan, bukan nama sistem.
+\end{enumerate}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Tiga disiplin pada satu gangguan SIMRS}\label{tab:ch10-tiga-disiplin}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.22\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Disiplin} & \textbf{Pertanyaan} & \textbf{Pemimpin} & \textbf{Bukti selesai} \\
+    \hline
+    Manajemen insiden & Apa yang terjadi dan bagaimana dibatasi? & Kepala operasi TI &
+    Kronologi, alasan isolasi, hasil pembatasan \\ \hline
+    Kelangsungan bisnis & Bagaimana pasien tetap dilayani dengan aman? & Direktur rumah sakit
+    dan pemilik layanan & Kapasitas minimum tercapai, batas aman dipatuhi \\ \hline
+    Pemulihan bencana & Kapan sistem dan data kembali? & Kepala operasi TI & Waktu
+    \textit{restore}, titik data, hasil verifikasi \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Siapa memutuskan}
+
+Pertanyaan kemudian muncul: siapa menetapkan toleransi gangguan? Direksi mengesahkan batas dan
+sumber daya berdasarkan usulan pemilik layanan. Unit klinis menentukan layanan minimum yang aman.
+Tim teknologi menyediakan bukti kemampuan pemulihan. Peraturan BSSN 1/2024 Pasal 18 ayat (3)
+meminta rencana tanggap insiden dan rencana keberlangsungan kegiatan disetujui pimpinan
+organisasi, baik pada penyelenggara Infrastruktur Informasi Vital (IIV) maupun Penyelenggara
+Sistem Elektronik (PSE) lainnya \cite{bssn1-2024}. Wewenang bisnis tidak berpindah kepada teknisi
+hanya karena penyebab gangguan bersifat teknis. Tabel~\ref{tab:ch10-tanggung-jawab} merangkum
+pembagian keputusannya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Pembagian keputusan kelangsungan layanan}\label{tab:ch10-tanggung-jawab}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.24\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Peran} & \textbf{Keputusan} & \textbf{Bukti} \\ \hline
+    Direksi & Toleransi gangguan dan biaya & Persetujuan batas gangguan dan anggaran \\ \hline
+    Direktur pelayanan & Layanan minimum lintas fasilitas dan pengalihan pasien & Catatan
+    keputusan pengalihan \\ \hline
+    Direktur rumah sakit & Aktivasi operasi manual di lokasi & Waktu aktivasi dan alasannya \\
+    \hline
+    Pemilik layanan & Kapasitas minimum yang aman & Prosedur manual tervalidasi \\ \hline
+    Kepala operasi TI & Urutan pemulihan sistem & Hasil uji pemulihan \\ \hline
+  \end{tabularx}
+\end{table}
+
+Pembagian ini punya dua konsekuensi. Pertama, biaya kesiapan menjadi keputusan organisasi.
+Menurut batas delegasi Bab 2, opsi Rp120 juta per tahun cukup diputus komite pengarah TI,
+sedangkan opsi Rp480 juta melewati batas Rp400 juta dan naik ke direksi. Kedua, kegagalan
+mencapai target dieskalasikan sebagai risiko, bukan disimpan sebagai catatan teknis.
+
+Dua contoh memperlihatkan keputusan yang tidak dapat diserahkan kepada teknisi:
+\begin{enumerate}
+  \item Misalkan farmasi memiliki stok fisik, tetapi riwayat pemberian obat tidak dapat dibuka.
+  Penanggung jawab klinis membatasi transaksi manual pada resep yang dapat diverifikasi, bukan
+  membebaskan seluruh transaksi. Batas ini berkaitan langsung dengan R-11, kesalahan obat, yang
+  dimiliki direktur pelayanan.
+  \item Bab 5 membatasi gangguan pendaftaran 2 jam per bulan, atau 24 jam per tahun. Gangguan
+  enam jam di Bekasi memakai 3 kali batas bulanan itu dalam satu kejadian, sehingga memicu
+  tinjauan mingguan. Keputusan menerima kejadian berikutnya tidak berada pada tim teknologi.
+\end{enumerate}
+
+\subsection*{Membandingkan dua aturan}
+
+Aturan mana yang mengikat Medikara? Peraturan BSSN 1/2024 berlaku bagi PSE, dan Pasal 8 ayat (1)
+meminta PSE selain penyelenggara IIV membentuk tim tanggap insiden organisasi. Bab 3 sudah
+menjelaskan bahwa sektor kesehatan tidak otomatis menjadikan setiap sistem sebagai IIV. DORA
+tidak berlaku bagi Medikara. Pasal 2 ayat (1) mencakup entitas keuangan dan penyedia layanan
+teknologi pihak ketiganya, tanpa fasilitas kesehatan \cite{c10-dora}. Nilainya sebagai pembanding
+terletak pada ketegasan rumusannya. Pasal 5 ayat (2) menempatkan tanggung jawab akhir pada badan
+pengelola. Tabel~\ref{tab:ch10-pembanding} memperlihatkan pilihan Medikara terhadap keduanya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Peraturan BSSN 1/2024, DORA sebagai pembanding, dan pilihan Medikara}
+  \label{tab:ch10-pembanding}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Pokok} & \textbf{BSSN 1/2024} & \textbf{DORA (pembanding)} & \textbf{Pilihan
+    Medikara (misalkan)} \\ \hline
+    Pimpinan & Pasal 18 ayat (3): rencana disetujui pimpinan & Pasal 5 ayat (2): badan pengelola
+    memikul tanggung jawab akhir dan menyetujui kebijakan & Direksi mengesahkan BIA dan rencana
+    \\ \hline
+    Target pulih & Lampiran A: capaian dinilai dari waktu, jumlah data, dan fungsi & Pasal 12
+    ayat (6): target waktu dan titik pulih per fungsi & MTPD, RTO, RPO, dan kapasitas minimum per
+    layanan \\ \hline
+    Cadangan & Pasal 18 ayat (3) huruf e: personel memahami penggunaan rekam cadang & Pasal 12
+    ayat (3): pemulihan memakai sistem terpisah secara fisik dan logis & Cadangan dan akun
+    pengelola terpisah; K-02 tempat berbeda \\ \hline
+    Frekuensi uji & Pasal 26: simulasi berkala; paling sedikit 1 kali dalam 2 tahun bagi
+    penyelenggara IIV & Pasal 11 ayat (6): paling sedikit setahun sekali & 144 uji pemulihan dan
+    5 latihan \textit{tabletop} per tahun \\ \hline
+  \end{tabularx}
+\end{table}
+
+\section{Sistem Manajemen: ISO 22301 dan DSS04}
+
+\subsection*{ISO 22301:2019}
+
+ISO 22301 menetapkan persyaratan sistem manajemen, bukan resep perangkat pemulihan. Organisasi
+menetapkan ruang lingkup, memahami konteks, membagi tanggung jawab, melakukan analisis, memilih
+strategi, menyiapkan rencana, menguji, dan memperbaikinya \cite{iso22301-2019}. Susunannya
+mengikuti pola sistem manajemen yang sudah dibaca pada ISO/IEC 27001 di Bab 6. Karena naskahnya
+berbayar, rincian klausul pada bab ini ditulis umum.
+
+Analogi sistem manajemen adalah pengelolaan latihan kebakaran gedung. Peta evakuasi perlu pemilik,
+jadwal pemeriksaan, latihan, dan tindak lanjut. Peta yang dicetak rapi tidak membuktikan bahwa
+pintu darurat dapat dibuka ketika diperlukan.
+
+Dua contoh memperlihatkan pentingnya cakupan:
+\begin{enumerate}
+  \item Misalkan lima rumah sakit masuk strategi, tetapi latihan baru mencakup satu rumah sakit.
+  Cakupan latihan dilaporkan 1 dari 5, atau 20 persen, bukan seluruh jaringan. Bila seluruh 36
+  fasilitas dihitung, cakupannya 1 dari 36, atau sekitar 2,8 persen.
+  \item Misalkan pusat pemulihan berada di kawasan banjir yang sama dengan pusat utama. Pasal 20
+  ayat (4) dan (5) Peraturan Menteri Kesehatan (Permenkes) 24/2022 meminta cadangan di tempat
+  berbeda \cite{permenkes24-2022}, dan Bab 3 mencatatnya sebagai K-02. Alamatnya berbeda, tetapi
+  ancaman bersamanya belum berkurang.
+\end{enumerate}
+
+Sertifikat dengan ruang lingkup pusat data tidak otomatis membuktikan seluruh rumah sakit siap
+beroperasi manual. Tim perlu membaca lokasi, layanan, dan pengecualian dalam ruang lingkup, seperti
+pemeriksaan sertifikat pada Bab 6 dan Bab 9. Amandemen 1:2024 berjudul \textit{Climate action
+changes}, dan perubahannya menyentuh konteks organisasi serta kebutuhan pihak berkepentingan
+\cite{c10-iso22301-amd2024}. Risiko banjir, panas, listrik, dan pasokan dinilai bila relevan.
+Amandemen ini tidak berarti organisasi wajib menganggap semua ancaman memiliki tingkat yang sama.
+Revisi standar ini juga sedang dikembangkan, sehingga status edisinya perlu diperiksa ulang pada
+halaman resmi ISO sebelum audit. Tabel~\ref{tab:ch10-sistem-manajemen} merangkum siklusnya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Siklus pengelolaan kelangsungan pada Medikara (misalkan)}
+  \label{tab:ch10-sistem-manajemen}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Tahap} & \textbf{Pertanyaan} & \textbf{Bukti minimum} & \textbf{Contoh Medikara} \\
+    \hline
+    Rencana & Layanan apa yang dipertahankan? & Ruang lingkup dan BIA & 36 baris BIA, disahkan
+    direksi \\ \hline
+    Pelaksanaan & Siapa menjalankan alternatif? & Rencana dan daftar kontak & Prosedur korporat
+    dengan 36 lampiran \\ \hline
+    Evaluasi & Target tercapai atau belum? & Catatan latihan & 144 uji dan 5 \textit{tabletop}
+    per tahun \\ \hline
+    Perbaikan & Celah mana yang ditutup? & Tindakan, pemilik, tenggat & Uji ulang masuk register
+    R-05 \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{DSS04, objektif yang ditunda}
+
+Bab 4 memberi DSS04 skor 10, sama dengan APO12 dan MEA03, tetapi kapasitas hanya menyisakan dua
+tempat. DSS04 ditunda sampai BIA tersedia, dan Bab 8 sengaja belum memberinya target. Bab ini
+menutup penundaan itu. COBIT 2019 merumuskan DSS04 dengan 8 praktik manajemen
+\cite{c04-sistematis}. Delapan praktik itu mengubah kelangsungan dari satu dokumen menjadi satu
+proses yang berulang.
+
+Analogi perawatan genset di sebuah pertokoan membantu. Membeli genset hanya satu bagian. Pengelola
+juga menetapkan toko mana yang dilayani, menyimpan solar, melatih petugas, menyalakannya berkala,
+dan meninjau hasil setelah listrik padam. Tabel~\ref{tab:ch10-dss04} memetakan kedelapan praktik
+ke bukti Medikara. Kode KB mengikuti daftar kebijakan Bab 8.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Delapan praktik DSS04 dan bukti pada Medikara (misalkan)}\label{tab:ch10-dss04}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.12\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Praktik} & \textbf{Inti praktik (diringkas)} & \textbf{Bukti Medikara} \\ \hline
+    DSS04.01 & Kebijakan, tujuan, dan ruang lingkup & Ruang lingkup 36 fasilitas disahkan direksi
+    \\ \hline
+    DSS04.02 & Menjaga ketahanan bisnis & BIA 36 baris dan pilihan strategi \\ \hline
+    DSS04.03 & Mengembangkan dan menerapkan respons & Prosedur korporat dengan 36 lampiran \\
+    \hline
+    DSS04.04 & Melatih, menguji, dan meninjau rencana & 144 uji pemulihan dan 5 \textit{tabletop}
+    \\ \hline
+    DSS04.05 & Meninjau, memelihara, dan memperbaiki rencana & Tindakan, pemilik, tenggat, dan uji
+    ulang \\ \hline
+    DSS04.06 & Pelatihan rencana & Petugas manual tiap rumah sakit dilatih dan dicatat \\ \hline
+    DSS04.07 & Mengelola pengaturan cadangan & KB-08, K-02, cadangan dan akun terpisah \\ \hline
+    DSS04.08 & Tinjauan sesudah pemulihan & Rekonsiliasi disahkan kepala rekam medis \\ \hline
+  \end{tabularx}
+\end{table}
+
+Pertanyaan berikutnya: tingkat kapabilitas berapa yang sepadan? Dua contoh menunjukkan pilihannya:
+\begin{enumerate}
+  \item Bab 8 menjelaskan tingkat 2 sebagai aktivitas dasar yang lengkap dan tingkat 3 sebagai
+  cara kerja dan aset organisasi. Bab 3 menawarkan 36 prosedur terpisah atau satu prosedur
+  korporat dengan lampiran. Misalkan satu prosedur penuh dipelihara 8 jam per tahun, sehingga 36
+  prosedur memakan 288 jam. Satu prosedur korporat 40 jam ditambah 36 lampiran 2 jam memakan 112
+  jam. Selisihnya 176 jam, atau Rp10,56 juta dengan tarif Rp60.000 per jam seperti Bab 7 dan
+  Bab 9. Cara kerja bersama pada tingkat 3 sekaligus lebih murah untuk dipelihara.
+  \item Misalkan konsultan mengusulkan tingkat 4 seharga Rp300 juta per tahun, atau Rp180 juta di
+  atas tingkat 3. Seksi strategi menghitung harapan kerugian R-05 tersisa Rp40 juta per tahun
+  setelah opsi terpilih. Sekalipun tingkat 4 menghapus seluruh sisa itu, manfaatnya hanya Rp40
+  juta. Tingkat 3 lebih sepadan.
+\end{enumerate}
+
+Keputusan DSS04 pada tingkat 3 punya dua konsekuensi. Pertama, rancangan Bab 8 berubah dari 3 kali
+Rp120 juta ditambah 4 kali Rp60 juta menjadi 4 kali Rp120 juta ditambah 4 kali Rp60 juta. Biayanya
+naik dari Rp600 juta menjadi Rp720 juta per tahun, dan keputusannya tetap berada di direksi.
+Target ini diberi kode T-24, melanjutkan T-01 sampai T-23. Kedua, angka Rp120 juta hanya menutup
+kerja proses: BIA, rencana, pelatihan, dan latihan. Biaya solusi pada seksi strategi terpisah.
 
 \section{Analisis Dampak Bisnis}
 
-% TODO
-% Cakupan: dampak menurut waktu; MTPD, RTO, RPO, dan MBCO (Minimum Business Continuity Objective); ketergantungan pada sistem, orang, tempat, dan vendor.
-% Kasus Medikara: pendaftaran pasien, IGD, farmasi, laboratorium, klaim BPJS Kesehatan, dan telekonsultasi.
+\subsection*{Empat ukuran}
+
+BIA menilai bagaimana dampak gangguan bertambah menurut waktu. Maximum Tolerable Period of
+Disruption (MTPD) adalah batas setelah dampak menjadi tidak dapat diterima. Recovery Time
+Objective (RTO) adalah target waktu pemulihan aktivitas pada kapasitas yang disepakati. Recovery
+Point Objective (RPO) menyatakan titik data yang harus dapat dipulihkan, sehingga biasanya
+diungkap sebagai kehilangan data maksimum menurut waktu. Minimum Business Continuity Objective
+(MBCO) menetapkan kapasitas minimum layanan. Bab ini menulis MBCO sebagai kapasitas minimum.
+
+Analogi pencatatan kas menjelaskan perbedaannya. Toko menargetkan kasir berjalan kembali dalam
+dua jam. Salinan buku transaksi terakhir berasal dari 15 menit sebelum gangguan. Dua jam merupakan
+target waktu pemulihan, sedangkan 15 menit menunjukkan celah data. Memulihkan sistem cepat tidak
+mengganti transaksi yang hilang.
+
+NIST memakai istilah Maximum Tolerable Downtime (MTD) untuk gagasan yang dekat dengan MTPD. Menurut
+panduan itu, RTO harus menjaga agar MTD tidak terlewati, sehingga RTO biasanya lebih pendek daripada
+MTD. Waktu memproses ulang data ikut dihitung. RPO tidak termasuk bagian MTD, karena RPO menyatakan
+kehilangan data yang dapat ditoleransi \cite{c10-nist80034}. Tidak ada rasio baku antara RTO dan
+MTPD. Gambar~\ref{fig:ch10-garis-waktu} memperlihatkan letak keempat ukuran pada layanan farmasi.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch10-garis-waktu.tex}
+  \caption{Letak RPO, RTO, MTPD, dan kapasitas minimum pada satu gangguan farmasi}
+  \label{fig:ch10-garis-waktu}
+\end{figure}
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan farmasi memiliki MTPD 4 jam, RTO 2 jam, RPO 15 menit, dan kapasitas minimum 40
+  resep per jam. Layanan belum pulih bila server hidup tetapi hanya mampu memproses 5 resep per
+  jam. Target terpenuhi bila keempat ukuran terpenuhi bersama.
+  \item Misalkan klaim Badan Penyelenggara Jaminan Sosial (BPJS) Kesehatan dapat menunggu satu
+  hari. Ketergantungannya pada identitas pasien tetap perlu dipetakan agar pemulihan tidak
+  terhambat.
+\end{enumerate}
+
+Dua hal juga sering tertukar: MTPD dan batas \textit{risk appetite} pada Bab 5. Pembagiannya
+begini. Batas Bab 5 bersifat kumulatif, yaitu gangguan pendaftaran 2 jam per bulan. Pelanggarannya
+memicu tinjauan mingguan. MTPD berlaku per kejadian, yaitu 6 jam pada pendaftaran. Pelanggarannya
+berarti dampak sudah tidak dapat diterima, dan pasien harus dialihkan. RTO pendaftaran karena itu
+ditetapkan 90 menit, sehingga satu kejadian yang memenuhi target masih menyisakan 30 menit dari
+batas bulanan.
+
+\subsection*{Tiga langkah BIA}
+
+NIST menguraikan BIA menjadi tiga langkah: menentukan proses dan tingkat kekritisannya,
+mengidentifikasi sumber daya yang diperlukan, dan menetapkan prioritas pemulihan
+\cite{c10-nist80034}. Medikara menjalankannya pada enam layanan: Instalasi Gawat Darurat (IGD),
+farmasi, laboratorium, pendaftaran, telekonsultasi, dan klaim BPJS. Pekerjaannya sendiri perlu
+dihitung. Misalkan BIA disusun untuk 6 layanan pada 5 rumah sakit, atau 30 baris, ditambah 2
+layanan bagi 3 kelompok fasilitas lain, yaitu klinik, laboratorium, dan apotek, atau 6 baris.
+Totalnya 36 baris. Bila satu baris memerlukan 2 jam kerja 3 orang, BIA memakan 216 jam, atau
+Rp12,96 juta dengan tarif Rp60.000 per jam.
+
+Langkah pertama menilai dampak menurut waktu. Tabel~\ref{tab:ch10-dampak-waktu} memakai skala
+dampak 1 sampai 5 pada Bab 5 untuk rumah sakit Bekasi. Aturan bacanya sederhana: MTPD adalah titik
+waktu pertama dengan nilai 4 atau lebih. Bab 5 juga meminta keselamatan dibaca terpisah dari skor
+gabungan, sehingga tabel menambahkan kolom cedera berat.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Dampak gangguan menurut waktu pada rumah sakit Bekasi (misalkan)}
+  \label{tab:ch10-dampak-waktu}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.18\textwidth}|c|c|c|c|c|c|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Layanan} & \textbf{1 jam} & \textbf{4 jam} & \textbf{6 jam} & \textbf{12 jam} &
+    \textbf{24 jam} & \textbf{48 jam} & \textbf{Cedera berat mungkin sejak} \\ \hline
+    IGD & 3 & \textbf{4} & 5 & 5 & 5 & 5 & 1 jam \\ \hline
+    Farmasi & 2 & \textbf{4} & 4 & 5 & 5 & 5 & 4 jam \\ \hline
+    Laboratorium & 2 & \textbf{4} & 4 & 5 & 5 & 5 & 4 jam \\ \hline
+    Pendaftaran & 2 & 3 & \textbf{4} & 4 & 5 & 5 & Tidak langsung \\ \hline
+    Telekonsultasi & 1 & 2 & 2 & \textbf{4} & 4 & 5 & Tidak langsung \\ \hline
+    Klaim BPJS & 1 & 1 & 1 & 2 & 3 & \textbf{4} & Tidak ada \\ \hline
+  \end{tabularx}
+\end{table}
+
+Tabel~\ref{tab:ch10-bia} menurunkan hasil itu menjadi target. IGD melayani 24 jam, sedangkan
+layanan lain memakai pengandaian 12 jam per hari dari Bab 5. Gangguan dihitung sejak SIMRS
+berhenti. Prosedur manual memperpanjang daya tahan layanan, tetapi tidak menghentikan hitungan
+MTPD, karena data lintas unit tetap tidak terbaca. RTO layanan dapat dicapai lewat jalur apa pun,
+termasuk manual, selama kapasitas minimum terpenuhi.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh hasil BIA rumah sakit Bekasi (misalkan, perlu validasi pemilik layanan)}
+  \label{tab:ch10-bia}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.18\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|c|c|c|}
+    \hline
+    \textbf{Layanan} & \textbf{Kapasitas normal} & \textbf{Kapasitas minimum} & \textbf{MTPD} &
+    \textbf{RTO} & \textbf{RPO} \\ \hline
+    IGD & 6 pasien per jam & 6 pasien per jam & 4 jam & 15 menit & 5 menit \\ \hline
+    Farmasi & 100 resep per jam & 40 resep per jam & 4 jam & 2 jam & 15 menit \\ \hline
+    Laboratorium & 60 hasil per jam & 20 hasil per jam & 4 jam & 2 jam & 15 menit \\ \hline
+    Pendaftaran & 40 pasien per jam & 20 pasien per jam & 6 jam & 90 menit & 30 menit \\ \hline
+    Telekonsultasi & 40 konsultasi per jam & 10 konsultasi per jam & 12 jam & 6 jam & 60 menit \\
+    \hline
+    Klaim BPJS & 300 klaim per hari & 100 klaim per hari & 48 jam & 24 jam & 4 jam \\ \hline
+  \end{tabularx}
+\end{table}
+
+Angka kapasitas perlu cocok dengan bab lain. Bab 5 menghitung sekitar 274 kunjungan per jam untuk
+seluruh Medikara. Bila 5 rumah sakit masing-masing melayani 40 pendaftaran per jam, totalnya 200
+dari 274, atau sekitar 73 persen, dan sisanya berada di klinik. IGD tidak diberi kapasitas minimum
+yang lebih rendah, karena pasien gawat darurat tidak dapat menunggu. Angka klinis pada tabel bukan
+standar pelayanan dan harus divalidasi pihak yang berwenang.
+
+\subsection*{RTO layanan dan RTO sistem}
+
+Dua hal pada RTO sering tertukar. Pembagiannya begini. RTO layanan menyatakan kapan pasien kembali
+dilayani pada kapasitas minimum, lewat jalur apa pun. RTO sistem menyatakan kapan SIMRS dan datanya
+kembali. Rumusan NIST mengarah pada sumber daya sistem, sehingga target layanan pada BIA perlu
+diturunkan lebih dulu menjadi target sistem \cite{c10-nist80034}.
+
+Analogi jembatan yang ditutup membantu. Warga masih dapat menyeberang dengan perahu pada kapasitas
+terbatas. Itu target layanan. Target perbaikan jembatan adalah urusan lain, tetapi perahu tidak
+dapat dipakai selamanya.
+
+Dua contoh penurunan target:
+\begin{enumerate}
+  \item MTPD terpendek pada Tabel~\ref{tab:ch10-bia} adalah 4 jam, atau 240 menit. Misalkan
+  stabilisasi, verifikasi data, dan rekonsiliasi awal memerlukan 120 menit. RTO sistem SIMRS
+  menjadi $240 - 120 = 120$ menit. Uji pemulihan yang mencatat 150 menit gagal 30 menit, walaupun
+  formulir kertas sudah berjalan sejak menit ke-30.
+  \item Register Bab 5 mencatat cadangan malam sebagai kontrol R-05. Celah terburuknya mencakup
+  12 jam layanan sehari. Pada 100 resep per jam, data yang hilang mencapai 1.200 resep. Dengan 3
+  menit pengisian ulang per resep, pekerjaannya 60 jam. RPO 15 menit membatasi kehilangan menjadi
+  25 resep, atau 75 menit kerja. RPO juga tidak selalu sama dengan interval cadangan, karena
+  kegagalan pencadangan, keterlambatan penyalinan, dan validasi dapat memperbesar celah.
+\end{enumerate}
+
+\subsection*{Ketergantungan dan prioritas}
+
+Langkah kedua mengidentifikasi sumber daya dan ketergantungan. Target layanan tidak dapat lebih
+pendek daripada waktu pulih ketergantungannya, kecuali tersedia jalur lain. Analogi dapur katering
+menunjukkan hal ini. Dapur cadangan tidak membantu jika bahan dan juru masak berada di lokasi yang
+tidak dapat diakses. Gambar~\ref{fig:ch10-ketergantungan} memperlihatkan ketergantungan enam
+layanan. Kode V-01 dan V-02 serta titik kegagalan bersamanya mengikuti peta Bab 9.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch10-ketergantungan.tex}
+  \caption{Ketergantungan enam layanan pada sistem dan pihak pendukung (rancangan target)}
+  \label{fig:ch10-ketergantungan}
+\end{figure}
+
+Dua hitungan memperlihatkan akibatnya:
+\begin{enumerate}
+  \item Bab 9 memperlihatkan 144 uji dapat lulus tanpa menjawab skenario akun pengelola yang
+  diretas. Misalkan layanan identitas bersama berhenti, dan kontraknya menjanjikan pemulihan 8
+  jam. \textit{Restore} SIMRS 90 menit baru dapat dimulai setelah pengelola dapat masuk. Waktu
+  efektifnya 9,5 jam, atau 5,5 jam di atas MTPD 4 jam. Uji yang selalu memakai akun yang sama
+  tidak akan menemukan selisih ini.
+  \item Misalkan kontrak V-01 menjanjikan pemulihan Medikara+ dalam 24 jam, sedangkan RTO
+  telekonsultasi 6 jam dan MTPD-nya 12 jam. Selisih 18 jam terhadap RTO ditutup dengan jalur
+  telepon 10 konsultasi per jam, atau dibawa ke tawar ulang kontrak. Dalam 24 jam itu, sekitar
+  933 janji temu ikut terganggu, karena 28.000 janji temu per bulan setara sekitar 933 per hari.
+\end{enumerate}
+
+Langkah ketiga menetapkan prioritas. Urutan pada Medikara adalah identitas pasien lebih dulu, lalu
+IGD, farmasi, dan laboratorium, disusul pendaftaran, telekonsultasi, dan klaim BPJS. Identitas
+pasien didahulukan karena empat layanan pertama bergantung padanya. Larsen dan rekan juga menemukan
+identifikasi pasien sebagai masalah yang sering muncul ketika rekam medis elektronik berhenti
+\cite{c10-larsen2018}. Seksi strategi membaca penelitian itu lebih lengkap.
+
+\begin{kasus}[title={Kasus Medikara Health: Enam Jam di Bekasi}]
+Misalkan SIMRS Bekasi berhenti pukul 08.00 dan pulih pukul 14.00. Pasien datang 40 per jam.
+Prosedur manual melayani 20 per jam, dan sesudah SIMRS pulih kapasitasnya naik menjadi 60 per jam
+dengan tambahan petugas. Gambar~\ref{fig:ch10-antrean} memperlihatkan hasilnya.
+
+Dalam enam jam, 240 pasien datang dan 120 terlayani, sehingga 120 pasien menunggu. Sesudah pukul
+14.00, antrean turun 20 pasien per jam dan baru habis pukul 20.00, tepat saat layanan tutup. Tanpa
+prosedur manual, antrean mencapai 240 pasien, dan pukul 20.00 masih tersisa 120 pasien. Server yang
+pulih pada jam yang sama memberi hasil layanan yang berbeda.
+
+Pekerjaan belum selesai. Sebanyak 120 pendaftaran manual pada 5 menit per data memerlukan 10 jam.
+Farmasi melayani 240 resep manual, dan pada 3 menit per resep memerlukan 12 jam. Totalnya 22 jam
+kerja, atau dua petugas selama 11 jam. Kepala rekam medis mengesahkan hasil rekonsiliasi itu.
+
+Kejadian ini juga melewati dua batas. Enam jam melewati MTPD farmasi, IGD, dan laboratorium sebesar
+2 jam, sehingga tim semestinya mengalihkan sebagian layanan sejak jam ke-4. Pendaftaran memakai 3
+kali batas bulanan Bab 5. Kedua temuan dicatat sebagai bukti pada register risiko.
+\end{kasus}
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch10-antrean.tex}
+  \caption{Antrean pendaftaran selama dan sesudah gangguan enam jam di Bekasi (misalkan)}
+  \label{fig:ch10-antrean}
+\end{figure}
 
 \section{Strategi Kelangsungan}
 
-% TODO
-% Cakupan: strategi untuk orang, tempat, teknologi, dan pemasok; prosedur manual pengganti; pertimbangan biaya terhadap dampak; disaster recovery teknis dibahas rinci di IT40713.
+\subsection*{Empat sumber daya dan dua jalur}
+
+Strategi kelangsungan memilih kombinasi orang, data, tempat, dan vendor untuk memenuhi target
+layanan. Kombinasi itu menghasilkan dua jalur. Rencana operasional menjalankan layanan sementara
+pada kapasitas minimum yang aman. Rencana pemulihan menjalankan pemulihan teknologi, yaitu
+\textit{restore} dan verifikasi data. Kedua jalur bertemu pada uji dan rekonsiliasi, yang
+membuktikan layanan aman pulih.
+
+Analogi rumah makan yang kehilangan aliran gas membantu. Pemilik memakai kompor cadangan dengan
+menu terbatas sambil menunggu teknisi. Menu terbatas adalah layanan sementara. Perbaikan saluran
+adalah pemulihan teknologi. Buku pesanan dicocokkan sesudahnya.
+Tabel~\ref{tab:ch10-strategi-layanan} menerapkan dua jalur itu pada enam layanan.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Dua jalur strategi pada enam layanan (misalkan)}\label{tab:ch10-strategi-layanan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.18\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|}
+    \hline
+    \textbf{Layanan} & \textbf{Rencana operasional} & \textbf{Rencana pemulihan} &
+    \textbf{Risiko sisa} \\ \hline
+    IGD & Triase kertas, gelang identitas, pengalihan terkoordinasi & Salinan baca saja riwayat
+    alergi lewat KB-04 & Data lintas unit lambat; R-11 \\ \hline
+    Farmasi & Resep kertas yang dapat diverifikasi & Cadangan terpisah dan pemulihan prioritas &
+    Resep tanpa riwayat tertahan \\ \hline
+    Laboratorium & Hasil kritis lewat telepon dengan pembacaan ulang & Pemulihan antarmuka alat &
+    Salah identitas \\ \hline
+    Pendaftaran & Formulir kertas dan daftar jadwal harian & Pemulihan identitas pasien lebih
+    dulu & Antrean dan rekonsiliasi \\ \hline
+    Telekonsultasi & Alih ke telepon, 10 konsultasi per jam & Kontrak V-01 dan uji ekspor tahunan
+    & Janji temu tertunda \\ \hline
+    Klaim BPJS & Tunda, lalu 100 klaim per hari & Pulih sesudah layanan klinis & Penumpukan
+    administrasi \\ \hline
+  \end{tabularx}
+\end{table}
+
+Satu penelitian menunjukkan prosedur manual tidak aman dengan sendirinya. Larsen dan rekan menelaah
+80.381 laporan insiden keselamatan pasien dan menemukan 76 laporan yang secara eksplisit menyebut
+rekam medis elektronik yang berhenti \cite{c10-larsen2018}. Dari 76 laporan itu:
+\begin{enumerate}
+  \item Sebanyak 37 laporan, atau 48,7 persen, menyangkut pemesanan dan hasil laboratorium.
+  Sebanyak 11 laporan, atau 14,5 persen, menyangkut pemesanan dan pemberian obat.
+  \item Sebanyak 35 laporan, atau 46 persen, memperlihatkan prosedur saat sistem berhenti tidak
+  diikuti atau tidak tersedia. Hanya 21 laporan, atau 27,6 persen, memperlihatkan prosedur
+  berjalan.
+\end{enumerate}
+
+Laporan insiden tidak menunjukkan seberapa sering gangguan terjadi, sehingga persentase itu tidak
+boleh disalin menjadi peluang Medikara. Pada pembacaan bab ini, nilainya terletak pada arah
+perhatian. Laboratorium, obat, dan identitas pasien menjadi fokus pertama prosedur manual, dan
+pelatihannya perlu dibuktikan.
+
+\subsection*{Replikasi dan cadangan}
+
+Dua hal pada data sering tertukar: replikasi dan cadangan. Pembagiannya begini. Replikasi menyalin
+perubahan dengan cepat ke lokasi lain, sehingga mengurangi kehilangan data dan mempercepat
+peralihan. Replikasi juga dapat menyalin kerusakan atau perubahan berbahaya. Cadangan terpisah
+menyimpan salinan pada titik waktu tertentu, sehingga data sebelum kerusakan masih tersedia, tetapi
+pemulihannya dapat lebih lambat. Lokasi alternatif mengurangi dampak lokasi, tetapi tetap bergantung
+pada jaringan dan orang. Kebutuhan ketiganya berbeda, dan uji pemulihan tetap diperlukan.
+
+Analogi fotokopi dokumen menjelaskan bedanya. Mesin yang menyalin setiap halaman baru ke kantor
+cabang ikut menyalin halaman yang salah. Arsip mingguan di lemari terkunci tidak mengikuti kesalahan
+itu, tetapi isinya tertinggal.
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan replikasi berjalan setiap 5 menit. Pada kegagalan perangkat, kehilangan data
+  paling lama 5 menit. Pada serangan \textit{ransomware}, berkas terenkripsi ikut tersalin 5 menit
+  kemudian. RPO 5 menit hanya berlaku pada skenario yang pertama.
+  \item Bab 9 mengandaikan cadangan pada akun cloud yang sama dengan produksi. Akun yang diretas
+  dapat merusak kedua salinan. DORA Pasal 12 ayat (3) meminta pemulihan memakai sistem yang terpisah
+  secara fisik dan logis \cite{c10-dora}. Aturan itu tidak mengikat Medikara, tetapi memberi rumusan
+  yang tepat untuk K-02: tempat berbeda belum cukup bila aksesnya sama.
+\end{enumerate}
+
+\subsection*{Tiga opsi pada lingkup yang sama}
+
+Biaya dibandingkan pada ruang lingkup dan periode yang sama. Tabel~\ref{tab:ch10-opsi} membandingkan
+tiga opsi untuk lima rumah sakit selama setahun. Opsi A hanya memakai prosedur manual dan cadangan
+malam yang ada. Opsi B menambahkan cadangan terpisah dan pemulihan prioritas. Opsi C memakai
+replikasi aktif pada dua lokasi, dengan biaya misalkan Rp1,2 miliar per rumah sakit. Selisih A dan B
+sebesar Rp360 juta perlu dijelaskan oleh pengurangan dampak dan kebutuhan layanan.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Tiga opsi strategi untuk lima rumah sakit per tahun (misalkan)}\label{tab:ch10-opsi}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.21\textwidth}|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Ukuran} & \textbf{Target} & \textbf{A. Manual terkontrol} & \textbf{B. Manual dan
+    pemulihan prioritas} & \textbf{C. Replikasi aktif} \\ \hline
+    Biaya per tahun & & Rp120 juta & Rp480 juta & Rp6 miliar \\ \hline
+    Manual farmasi aktif & 2 jam & 30 menit & 30 menit & 30 menit \\ \hline
+    Kapasitas manual farmasi & 40 resep per jam & 20 resep per jam & 40 resep per jam & 40 resep
+    per jam \\ \hline
+    SIMRS pulih & 120 menit & 480 menit & 90 menit & Mendekati nol; 90 menit bila data rusak \\
+    \hline
+    Titik data & 15 menit & Sampai 24 jam & 10 menit & Mendekati nol; 10 menit bila data rusak
+    \\ \hline
+    Harapan kerugian R-05 & & Rp200 juta & Rp40 juta & Rp40 juta \\ \hline
+    Biaya ditambah harapan kerugian & & Rp320 juta & Rp520 juta & Rp6,04 miliar \\ \hline
+    Hasil & & Ditolak & Layak bersyarat & Ditolak \\ \hline
+  \end{tabularx}
+\end{table}
+
+Harapan kerugian mengikuti Bab 5 dan Bab 8. R-05 memiliki peluang 0,1 dan kerugian Rp2 miliar, atau
+Rp200 juta per tahun. Bab 8 menghitung peluang kerugian Rp1,5 miliar atau lebih sebesar 10 persen,
+sedangkan batasnya 2 persen, sehingga peluang harus turun menjadi 0,02. Harapan kerugiannya menjadi
+Rp40 juta. Tabel menganggap opsi B dan C mencapai 0,02, dan anggapan itu harus dibuktikan lewat uji.
+Opsi C tetap memerlukan cadangan terpisah, sehingga tidak lebih baik daripada B pada skenario data
+rusak.
+
+Dua contoh memperlihatkan alasan penolakan:
+\begin{enumerate}
+  \item Opsi A pulih dalam 8 jam dengan biaya Rp120 juta per tahun. Opsi ini gagal memenuhi RTO
+  sistem 120 menit dan melewati MTPD 4 jam. Pendaftaran masih lolos RTO 90 menit lewat formulir
+  kertas, tetapi SIMRS kembali sesudah melewati MTPD 6 jam. Murah saja tidak cukup.
+  \item Opsi C menelan Rp6 miliar per tahun, atau 12,5 kali opsi B. Angka itu melewati batas
+  keputusan direksi Rp5 miliar pada Bab 2, dan setara 60 persen anggaran modernisasi Rp10 miliar
+  setiap tahun. Opsi ini juga belum menjawab data yang rusak.
+\end{enumerate}
+
+Pilihan antara A dan B memperlihatkan \textit{tradeoff} yang nyata, dan punya tiga konsekuensi.
+Pertama, dalam rupiah saja, A lebih murah Rp200 juta per tahun. Tambahan biaya Rp360 juta hanya
+menurunkan harapan kerugian Rp160 juta. Kedua, A melanggar batas 2 persen dan kapasitas minimum
+farmasi, sehingga selisih Rp200 juta adalah harga untuk memenuhi batas yang sudah ditetapkan, bukan
+investasi yang kembali modal. Ketiga, penghematan tidak boleh mengabaikan batas keselamatan yang
+ditetapkan pemilik layanan. Harapan kerugian tidak mengukur cedera pasien.
+
+\begin{kasus}[title={Kasus Medikara Health: Persetujuan Bersyarat atas Opsi B}]
+Misalkan direksi menerima usulan opsi B karena Rp480 juta melewati batas Rp400 juta. Kepala operasi
+TI melaporkan uji 90 menit baru dilakukan pada lingkungan uji, sehingga hasilnya belum mewakili lima
+rumah sakit. Direksi menyetujui opsi B dengan dua syarat.
+
+Syarat pertama: tambahan Rp360 juta dicairkan dua tahap, masing-masing Rp180 juta. Tahap kedua cair
+bila 5 dari 5 rumah sakit lulus uji SIMRS di bawah 120 menit. Syarat kedua: 9 uji akun terpisah pada
+satu triwulan berhasil memulihkan data, sehingga temuan Bab 9 terjawab.
+
+Pilihan ini punya biaya. Selama syarat belum terpenuhi, peluang R-05 masih dicatat 0,1, bukan 0,02,
+dan risiko sisa dilaporkan ke komite risiko setiap triwulan. Latihan terpadu dua layanan pada peta
+jalan Bab 14 seharga Rp180 juta sekali dijadwalkan sesudah tahap kedua.
+\end{kasus}
+
+\begin{pendalaman}
+Target bisnis perlu diuji terhadap rancangan teknis pada IT40713. Misalkan data SIMRS satu rumah
+sakit berukuran 4 terabyte. Pada kecepatan pemulihan 200 megabyte per detik, pemulihan penuh
+memerlukan 20.000 detik, atau sekitar 5,6 jam. Angka ini gagal terhadap RTO sistem 120 menit. Pada
+800 megabyte per detik, waktunya 5.000 detik, atau sekitar 83 menit, masih di bawah uji 90 menit.
+Tim juga dapat memulihkan data identitas dan obat lebih dulu. Selisih yang tersisa dicatat sebagai
+risiko yang harus diterima atau ditangani, bukan disembunyikan pada target yang dilonggarkan.
+\end{pendalaman}
 
 \section{Insiden Siber dan Manajemen Krisis}
 
-% TODO
-% Cakupan: Peraturan BSSN 1/2024 tentang Pengelolaan Insiden Siber dan Peraturan BSSN 2/2024 tentang Manajemen Krisis Siber; tim tanggap insiden; komunikasi krisis kepada pasien, regulator, dan media; kaitan dengan notifikasi menurut UU PDP.
+\subsection*{Insiden, krisis organisasi, dan Krisis Siber}
+
+Insiden siber memerlukan pencatatan, penilaian dampak, pembatasan penyebaran, pemulihan, dan
+pembelajaran. Peraturan BSSN 1/2024 mendefinisikannya sebagai satu atau serangkaian kejadian yang
+mengganggu atau mengancam berjalannya sistem elektronik. Pasal 15 meminta tim organisasi melaporkan
+insiden yang paling sedikit berisiko tinggi kepada tim sektoral, dengan tembusan kepada tim
+nasional. Laporannya paling sedikit memuat kontak pelapor, deskripsi, kronologi, dan dampak serangan
+\cite{bssn1-2024}. Batas $1 \times 24$ jam pada Pasal 15 ayat (5) berlaku bila insiden terjadi pada
+IIV, seperti sudah dicatat pada Bab 3.
+
+Dua hal pada istilah krisis sering tertukar. Pembagiannya begini. Peraturan BSSN 2/2024
+mendefinisikan Krisis Siber sebagai situasi kedaruratan akibat insiden siber pada tingkat nasional,
+yang berdampak terhadap keselamatan, keutuhan, dan kedaulatan negara. Statusnya ditetapkan Presiden
+berdasarkan usulan Kepala BSSN \cite{c10-bssn2-2024}. Rumah sakit tidak dapat menyatakan Krisis
+Siber. Krisis organisasi adalah istilah internal, yaitu keadaan ketika kapasitas penanganan biasa
+tidak cukup atau konsekuensinya meluas, sehingga pimpinan mengambil alih koordinasi.
+Gambar~\ref{fig:ch10-eskalasi} memperlihatkan ketiga tingkatnya.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch10-eskalasi.tex}
+  \caption{Tiga tingkat eskalasi: insiden, krisis organisasi, dan Krisis Siber}
+  \label{fig:ch10-eskalasi}
+\end{figure}
+
+Analogi kecelakaan di jalan membantu membagi peran. Petugas menolong dan menjaga lokasi. Pimpinan
+mengatur pengalihan layanan dan informasi publik. Juru bicara menyampaikan informasi yang telah
+diverifikasi. Ketiganya perlu memakai catatan kejadian yang sama.
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan pukul 08.00 ditemukan berkas terenkripsi dan pukul 08.15 jaringan terdampak
+  diisolasi. Keputusan isolasi dicatat beserta dampaknya pada pasien. Bila IGD ikut terdampak
+  dan RTO 15 menit terlewat, pemicu krisis organisasi terpenuhi. Direksi mengambil alih koordinasi
+  tanpa menunggu penyebabnya pasti.
+  \item Misalkan BSSN menyampaikan peringatan dini eskalasi nasional. Pasal 11 Peraturan BSSN 2/2024
+  mewajibkan PSE menindaklanjutinya dan melaporkan hasilnya setiap 2 jam. Dalam 12 jam layanan,
+  Medikara menyiapkan 6 laporan. Jalur laporan itu perlu pemilik sebelum peringatan datang.
+\end{enumerate}
+
+\subsection*{Komunikasi dan pemberitahuan}
+
+Komunikasi menyebut apa yang diketahui, dampak layanan, tindakan sementara, dan waktu pembaruan.
+Rencana komunikasi krisis biasanya menunjuk orang tertentu sebagai satu-satunya pihak yang menjawab
+pertanyaan publik \cite{c10-nist80034}. Dugaan kebocoran diperiksa melalui jalur pelindungan data
+pribadi pada Bab 7. Pemulihan teknologi tidak menghentikan penilaian kewajiban pemberitahuan menurut
+Undang-Undang (UU) 27/2022 \cite{uu27-2022-pdp}. Tim tidak menunggu investigasi selesai untuk
+menyiapkan keputusan pemberitahuan.
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan pukul 09.00 media meminta penjelasan. Juru bicara menyatakan cakupan layanan yang
+  terdampak dan jadwal pembaruan, tanpa mengumumkan penyebab yang belum terverifikasi. Pernyataan
+  ``tidak ada data yang keluar'' tidak dipakai sebelum ada buktinya.
+  \item Misalkan Selasa pukul 09.15 muncul indikasi data keluar. Dengan cara hitung Bab 7, batas
+  internal jam ke-60 jatuh pada Kamis 21.15, dan batas terluar $3 \times 24$ jam jatuh pada Jumat
+  09.15. Bila vendor terlibat, laporan 12 jam pada K-05 jatuh pada Selasa 21.15. Pemulihan SIMRS
+  selesai pukul 14.00 tidak menggeser ketiga batas itu.
+\end{enumerate}
+
+Tabel~\ref{tab:ch10-krisis} merangkum catatan keputusan krisis. Kolom target mengikuti skenario
+latihan pada seksi berikutnya, dan bukan kewajiban hukum, kecuali baris pemberitahuan.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Catatan keputusan krisis (misalkan)}\label{tab:ch10-krisis}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Keputusan} & \textbf{Pemilik} & \textbf{Target waktu} & \textbf{Bukti} \\ \hline
+    Isolasi sistem & Kepala operasi TI sebagai pemimpin tanggap insiden & 15 menit & Alasan dan
+    waktu isolasi \\ \hline
+    Operasi manual & Direktur rumah sakit & 20 menit & Kapasitas dan batas aman \\ \hline
+    Pengalihan pasien & Direktur pelayanan & 30 menit & Fasilitas penerima dan kapasitasnya \\
+    \hline
+    Pernyataan publik & Direktur utama & 60 menit & Fakta terverifikasi dan jadwal pembaruan \\
+    \hline
+    Pemberitahuan & Fungsi hukum dan petugas pelindungan data & Jam ke-60, batas terluar $3
+    \times 24$ jam & Dasar, penerima, waktu kirim \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Pengalihan pasien: membaca satu penelitian}
+
+Pertanyaan kemudian muncul: apakah pengalihan menyelesaikan masalah? Dameff dan rekan menelaah
+serangan \textit{ransomware} pada Mei 2021 terhadap satu organisasi dengan 4 rumah sakit di Amerika
+Serikat. Mereka membandingkan 2 instalasi gawat darurat di organisasi lain yang tidak terserang,
+pada 4 minggu sebelum dan 4 minggu selama serangan \cite{c10-dameff2023}. Dua pembacaan penting:
+\begin{enumerate}
+  \item Beban pindah ke tetangga. Rata-rata jumlah pasien harian naik dari 218,4 menjadi 251,4, atau
+  15,1 persen. Kedatangan ambulans naik dari 1.741 menjadi 2.354, atau 35,2 persen. Median waktu
+  sampai masuk ruang periksa naik dari 21 menjadi 31 menit. Pasien yang pulang sebelum dilayani naik
+  dari 158 menjadi 360.
+  \item Penulis menyarankan serangan seperti ini diperlakukan sebagai bencana regional dengan
+  perencanaan terkoordinasi. Desainnya observasional pada satu wilayah, sehingga angkanya tidak
+  dapat digeneralisasi begitu saja.
+\end{enumerate}
+
+Angka itu tidak disalin ke Medikara. Medikara dapat memakai cara berpikirnya. Misalkan IGD Bekasi
+mengalihkan 3 dari 6 pasien per jam ke IGD Jakarta dan IGD Depok. Bila masing-masing penerima
+normalnya melayani 6 pasien per jam, keduanya bertambah 1,5 pasien per jam, atau 25 persen. Rencana
+pengalihan karena itu memuat kapasitas penerima dan persetujuannya, bukan hanya nama fasilitas.
 
 \section{Latihan dan Pengujian}
 
-% TODO
-% Cakupan: jenis latihan (tabletop, simulasi, uji penuh); merancang skenario yang menguji keputusan; pelajaran setelah latihan dan tindak lanjutnya.
-% Pendalaman teknis: menguji apakah RTO dan RPO dapat dipenuhi rancangan replikasi dan cadangan di IT40713, lalu mencatat selisihnya sebagai risiko.
+\subsection*{Setiap metode menjawab pertanyaan berbeda}
+
+Latihan \textit{tabletop} menguji pembahasan keputusan melalui skenario di meja rapat. NIST
+menjelaskan latihan ini sebagai diskusi peran dan keputusan yang tidak mengerahkan peralatan.
+Latihan fungsional meminta petugas menjalankan perannya dalam lingkungan simulasi
+\cite{c10-nist80034}. Uji pemulihan teknis membuktikan kemampuan sistem. Diskusi yang lancar belum
+membuktikan RTO tercapai. Peraturan BSSN 2/2024 Pasal 6 memisahkan latihan teknis dari pemeranan
+pengambilan keputusan manajerial, termasuk \textit{tabletop exercise}, walaupun pasal itu mengatur
+simulasi nasional oleh BSSN \cite{c10-bssn2-2024}.
+
+Analogi latihan olahraga menunjukkan perlunya ukuran keberhasilan. Menjelaskan strategi pertandingan
+berbeda dari menjalankannya dalam waktu yang ditentukan. Pengamat perlu mencatat keputusan, waktu,
+dan kesenjangan terhadap target. Tabel~\ref{tab:ch10-latihan} merangkum batas bukti tiap metode.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Jenis pengujian dan batas buktinya}\label{tab:ch10-latihan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Metode} & \textbf{Yang diuji} & \textbf{Yang belum dibuktikan} \\ \hline
+    \textit{Tabletop} & Wewenang dan keputusan & Kecepatan pemulihan server \\ \hline
+    Latihan fungsional & Peran dan prosedur satu fungsi, misalnya farmasi manual & Fungsi lain dan
+    data lintas unit \\ \hline
+    Uji teknis & Waktu dan integritas data & Kesiapan seluruh petugas \\ \hline
+    Latihan terpadu & Layanan minimum lintas unit & Semua skenario masa depan \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan latihan menetapkan keputusan layanan manual paling lama 20 menit. Tim memerlukan
+  35 menit karena daftar kewenangan tidak tersedia. Selisih 15 menit merupakan temuan yang dapat
+  ditindaklanjuti.
+  \item Misalkan uji pemulihan mencatat 150 menit terhadap RTO 120 menit. Selisih 30 menit
+  diteruskan ke register risiko dan rancangan teknis mata kuliah IT40713.
+\end{enumerate}
+
+\subsection*{Mengisi 144 uji pemulihan}
+
+Bab 3 menghitung 144 uji, yaitu 36 fasilitas dikali 4 uji per tahun, dan Bab 6 menghitung 3 jam per
+uji, atau 432 jam. Bab ini tidak mengubah jumlah itu. Bab ini mengubah isinya. Pertanyaan yang
+muncul: apa yang dibuktikan 144 uji bila semuanya serupa? Analogi pemeriksaan alat pemadam
+menjawabnya. Memeriksa tekanan tabung 144 kali tidak membuktikan penghuni tahu jalur keluar.
+
+Keputusan mengisi ulang 144 uji punya dua konsekuensi yang dapat dihitung:
+\begin{enumerate}
+  \item Dari 36 fasilitas, hanya 5 yang menjalankan SIMRS rumah sakit. Uji SIMRS berjumlah 5 kali
+  4, atau 20 dari 144. Sisanya, 124 uji, menyentuh 31 fasilitas lain. Laporan yang menggabungkan
+  keduanya menyamarkan hasil pada layanan dengan MTPD terpendek.
+  \item Setiap fasilitas menjalankan 3 uji biasa dan 1 uji memakai akun terpisah. Totalnya 108 uji
+  biasa dan 36 uji akun terpisah, atau 25 persen. Uji akun terpisah menjawab temuan Bab 9 tanpa
+  menambah 432 jam.
+\end{enumerate}
+
+Tabel~\ref{tab:ch10-uji-hasil} memperlihatkan contoh hasil triwulan pertama, yaitu 36 uji. Angka
+gabungan 80,6 persen terlihat baik. Pada rumah sakit, angkanya hanya 60 persen. Dua kegagalan data
+seluruhnya berasal dari 9 uji akun terpisah, sedangkan 27 uji biasa tidak menemukan kegagalan data.
+Tingkat lulus uji bukan peluang R-05, sehingga angka ini tidak disamakan dengan 0,02.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh hasil 36 uji pemulihan triwulan pertama (misalkan)}\label{tab:ch10-uji-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|c|c|c|c|c|}
+    \hline
+    \textbf{Kelompok} & \textbf{Jumlah uji} & \textbf{Lulus} & \textbf{Lewat RTO} & \textbf{Data
+    gagal} & \textbf{Persen lulus} \\ \hline
+    5 rumah sakit & 5 & 3 & 1 & 1 & 60,0 \\ \hline
+    31 fasilitas lain & 31 & 26 & 4 & 1 & 83,9 \\ \hline
+    Total & 36 & 29 & 5 & 2 & 80,6 \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Merancang skenario tabletop}
+
+Skenario yang baik menambahkan informasi bertahap. Setiap informasi memaksa satu pilihan, bukan
+laporan keadaan. Tabel~\ref{tab:ch10-tabletop} memuat skenario SIMRS terenkripsi di Bekasi dengan
+tujuh keputusan. Diskusi berlangsung 45 menit dan evaluasi 15 menit. Waktu skenario dapat berbeda
+dari waktu diskusi, sehingga pengamat mencatat keduanya. Latihan ini tidak menyentuh sistem nyata,
+tidak memakai data pasien, dan memakai target BIA, bukan angka baru yang dipilih saat latihan.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Skenario \textit{tabletop} dan contoh hasil (misalkan, menit sejak informasi diterima)}
+  \label{tab:ch10-tabletop}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.08\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|c|c|}
+    \hline
+    \textbf{Waktu} & \textbf{Informasi dan keputusan} & \textbf{Pemilik} & \textbf{Target} &
+    \textbf{Aktual} \\ \hline
+    08.00 & SIMRS tidak dapat dibuka. Siapa memimpin? & Kepala operasi TI & 10 & 8 \\ \hline
+    08.15 & Berkas terenkripsi di tiga unit. Apa yang diisolasi? & Kepala operasi TI & 15 & 15 \\
+    \hline
+    08.15 & Layanan terganggu. Kapan manual aktif? & Direktur rumah sakit & 20 & 35 \\ \hline
+    08.30 & Cadangan terakhir belum tervalidasi. Strategi apa dipilih? & Direktur pelayanan & 30 &
+    25 \\ \hline
+    08.45 & Vendor tidak dapat dihubungi. Kapan jalur lain aktif? & Kepala operasi TI & 15 & 40 \\
+    \hline
+    09.00 & Media menanyakan kebocoran. Apa yang diumumkan? & Direktur utama & 60 & 50 \\ \hline
+    09.15 & Indikasi data keluar. Kapan proses pemberitahuan dimulai? & Fungsi hukum & 30 & 45 \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\begin{kasus}[title={Kasus Medikara Health: Membaca Hasil Tabletop Bekasi}]
+Empat dari tujuh keputusan tepat waktu, atau sekitar 57 persen. Tiga keputusan terlambat,
+masing-masing 15, 25, dan 15 menit, atau total 55 menit. Pengamat memisahkan penyebabnya menjadi
+kewenangan, teknis, komunikasi, dan kapasitas layanan.
+
+Aktivasi manual terlambat karena daftar kewenangan tidak tersedia pada malam dan akhir pekan.
+Direktur rumah sakit menerbitkan daftar pengganti dalam 14 hari. Jalur vendor terlambat karena hanya
+ada satu nomor kontak. Kepala operasi TI memasukkan kontak cadangan ke kontrak dalam 30 hari.
+Pemberitahuan terlambat karena fungsi hukum baru diundang pukul 09.15. Fungsi hukum masuk daftar
+panggilan awal dalam 14 hari. Ketiganya diuji ulang dalam 60 hari.
+
+Keputusan yang cepat belum tentu benar. Pada pukul 08.30, direktur pelayanan memilih dalam 25 menit,
+tetapi memakai cadangan yang belum tervalidasi sebagai dasar. Pengamat mencatat dasar bukti tiap
+keputusan, sehingga keputusan tepat waktu itu tetap menjadi temuan.
+
+Bila latihan diulang pada 5 rumah sakit dengan 6 peran dan 1 pengamat selama 1 jam, bebannya 35 jam
+per tahun, atau Rp2,1 juta. Ditambah BIA 216 jam, beban Bab 8 naik dari 1.192 jam menjadi 1.443
+jam pada tahun pertama, atau sekitar 0,75 orang penuh waktu.
+\end{kasus}
 
 \section{Aktivitas: BIA dan Strategi Kelangsungan Layanan}
 
-% TODO
-% Tujuan aktivitas: menetapkan layanan mana yang harus pulih lebih dulu, seberapa cepat, dan dengan cara apa.
-% Peran dalam tim: anggota berlatar kesehatan atau operasional memimpin penilaian dampak; analis teknologi menilai kelayakan RTO dan RPO terhadap arsitektur target; analis risiko menautkan hasil ke risk register; pemilik konteks memvalidasi prosedur manual.
-% Langkah: pilih lima sampai tujuh layanan; nilai dampak menurut waktu; tetapkan MTPD, RTO, dan RPO; petakan ketergantungan; pilih strategi untuk dua layanan paling kritis; susun skenario tabletop serangan ransomware pada SIMRS.
-% Luaran dan tonggak capstone: BIA, strategi kelangsungan untuk dua layanan kritis, dan skenario latihan; masuk C3.
-% Berkas sources yang direncanakan: sources/chapter10/templat-bia.xlsx, sources/chapter10/skenario-tabletop-ransomware.md
+\textbf{Tujuan.} Tim menetapkan urutan pemulihan yang dapat dipertanggungjawabkan untuk lima sampai
+tujuh layanan, memilih strategi untuk dua layanan paling kritis, dan menguji keputusan lewat latihan
+\textit{tabletop}. Tim memakai organisasi nyata dengan izin dan data yang dianonimkan, atau kasus
+Medikara Health.
+
+\textbf{Pembagian peran.} Anggota berlatar kesehatan atau operasional memimpin penilaian dampak.
+Analis teknologi menilai apakah RTO dan RPO dapat dicapai arsitektur target. Analis risiko menautkan
+keputusan ke \textit{risk register}. Pemilik konteks memvalidasi prosedur manual dan kewenangan.
+
+\textbf{Langkah kerja.}
+\begin{enumerate}
+  \item Pilih lima sampai tujuh layanan dan catat kapasitas normalnya. Periksa kecocokan angka
+  dengan jumlah kunjungan keseluruhan. Gunakan asumsi berlabel bila data tidak tersedia.
+  \item Nilai dampak keselamatan, layanan, hukum, dan keuangan pada beberapa waktu gangguan. Isi
+  \berkas{sources/chapter10/templat-bia.csv} dan bandingkan dengan
+  \berkas{sources/chapter10/contoh-bia-medikara.csv}.
+  \item Sepakati MTPD, RTO, RPO, kapasitas minimum, dan ketergantungan. Periksa apakah target
+  teknologi sama dengan target layanan, lalu turunkan RTO sistem.
+  \item Bandingkan dua strategi untuk dua layanan paling kritis dengan
+  \berkas{sources/chapter10/perbandingan-strategi.csv}. Nyatakan biaya tahunan, asumsi, dan risiko
+  sisa pada lingkup yang sama.
+  \item Isi \berkas{sources/chapter10/praktik-dss04.csv} dan
+  \berkas{sources/chapter10/rencana-uji-pemulihan.csv}. Tandai bukti yang belum tersedia.
+  \item Jalankan skenario di \berkas{sources/chapter10/skenario-tabletop-ransomware.md}. Tunjuk
+  pengamat yang mencatat waktu keputusan dan dasar buktinya.
+  \item Catat tindakan perbaikan, pemilik, tenggat, dan tanggal pengujian ulang. Selaraskan target
+  dengan rancangan pemulihan di IT40713.
+\end{enumerate}
+
+\textbf{Luaran.} BIA, perbandingan strategi dua layanan, target DSS04, rencana uji, dan catatan
+latihan.
+
+\textbf{Kaitan dengan capstone.} Luaran masuk tonggak C3 Kondisi Target. Target pemulihan
+diselaraskan dengan IT40713. Bab 12 memakai hasil uji sebagai bukti audit, Bab 13 memakai RTO untuk
+bahan indikator, dan Bab 14 memakai latihan terpadu pada peta jalan.
+
+\textbf{Kriteria penilaian.} Keterlacakan dampak ke target 35 persen; strategi dan biaya layak 30
+persen; mutu keputusan latihan 20 persen; tindak lanjut yang terukur 15 persen. Penilaian berfokus
+pada penalaran, bukan pada kesamaan angka dengan contoh.
+
+\textbf{Berkas pendukung.} Seluruh lembar kerja ada di \berkas{sources/chapter10/}, dengan daftar
+berkas pada \berkas{sources/chapter10/README.md}. Data pasien dan dokumen asli tidak boleh
+disalin ke folder tugas. Latihan \textit{tabletop} tidak menyentuh sistem nyata.
+
+\begin{pendalaman}
+Bandingkan waktu pulih dan titik data terakhir dari uji cadangan di lingkungan sendiri dengan RTO
+dan RPO. Gunakan data sintetis. Uji hanya dilakukan pada sistem sendiri atau yang sudah berizin
+tertulis. Pemulihan baru dinyatakan selesai setelah data diverifikasi dan layanan minimum diuji,
+bukan saat proses server mulai berjalan. Selisih terhadap rancangan IT40713 dicatat sebagai risiko.
+\end{pendalaman}
 
 \section{Ringkasan}
 
-% TODO
+Kelangsungan bisnis mempertahankan hasil layanan ketika kondisi normal tidak tersedia. Manajemen
+insiden, kelangsungan bisnis, dan pemulihan bencana memiliki pertanyaan dan bukti yang berbeda,
+walaupun bermula dari satu kejadian. Direksi menetapkan toleransi, pemilik layanan menetapkan
+kapasitas minimum, dan tim teknologi membuktikan kemampuan pemulihan. DSS04 yang ditunda Bab 4 kini
+mendapat target tingkat 3, sehingga rancangan Bab 8 menjadi Rp720 juta per tahun.
+
+BIA menghubungkan dampak menurut waktu dengan MTPD, RTO, RPO, dan kapasitas minimum. Keempatnya
+tidak saling menggantikan. MTPD 4 jam menurunkan RTO sistem 120 menit, dan ketergantungan dapat
+mengalahkan target. Layanan identitas dengan janji 8 jam mengubah \textit{restore} 90 menit menjadi
+9,5 jam. Pada kasus Bekasi, server pulih pukul 14.00, tetapi antrean baru habis pukul 20.00.
+
+Strategi menggabungkan orang, data, tempat, dan vendor pada dua jalur: layanan sementara dan
+pemulihan teknologi. Replikasi dan cadangan memiliki fungsi berbeda. Prosedur manual tetap
+memerlukan batas aman, pelatihan, dan rekonsiliasi. Opsi B seharga Rp480 juta lebih mahal Rp200
+juta per tahun daripada opsi A setelah harapan kerugian dihitung. Selisih itu adalah harga untuk
+memenuhi batas 2 persen pada R-05.
+
+Insiden siber, krisis organisasi, dan Krisis Siber berada pada tingkat yang berbeda. Status Krisis
+Siber ditetapkan Presiden, sedangkan krisis organisasi diputuskan pimpinan Medikara. Pemulihan
+sistem tidak menggeser batas pemberitahuan $3 \times 24$ jam. Pengalihan pasien memindahkan beban
+ke fasilitas penerima, sehingga kapasitasnya harus masuk rencana.
+
+Latihan menguji keputusan, sedangkan uji teknis memeriksa kemampuan sistem. Jumlah 144 uji tidak
+berubah, tetapi 20 di antaranya menyentuh SIMRS dan 36 memakai akun terpisah. Hasil keduanya masuk
+ke tindakan perbaikan. Pesan utama bab ini adalah bahwa layanan pulih ketika pasien dapat dilayani
+secara aman pada kapasitas yang disepakati.
 
 \section{Latihan}
 
+\subsection*{Latihan 1: Waktu dan Data Farmasi}
+
+Jelaskan perbedaan RTO dan RPO dengan contoh layanan farmasi rumah sakit. Latihan ini membuktikan
+kemampuan membedakan waktu pemulihan layanan dan celah data.
+
 \begin{enumerate}
-  \item Jelaskan perbedaan RTO dan RPO dengan contoh layanan farmasi rumah sakit.
-  \item Mengapa RTO untuk semua layanan tidak boleh ditetapkan nol? Kaitkan dengan biaya dan \textit{risk appetite}.
-  \item Rancang tiga pertanyaan keputusan yang harus dijawab direksi dalam latihan \textit{tabletop} serangan \textit{ransomware}.
+  \item Tetapkan saat gangguan dan target pemulihan farmasi.
+  \item Catat titik data terakhir yang dapat dipulihkan, lalu hitung celahnya.
+  \item Catat waktu pulih dan kapasitas yang tercapai.
+  \item Bandingkan hasil dengan target dan jelaskan konsekuensi rekonsiliasinya.
+\end{enumerate}
+
+Tabel~\ref{tab:ch10-lat1-contoh} memuat contoh dengan gangguan pukul 10.00, data terakhir pukul
+09.50, dan pulih pukul 12.30. Tabel~\ref{tab:ch10-lat1-hasil} merupakan lembar hasil.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh Latihan 1 (skenario pembelajaran)}\label{tab:ch10-lat1-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.22\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Ukuran} & \textbf{Target} & \textbf{Hasil contoh} & \textbf{Selisih} \\ \hline
+    RTO & 120 menit & Pulih dalam 150 menit & Gagal 30 menit \\ \hline
+    RPO & 15 menit & Data terakhir 10 menit sebelum gangguan & Lulus, sisa 5 menit \\ \hline
+    Kapasitas minimum & 40 resep per jam & 40 resep per jam lewat manual & Lulus \\ \hline
+    Resep diisi ulang & Paling banyak 25 & Sekitar 17, yaitu 100 per jam kali 10 menit & Lulus
+    \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar hasil Latihan 1}\label{tab:ch10-lat1-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.22\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Ukuran} & \textbf{Target} & \textbf{Hasil} & \textbf{Selisih} \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+Hasil dapat berbeda; penilaian bertumpu pada alasan dan perbandingan bukti.
+\begin{enumerate}
+  \item Target mana yang gagal dan berapa selisihnya?
+  \item Mengapa keberhasilan RPO tidak menutup kegagalan RTO?
+  \item Selama 150 menit, berapa resep yang harus dicocokkan kembali bila manual melayani 40 resep
+  per jam?
+\end{enumerate}
+
+\subsection*{Latihan 2: Biaya Target Pemulihan}
+
+Mengapa RTO untuk semua layanan tidak boleh ditetapkan nol? Kaitkan dengan biaya dan \textit{risk
+appetite}. Latihan ini membuktikan ketepatan pemilihan strategi menurut dampak. NIST menggambarkan
+dua kurva: biaya gangguan naik seiring lamanya gangguan, dan biaya pemulihan naik seiring pendeknya
+RTO. Titik seimbangnya berbeda pada setiap organisasi \cite{c10-nist80034}.
+
+\begin{enumerate}
+  \item Pilih dua layanan dengan dampak berbeda.
+  \item Bandingkan tiga opsi biaya dan kemampuan pemulihan pada lingkup dan periode yang sama.
+  \item Hitung biaya ditambah harapan kerugian, lalu periksa batas \textit{risk appetite}.
+  \item Pilih opsi yang memenuhi toleransi dan jelaskan risiko sisanya.
+\end{enumerate}
+
+Tabel~\ref{tab:ch10-lat2-contoh} memuat contoh dari seksi strategi, dan
+Tabel~\ref{tab:ch10-lat2-hasil} merupakan lembar hasil.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh Latihan 2 (skenario pembelajaran)}\label{tab:ch10-lat2-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Opsi} & \textbf{RTO sistem} & \textbf{Biaya} & \textbf{Harapan rugi} & \textbf{Jumlah} &
+    \textbf{Batas 2 persen} \\ \hline
+    A. Manual & 480 menit & Rp120 juta & Rp200 juta & Rp320 juta & Terlewati, 10 persen \\ \hline
+    B. Manual dan pemulihan & 90 menit & Rp480 juta & Rp40 juta & Rp520 juta & Terpenuhi bila teruji
+    \\ \hline
+    C. Replikasi aktif & Mendekati nol & Rp6 miliar & Rp40 juta & Rp6,04 miliar & Terpenuhi bila
+    teruji \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar hasil Latihan 2}\label{tab:ch10-lat2-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Opsi} & \textbf{RTO sistem} & \textbf{Biaya} & \textbf{Harapan rugi} & \textbf{Jumlah} &
+    \textbf{Batas} \\ \hline
+    \dots & \dots & \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+Hasil dapat berbeda; penilaian bertumpu pada alasan dan perbandingan bukti.
+\begin{enumerate}
+  \item Apa yang harus dibuktikan sebelum biaya lebih besar disetujui?
+  \item Dampak apa yang membuat pilihan murah tidak dapat diterima, walaupun jumlahnya paling kecil?
+  \item Mengapa RTO mendekati nol tidak menurunkan harapan kerugian pada skenario data rusak?
+\end{enumerate}
+
+\subsection*{Latihan 3: Keputusan dalam Krisis}
+
+Rancang tiga pertanyaan keputusan yang harus dijawab direksi dalam latihan \textit{tabletop}
+serangan \textit{ransomware}. Latihan ini membuktikan kejelasan wewenang dan batas waktu keputusan.
+
+\begin{enumerate}
+  \item Baca \berkas{sources/chapter10/skenario-tabletop-ransomware.md}.
+  \item Tulis tiga pertanyaan yang menuntut pilihan, bukan laporan keadaan.
+  \item Tetapkan pengambil keputusan, batas waktu, dan bukti keputusan.
+\end{enumerate}
+
+Tabel~\ref{tab:ch10-lat3-contoh} memuat contoh. Pertanyaan pertama menyangkut lima rumah sakit. Bila
+keempat rumah sakit lain ikut beralih ke manual sebagai pencegahan, kapasitas pendaftaran seluruh
+rumah sakit turun dari 200 menjadi 100 pasien per jam. Tabel~\ref{tab:ch10-lat3-hasil} merupakan
+lembar hasil.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh Latihan 3 (skenario pembelajaran)}\label{tab:ch10-lat3-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}p{0.11\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Pertanyaan keputusan} & \textbf{Pemilik} & \textbf{Target waktu} & \textbf{Bukti} \\
+    \hline
+    Apakah empat rumah sakit lain ikut beralih ke manual sebagai pencegahan? & Direktur utama & 30
+    menit & Cakupan serangan dan dampak 100 pasien per jam \\ \hline
+    Fasilitas mana menerima pengalihan dan sampai kapan? & Direktur pelayanan & 30 menit & Kapasitas
+    dan persetujuan penerima \\ \hline
+    Kapan pembaruan publik berikutnya dan apa isinya? & Direktur utama & 60 menit & Fakta
+    terverifikasi dan pendapat fungsi hukum \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar hasil Latihan 3}\label{tab:ch10-lat3-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}p{0.11\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Pertanyaan keputusan} & \textbf{Pemilik} & \textbf{Target waktu} & \textbf{Bukti} \\
+    \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+Hasil dapat berbeda; penilaian bertumpu pada alasan dan perbandingan bukti.
+\begin{enumerate}
+  \item Keputusan mana yang bergantung pada informasi klinis?
+  \item Bagaimana menilai keputusan yang cepat tetapi memakai data yang salah?
 \end{enumerate}

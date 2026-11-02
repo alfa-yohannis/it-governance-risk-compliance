@@ -1,0 +1,24 @@
+\begin{tikzpicture}[
+  kotak/.style={draw,rounded corners,align=center,text width=2.5cm,
+    minimum height=2.3cm,font=\scriptsize,fill=blue!8},
+  panah/.style={-{Stealth[length=2mm]},thick}
+]
+  \node[kotak,fill=praditagreen!15] (a) at (0,0)
+    {\textbf{Konteks}\\strategi dan keadaan organisasi\\
+    {\tiny\mdseries sumber: dokumen dan wawancara}};
+  \node[kotak] (b) at (3.0,0)
+    {\textbf{Cakupan awal}\\4 faktor\\
+    {\tiny\mdseries strategi, tujuan organisasi, profil risiko, isu TI}};
+  \node[kotak,fill=orange!12] (c) at (6.0,0)
+    {\textbf{Penyempurnaan}\\7 faktor\\
+    {\tiny\mdseries ancaman, kepatuhan, peran TI, model penyediaan, metode implementasi,
+    adopsi teknologi, ukuran}};
+  \node[kotak,fill=green!10] (d) at (9.0,0)
+    {\textbf{Kesimpulan}\\konflik diselesaikan\\
+    {\tiny\mdseries objektif prioritas dan target kapabilitas}};
+  \draw[panah] (a) -- (b);
+  \draw[panah] (b) -- (c);
+  \draw[panah] (c) -- (d);
+  \draw[panah] (d.south) -- ++(0,-0.4) -| node[pos=0.25,below,font=\scriptsize]
+    {faktor berubah: rancangan dinilai ulang} (a.south);
+\end{tikzpicture}

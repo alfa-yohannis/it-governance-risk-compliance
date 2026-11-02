@@ -1,0 +1,33 @@
+﻿{
+  "tanggal_acuan": "2026-10-30",
+  "batas_tinjau_hari": 90,
+  "jumlah_baris": 8,
+  "akun_aktif": 7,
+  "akun_dikecualikan_tidak_aktif": 1,
+  "akun_dengan_indikasi": 3,
+  "jumlah_indikasi": 4,
+  "tinjauan_tepat_waktu": 5,
+  "cakupan_tinjauan_persen": 71.43,
+  "pengecualian": [
+    {
+      "akun": "USR002",
+      "indikasi": [
+        "pemilik_kosong"
+      ]
+    },
+    {
+      "akun": "USR003",
+      "indikasi": [
+        "akun_bersama",
+        "tinjauan_terlambat_atau_kosong"
+      ]
+    },
+    {
+      "akun": "USR005",
+      "indikasi": [
+        "tinjauan_terlambat_atau_kosong"
+      ]
+    }
+  ],
+  "batas_klaim": "Indikasi snapshot sintetis; perlu validasi bukti auditor"
+}

@@ -1,0 +1,21 @@
+\begin{tikzpicture}[node distance=6mm and 3.5mm, kotak/.style={draw, rounded corners, align=center, text width=1.95cm, minimum height=1.25cm, font=\scriptsize}, panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[kotak,fill=praditagreen!15] (a) {Anggaran modernisasi\\Rp10.000 juta};
+  \node[kotak,fill=gray!35,right=of a] (b) {Dikurangi Medikara+\\Rp8.400 juta};
+  \node[kotak,fill=blue!8,right=of b] (c) {Sisa\\Rp1.600 juta};
+  \node[kotak,fill=gray!35,right=of c] (d) {Dikurangi ruang toleransi\\Rp400 juta};
+  \node[kotak,fill=green!10,right=of d] (e) {Tersedia\\Rp1.200 juta};
+  \draw[panah] (a) -- (b);
+  \draw[panah] (b) -- (c);
+  \draw[panah] (c) -- (d);
+  \draw[panah] (d) -- (e);
+  \node[kotak,fill=orange!12,below=of e] (f) {Uang baru Tahun 1\\Rp1.500,38 juta};
+  \node[kotak,fill=red!22,left=of f] (g) {Kurang\\Rp300,38 juta};
+  \node[kotak,fill=blue!8,left=of g] (h) {Anggaran operasi};
+  \node[kotak,fill=orange!12,left=of h] (i) {Uang baru Tahun 2\\Rp1.363,98 juta};
+  \node[kotak,fill=orange!12,left=of i] (j) {Uang baru Tahun 3\\Rp1.303,98 juta};
+  \draw[panah] (e) -- node[right,font=\tiny] {dibandingkan} (f);
+  \draw[panah] (f) -- (g);
+  \draw[panah] (g) -- (h);
+  \draw[panah] (i) -- (h);
+  \draw[panah] (j.south) -- ++(0,-0.3) -| (h.south);
+\end{tikzpicture}

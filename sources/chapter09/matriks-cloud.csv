@@ -1,0 +1,10 @@
+# Kegunaan: matriks kendali cloud untuk Aktivitas Bab 09, sama dengan tabel matriks pada bab. Cara memakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, ganti model layanan sesuai rancangan IT40713, lalu isi kolom kontrak rujukan dari kontrak nyata. Seluruh isi pengandaian dan harus dikonfirmasi pada kontrak.
+kontrol,model_layanan,penyedia,pelanggan,vendor_aplikasi,bukti,kontrak_rujukan,pemilik_verifikasi
+Fasilitas fisik,IaaS,Operasikan dan lindungi,Tinjau asurans dan cakupan,Tinjau ketergantungan,Ruang lingkup laporan,Harus dikonfirmasi,Kepala operasi TI
+Sistem operasi,IaaS,Konfirmasi batas layanan,Konfigurasi dan pembaruan,Sesuai kontrak,Hasil pembaruan dan pemeriksaan,Harus dikonfirmasi,Kepala operasi TI
+Aplikasi,PaaS,Operasikan platform,Pastikan kebutuhan dan pengawasan,Kembangkan sesuai kontrak,Hasil pengujian,Harus dikonfirmasi,Pemilik layanan
+Hak pengguna,SaaS,Sediakan fungsi akses,Setujui dan tinjau lewat AC-01,Dukung sesuai instruksi,Daftar hak dan pencabutan,Harus dikonfirmasi,Pemilik layanan
+Tujuan dan klasifikasi data,Semua,Dukung kewajiban layanan,Tetapkan tujuan dan dasar,Ikuti instruksi,Catatan pemrosesan,Harus dikonfirmasi,Pemilik data
+Lokasi data dan cadangan,Semua,Nyatakan lokasi dan perubahan,Periksa terhadap Pasal 966 PP 28/2024,Nyatakan lokasi akses dukungan,Inventaris lokasi,Harus dikonfirmasi,Kepala TI dan rekam medis
+Pemulihan,Semua,Penuhi bagian kontrak,Uji hasil layanan,Penuhi bagian aplikasi,Hasil uji terpadu,Harus dikonfirmasi,Pemilik layanan
+Keluar dan penghapusan,Semua,Ekspor serta hapus sesuai peran,Verifikasi kelengkapan,Serahkan data dan metadata,Hasil uji keluar,Harus dikonfirmasi,Pemilik hubungan

@@ -1,0 +1,11 @@
+\begin{tikzpicture}[node distance=4mm, kotak/.style={draw, rounded corners, align=center, text width=1.85cm, minimum height=1.2cm, font=\scriptsize}, panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[kotak,fill=praditagreen!15] (t0) {Risiko dan kewajiban};
+  \node[kotak,fill=blue!8] (t1) [right=of t0] {Kontrol dan bukti bersama};
+  \node[kotak,fill=blue!8] (t2) [right=of t1] {Alat sesuai kebutuhan};
+  \node[kotak,fill=orange!12] (t3) [right=of t2] {Gelombang inisiatif};
+  \node[kotak,fill=green!10] (t4) [right=of t3] {Keputusan dan asurans};
+  \draw[panah] (t0) -- (t1);
+  \draw[panah] (t1) -- (t2);
+  \draw[panah] (t2) -- (t3);
+  \draw[panah] (t3) -- (t4);
+\end{tikzpicture}

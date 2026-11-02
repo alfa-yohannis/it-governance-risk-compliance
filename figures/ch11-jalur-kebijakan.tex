@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  judul/.style={draw, rounded corners, align=center, text width=3.5cm, minimum height=0.75cm},
+  isi/.style={draw, align=left, text width=3.5cm, minimum height=3.3cm, anchor=north},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \draw[panah] (-1.9,0.75) -- (9.9,0.75)
+    node[midway, above] {Kepekaan data dan dampak pada pasien makin tinggi};
+  \node[judul, fill=green!10] (a) at (0,0) {\textbf{Diizinkan}};
+  \node[judul, fill=orange!12] (b) at (4,0) {\textbf{Perlu persetujuan}};
+  \node[judul, fill=red!22] (c) at (8,0) {\textbf{Ditahan atau dilarang}};
+  \node[isi, below=1mm of a] {\textbf{Contoh:} draf surat dari data publik, memakai alat yang
+    disetujui, tanpa data pasien.\\[2pt]\textbf{Pengawas:} penulis memeriksa sendiri.\\[2pt]
+    \textbf{Bukti:} daftar alat dan pelatihan pengenalan.};
+  \node[isi, below=1mm of b] {\textbf{Contoh:} AI-01, AI-03, AI-04, AI-05.\\[2pt]
+    \textbf{Pengawas:} pemeriksa berwenang menolak; komite risiko meninjau.\\[2pt]
+    \textbf{Bukti:} penilaian dampak, hasil uji, baris inventaris, log.};
+  \node[isi, below=1mm of c] {\textbf{Contoh:} AI-02 sampai evaluasi lulus; AI-06, yaitu data
+    pasien pada \textit{chatbot} umum.\\[2pt]\textbf{Pengawas:} direktur pelayanan dan fungsi
+    hukum.\\[2pt]\textbf{Bukti:} alternatif kerja dan laporan.};
+\end{tikzpicture}

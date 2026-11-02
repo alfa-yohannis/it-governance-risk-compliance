@@ -1,0 +1,25 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  kotak/.style={draw, rounded corners, align=center, text width=2.85cm, minimum height=1.7cm},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[draw, rounded corners, align=center, text width=10.3cm, minimum height=0.95cm,
+    fill=praditagreen!15] (bp) at (0,0)
+    {\textbf{Badan pengarah}\\Dewan komisaris mengawasi, direksi memutuskan sesuai kewenangan};
+  \node[kotak, fill=blue!8] (l1) at (-3.65,-2.45)
+    {\textbf{Lini pertama}\\pemilik Medikara+, kepala operasi TI\\
+    {\tiny\mdseries menjalankan AC-01, 60 catatan per tahun}};
+  \node[kotak, fill=blue!8] (l2) at (0,-2.45)
+    {\textbf{Lini kedua}\\CISO, kepala risiko\\
+    {\tiny\mdseries memantau dan menantang cakupan 120 akun}};
+  \node[kotak, fill=orange!12] (l3) at (3.65,-2.45)
+    {\textbf{Lini ketiga}\\audit internal\\
+    {\tiny\mdseries menguji secara independen, termasuk lini kedua}};
+  \node[draw, dashed, rounded corners, align=center, text width=10.3cm, minimum height=0.8cm,
+    fill=gray!10] (luar) at (0,-4.55)
+    {\textbf{Pihak luar, bukan bagian dari tiga lini}: auditor eksternal, regulator, laporan SOC 2};
+  \draw[panah] (bp.south -| l1) -- (l1) node[midway, left] {{\tiny\mdseries arah}};
+  \draw[panah] (l2) -- (l1);
+  \draw[panah] (l3.north) -- (bp.south -| l3) node[midway, right] {{\tiny\mdseries fungsional}};
+  \draw[panah, dashed] (luar.north -| l3) -- (l3) node[midway, right] {{\tiny\mdseries koordinasi}};
+  \draw[panah, dashed] (luar.north -| l1) -- (l1) node[midway, left] {{\tiny\mdseries laporan}};
+\end{tikzpicture}

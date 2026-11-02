@@ -1,0 +1,9 @@
+# Kegunaan: contoh peta pihak keempat Medikara untuk Aktivitas Bab 09, sama dengan peta ketergantungan pada bab. Cara memakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, isi satu baris per pasangan hubungan dan pihak keempat, lalu hitung pemakaian tiap pihak keempat. Nilai 2 atau lebih berarti titik kegagalan bersama. Seluruh isi pengandaian.
+hubungan,pihak_keempat,fungsi,data_yang_sampai,jumlah_hubungan_pemakai,persetujuan_tertulis,sumber_bukti,catatan
+V-01,V-02 penyedia cloud,Menampung aplikasi Medikara+,Data janji temu,1,Perlu dibuktikan,Daftar subprosesor,V-02 juga pihak ketiga langsung Medikara
+V-01,Penyedia pesan bersama,Pengingat janji temu,Nama dan jadwal,2,Perlu dibuktikan,Daftar subprosesor,Terkait R-08
+V-01,Layanan identitas bersama,Masuk akun pengelola,Identitas pengelola,2,Perlu dibuktikan,Daftar subprosesor,Terkait R-08
+V-02,Layanan identitas bersama,Masuk akun pengelola,Identitas pengelola,2,Perlu dibuktikan,Kontrak layanan,Terkait cadangan R-05
+V-03,Penyedia pesan bersama,Pemberitahuan hasil,Nama dan status hasil,2,Perlu dibuktikan,Kontrak layanan,Terkait R-08
+V-04,Pengolah klaim,Pemrosesan klaim,Data klaim,1,Di luar kendali bila mitra pengendali terpisah,Perjanjian mitra,Tanyakan penerima lanjutan
+V-05,Kurir obat,Pengantaran,Nama dan alamat,1,Perlu dibuktikan,Perjanjian mitra,Batasi data resep

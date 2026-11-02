@@ -1,0 +1,30 @@
+\begin{tikzpicture}[
+  kotak/.style={draw, rounded corners, align=center, text width=3.3cm,
+    minimum height=1.3cm, font=\scriptsize, fill=blue!8},
+  masalah/.style={draw, rounded corners, align=center, text width=3.3cm,
+    minimum height=0.75cm, font=\scriptsize, fill=red!22},
+  panah/.style={-{Stealth[length=2mm]}, thick},
+  keterangan/.style={font=\tiny, align=center, inner sep=1pt}
+]
+  \node[masalah] (masalah1) at (0, 4.0) {Bila hilang:\\keputusan tanpa pemutus};
+  \node[masalah] (masalah2) at (4.0, 4.0) {Bila hilang:\\keputusan tidak ditinjau};
+  \node[masalah] (masalah3) at (8.0, 4.0) {Bila hilang:\\piagam hanya tersimpan};
+  \node[kotak] (struktur) at (0, 2.1)
+    {\textbf{Struktur}\\{\tiny\mdseries forum, peran, mandat,\\dan batas delegasi}};
+  \node[kotak] (proses) at (4.0, 2.1)
+    {\textbf{Proses}\\{\tiny\mdseries agenda EDM, catatan keputusan,\\dan peninjauan
+    manfaat}};
+  \node[kotak] (relasional) at (8.0, 2.1)
+    {\textbf{Mekanisme relasional}\\{\tiny\mdseries dialog lintas fungsi, bahasa
+    bersama,\\dan belajar dari insiden}};
+  \node[draw, rounded corners, align=center, fill=green!10, font=\scriptsize,
+    text width=11.1cm, minimum height=0.9cm] (hasil) at (4.0, 0)
+    {\textbf{Keputusan yang dijalankan dan dapat diperiksa}\\{\tiny\mdseries satu
+    pemutus, alasan tercatat, tindak lanjut selesai, dan hasil layanan ditinjau}};
+  \draw[panah, dashed] (struktur) -- (masalah1);
+  \draw[panah, dashed] (proses) -- (masalah2);
+  \draw[panah, dashed] (relasional) -- (masalah3);
+  \draw[panah] (struktur) -- (struktur |- hasil.north);
+  \draw[panah] (proses) -- (proses |- hasil.north);
+  \draw[panah] (relasional) -- (relasional |- hasil.north);
+\end{tikzpicture}

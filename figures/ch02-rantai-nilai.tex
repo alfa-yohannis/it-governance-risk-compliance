@@ -1,0 +1,38 @@
+\begin{tikzpicture}[
+  kotak/.style={draw, rounded corners, align=center, text width=2.95cm,
+    minimum height=1.15cm, font=\scriptsize, fill=blue!8},
+  panah/.style={-{Stealth[length=2mm]}, thick},
+  keterangan/.style={font=\tiny, align=center, inner sep=1pt}
+]
+  \node[kotak] (mekanisme) at (0, 2.4)
+    {\textbf{Mekanisme tata kelola}\\{\tiny\mdseries struktur, proses, relasional}};
+  \node[kotak, fill=orange!12] (keselarasan) at (4.2, 2.4)
+    {\textbf{Keselarasan strategis}\\{\tiny\mdseries prioritas bisnis dan TI saling
+    mendukung}};
+  \node[kotak, fill=green!10] (kinerja) at (8.4, 2.4)
+    {\textbf{Kinerja organisasi}\\{\tiny\mdseries hasil yang diukur}};
+  \draw[panah] (mekanisme) -- (keselarasan);
+  \draw[panah] (keselarasan) -- (kinerja);
+  % Jalur langsung: letak perbedaan temuan antarpenelitian.
+  \draw[panah, dashed] (mekanisme.north) -- ++(0, 0.62) -|
+    node[keterangan, above, pos=0.25, text width=8.4cm]
+    {Pengaruh langsung: Wu dkk. tidak menemukan sisa pengaruh (mediasi penuh);
+    Turel dkk. masih menemukan sisa pada tingkat dewan (mediasi sebagian)}
+    (kinerja.north);
+  \node[draw, rounded corners, align=center, fill=red!22, font=\tiny,
+    text width=2.95cm, minimum height=0.6cm] (gaya) at (8.4, 4.75)
+    {Gaya tata kelola otoriter melemahkan pengaruh (Turel dkk.)};
+  \draw[panah] (gaya.south) -- ++(0, -0.72);
+  % Contoh pengandaian Medikara pada baris bawah.
+  \node[kotak, fill=white] (mandat) at (0, 0)
+    {\textbf{Medikara}\\{\tiny\mdseries mandat, komite, pemilik manfaat}};
+  \node[kotak, fill=white] (target) at (4.2, 0)
+    {\textbf{Target bersama}\\{\tiny\mdseries waktu tunggu 40 menjadi 25 menit}};
+  \node[kotak, fill=white] (capaian) at (8.4, 0)
+    {\textbf{Hasil tiga bulan}\\{\tiny\mdseries 38 menit, baru 13,3 persen target}};
+  \draw[panah] (mandat) -- (target);
+  \draw[panah] (target) -- (capaian);
+  \draw[densely dotted, thick] (mekanisme) -- (mandat);
+  \draw[densely dotted, thick] (keselarasan) -- (target);
+  \draw[densely dotted, thick] (kinerja) -- (capaian);
+\end{tikzpicture}

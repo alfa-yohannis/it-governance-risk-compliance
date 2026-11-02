@@ -1,0 +1,6 @@
+# Kegunaan: register GRC awal Bab 01 (data latihan). Salin, lalu ganti isinya.
+id,jenis,judul,pemilik,status_informasi,terkait
+P-01,pemicu,Insiden vendor 2025,Direktur pelayanan,fakta kasus,R-01
+R-01,risiko,Akun vendor di luar penugasan,Pemilik Medikara+,pengandaian,AC-01
+AC-01,kontrol,Peninjauan hak akses,Kepala operasi TI,pengandaian,B-01
+B-01,bukti,6 dari 30 akun sampel belum dicabut,Audit internal,pengandaian,AC-01

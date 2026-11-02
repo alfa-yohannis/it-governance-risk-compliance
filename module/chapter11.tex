@@ -1,66 +1,1132 @@
+% !TeX root = it-governance-risk-compliance.tex
+% !TeX encoding = UTF-8
 \chapter{Tata Kelola Kecerdasan Artifisial}
 
 \section*{Tujuan Pembelajaran}
 \begin{itemize}
-  \item Mengidentifikasi kasus pemakaian AI (\textit{Artificial Intelligence}) di organisasi dan mengklasifikasi risikonya.
-  \item Menjelaskan persyaratan sistem manajemen AI menurut ISO/IEC 42001:2023 dan pendekatan berbasis risiko dalam EU AI Act.
+  \item Mengidentifikasi kasus pemakaian AI (\textit{Artificial Intelligence}) di organisasi dan
+  mengklasifikasi risikonya.
+  \item Menjelaskan persyaratan sistem manajemen AI menurut ISO/IEC 42001:2023 dan pendekatan
+  berbasis risiko dalam EU AI Act.
   \item Merumuskan kebijakan pemakaian AI yang dapat dijalankan dan diawasi.
 \end{itemize}
 
 \section{Pendahuluan}
 
-% TODO
-% Cakupan: staf memakai chatbot AI umum untuk merangkum catatan pasien tanpa izin; organisasi tidak tahu AI apa saja yang sudah dipakai.
+Misalkan seorang petugas di rumah sakit Medikara memakai \textit{chatbot} AI umum untuk merangkum
+catatan pasien, tanpa izin siapa pun. Pekerjaan yang biasanya 12 menit selesai jauh lebih cepat.
+Organisasi tidak mengetahui lokasi penyimpanan teks itu, apakah penyedia memakainya ulang, dan
+apakah alergi pasien masih tercantum pada ringkasan. Medikara belum punya proyek AI resmi. Namun,
+pemakaian \textit{Artificial Intelligence} (AI) sudah menjadi keputusan organisasi sejak data
+pertama dimasukkan.
+
+Tata kelola AI menetapkan tujuan, batas pemakaian, pemilik keputusan, dan bukti bahwa risiko
+dikelola sepanjang siklus hidup. Manfaat administratif dan dampak klinis perlu dibedakan.
+Kesalahan pada pengelompokan surat tidak berakibat sama dengan kesalahan triase. Pengawasan
+manusia juga memerlukan kewenangan, waktu, dan informasi untuk menolak keluaran. Hasil kerja bab
+ini adalah inventaris AI dan kebijakan pemakaian AI untuk tonggak C3 capstone. Keduanya memakai
+kode yang sudah ada: R-11 pada register Bab 5, peran direktur pelayanan pada Bab 8, kontrak vendor
+pada Bab 9, dan penilaian dampak pelindungan data pada Bab 7.
+
+Bab ini memakai ISO/IEC 42001:2023 dan panduan penilaian dampak ISO/IEC 42005:2025. ISO adalah
+International Organization for Standardization, dan IEC adalah International Electrotechnical
+Commission. Kerangka risiko memakai AI Risk Management Framework (RMF) dari National Institute of
+Standards and Technology (NIST). Pembanding hukum memakai European Union (EU) AI Act, yaitu
+Regulation (EU) 2024/1689, beserta perubahan melalui Regulation (EU) 2026/1744. Konteks Indonesia
+merujuk Surat Edaran Menteri Komunikasi dan Informatika 9/2023 dan Undang-Undang (UU) 27/2022
+tentang Pelindungan Data Pribadi (PDP). Panduan sektor memakai World Health Organization (WHO).
+Naskah ISO berbayar, sehingga rinciannya ditulis umum dan perlu dicocokkan ke naskah berlisensi.
+Seluruh angka tambahan tentang Medikara merupakan contoh pembelajaran
+\cite{iso42001-2023,c11-iso42005,c11-nist-airmf,euaiact2024,c11-eu2026-1744,%
+c11-se9-2023,uu27-2022-pdp,c11-who2021}.
+
+\IfFileExists{../figures/ch11-diagram-konsep.png}{%
+
+Gambar \ref{fig:ch11-ilustrasi-bab} merangkum hubungan komponen dan konsep utama bab ini.
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/ch11-diagram-konsep.png}
+  \caption{AI dikelola menurut tujuan, dampak, dan kemampuan pengawasan}
+  \label{fig:ch11-ilustrasi-bab}
+\end{figure}
+}{}
 
 \section{Peluang dan Risiko AI di Layanan Kesehatan}
 
-% TODO
-% Cakupan: contoh pemakaian AI di rumah sakit dan klinik; jenis risiko (keselamatan pasien, bias, privasi, halusinasi, keamanan); shadow AI; temuan laporan industri 2026 tentang pelanggaran data yang melibatkan AI.
+\subsection*{Asisten cepat yang belum berwenang}
+
+AI membantu merangkum, mengelompokkan, memprediksi, dan memberi rekomendasi. EU AI Act menyebut
+sistem AI sebagai sistem berbasis mesin yang bekerja dengan tingkat otonomi beragam, lalu
+menghasilkan keluaran seperti prediksi atau keputusan dari masukan yang diterimanya
+\cite{euaiact2024,c11-aiact-explorer}. Risikonya mencakup informasi yang keliru, bias
+antarkelompok, kebocoran data, serangan terhadap sistem, dan ketergantungan berlebihan pada
+keluaran. Besar risikonya bergantung pada tujuan pemakaian, bukan pada nama teknologinya.
+
+Analogi asisten baru berguna untuk menilai batas delegasi. Asisten mungkin menyusun draf dengan
+cepat, tetapi belum berwenang memutuskan pengobatan. Organisasi tetap bertanggung jawab atas
+keputusan yang diambil dari draf tersebut.
+
+Dua contoh memperlihatkan jarak antara klaim dan hasil:
+\begin{enumerate}
+  \item Misalkan ringkasan manual memerlukan 12 menit. Draf AI memerlukan 2 menit, ditambah
+  pemeriksaan 8 menit. Penghematan bersih hanya 2 menit, bukan 10 menit.
+  \item Misalkan dari 100 ringkasan sintetis terdapat 4 penghilangan alergi. Rerata kemiripan teks
+  yang tinggi tidak cukup untuk menyetujui pemakaian klinis, karena satu alergi yang hilang dapat
+  berujung pada kesalahan obat.
+\end{enumerate}
+
+Tabel~\ref{tab:ch11-manfaat-risiko} memuat enam kasus yang dipakai sepanjang bab ini. Kode AI-01
+sampai AI-06 merupakan pengandaian. Empat kasus pertama berasal dari rencana kondisi target. AI-05
+memisahkan informasi gejala dari triase darurat, karena tujuan keduanya berbeda. AI-06 mewakili
+pemakaian yang sudah terjadi tanpa izin.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Manfaat dan risiko enam kasus pemakaian AI (misalkan)}\label{tab:ch11-manfaat-risiko}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.09\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Kode} & \textbf{Kasus} & \textbf{Manfaat yang diuji} & \textbf{Risiko utama} \\ \hline
+    AI-01 & Ringkasan rekam medis & Waktu dokumentasi & Alergi atau obat terlewat \\ \hline
+    AI-02 & Prioritas triase darurat & Waktu sampai ditangani & Kasus gawat diberi prioritas
+    rendah \\ \hline
+    AI-03 & Prediksi tempat tidur & Ketepatan perencanaan & Kinerja berubah antarperiode dan
+    antarlokasi \\ \hline
+    AI-04 & Deteksi kecurangan klaim & Prioritas pemeriksaan & Tuduhan salah dan bias \\ \hline
+    AI-05 & Informasi gejala umum di Medikara+ & Pertanyaan terjawab tanpa antre & Jawaban keliru
+    dibaca sebagai nasihat medis \\ \hline
+    AI-06 & \textit{Chatbot} umum tanpa izin & Tidak diukur & Data pasien keluar tanpa kendali \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Manfaat harus dihitung}
+
+Pertanyaan kemudian muncul: manfaat apa yang akan dibuktikan? Tim menetapkan ukuran awal
+(\textit{baseline}), sasaran, dan biaya pengawasan sebelum alat dibeli. Waktu mengetik yang
+berkurang belum tentu mengurangi waktu total, jika pemeriksaan kesalahan memerlukan waktu lebih
+panjang. Gambar~\ref{fig:ch11-waktu-bersih} membandingkan empat keadaan pada AI-01.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch11-waktu-bersih.tex}
+  \caption{Waktu per ringkasan: klaim, hasil uji, dan pemeriksaan yang diperpanjang (misalkan)}
+  \label{fig:ch11-waktu-bersih}
+\end{figure}
+
+Misalkan AI-01 dipakai untuk 60.000 ringkasan per tahun, atau 5 persen dari sekitar 1,2 juta
+kunjungan. Tarifnya Rp60.000 per jam seperti Bab 7, atau Rp1.000 per menit. Tiga hitungan berikut
+dapat dicek ulang:
+\begin{enumerate}
+  \item Klaim hemat 10 menit berarti 600.000 menit, atau 10.000 jam, senilai Rp600 juta per tahun.
+  \item Hasil uji hemat 2 menit berarti 120.000 menit, atau 2.000 jam, senilai Rp120 juta per
+  tahun. Nilainya seperlima dari klaim.
+  \item Misalkan lisensi Rp150 juta per tahun. Manfaat bersihnya minus Rp30 juta. Titik impasnya
+  Rp150 juta dibagi 60.000 ringkasan, yaitu Rp2.500 atau 2,5 menit per ringkasan.
+\end{enumerate}
+
+Keputusan membaca manfaat bersih punya dua konsekuensi. Pertama, hasilnya bergantung pada tarif.
+Pemeriksa ringkasan umumnya dokter, dan tarif dokter lebih mahal daripada Rp60.000. Misalkan tarif
+dokter Rp150.000 per jam. Penghematan 2.000 jam bernilai Rp300 juta, sehingga manfaat bersihnya
+Rp150 juta. Titik impas tarif ada pada Rp75.000 per jam. Tim perlu menulis asumsi tarif secara
+terbuka. Kedua, jalan termudah menuju impas adalah memotong waktu pemeriksaan. Pemotongan 0,5
+menit memenuhi hitungan, tetapi melemahkan pengawasan yang menjadi syarat keselamatan. Seksi
+terakhir bab ini menghitung akibatnya.
+
+\subsection*{Shadow AI}
+
+\textit{Shadow AI} adalah pemakaian AI yang tidak tercatat atau berada di luar pengawasan
+organisasi. Pemicunya biasanya kebutuhan kerja yang nyata, bukan niat melanggar. Karena tidak
+tercatat, pemakaian itu tidak muncul pada daftar vendor, tidak masuk penilaian, dan baru diketahui
+setelah ada masalah.
+
+Analogi jalan setapak di taman menjelaskan perilakunya. Bila jalur resmi memutar, orang membuat
+jalan pintas di atas rumput. Papan larangan tidak menghapus kebutuhan untuk sampai lebih cepat.
+Pengelola yang paham kebutuhan itu membuka jalur aman, lalu menutup jalan pintas yang berbahaya.
+
+Dua contoh menunjukkan cara mengukur dan menanganinya:
+\begin{enumerate}
+  \item Misalkan survei anonim dijawab 600 dari 4.800 karyawan. Sebanyak 96 orang, atau 16 persen,
+  mengaku memakai AI umum untuk pekerjaan. Sebanyak 24 orang, atau 4 persen, pernah memasukkan teks
+  yang memuat data pasien. Bila disamaratakan ke 4.800 karyawan, angkanya sekitar 768 dan 192
+  orang. Perkiraan itu kasar, karena responden tidak dipilih secara acak.
+  \item Misalkan seorang kepala ruang mengetahui pada Selasa 10.00 bahwa 40 catatan pasien telah
+  diunggah ke \textit{chatbot} umum. Fungsi hukum dan petugas pelindungan data menilai apakah
+  peristiwa itu kegagalan pelindungan data. Bila ya, pola Bab 7 berlaku: batas internal jam ke-60
+  jatuh pada Kamis 22.00, dan batas terluar $3 \times 24$ jam jatuh pada Jumat 10.00. Peristiwa
+  ini berkaitan dengan R-12 dan K-04 tentang pemberitahuan.
+\end{enumerate}
+
+\begin{kasus}[title={Kasus Medikara Health: Catatan Pasien di Chatbot Umum}]
+Misalkan staf mengunggah catatan pasien ke \textit{chatbot} umum. Kemudahan kerja telah memunculkan
+keputusan data dan keselamatan. Tiga pertanyaan muncul sekaligus. Pertanyaan data: ke mana teks itu
+pergi, dan apakah Pasal 966 serta Pasal 972 Peraturan Pemerintah (PP) 28/2024 terpenuhi? Pertanyaan
+keselamatan: apakah ringkasan itu kembali masuk ke rekam medis? Pertanyaan perilaku: mengapa staf
+memilih jalan ini?
+
+Sanksi kepada satu orang hanya menjawab sebagian. Bila antrean ringkasan tetap panjang, orang lain
+akan memakai cara yang sama dan lebih enggan melapor. Medikara menangani peristiwa ini sebagai
+insiden, sekaligus sebagai bukti kebutuhan kerja yang belum terpenuhi.
+\end{kasus}
+
+\subsection*{Kaitan dengan R-11 dan urutan keputusan}
+
+Register Bab 5 tidak memerlukan kode baru untuk AI-01. R-11 berisi riwayat alergi yang tidak
+terbaca lintas rumah sakit dan berujung pada kesalahan obat. Skornya $3 \times 4 = 12$, dengan
+direktur pelayanan sebagai pemilik. Ringkasan yang menghilangkan alergi menambah satu jalur
+penyebab: alergi tercatat di sumber, tetapi hilang pada ringkasan yang dibaca dokter. Bab ini tidak
+mengubah skor R-11. Penyebab, kontrol, dan pemilik tindakan ditambahkan pada baris yang sama.
+Kesalahan kritis AI-01 karena itu masuk ke pimpinan klinis pada hari yang sama, seperti jalur R-11
+pada Bab 5, dan tidak berhenti di tim teknologi.
+
+Gambar~\ref{fig:ch11-alur} merangkum urutan keputusan yang dipakai pada setiap kasus. Tiap langkah
+menghasilkan satu bukti, dan perubahan apa pun mengembalikan kasus ke langkah pertama.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch11-alur.tex}
+  \caption{Alur keputusan tata kelola kecerdasan artifisial}
+  \label{fig:ch11-alur}
+\end{figure}
+
+\subsection*{Membaca tiga penelitian}
+
+Pertanyaan berikutnya: apakah kegagalan AI kesehatan benar-benar terukur?
+Tabel~\ref{tab:ch11-penelitian} merangkum tiga penelitian, dengan angka dari abstrak artikel. Kolom
+terakhir adalah pembacaan bab ini. Large Language Model (LLM) pada baris ketiga adalah model bahasa
+yang menjadi dasar banyak \textit{chatbot}.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Tiga penelitian dan pelajarannya bagi tata kelola}\label{tab:ch11-penelitian}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.27\textwidth}|}
+    \hline
+    \textbf{Penelitian} & \textbf{Temuan} & \textbf{Pertanyaan bagi Medikara} \\ \hline
+    Obermeyer dan rekan (2019) & Algoritma memprediksi biaya layanan, bukan keparahan penyakit. Pada
+    skor yang sama, pasien kulit hitam lebih sakit. Perbaikan bias menaikkan porsi pasien kulit
+    hitam yang mendapat bantuan tambahan dari 17,7 menjadi 46,5 persen. & Apa yang diprediksi
+    model? \\ \hline
+    Wong dan rekan (2021) & Validasi luar model sepsis pada 38.455 rawat inap. Kemampuan membedakan
+    0,63 pada skala 0,5 sampai 1. Peringatan muncul pada 6.971 rawat inap (18 persen), tetapi 1.709
+    dari 2.552 pasien sepsis (67 persen) tidak teridentifikasi. & Apakah kinerja bertahan di rumah
+    sakit sendiri? \\ \hline
+    Asgari dan rekan (2025) & Ringkasan klinis dari 18 konfigurasi LLM, dengan 12.999 kalimat
+    beranotasi klinisi. Halusinasi 1,47 persen dan penghilangan 3,45 persen. Perbaikan
+    \textit{prompt} dan alur kerja menurunkan kesalahan besar. & Kesalahan jenis apa yang dihitung,
+    dan apa pembandingnya? \\ \hline
+  \end{tabularx}
+\end{table}
+
+Ketiga penelitian itu memberi dua pelajaran \cite{c11-obermeyer2019,c11-wong2021,c11-asgari2025}.
+Pertama, beban kerja dapat dihitung dari angka yang dilaporkan. Pada penelitian Wong, 2.552
+dikurangi 1.709 berarti 843 pasien sepsis teridentifikasi. Dengan 6.971 peringatan, petugas membaca
+sekitar 8 peringatan untuk menemukan satu kasus. Hitungan ini milik bab ini, bukan pernyataan
+abstrak. Kedua, satuan ukur menentukan arti angka. Asgari menghitung per kalimat, sedangkan contoh
+AI-01 menghitung per ringkasan, sehingga 3,45 persen dan 4 persen tidak dapat dibandingkan langsung.
+Angka penelitian juga tidak disalin menjadi perkiraan Medikara, karena pasien, model, dan alurnya
+berbeda.
 
 \section{ISO/IEC 42001:2023 dan Standar Pendukung}
 
-% TODO
-% Cakupan: struktur sistem manajemen AI dan kontrol Annex A; ISO/IEC 42005:2025 tentang penilaian dampak sistem AI; kaitan dengan ISO/IEC 27001 dan ISO/IEC 27701.
+\subsection*{Sistem manajemen AI}
+
+ISO/IEC 42001 menetapkan persyaratan sistem manajemen AI. Organisasi menetapkan konteks,
+kepemimpinan, perencanaan, dukungan, operasi, evaluasi, dan perbaikan \cite{iso42001-2023}. Susunan
+klausul 4 sampai 10 itu mirip dengan ISO/IEC 27001 pada Bab 6. Yang khas adalah penilaian risiko AI
+dan penilaian dampak sistem AI. Naskah standar berbayar, sehingga nomor klausul pada bab ini diambil
+dari \textit{crosswalk} NIST, yaitu pemetaan AI RMF ke rancangan akhir standar tersebut
+\cite{c11-nist-crosswalk}. Nomor dan isinya perlu dicocokkan ke naskah berlisensi sebelum dipakai
+untuk audit.
+
+Analogi pengelolaan alat laboratorium menunjukkan perbedaan sistem dan hasil. Sistem manajemen
+memastikan alat memiliki pemilik, prosedur, pengujian, dan tindakan koreksi. Keberadaan sistem itu
+tidak membuktikan setiap hasil pemeriksaan selalu benar.
+
+Dua contoh menunjukkan batas klaim sistem manajemen:
+\begin{enumerate}
+  \item Misalkan model aman dari akses tidak sah, tetapi lebih sering salah pada pasien lanjut
+  usia: 3 dari 40 kasus, dibanding 1 dari 60 kasus pada kelompok lain. Kontrol keamanan tidak
+  menyelesaikan kesenjangan mutu kelompok tersebut.
+  \item Misalkan ada 10 model, tetapi hanya 2 yang masuk ruang lingkup sistem manajemen AI. Bukti
+  dari 20 persen portofolio itu tidak diperluas menjadi klaim seluruh portofolio.
+\end{enumerate}
+
+Tabel~\ref{tab:ch11-klausul-ai} menerapkan klausul pada AI-01, dengan pola yang sama seperti AC-01
+pada Bab 6. KB-09 adalah kebijakan pemakaian AI yang menambah daftar KB-01 sampai KB-08 pada Bab 8.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Klausul ISO/IEC 42001 pada AI-01 (misalkan)}\label{tab:ch11-klausul-ai}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.22\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Klausul} & \textbf{Pertanyaan} & \textbf{Bukti pada AI-01} \\ \hline
+    4.1 Konteks & Layanan, data, dan kewajiban apa yang tercakup? & Satu rumah sakit tahap uji; UU
+    PDP dan PP 28/2024 \\ \hline
+    5.1 sampai 5.3 Kepemimpinan & Siapa menetapkan kebijakan dan peran? & KB-09 disetujui direksi;
+    direktur pelayanan sebagai pemilik \\ \hline
+    6.1.2 dan 6.1.3 Risiko AI & Risiko apa yang dinilai dan diperlakukan? & R-11 skor 12; alergi
+    ditarik dari data terstruktur \\ \hline
+    6.1.4 Dampak sistem AI & Siapa terdampak bila keluaran salah? & Penilaian 72 jam; pasien lanjut
+    usia diperiksa terpisah \\ \hline
+    7.2 Kompetensi & Apakah pemeriksa mampu menilai? & 120 dokter dilatih 2 jam \\ \hline
+    8.2 sampai 8.4 Operasi & Apakah penilaian dijalankan saat sistem berubah? & Baris inventaris
+    diperbarui; uji diulang \\ \hline
+    9.1 dan 9.3 Evaluasi & Apakah hasilnya dipantau dan ditinjau pimpinan? & 4 dari 100 kesalahan
+    kritis; agenda komite risiko \\ \hline
+    10.1 Perbaikan & Apa yang berubah karena temuan? & Rancangan diubah; uji ulang 1 dari 100 \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Penilaian dampak dan penilaian risiko}
+
+Dua hal pada penilaian AI sering tertukar. Pembagiannya begini. Penilaian risiko menanyakan peluang
+dan akibat terhadap tujuan organisasi. Penilaian dampak menanyakan akibat bagi individu, kelompok,
+dan masyarakat. ISO/IEC 42005:2025 memberi panduan menilai dampak sistem AI, dan keduanya saling
+melengkapi \cite{c11-iso42005}. Keduanya juga memerlukan konteks penggunaan yang sama.
+
+Analogi pembangunan jalan di depan pasar menjelaskan bedanya. Kontraktor menilai keterlambatan dan
+biaya. Pedagang menanggung sepinya pembeli selama pekerjaan berjalan. Proyek dapat berjalan aman
+bagi kontraktor, tetapi tetap merugikan pedagang.
+
+Dua contoh menunjukkan akibatnya pada Medikara:
+\begin{enumerate}
+  \item Misalkan AI-04 menandai 300 klaim per bulan dari 6.000 klaim. Bagi organisasi, pemeriksaan
+  20 menit per klaim berarti 100 jam per bulan, atau Rp6 juta. Risikonya terlihat kecil. Bagi
+  klinik, 93 dari 120 tanda ternyata keliru, dan namanya tercatat sebagai pihak yang dicurigai.
+  \item Misalkan penilaian dampak memakan 72 jam untuk AI-01 dan AI-02, 24 jam untuk AI-03 dan
+  AI-04, serta 8 jam untuk AI-05. Jumlahnya 200 jam, atau Rp12 juta. Angka 72 jam mengikuti Bab 7,
+  yaitu 360 jam untuk 5 Data Protection Impact Assessment (DPIA). AI-01 dan AI-02 memakai data
+  spesifik, sehingga penilaian dampak AI dapat digabung dengan DPIA agar tidak ada dua dokumen untuk
+  data yang sama.
+\end{enumerate}
+
+\subsection*{AI dan keamanan informasi}
+
+Sistem manajemen keamanan informasi menurut ISO/IEC 27001 menekankan kerahasiaan, integritas, dan
+ketersediaan informasi \cite{iso27001-2022}. Sistem manajemen AI juga menilai konsekuensi penggunaan
+AI, seperti mutu keputusan dan dampak terhadap manusia. Sertifikasi salah satunya tidak otomatis
+memenuhi yang lain, dan tidak membuktikan kepatuhan hukum. Tabel~\ref{tab:ch11-sistem-manajemen-ai}
+merangkum perbedaan fokusnya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Perbedaan fokus kerangka AI dan keamanan}\label{tab:ch11-sistem-manajemen-ai}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Acuan} & \textbf{Fokus} & \textbf{Bukti contoh} \\ \hline
+    ISO/IEC 42001 & Pengelolaan AI bertanggung jawab & Kebijakan, evaluasi, tindak lanjut \\ \hline
+    ISO/IEC 42005 & Dampak penggunaan AI & Pihak terdampak dan mitigasi \\ \hline
+    ISO/IEC 27001 & Risiko keamanan informasi & Kontrol akses dan insiden \\ \hline
+  \end{tabularx}
+\end{table}
 
 \section{NIST AI RMF}
 
-% TODO
-% Cakupan: empat fungsi (Govern, Map, Measure, Manage); profil AI generatif NIST AI 600-1; kapan NIST AI RMF lebih praktis daripada sistem manajemen formal.
+\subsection*{Empat fungsi yang berulang}
+
+NIST AI RMF 1.0 mengorganisasi pengelolaan risiko melalui Govern, Map, Measure, dan Manage. Govern
+membentuk budaya, tanggung jawab, dan kebijakan. Map mengenali konteks dan risiko yang terkait
+dengan konteks itu. Measure menilai, menganalisis, atau melacak risiko yang sudah dikenali. Manage
+memberi prioritas dan bertindak menurut dampak yang diperkirakan. NIST menggambarkan Govern sebagai
+fungsi lintas yang mengisi tiga fungsi lain. Kerangka ini sukarela, dan tindakannya bukan daftar
+periksa atau urutan tetap. Setelah Govern, sebagian besar pemakai mulai dari Map, lalu ke Measure
+atau Manage, dan prosesnya berulang \cite{c11-nist-airmf}.
+
+Analogi pemeriksaan mutu makanan menjelaskan pengulangan tersebut. Pemilik usaha menetapkan
+standar, mengenali kebutuhan pembeli, menguji hasil, dan memperbaiki proses. Perubahan bahan
+menuntut pemeriksaan baru, meskipun resep lama pernah lulus.
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan \textit{chatbot} hanya menjawab pertanyaan jadwal. Map membatasi tujuan, Measure
+  menguji 100 pertanyaan sintetis, dan Manage menetapkan jalur ke petugas bila jawaban tidak
+  tersedia.
+  \item Misalkan model pada Medikara+ diganti vendor tanpa pemberitahuan. Govern menetapkan
+  kewajiban perubahan, lalu pengujian diulang sebelum versi baru dipakai. Bab 9 sudah memberi
+  pegangan kontraknya: pemberitahuan subprosesor 30 hari. Penyedia model menjadi penyedia pendukung
+  keempat bagi V-01, yaitu vendor Medikara+, setelah V-02, penyedia pesan, dan layanan identitas.
+\end{enumerate}
+
+Tabel~\ref{tab:ch11-airmf} menerapkan empat fungsi itu pada AI-01.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Penerapan empat fungsi NIST AI RMF pada AI-01 (misalkan)}\label{tab:ch11-airmf}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Fungsi} & \textbf{Pertanyaan} & \textbf{Bukti} & \textbf{Pada AI-01} \\ \hline
+    Govern & Siapa bertanggung jawab? & Pemilik dan batas keputusan & Direktur pelayanan; KB-09 \\
+    \hline
+    Map & Siapa dapat dirugikan? & Konteks dan pihak terdampak & Pasien dengan alergi; pasien
+    lanjut usia \\ \hline
+    Measure & Risikonya terbukti bagaimana? & Hasil uji per kelompok & 100 kasus sintetis, dua
+    penilai \\ \hline
+    Manage & Kapan dihentikan atau diperbaiki? & Keputusan dan pemicu tinjauan & Ditahan; alergi
+    ditarik dari data terstruktur \\ \hline
+  \end{tabularx}
+\end{table}
+
+Diagram konsep pada awal bab menerapkan fungsi itu pada inventaris. Inventaris AI mencatat tujuan,
+versi, pemilik (\textit{owner}), dan data. Konteks penggunaan mengalir ke Map konteks dan dampak,
+yang menyebut pasien dan kelompok terdampak. Map memberi kriteria uji kepada Measure, yang menguji
+manfaat, bias, dan kesalahan. Bukti dan batas hasil sampai ke pengawas manusia, yang kompeten dan
+berhak menolak. Penilaian berwenang itu masuk ke Manage: terima, batasi, atau hentikan. Perubahan
+memicu tinjauan, sehingga siklus kembali ke inventaris. Govern lintas fungsi memberi mandat dan
+kebijakan, yaitu arah dan akuntabilitas bagi Map, serta batas keputusan bagi Manage. Kotak pengawas
+manusia merupakan tambahan bab ini, bukan bagian dari empat fungsi NIST.
+
+Kerangka itu juga menyebut tujuh karakteristik AI yang dapat dipercaya: valid dan andal, aman,
+terlindung dan tangguh, akuntabel dan transparan, dapat dijelaskan dan ditafsirkan, menjaga privasi,
+serta adil dengan bias berbahaya yang dikelola. Karakteristik itu sering menuntut \textit{tradeoff}
+\cite{c11-nist-airmf}.
+
+\subsection*{Measure: satu angka sering menyesatkan}
+
+Pertanyaan kemudian muncul: ukuran apa yang pantas dipakai Measure? Ukuran tunggal sering menutupi
+kesalahan yang paling penting. Karena itu, tim menetapkan kriteria uji sebelum melihat hasil,
+memisahkan kesalahan penting secara klinis dari kesalahan gaya bahasa, dan membaca hasil per
+kelompok.
+
+Analogi alarm kebakaran membantu. Alarm yang rusak dan tidak pernah berbunyi tampak benar pada 364
+hari dalam setahun. Kegagalannya baru terlihat pada satu hari kebakaran. Persentase hari yang benar
+tidak mengukur tugas utama alarm itu.
+
+Dua contoh menghitung kesalahan yang tertutup:
+\begin{enumerate}
+  \item Misalkan fitur gejala dipakai 1.500 sesi per bulan, sekitar 5 persen dari 28.000 janji temu
+  Medikara+. Sebanyak 30 sesi (2 persen) benar-benar darurat. Model yang selalu menjawab ``bukan
+  darurat'' benar pada 1.470 sesi, atau 98 persen, tetapi melewatkan seluruh 30 kasus. Model lain
+  menangkap 27 dari 30 kasus dan salah menandai sekitar 74 sesi. Ketepatan totalnya hanya 94,9
+  persen, padahal jauh lebih berguna. Sisa 3 kasus per bulan, atau 36 per tahun, tetap harus dijawab
+  jalur lain.
+  \item Misalkan AI-01 diuji pada 100 ringkasan sintetis dengan dua penilai.
+  Tabel~\ref{tab:ch11-hasil-uji} memperlihatkan 4 kesalahan kritis pada putaran 1, yaitu alergi atau
+  obat penting yang terlewat. Pada usia 60 tahun ke atas, angkanya 7,5 persen, atau sekitar 4,5 kali
+  kelompok lain. Rerata 4 persen menutupi kesenjangan itu.
+\end{enumerate}
+
+Kriteria uji AI-01 ditetapkan lebih dahulu. Kesalahan kritis keseluruhan tidak melebihi ukuran awal
+manual, dan tidak ada kelompok yang melampaui 3 persen. Misalkan pembanding manual pada kasus yang
+sama menghasilkan 1 kesalahan dari 100, atau 1 persen. Putaran 1 gagal pada kedua kriteria. Tim lalu
+mengubah rancangan: alergi dan obat ditarik langsung dari data terstruktur, bukan ditulis oleh
+model. Putaran 2 memenuhi kedua kriteria, tetapi sampel kecil itu hanya membuka tahap uji
+berikutnya. Direktur pelayanan karena itu memilih batasi, bukan terima: uji lanjutan pada satu rumah
+sakit, dengan pemeriksa yang tetap membaca sumber asli.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Kesalahan kritis AI-01 pada 100 ringkasan sintetis (misalkan)}\label{tab:ch11-hasil-uji}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.1\textwidth}|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}p{0.12\textwidth}|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}p{0.12\textwidth}|}
+    \hline
+    \textbf{Kelompok} & \textbf{Kasus} & \textbf{Putaran 1} & \textbf{Persen} & \textbf{Putaran 2} &
+    \textbf{Persen} \\ \hline
+    Di bawah 60 tahun & 60 & 1 & 1,7 & 0 & 0 \\ \hline
+    60 tahun ke atas & 40 & 3 & 7,5 & 1 & 2,5 \\ \hline
+    Seluruh kasus & 100 & 4 & 4,0 & 1 & 1,0 \\ \hline
+  \end{tabularx}
+\end{table}
+
+Bias tidak hanya muncul pada model bahasa. Tabel~\ref{tab:ch11-klaim} memecah AI-04 menurut sumber
+klaim, memakai 6.000 klaim per bulan dari Bab 7. Klinik ditandai dua kali lebih sering daripada
+rumah sakit, tetapi tanda pada klinik lebih sering keliru. Bila tim hanya membaca presisi total 30
+persen, kesenjangan itu tidak terlihat. Hitungan seperti ini menjawab pelajaran Obermeyer: tim
+memeriksa apakah tanda model mengukur kecurangan, atau hanya pola penagihan klinik yang berbeda.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Tanda klaim AI-04 menurut sumber per bulan (misalkan)}\label{tab:ch11-klaim}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.1\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|}
+    \hline
+    \textbf{Sumber} & \textbf{Klaim} & \textbf{Ditandai} & \textbf{Terbukti} & \textbf{Tanda keliru}
+    \\ \hline
+    Rumah sakit & 4.500 & 180 (4 persen) & 63 (35 persen) & 117 (65 persen) \\ \hline
+    Klinik & 1.500 & 120 (8 persen) & 27 (22,5 persen) & 93 (77,5 persen) \\ \hline
+    Jumlah & 6.000 & 300 (5 persen) & 90 (30 persen) & 210 (70 persen) \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Profil AI generatif}
+
+Profil AI generatif NIST AI 600-1 menguraikan 12 risiko. Tim dapat memulai dari risiko prioritas,
+tanpa menganggap pengisian daftar sebagai bukti semua risiko terkendali \cite{c11-nist-genai}. Lima
+risiko paling dekat dengan kasus Medikara. Nama risiko mengikuti profil, sedangkan contohnya ditulis
+bab ini:
+\begin{itemize}
+  \item Confabulation, isi keliru yang ditulis dengan yakin: AI-01 menulis obat yang tidak
+  diresepkan.
+  \item Data Privacy, data sensitif bocor atau dipakai tanpa izin: AI-06 pada \textit{chatbot} umum.
+  \item Harmful Bias or Homogenization, kinerja berbeda antarkelompok: AI-01 pada pasien lansia.
+  \item Human-AI Configuration, ketergantungan berlebihan: pemeriksa setuju tanpa membaca sumber.
+  \item Value Chain and Component Integration, komponen pihak ketiga sulit ditelusuri: vendor
+  mengganti model tanpa pemberitahuan.
+\end{itemize}
 
 \section{EU AI Act dan Pendekatan Berbasis Risiko}
 
-% TODO
-% Cakupan: kategori praktik terlarang, risiko tinggi, kewajiban transparansi, dan risiko minimal; kewajiban penyedia dan penerap; jadwal setelah Regulation (EU) 2026/1744 (sistem Annex III mulai 2 Desember 2027, sistem dalam produk Annex I mulai 2 Agustus 2028); relevansinya bagi organisasi Indonesia.
+\subsection*{Empat kategori}
+
+EU AI Act membedakan praktik yang dilarang (Article 5), sistem risiko tinggi (Article 6), kewajiban
+transparansi tertentu (Article 50), serta penggunaan lain yang tidak termasuk kategori tersebut.
+Penggunaan lain itu lazim disebut minimal, walaupun istilah itu bukan judul pasal. Kategori
+bergantung pada tujuan penggunaan, peran organisasi, dan rincian hukum. Sistem AI kesehatan tidak
+otomatis seluruhnya berisiko tinggi, tetapi perangkat medis tertentu dan sistem triase pasien
+darurat termasuk jalur yang perlu diperiksa secara khusus \cite{euaiact2024,c11-aiact-explorer}.
+
+Analogi perizinan kendaraan membantu memahami klasifikasi. Bentuk kendaraan saja tidak menentukan
+izin; fungsi, muatan, dan tempat operasinya ikut berpengaruh. Nama produk seperti asisten kesehatan
+belum menjelaskan apakah sistem hanya memberi informasi umum atau menentukan prioritas layanan
+darurat.
+
+Gambar~\ref{fig:ch11-klasifikasi} menyusun pertanyaannya sebagai urutan. Annex III butir 5 huruf d
+menyebut sistem untuk mengevaluasi panggilan darurat dan menentukan prioritas pengiriman layanan
+tanggap darurat, termasuk sistem triase pasien darurat. Annex I bagian A memuat Regulation (EU)
+2017/745 tentang perangkat medis pada nomor 11, dan Regulation (EU) 2017/746 tentang diagnostik in
+vitro pada nomor 12. Article 6(3) mengecualikan sistem Annex III yang tidak menimbulkan risiko
+bahaya signifikan, tetapi sistem yang melakukan pemrofilan orang perseorangan selalu berisiko tinggi
+\cite{c11-aiact-explorer}.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch11-klasifikasi.tex}
+  \caption{Urutan pertanyaan klasifikasi menurut EU AI Act}
+  \label{fig:ch11-klasifikasi}
+\end{figure}
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan AI-05 hanya menampilkan informasi edukasi, tanpa menentukan prioritas pasien. Tim
+  memeriksa tujuan nyata dan transparansi: Article 50(1) meminta orang diberi tahu bahwa ia
+  berinteraksi dengan AI, kecuali hal itu sudah jelas. Label kesehatan saja belum menentukan risiko
+  tinggi.
+  \item Misalkan AI-02 menetapkan prioritas pasien gawat darurat. Annex III butir 5 perlu
+  dianalisis. Persetujuan internal tetap memerlukan penilaian klinis, pengawasan, dan uji dampak.
+  Model ini juga menilai kondisi kesehatan orang perseorangan, sehingga pengecualian Article 6(3)
+  perlu diuji dengan hati-hati.
+\end{enumerate}
+
+Tabel~\ref{tab:ch11-kategori-eu} menerapkan urutan itu pada enam kasus. Kolom terakhir sengaja
+ditulis bersyarat, karena Medikara belum tentu tercakup.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Klasifikasi pembanding enam kasus Medikara (misalkan)}\label{tab:ch11-kategori-eu}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Kasus} & \textbf{Jalur yang diperiksa} & \textbf{Keputusan sementara} \\ \hline
+    AI-01 Ringkasan rekam medis & Article 6(1) dan Annex I bila berfungsi sebagai perangkat medis &
+    Belum disimpulkan; perlu analisis tujuan \\ \hline
+    AI-02 Prioritas triase darurat & Annex III butir 5 huruf d; Article 6(3) & Risiko tinggi bila
+    cakupan terpenuhi \\ \hline
+    AI-03 Prediksi tempat tidur & Tidak tampak pada Annex III bila hanya memakai data agregat &
+    Kemungkinan minimal; tetap diuji \\ \hline
+    AI-04 Deteksi kecurangan klaim & Annex III butir 5: huruf a bila menyentuh kelayakan layanan
+    publik, huruf c bila menyentuh harga asuransi & Perlu analisis tujuan dan dampak \\ \hline
+    AI-05 Informasi gejala umum & Article 50(1); berpindah ke jalur AI-02 bila menentukan prioritas
+    & Transparansi; batas tujuan dipantau \\ \hline
+    AI-06 \textit{Chatbot} umum tanpa izin & Pertanyaan peran: apakah dipakai di bawah kewenangan
+    organisasi? & Bukan soal kategori; ditahan oleh kebijakan \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Cakupan dan peran}
+
+Pertanyaan kemudian muncul: apakah aturan EU berlaku bagi rumah sakit di Indonesia? Article 2(1)
+mencakup penyedia yang memasarkan sistem di EU, penerap (\textit{deployer}) yang berada di EU, serta
+penyedia dan penerap di negara ketiga bila keluaran sistem dipakai di EU. Article 3 membedakan
+penyedia (\textit{provider}), yang mengembangkan dan memasarkan sistem atas nama sendiri, dari
+penerap, yang memakai sistem di bawah kewenangannya \cite{c11-aiact-explorer}. Seluruh fasilitas
+Medikara berada di Indonesia, sehingga EU AI Act menjadi pembanding, bukan kewajiban langsung.
+Kesimpulan itu perlu diperiksa ulang bila keluaran sistem dipakai di EU.
+
+Peran juga dapat berubah. Article 25(1) menempatkan pihak lain sebagai penyedia bila ia memasang
+nama atau mereknya pada sistem risiko tinggi, melakukan modifikasi substansial, atau mengubah tujuan
+sistem sehingga menjadi risiko tinggi \cite{c11-aiact-explorer}. Hal ini berkaitan langsung dengan
+Medikara+, aplikasi buatan vendor yang tampil dengan nama Medikara.
+
+Dua contoh perubahan peran:
+\begin{enumerate}
+  \item Misalkan V-01 menanam model triase pada Medikara+ dengan merek Medikara. Pada jalur EU,
+  huruf a dapat menjadikan Medikara penyedia, walaupun kontrak dapat membagi kewajibannya lain.
+  \item Misalkan AI-05 semula hanya menjawab informasi umum, lalu tim menambah aturan ``bila nyeri
+  dada, naikkan antrean''. Tujuannya berubah menjadi penentuan prioritas. Huruf c dapat berlaku, dan
+  baris inventaris pindah dari AI-05 ke jalur AI-02.
+\end{enumerate}
+
+Tiga pertanyaan karena itu dijawab sebelum menulis kategori. Apakah masuk cakupan EU? Buktinya
+lokasi, pasar, dan penggunaan keluaran. Apa tujuan penggunaan? Buktinya spesifikasi dan alur klinis.
+Apa peran Medikara? Buktinya kontrak dan riwayat perubahan sistem.
+
+\subsection*{Jadwal setelah perubahan 2026}
+
+Regulation (EU) 2026/1744 mengubah penerapan ketentuan risiko tinggi tertentu pada Article 113:
+jalur Article 6(2) dan Annex III menjadi 2 Desember 2027, sedangkan jalur Article 6(1) dan Annex I
+menjadi 2 Agustus 2028. Jadwal itu tidak menunda seluruh kewajiban AI Act. Regulation ini terbit di
+Official Journal pada 24 Juli 2026 \cite{c11-eu2026-1744,c11-cuatrecasas2026,c11-aiact-explorer}.
+Tabel~\ref{tab:ch11-jadwal-eu} memuat jadwalnya. Bab ini membaca tanggal itu dari salinan pasal dan
+ringkasan firma hukum, sehingga mahasiswa perlu mencocokkannya ke EUR-Lex sebelum menyatakan
+kewajiban.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Jadwal penerapan EU AI Act setelah perubahan 2026}\label{tab:ch11-jadwal-eu}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.22\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Tanggal} & \textbf{Yang berlaku} \\ \hline
+    2 Februari 2025 & Bab I dan Bab II, termasuk literasi AI (Article 4) dan praktik terlarang \\
+    \hline
+    2 Agustus 2025 & Antara lain ketentuan model AI serbaguna (Bab V) dan sanksi (Bab XII) \\ \hline
+    2 Agustus 2026 & Penerapan umum \\ \hline
+    2 Desember 2026 & Larangan baru tentang materi intim tanpa persetujuan dan materi pelecehan
+    seksual anak; akhir masa peralihan Article 50(2) bagi sistem lama \\ \hline
+    2 Desember 2027 & Risiko tinggi jalur Article 6(2) dan Annex III \\ \hline
+    2 Agustus 2028 & Risiko tinggi jalur Article 6(1) dan Annex I \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Kewajiban penerap sebagai daftar pembanding}
+
+Walaupun tidak wajib bagi Medikara, Article 26 berguna sebagai daftar periksa.
+Tabel~\ref{tab:ch11-deployer} membandingkannya dengan rancangan untuk AI-02. Article 27 juga meminta
+penilaian dampak hak dasar dari penerap tertentu, termasuk entitas swasta yang memberi layanan
+publik. Recital 96 menyebut layanan kesehatan sebagai salah satu contoh bidangnya
+\cite{c11-aiact-explorer}.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Article 26 sebagai pembanding rancangan AI-02 (misalkan)}\label{tab:ch11-deployer}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.1\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Ayat} & \textbf{Kewajiban penerap, diringkas} & \textbf{Rancangan Medikara} \\ \hline
+    26(2) & Pengawas kompeten, terlatih, berwenang, dan didukung & Dokter jaga gawat darurat;
+    pelatihan 2 jam \\ \hline
+    26(4) & Data masukan relevan dan cukup representatif & Uji per kelompok usia \\ \hline
+    26(5) & Memantau, memberi tahu penyedia, dan menangguhkan bila berisiko & Hak henti direktur
+    pelayanan; jalur ke V-01 \\ \hline
+    26(6) & Menyimpan log paling singkat 6 bulan & KB-06 ditambah log AI 6 bulan; Bab 8 memakai 90
+    hari \\ \hline
+    26(11) & Memberi tahu orang yang terkena keputusan & Naskah penjelasan pada Medikara+ \\ \hline
+  \end{tabularx}
+\end{table}
+
+Keputusan ini punya dua konsekuensi. Pertama, log AI 6 bulan lebih panjang sekitar 90 hari daripada
+catatan rinci pada Bab 7 dan Bab 8, sehingga KB-06 mendapat satu baris baru. Kedua, baris itu adalah
+pilihan internal, bukan kewajiban hukum, sehingga alasan dan biayanya perlu ditulis.
+
+\begin{kasus}[title={Kasus Medikara Health: Triase Gejala di Medikara+}]
+Misalkan tim produk mengusulkan satu fitur bernama ``Cek Gejala''. Spesifikasi awal menyebut dua
+tujuan: memberi informasi umum dan menaikkan antrean bila gejala gawat. Tim lalu memecahnya menjadi
+AI-05 dan AI-02. AI-05 boleh berjalan dengan penjelasan yang jelas, ambang rujukan ke petugas, dan
+uji jawaban. AI-02 ditahan sampai evaluasi lulus, karena satu kasus gawat yang dilewatkan berakibat
+cedera berat. Risiko cedera berat ditinjau dalam 1 hari kerja, sesuai Bab 5. Pemecahan ini tidak
+mengubah kode program. Yang berubah adalah pemilik keputusan: pemilik Medikara+ pada AI-05, dan
+direktur pelayanan pada AI-02.
+\end{kasus}
 
 \section{Posisi Regulasi AI di Indonesia}
 
-% TODO
-% Cakupan: Surat Edaran Menkominfo 9/2023 tentang etika kecerdasan artifisial; rancangan Perpres tentang peta jalan dan etika AI (status Oktober 2026, periksa ulang); hak keberatan atas keputusan otomatis dalam UU PDP; ketentuan Kemenkes tentang perangkat dan layanan kesehatan berbasis AI (periksa ulang).
-% Kasus Medikara: fitur triase gejala dan ringkasan rekam medis dalam kondisi target.
+\subsection*{Lapis aturan}
+
+Surat Edaran 9/2023 memberi acuan etika AI. Isinya sembilan nilai: inklusivitas, kemanusiaan,
+keamanan, aksesibilitas, transparansi, kredibilitas dan akuntabilitas, pelindungan data pribadi,
+pembangunan dan lingkungan berkelanjutan, serta kekayaan intelektual \cite{c11-se9-2023}. Surat
+edaran tidak menggantikan kewajiban dalam UU atau aturan sektor. Pemrosesan data kesehatan, hubungan
+vendor, dan layanan klinis tetap dinilai dengan kerangka hukum yang relevan.
+
+Analogi tata tertib kantor menjelaskan lapis aturan. Pedoman perilaku membantu pegawai mengambil
+keputusan, tetapi tidak dapat membatalkan kewajiban hukum. Begitu pula prinsip etika AI perlu
+diterjemahkan menjadi batas operasional yang dapat diperiksa.
+
+Gambar~\ref{fig:ch11-lapis-acuan} menyusun seluruh acuan bab ini menurut kekuatannya. Permenkes pada
+gambar adalah Peraturan Menteri Kesehatan, dan Perpres adalah Peraturan Presiden. Kebijakan Medikara
+menulis kewajiban hukum, pilihan internal, dan butir pemantauan secara terpisah.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch11-lapis-acuan.tex}
+  \caption{Lapis acuan yang masuk ke kebijakan pemakaian AI}
+  \label{fig:ch11-lapis-acuan}
+\end{figure}
+
+UU 27/2022 Pasal 10 memberi hak mengajukan keberatan atas tindakan pengambilan keputusan yang hanya
+didasarkan pada pemrosesan otomatis, termasuk pemrofilan, yang menimbulkan akibat hukum atau dampak
+signifikan. Hal ini tidak sama dengan larangan seluruh otomatisasi \cite{uu27-2022-pdp}. Bab 7 sudah
+membaca Pasal 34 ayat (2): keputusan otomatis, data spesifik, skala besar, dan teknologi baru
+termasuk keadaan yang mewajibkan DPIA. AI-01 dan AI-02 menyentuh beberapa keadaan itu sekaligus.
+Lapis sektor tetap berlaku: Pasal 966 ayat (2) dan Pasal 972 PP 28/2024 mengatur lokasi serta
+transfer data kesehatan, dan Permenkes 24/2022 mengatur rekam medis
+\cite{pp28-2024-kesehatan,permenkes24-2022}.
+
+Status rancangan kebijakan baru perlu diperiksa pada sumber resmi saat dipakai. Pada Juli 2026,
+Kementerian Komunikasi dan Digital (Komdigi) menyatakan peta jalan dan etika AI masih diproses
+menuju Perpres. Pemberitaan 4 September 2026 menyebut dua Perpres, yaitu Buku Putih Peta Jalan dan
+Etika Kecerdasan Artifisial, tinggal menunggu tanda tangan Presiden. Perpres etika disebut akan
+mengatur penggunaan yang dilarang, yang perlu pengawasan ketat, dan yang berisiko lebih ringan
+\cite{c11-bisnis2026,c11-kontan2026}. Sampai awal November 2026, bab ini tidak menemukan naskah yang
+telah ditetapkan. Rancangan tidak dicatat sebagai kewajiban yang telah berlaku. PP 33/2026 juga baru
+menjadi butir pemantauan pada Bab 7.
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan AI-04 menolak klaim secara otomatis. Tim harus memeriksa dampaknya, dasar
+  pemrosesan, dan mekanisme keberatan yang efektif. Bila 300 tanda per bulan diperiksa manusia
+  selama 20 menit, biayanya 100 jam per bulan, atau Rp72 juta per tahun. Menurut pembacaan bab ini,
+  persetujuan 5 detik tanpa membaca berkas sulit disebut keterlibatan manusia. Pembacaan itu bukan
+  tafsir resmi Pasal 10.
+  \item Misalkan staf memasukkan identitas 40 pasien ke \textit{chatbot} umum. Kebijakan internal
+  menahan pemakaian tersebut sampai ada dasar, kontrol, dan pengaturan penerima data yang memadai.
+  Bila server penyedia berada di luar negeri, Pasal 972 PP 28/2024 ikut diperiksa penasihat hukum.
+\end{enumerate}
+
+\subsection*{Panduan sektor kesehatan}
+
+WHO merumuskan enam prinsip AI kesehatan: melindungi otonomi manusia; memajukan kesejahteraan,
+keselamatan, dan kepentingan publik; menjamin transparansi, keterjelasan, dan keterpahaman; membina
+tanggung jawab dan akuntabilitas; menjamin inklusi dan kesetaraan; serta mendorong AI yang responsif
+dan berkelanjutan \cite{c11-who2021,c11-who2021-rilis}. Panduan WHO untuk \textit{large multi-modal
+models} menambahkan lima jenis pemakaian. Dua yang paling dekat dengan Medikara adalah pemakaian
+oleh pasien untuk mencari tahu gejala, dan tugas administrasi seperti ringkasan kunjungan. Panduan
+itu juga menyebut bias otomatisasi dan memuat lebih dari 40 rekomendasi
+\cite{c11-who2025,c11-who2024-rilis}. Panduan WHO bukan peraturan, tetapi memberi bahasa yang sama
+bagi pimpinan klinis dan tim teknologi.
+
+Tabel~\ref{tab:ch11-indonesia} menerjemahkan prinsip menjadi aturan yang dapat diperiksa.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Penerjemahan prinsip menjadi aturan operasional}\label{tab:ch11-indonesia}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Prinsip} & \textbf{Aturan internal contoh} & \textbf{Bukti} \\ \hline
+    Transparansi & Informasi ketika AI digunakan & Tampilan dan naskah penjelasan \\ \hline
+    Akuntabilitas & Pemilik setiap kasus AI & Inventaris dan persetujuan \\ \hline
+    Pelindungan data & Batasi data dan penerima & Penilaian serta konfigurasi \\ \hline
+    Otonomi manusia & Pemeriksa berhak menolak keluaran & Log penolakan dan hasil uji sisipan \\
+    \hline
+    Inklusi dan kesetaraan & Hasil uji dipecah per kelompok & Tabel hasil per usia dan per sumber
+    klaim \\ \hline
+  \end{tabularx}
+\end{table}
 
 \section{Inventaris AI, Pengawasan Manusia, dan Kebijakan}
 
-% TODO
-% Cakupan: inventaris dan klasifikasi kasus pemakaian; bentuk pengawasan oleh manusia; isi kebijakan pemakaian AI dan pelaporan insiden AI; EA untuk AI dibahas rinci di IT40513 dan API untuk agen AI, misalnya Model Context Protocol, di IT40613.
-% Pendalaman teknis: menilai kasus berbasis LLM dengan OWASP Top 10 for LLM Applications dan merancang uji evaluasi untuk halusinasi serta kebocoran data.
+\subsection*{Inventaris}
+
+Inventaris mencatat tujuan penggunaan, pemilik, vendor, versi, data, penerima keluaran, kelompok
+terdampak, kategori risiko, pengawasan, dan tanggal tinjauan. Kebijakan mengatur penggunaan yang
+diizinkan, memerlukan persetujuan, atau dilarang. Perubahan tujuan, model, atau data memicu
+penilaian ulang.
+
+Analogi daftar kendaraan dinas menunjukkan pentingnya inventaris. Organisasi sulit memeriksa
+kelaikan dan pertanggungjawaban jika kendaraan yang dipakai tidak tercatat. Larangan umum tanpa
+alternatif kerja dapat mendorong pemakaian yang tidak dilaporkan.
+
+Tabel~\ref{tab:ch11-inventaris} memuat bentuk ringkas inventaris Medikara. Berkas lengkapnya ada di
+\berkas{sources/chapter11/contoh-inventaris-ai.csv}.
+
+\begin{table}[!htb]
+  \centering\footnotesize
+  \caption{Inventaris AI Medikara, bentuk ringkas (misalkan)}\label{tab:ch11-inventaris}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.08\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|}
+    \hline
+    \textbf{Kode} & \textbf{Tujuan} & \textbf{Pemilik} & \textbf{Pengawasan} & \textbf{Keputusan} \\
+    \hline
+    AI-01 & Ringkasan rekam medis & Direktur pelayanan & Pemeriksa klinis dapat menolak & Dibatasi;
+    uji lanjutan satu rumah sakit \\ \hline
+    AI-02 & Prioritas triase darurat & Direktur pelayanan & Keputusan klinis oleh petugas berwenang
+    & Ditahan sampai evaluasi \\ \hline
+    AI-03 & Prediksi tempat tidur & Kepala operasi rumah sakit & Validasi per fasilitas & Uji
+    perencanaan \\ \hline
+    AI-04 & Deteksi kecurangan klaim & Kepala klaim & Pemeriksaan manusia dan keberatan & Uji
+    terbatas \\ \hline
+    AI-05 & Informasi gejala umum & Pemilik Medikara+ & Rujukan ke petugas; penjelasan AI & Uji
+    terbatas \\ \hline
+    AI-06 & \textit{Chatbot} umum tanpa izin & Tidak ada, temuan & Kebijakan dan pelaporan &
+    Ditahan; alat alternatif \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh memperlihatkan mengapa inventaris harus hidup:
+\begin{enumerate}
+  \item Misalkan AI-03 diuji di 5 rumah sakit dengan ambang selisih 5 tempat tidur. Selisih
+  rata-ratanya 3 di Jakarta, 4 di Bekasi, 3 di Depok, 4 di Bogor, dan 8 di Bandung. Lulus pada 4
+  dari 5 lokasi tidak membuktikan kelayakan seluruh jaringan. Baris inventaris menulis cakupan 4
+  rumah sakit.
+  \item Misalkan tiap dari 6 baris inventaris ditinjau tiap triwulan selama 1 jam, sehingga bebannya
+  24 jam per tahun. Tinjauan berjalan sebagai agenda komite risiko dan forum arsitektur, karena Bab
+  8 sudah menghitung 400 jam rapat per tahun.
+\end{enumerate}
+
+\subsection*{Pengawasan manusia}
+
+Pengawasan manusia perlu kompetensi, akses pada sumber asli, waktu pemeriksaan, kewenangan menolak,
+dan jalur eskalasi. Tombol setuju yang selalu ditekan bukan pengawasan yang memadai. Goddard dan
+rekan menelaah 74 makalah tentang kecenderungan terlalu mengikuti saran otomatis, atau
+\textit{automation bias}. Faktor yang memengaruhinya antara lain karakteristik pengguna,
+kepercayaan, beban kerja, kerumitan tugas, dan tekanan waktu. Cara menguranginya antara lain
+pelatihan, penekanan tanggung jawab pengguna, dan rancangan tampilan \cite{c11-goddard2012}.
+
+Analogi apoteker yang memeriksa resep menjelaskan syaratnya. Apoteker berguna karena membaca resep,
+mengenal obat, punya waktu, dan berani menelepon dokter. Bila antrean memaksanya hanya memberi
+paraf, namanya tetap tercatat, tetapi pemeriksaannya sudah hilang.
+
+Tabel~\ref{tab:ch11-pengawas} menurunkan syarat itu dari Article 14(4) EU AI Act sebagai pembanding
+\cite{c11-aiact-explorer}. Kolom buktinya merupakan rancangan Medikara.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Syarat pengawasan manusia dan buktinya (misalkan)}\label{tab:ch11-pengawas}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.13\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Acuan} & \textbf{Syarat, diringkas} & \textbf{Bukti pada Medikara} \\ \hline
+    14(4)(a) & Memahami kemampuan dan batas sistem & Pelatihan 2 jam; catatan batas uji \\ \hline
+    14(4)(b) & Waspada terhadap \textit{automation bias} & Uji sisipan kesalahan \\ \hline
+    14(4)(c) & Menafsirkan keluaran dengan benar & Sumber asli tampil di samping draf \\ \hline
+    14(4)(d) & Boleh tidak memakai atau membatalkan keluaran & Tombol tolak; log alasan penolakan \\
+    \hline
+    14(4)(e) & Dapat menghentikan sistem dengan aman & Hak henti dan prosedur manual \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua contoh mengukur pengawasan yang tidak berjalan:
+\begin{enumerate}
+  \item Misalkan log satu bulan memuat 1.000 draf. Tidak satu pun ditolak, dan median waktu
+  pemeriksaan 40 detik, padahal rancangan menyediakan 8 menit. Dengan tingkat kesalahan 4 persen,
+  sekitar 40 draf seharusnya bermasalah. Nol penolakan karena itu adalah tanda bahaya, bukan tanda
+  mutu.
+  \item Misalkan 150 ringkasan uji memuat 20 kesalahan sisipan. Dengan waktu 8 menit, pemeriksa
+  menemukan 14 kesalahan, atau 70 persen. Dengan waktu 12 menit, pemeriksa menemukan 18 kesalahan,
+  atau 90 persen.
+\end{enumerate}
+
+Hasil itu menutup hitungan pada awal bab. Pada 60.000 ringkasan, tingkat 4 persen menghasilkan 2.400
+ringkasan bermasalah. Ukuran awal manual 1 persen setara 600 ringkasan. Pemeriksa dengan temuan 70
+persen menyisakan 720 ringkasan, lebih banyak daripada manual. Pemeriksa dengan temuan 90 persen
+menyisakan 240 ringkasan, tetapi waktunya 14 menit, atau lebih lama 2 menit daripada manual, seperti
+Gambar~\ref{fig:ch11-waktu-bersih}. Rancangan lama karena itu gagal pada salah satu sisi: mutu atau
+waktu. Rancangan baru dengan tingkat 1 persen menghasilkan 600 ringkasan bermasalah sebelum
+pemeriksaan. Pemeriksaan 8 menit menyisakan 180 ringkasan, dan waktu tetap hemat 2 menit. Semua
+angka ini perkiraan kasar dari sampel kecil, tetapi arah keputusannya jelas.
+
+\subsection*{Kebijakan tiga jalur}
+
+Pertanyaan berikutnya: bagaimana hasil itu menjadi aturan yang dapat dijalankan? Kebijakan memakai
+tiga jalur pada Gambar~\ref{fig:ch11-jalur-kebijakan}. Susunan ini sejalan dengan arah rancangan
+Perpres etika yang diberitakan, tetapi tidak bergantung padanya. Larangan total tanpa alternatif
+kerja justru memperbanyak \textit{shadow AI}, seperti contoh jalan setapak pada awal bab.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch11-jalur-kebijakan.tex}
+  \caption{Tiga jalur kebijakan pemakaian AI (misalkan)}
+  \label{fig:ch11-jalur-kebijakan}
+\end{figure}
+
+Dua contoh penerapan:
+\begin{enumerate}
+  \item Misalkan kebijakan mengizinkan draf surat dengan data publik, tetapi memerlukan persetujuan
+  untuk ringkasan rekam medis. Alternatif yang aman diberikan agar pekerjaan tetap berjalan: 100
+  akun alat yang disetujui, tanpa data pasien, dengan biaya Rp200.000 per akun per bulan, atau Rp240
+  juta per tahun. Jumlah itu mendekati 96 responden yang mengaku memakai AI umum.
+  \item Misalkan dari 100 keluaran terdapat 4 kesalahan kritis. Pemakaian klinis ditahan, meskipun
+  96 keluaran lain tampak baik. Lisensi AI-01 Rp150 juta berada pada mandat komite pengarah TI,
+  sesuai batas Bab 2. Besar biaya itu tidak menjawab risikonya. AI-01 menyentuh R-11, sehingga
+  direktur pelayanan tetap memutuskan pemakaian klinis, dan risiko sisa di atas batas naik ke
+  direksi.
+\end{enumerate}
+
+KB-09 menambah daftar kebijakan Bab 8. Jenisnya kebijakan, pemiliknya direktur pelayanan, dan
+penyetujunya direksi, sehingga direksi kini menyetujui 3 dari 9 dokumen. Hak henti dibagi tiga
+tingkat. Pemeriksa menolak satu keluaran. Kepala rekam medis menghentikan aliran data bila data
+dipakai di luar tujuan, sesuai hak henti sempit pada Bab 8. Direktur pelayanan menghentikan
+pemakaian klinis. Insiden AI memakai dua jalur yang sudah ada: kesalahan yang menyentuh keselamatan
+masuk ke pimpinan klinis pada hari yang sama, dan kebocoran data masuk ke jalur pemberitahuan KB-07.
+
+Hubungan AI dengan arsitektur cukup disinggung di sini. Enterprise Architecture (EA) untuk AI
+dibahas pada IT40513, dan Application Programming Interface (API) untuk agen AI dibahas pada
+IT40613. Mata kuliah ini hanya menetapkan syaratnya: setiap model dan agen yang tersambung ke data
+pasien harus punya baris inventaris, pemilik, dan hak henti.
+
+\subsection*{Beban tahun pertama}
+
+Keputusan membuat kebijakan AI juga punya biaya. Tabel~\ref{tab:ch11-beban} menghitung beban tahun
+pertama dengan tarif Rp60.000 per jam. Waktu pemeriksaan AI-01 pada pemakaian penuh tidak masuk,
+karena AI-01 masih dibatasi.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Beban tata kelola AI tahun pertama (misalkan)}\label{tab:ch11-beban}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.36\textwidth}|>{\raggedright\arraybackslash}p{0.09\textwidth}|}
+    \hline
+    \textbf{Kegiatan} & \textbf{Hitungan} & \textbf{Jam} \\ \hline
+    Inventaris awal & 6 baris kali 4 jam & 24 \\ \hline
+    Penilaian dampak & 72, 72, 24, 24, dan 8 jam & 200 \\ \hline
+    Uji AI-01 & 2 putaran, 100 kasus, 15 menit, 2 penilai & 100 \\ \hline
+    Uji sisipan pemeriksa & 150 ringkasan, 8 menit dan 12 menit & 50 \\ \hline
+    Pengenalan AI seluruh karyawan & 4.800 orang kali 30 menit & 2.400 \\ \hline
+    Pelatihan pemeriksa & 120 dokter kali 2 jam & 240 \\ \hline
+    Tinjauan inventaris & 6 baris, 4 kali, 1 jam & 24 \\ \hline
+    Tinjauan KB-09 & 1 kali 8 jam & 8 \\ \hline
+    \textbf{Jumlah} & Senilai Rp182,76 juta & \textbf{3.046} \\ \hline
+  \end{tabularx}
+\end{table}
+
+Hitungan ini punya dua konsekuensi. Pertama, pengenalan AI mengambil sekitar 79 persen jam. Tanpa
+kegiatan itu, bebannya turun menjadi 646 jam, atau Rp38,76 juta. Namun, survei menunjukkan pemakaian
+AI umum tidak terbatas pada dokter, sehingga modul 30 menit dipertahankan. Article 4 EU AI Act juga
+meminta langkah literasi AI bagi staf \cite{c11-aiact-explorer}, walaupun pasal itu hanya menjadi
+pembanding bagi Medikara. Kedua, bila alat alternatif Rp240 juta ditambahkan, jumlahnya Rp422,76
+juta, atau sekitar 4,2 persen dari anggaran modernisasi Rp10 miliar. Bab 14 memasukkan angka ini
+pada peta jalan. Bila AI-01 kelak dipakai penuh, waktu pemeriksaannya 8.000 jam per tahun, atau
+sekitar 4,2 orang penuh waktu pada 1.920 jam kerja. Angka itu dihitung terpisah sebelum perluasan
+disetujui.
+
+\begin{kasus}[title={Kasus Medikara Health: Keputusan Komite atas Enam Baris}]
+Misalkan komite risiko membahas inventaris dalam agenda triwulan. AI-01 dibatasi pada uji lanjutan
+satu rumah sakit. AI-02 ditahan sampai evaluasi lulus. AI-03 berjalan di 4 rumah sakit, sedangkan
+Bandung menunggu uji ulang. AI-04 hanya menandai klaim untuk diperiksa manusia, tidak menolak
+otomatis. AI-05 berjalan terbatas dengan penjelasan dan rujukan ke petugas. AI-06 ditutup dengan
+alat alternatif dan jalur pelaporan tanpa hukuman bagi staf yang melapor sendiri. Komite tidak
+menilai model. Komite memeriksa apakah bukti, pemilik, batas keputusan, dan tanggal tinjauan sudah
+tertulis.
+\end{kasus}
 
 \section{Aktivitas: Inventaris AI dan Kebijakan Pemakaian AI}
 
-% TODO
-% Tujuan aktivitas: mengetahui AI apa saja yang dipakai atau direncanakan, seberapa berisiko, dan aturan pakainya.
-% Peran dalam tim: anggota berlatar kesehatan atau hukum menilai dampak pada pasien; analis teknologi menilai data dan model; analis regulasi menautkan kebijakan ke UU PDP; pemilik konteks mendata pemakaian AI yang sudah berjalan.
-% Langkah: daftar kasus pemakaian AI yang ada dan yang mungkin muncul di kondisi target; klasifikasi risikonya dengan EU AI Act sebagai pembanding; tetapkan bentuk pengawasan manusia; rumuskan kebijakan (dilarang, perlu persetujuan, pengawasan, pelaporan insiden).
-% Luaran dan tonggak capstone: inventaris AI beserta klasifikasi risiko dan kebijakan pemakaian AI; masuk C3.
-% Berkas sources yang direncanakan: sources/chapter11/inventaris-ai.xlsx, sources/chapter11/templat-kebijakan-ai.md
+\textbf{Tujuan.} Tim membatasi penggunaan AI berdasarkan dampak dan bukti. Tim menyusun inventaris
+kasus pemakaian AI yang sudah ada dan yang mungkin muncul dalam kondisi target, mengklasifikasi
+tingkat risikonya dengan EU AI Act sebagai pembanding, lalu merumuskan kebijakan pemakaian AI.
+
+\textbf{Pembagian peran.} Anggota berlatar kesehatan atau hukum menilai dampak pada pasien. Analis
+teknologi memeriksa data, model, dan vendor. Analis regulasi menautkan kebijakan ke UU PDP, dan
+memisahkan kewajiban hukum dari pilihan internal. Pemilik konteks menguji apakah aturan dapat
+dipakai dalam pekerjaan sehari-hari.
+
+\textbf{Langkah kerja.}
+\begin{enumerate}
+  \item Daftar paling sedikit empat penggunaan yang ada atau direncanakan, misalnya triase gejala di
+  Medikara+, ringkasan rekam medis, prediksi ketersediaan tempat tidur, dan deteksi kecurangan
+  klaim. Pisahkan fakta, dugaan, dan usulan.
+  \item Isi \berkas{sources/chapter11/inventaris-ai.csv} berdasarkan
+  \berkas{sources/chapter11/contoh-inventaris-ai.csv}. Catat tujuan, pemilik, data, dampak, dan
+  pengawasan.
+  \item Nilai risiko serta klasifikasi EU sebagai pembanding. Nyatakan asumsi cakupan dan peran,
+  bukan hanya nama kategori. Tautkan tiap kasus ke register risiko tim.
+  \item Susun kebijakan melalui \berkas{sources/chapter11/templat-kebijakan-ai.md}. Tetapkan
+  pemakaian yang dilarang, pemakaian yang perlu persetujuan, bentuk pengawasan, alternatif kerja,
+  dan pelaporan insiden AI.
+  \item Rancang uji dari \berkas{sources/chapter11/rencana-evaluasi-ai.md}. Tetapkan kriteria
+  penghentian dan penilaian kelompok terdampak sebelum melihat hasil. Pakai
+  \berkas{sources/chapter11/contoh-hasil-uji-ai.csv} sebagai contoh bentuk laporan.
+  \item Hitung beban tahun pertama. Lakukan tinjauan silang, lalu perbarui inventaris dengan
+  keputusan, pemilik, serta waktu evaluasi berikutnya.
+\end{enumerate}
+
+\textbf{Luaran.} Inventaris AI dan kebijakan pemakaian AI, dilengkapi alasan klasifikasi, rencana
+evaluasi, dan hitungan beban.
+
+\textbf{Kaitan dengan capstone.} Luaran masuk tonggak C3 Kondisi Target. Bab 12 memakai kebijakan
+ini sebagai bahan rencana asurans, Bab 13 memakai hasil uji sebagai bahan indikator, dan Bab 14
+memasukkan bebannya ke peta jalan.
+
+\textbf{Kriteria penilaian.} Konteks dan dampak 30 persen; argumentasi kategori 25 persen; aturan
+yang dapat diawasi 30 persen; kualitas bukti dan batas klaim 15 persen.
+
+\textbf{Berkas pendukung.} Seluruh lembar kerja ada di \berkas{sources/chapter11/}, dengan daftar
+berkas pada \berkas{sources/chapter11/README.md}. Organisasi nyata dipakai dengan izin dan data yang
+dianonimkan. Data pasien dan karyawan tidak boleh dimasukkan ke layanan AI mana pun selama aktivitas
+ini.
+
+\begin{pendalaman}
+Pendalaman ini opsional. Tim menilai satu kasus berbasis LLM dengan OWASP Top 10 for LLM
+Applications 2025. OWASP adalah Open Worldwide Application Security Project. Empat butir paling
+dekat dengan AI-01 adalah LLM01 Prompt Injection, LLM02 Sensitive Information Disclosure, LLM06
+Excessive Agency, dan LLM09 Misinformation \cite{c11-owasp-llm2025}. Berkas
+\berkas{sources/chapter11/daftar-cek-owasp-llm.csv} memuat kesepuluh butir sebagai lembar kerja.
+
+Uji LLM memakai kasus sintetis tanpa data pasien. Sisipkan instruksi menyesatkan di dokumen tiruan
+untuk memeriksa apakah sistem mengikuti isi dokumen sebagai perintah. Untuk kebocoran data, sisipkan
+penanda palsu pada dokumen tiruan lalu periksa apakah penanda itu muncul pada jawaban pengguna lain.
+Catat versi model, pertanyaan, keluaran, penilaian, dan pengulangan. Uji hanya pada sistem sendiri
+atau yang sudah berizin tertulis.
+
+Keberhasilan pada kumpulan kecil belum membuktikan keselamatan produksi. Hasil 4 dari 100 memiliki
+rentang keyakinan 95 persen metode Wilson sekitar 1,6 sampai 9,8 persen. Hasil 1 dari 100 memiliki
+rentang sekitar 0,2 sampai 5,4 persen. Kedua rentang itu bertumpang tindih, sehingga perbaikan pada
+putaran 2 belum terbukti secara statistik. Hasil nol kesalahan dari 100 kasus masih menyisakan batas
+atas sekitar 3 persen menurut aturan tiga. Untuk menekan batas atas ke sekitar 1 persen, tim
+memerlukan sekitar 300 kasus tanpa kesalahan.
+\end{pendalaman}
 
 \section{Ringkasan}
 
-% TODO
+AI memberikan manfaat ketika tujuan dan ukurannya jelas. Penghematan waktu perlu menghitung
+pemeriksaan ulang dan akibat kesalahan. Klaim hemat 10 menit per ringkasan menyusut menjadi 2 menit
+setelah pemeriksaan dihitung, atau dari Rp600 juta menjadi Rp120 juta per tahun. \textit{Shadow AI}
+menunjukkan bahwa keputusan AI sudah terjadi, walaupun belum ada proyek resmi. Kasus seperti ini
+ditangani sebagai insiden dan sebagai bukti kebutuhan kerja. R-11 tetap menjadi jalur risiko
+keselamatan, dengan direktur pelayanan sebagai pemilik.
+
+Sistem manajemen AI mengatur tanggung jawab dan pengendalian sepanjang siklus hidup. Keamanan
+informasi mendukungnya, tetapi tidak mencakup seluruh dampak keputusan AI. Penilaian risiko dan
+penilaian dampak menjawab pertanyaan berbeda, sehingga masalah yang kecil bagi organisasi dapat
+besar bagi klinik atau pasien. NIST AI RMF memberi empat fungsi yang berulang. Hasil uji perlu
+dipecah per kelompok, karena rerata 4 persen dapat menutupi 7,5 persen pada pasien lanjut usia.
+
+Klasifikasi hukum bergantung pada tujuan, peran, dan cakupan. Kata triase saja belum menentukan
+kategori, dan merek Medikara pada produk vendor dapat mengubah peran pada jalur EU. Perubahan
+jadwal EU perlu dibaca dari naskah resmi: Annex III pada 2 Desember 2027 dan Annex I pada 2 Agustus
+2028. Di Indonesia, prinsip etika Surat Edaran 9/2023 diterapkan bersama UU PDP dan aturan sektor.
+Rancangan Perpres dipantau, bukan dicatat sebagai kewajiban.
+
+Inventaris, alternatif kerja, persetujuan, dan pengawasan membentuk kebijakan yang dapat dijalankan.
+Pengawasan manusia diukur, bukan diasumsikan. Pemeriksa yang menemukan 70 persen kesalahan
+menyisakan 720 ringkasan bermasalah pada rancangan lama, lebih banyak daripada 600 pada cara manual.
+Perubahan rancangan menurunkan sisanya menjadi 180. Bebannya juga terukur: 3.046 jam pada tahun
+pertama, ditambah alat alternatif Rp240 juta.
+
+Bab berikutnya menguji apakah kontrol seperti ini benar-benar berjalan. Pesan utama bab ini adalah
+bahwa organisasi tetap bertanggung jawab atas keputusan yang memakai AI.
 
 \section{Latihan}
 
+\subsection*{Latihan 1: Klasifikasi Triase}
+
+Klasifikasikan fitur triase gejala Medikara+ menurut kategori risiko EU AI Act. Jelaskan alasannya
+dan kewajiban yang muncul. Latihan ini membuktikan bahwa tujuan penggunaan menentukan klasifikasi.
+
 \begin{enumerate}
-  \item Klasifikasikan fitur triase gejala Medikara+ menurut kategori risiko EU AI Act. Jelaskan alasannya dan kewajiban yang muncul.
-  \item Jelaskan mengapa larangan total memakai AI generatif sering justru memperbanyak \textit{shadow AI}.
-  \item Bandingkan ISO/IEC 42001 dan ISO/IEC 27001 dari sisi tujuan dan jenis risiko yang dikelola.
+  \item Tulis dua kemungkinan tujuan fitur triase.
+  \item Periksa cakupan dan peran lewat Article 2, Article 3, dan Article 25.
+  \item Periksa jalur Article 5, Article 6, Annex I, Annex III, dan Article 50.
+  \item Tulis keputusan bersyarat berikut kewajiban yang perlu dikaji, lalu nyatakan bukti yang
+  masih kurang.
+\end{enumerate}
+
+Tabel~\ref{tab:ch11-lat1-contoh} memuat contoh dari kasus Medikara, dan
+Tabel~\ref{tab:ch11-lat1-hasil} merupakan lembar isian. Angka merupakan skenario pembelajaran, bukan
+hasil pengukuran organisasi.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh terisi Latihan 1 (skenario pembelajaran)}\label{tab:ch11-lat1-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Tujuan fitur} & \textbf{Penilaian awal} & \textbf{Kewajiban yang dikaji} & \textbf{Bukti
+    lanjutan} \\ \hline
+    Informasi gejala umum, 1.500 sesi per bulan & Kategori belum dapat dipastikan; periksa Article
+    50(1) & Memberi tahu bahwa pengguna berinteraksi dengan AI & Spesifikasi dan pengguna \\ \hline
+    Prioritas triase darurat, 30 kasus darurat per bulan & Periksa Annex III butir 5 huruf d &
+    Pembanding Article 14 dan Article 26; log 6 bulan & Peran dan cakupan EU; 27 dari 30 tertangkap
+    \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar isian Latihan 1}\label{tab:ch11-lat1-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Tujuan fitur} & \textbf{Penilaian awal} & \textbf{Kewajiban yang dikaji} & \textbf{Bukti
+    lanjutan} \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+Hasil dapat berbeda; penilaian bertumpu pada alasan dan perbandingan bukti.
+\begin{enumerate}
+  \item Mengapa kata triase saja belum cukup menentukan kategori?
+  \item Kontrol apa yang tetap diperlukan bila AI Act hanya dipakai sebagai pembanding?
+  \item Model pada contoh melewatkan 3 dari 30 kasus darurat per bulan. Bukti apa yang diperlukan
+  agar angka itu dapat diterima atau ditolak?
+\end{enumerate}
+
+\subsection*{Latihan 2: Shadow AI dan Alternatif Kerja}
+
+Jelaskan mengapa larangan total memakai AI generatif sering justru memperbanyak \textit{shadow AI}.
+Latihan ini membuktikan keterkaitan kebutuhan kerja dengan perilaku pelaporan.
+
+\begin{enumerate}
+  \item Tentukan pekerjaan yang mendorong staf memakai AI.
+  \item Hitung waktu dan volume pekerjaan itu.
+  \item Bandingkan larangan umum dengan akses terkendali dan bantuan.
+  \item Tetapkan ukuran pelaporan dan mutu, lalu jelaskan batas kesimpulan.
+\end{enumerate}
+
+Tabel~\ref{tab:ch11-lat2-contoh} memuat contoh dari kasus Medikara, dan
+Tabel~\ref{tab:ch11-lat2-hasil} merupakan lembar isian. Angka merupakan skenario pembelajaran, bukan
+hasil pengukuran organisasi.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh terisi Latihan 2 (skenario pembelajaran)}\label{tab:ch11-lat2-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Kebijakan contoh} & \textbf{Laporan pemakaian} & \textbf{Kebutuhan yang belum terpenuhi}
+    \\ \hline
+    Larangan tanpa alternatif & 2 laporan per bulan & Ringkasan 12 menit per kasus \\ \hline
+    Akses terkendali dan bantuan & 15 laporan per bulan & Perlu pemeriksaan klinis \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar isian Latihan 2}\label{tab:ch11-lat2-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Kebijakan contoh} & \textbf{Laporan pemakaian} & \textbf{Kebutuhan yang belum terpenuhi}
+    \\ \hline
+    \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+Hasil dapat berbeda; penilaian bertumpu pada alasan dan perbandingan bukti.
+\begin{enumerate}
+  \item Laporan naik 7,5 kali, dari 2 menjadi 15. Apakah peningkatan laporan membuktikan peningkatan
+  pelanggaran?
+  \item Data tambahan apa yang membedakan adopsi sehat dan pelanggaran tersembunyi?
+\end{enumerate}
+
+\subsection*{Latihan 3: AI dan Keamanan Informasi}
+
+Bandingkan ISO/IEC 42001 dan ISO/IEC 27001 dari sisi tujuan dan jenis risiko yang dikelola. Latihan
+ini membuktikan batas penggantian bukti antarkerangka.
+
+\begin{enumerate}
+  \item Tentukan satu sistem AI dan dua risiko berbeda.
+  \item Hubungkan risiko ke tujuan tiap sistem manajemen.
+  \item Pilih bukti yang harus dikumpulkan, lalu jelaskan tumpang tindihnya.
+\end{enumerate}
+
+Tabel~\ref{tab:ch11-lat3-contoh} memuat contoh pada AI-01, dan Tabel~\ref{tab:ch11-lat3-hasil}
+merupakan lembar isian. Angka merupakan skenario pembelajaran, bukan hasil pengukuran organisasi.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh terisi Latihan 3 (skenario pembelajaran)}\label{tab:ch11-lat3-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Risiko} & \textbf{Fokus utama} & \textbf{Bukti contoh} \\ \hline
+    Akses data tanpa izin & Keamanan informasi & Uji otorisasi; 120 dari 120 akun lulus \\ \hline
+    Ringkasan melewatkan alergi & Dampak dan mutu AI & Uji klinis terarah; 4 dari 100 kesalahan
+    kritis \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar isian Latihan 3}\label{tab:ch11-lat3-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Risiko} & \textbf{Fokus utama} & \textbf{Bukti contoh} \\ \hline
+    \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+Hasil dapat berbeda; penilaian bertumpu pada alasan dan perbandingan bukti.
+\begin{enumerate}
+  \item Apa yang belum dibuktikan oleh uji akses yang lulus pada 120 dari 120 akun?
+  \item Bagaimana menggabungkan kedua sistem tanpa menggandakan bukti?
 \end{enumerate}

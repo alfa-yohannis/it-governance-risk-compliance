@@ -1,0 +1,25 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  kotak/.style={draw, rounded corners, align=center, text width=2.9cm, minimum height=1.05cm},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[kotak, fill=praditagreen!15] (pop) at (0,0)
+    {\textbf{Daftar penugasan}\\120 akun vendor\\{\tiny\mdseries sumber di luar sistem yang diperiksa}};
+  \node[kotak, fill=blue!8] (dft) at (4.2,1.5)
+    {\textbf{Daftar peninjau}\\108 akun\\{\tiny\mdseries ditarik dari sistem yang diperiksa}};
+  \node[kotak, fill=blue!8] (smp) at (4.2,0)
+    {\textbf{Sampel audit}\\30 akun, satu lokasi};
+  \node[kotak, fill=blue!8] (pny) at (4.2,-1.5)
+    {\textbf{Peninjauan penuh}\\120 akun, bulan berikutnya};
+  \node[kotak, fill=red!22] (luput) at (8.4,1.5)
+    {\textbf{12 akun luput}\\{\tiny\mdseries cakupan 108 dari 120, atau 90 persen}};
+  \node[kotak, fill=orange!12] (hsl) at (8.4,0)
+    {\textbf{24 akun sesuai, 6 menyimpang}\\{\tiny\mdseries 80 dan 20 persen dari 30 akun}};
+  \node[kotak, fill=orange!12] (cbt) at (8.4,-1.5)
+    {\textbf{24 akun dicabut}\\{\tiny\mdseries 20 persen dari 120 akun}};
+  \draw[panah] (pop.east) -- ++(0.35,0) |- (dft.west);
+  \draw[panah] (pop) -- (smp);
+  \draw[panah] (pop.east) -- ++(0.35,0) |- (pny.west);
+  \draw[panah] (dft) -- (luput);
+  \draw[panah] (smp) -- (hsl);
+  \draw[panah] (pny) -- (cbt);
+\end{tikzpicture}

@@ -1,0 +1,18 @@
+\begin{tikzpicture}[blok/.style={draw, align=left, text width=7.1cm, font=\scriptsize, inner sep=3pt}, catatan/.style={align=left, text width=3.5cm, font=\scriptsize, execute at begin node={\hyphenpenalty=10000}}, panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[blok,fill=praditagreen!15] (kepala) {\textbf{Laporan GRC Triwulan Agustus sampai Oktober 2026}\\{\tiny\mdseries Cakupan, tanggal data, penyusun, dan pemilik laporan}};
+  \node[blok,fill=orange!12,below=1.5mm of kepala] (putus) {\textbf{Keputusan yang diminta}\\{\tiny\mdseries Setujui, ubah, atau tolak: tahap kedua Rp180 juta untuk opsi B, paling lambat akhir November 2026}};
+  \node[blok,fill=blue!8,below=1.5mm of putus] (p1) {\textbf{Pesan 1: Pemulihan belum memenuhi syarat}\\{\tiny\mdseries 3 dari 5 rumah sakit lulus; R-05 masih 10 persen, batasnya 2 persen}};
+  \node[blok,fill=blue!8,below=1mm of p1] (p2) {\textbf{Pesan 2: Akses vendor membaik, belum selesai}\\{\tiny\mdseries Cakupan 95 persen; 1 akun tanpa pemilik dibekukan; TA-01 belum tertutup}};
+  \node[blok,fill=blue!8,below=1mm of p2] (p3) {\textbf{Pesan 3: Layanan membaik, masih di bawah target}\\{\tiny\mdseries Waktu tunggu 34, 31, 28 menit; gangguan 150, 40, 100 menit}};
+  \node[blok,fill=blue!8,below=1.5mm of p3] (opsi) {\textbf{Tabel tiga pilihan}\\{\tiny\mdseries Biaya, akibat pada risiko, pemilik, tenggat, dan ukuran keberhasilan}};
+  \node[blok,fill=green!10,below=1.5mm of opsi] (batas) {\textbf{Batas data dan tindak lanjut}\\{\tiny\mdseries Tingkat lulus uji bukan peluang R-05; 5 uji rumah sakit tergolong sedikit}};
+  \draw (kepala.north west) rectangle (batas.south east);
+  \node[catatan,right=4mm of putus] (c1) {Dibaca pertama: direksi tahu apa yang harus diputuskan};
+  \node[catatan,right=4mm of p2] (c2) {Tiga pesan: angka, tren, dan risiko; tanpa daftar kegiatan};
+  \node[catatan,right=4mm of opsi] (c3) {Ada pembanding, sehingga usulan dapat ditolak};
+  \node[catatan,right=4mm of batas] (c4) {Batas klaim mencegah tafsir berlebihan};
+  \draw[panah] (c1.west) -- (putus.east);
+  \draw[panah] (c2.west) -- (p2.east);
+  \draw[panah] (c3.west) -- (opsi.east);
+  \draw[panah] (c4.west) -- (batas.east);
+\end{tikzpicture}

@@ -1,0 +1,24 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  execute at begin node={\hyphenpenalty=10000},
+  tahap/.style={draw, rounded corners, align=center, text width=1.85cm,
+    minimum height=1.2cm, fill=blue!8},
+  catatan/.style={align=center, font=\tiny\mdseries},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[tahap] (n0) at (0,0) {Klasifikasi\\{\tiny\mdseries GV.SC-04}};
+  \node[tahap] (n1) at (2.5,0) {Uji tuntas\\{\tiny\mdseries GV.SC-06}};
+  \node[tahap, fill=orange!12] (n2) at (5,0) {Kontrak\\{\tiny\mdseries GV.SC-05}};
+  \node[tahap] (n3) at (7.5,0) {Penerapan dan pemantauan\\{\tiny\mdseries GV.SC-07}};
+  \node[tahap, fill=green!10] (n4) at (10,0) {Keluar dan verifikasi\\{\tiny\mdseries GV.SC-10}};
+  \node[tahap, fill=red!22] (ins) at (7.5,-2) {Insiden bersama\\{\tiny\mdseries GV.SC-08}};
+  \draw[panah] (n0) -- (n1);
+  \draw[panah] (n1) -- (n2);
+  \draw[panah] (n2) -- (n3);
+  \draw[panah] (n3) -- (n4);
+  \draw[panah] (n3) -- (ins);
+  \draw[panah, rounded corners] (ins.west) -| (n2.south);
+  \draw[panah, rounded corners] (n3.north) -- ++(0,0.45) -| (n0.north);
+  \node[catatan] at (3.75,1.32)
+    {perubahan tujuan, subprosesor, lokasi, atau skala memicu klasifikasi ulang};
+  \node[catatan, anchor=east] at (6.3,-2.2) {temuan memperbaiki klausul};
+\end{tikzpicture}

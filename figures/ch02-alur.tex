@@ -1,0 +1,41 @@
+\begin{tikzpicture}[
+  kotak/.style={draw, rounded corners, align=center, text width=2.85cm,
+    minimum height=1.25cm, font=\scriptsize, fill=blue!8},
+  panah/.style={-{Stealth[length=2mm]}, thick},
+  keterangan/.style={font=\tiny, align=center, inner sep=1pt}
+]
+  \node[kotak, fill=praditagreen!15] (pemangku) at (0, 2.6)
+    {\textbf{Pemangku}\\\textbf{kepentingan}\\{\tiny\mdseries kebutuhan dan
+    dampak:\\pasien, klinisi, unit lokal}};
+  \node[kotak] (evaluate) at (4.4, 2.6)
+    {\textbf{\textit{Evaluate}}\\{\tiny\mdseries nilai pilihan dan konsekuensi:\\Rp8
+    miliar atau Rp6 miliar}};
+  \node[kotak] (direct) at (8.8, 2.6)
+    {\textbf{\textit{Direct}}\\{\tiny\mdseries arah dan batas delegasi:\\batas Rp8,8
+    miliar,\\target 25 menit}};
+  \node[kotak] (manajemen) at (8.8, 0)
+    {\textbf{Manajemen}\\{\tiny\mdseries jalankan rencana:\\pemasangan di 5 rumah
+    sakit}};
+  \node[kotak, fill=orange!12] (monitor) at (4.4, 0)
+    {\textbf{\textit{Monitor}}\\{\tiny\mdseries bandingkan hasil dan arah:\\38 menit,
+    target 25 menit}};
+  \node[kotak, fill=green!10] (hasil) at (0, 0)
+    {\textbf{Hasil layanan}\\{\tiny\mdseries manfaat, risiko, sumber daya:\\baru 13,3
+    persen target}};
+  \draw[panah] (pemangku) -- node[keterangan, above]
+    {masukan\\dan\\kebutuhan} (evaluate);
+  \draw[panah] (evaluate) -- node[keterangan, above]
+    {dasar\\keputusan} (direct);
+  \draw[panah] (direct) -- node[keterangan, right]
+    {mandat\\pelaksanaan} (manajemen);
+  \draw[panah] (manajemen) -- node[keterangan, above]
+    {bukti\\hasil} (monitor);
+  \draw[panah] (monitor) -- node[keterangan, above]
+    {penilaian\\capaian} (hasil);
+  \draw[panah, dashed] (monitor) -- node[keterangan, right]
+    {perlu\\tinjauan\\ulang} (evaluate);
+  \draw[panah, densely dotted] (pemangku.south east) -- (monitor.north west);
+  \draw[panah, densely dotted] (pemangku.north) -- ++(0, 0.42) -|
+    node[keterangan, above, pos=0.25] {pelibatan berlanjut pada ketiga tugas}
+    (direct.north);
+\end{tikzpicture}

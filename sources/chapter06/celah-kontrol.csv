@@ -1,0 +1,9 @@
+# Kegunaan: daftar celah kontrol untuk Aktivitas Bab 06, berisi enam contoh pengandaian Medikara dan satu baris isian. Cara memakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, ganti contoh, lalu isi baris G-07 dan seterusnya; prioritas 1 sampai 3 menjadi masukan profil target Bab 08.
+id,subkategori,hasil_belum_tercapai,nomor_annex_a,kontrol_medikara,risiko,kewajiban,alasan_prioritas,prioritas,pemilik_risiko,pemilik_tindakan,bukti_penerimaan
+G-01,PR.AA-05,Peninjauan belum lintas lokasi; 12 dari 120 akun luput,5.15; 5.18,AC-01,R-01,K-01,Insiden 2025 dan K-01,1,Pemilik Medikara+,Kepala operasi TI,120 dari 120 akun cocok; peninjauan 5 rumah sakit
+G-02,DE.CM-03,Catatan aktivitas tidak ditinjau,8.16,Tinjauan catatan aktivitas,R-01,K-01,Deteksi tidak menghasilkan keputusan,4,Pemilik Medikara+,Fungsi keamanan,Alarm uji ditangani dalam latihan
+G-03,RC.RP-03; PR.DS-11,Pemulihan belum diuji,8.13,Uji pemulihan,R-05,K-02,Harapan kerugian terbesar pada Bab 5,2,Pemilik layanan,Kepala operasi TI,Data contoh pulih; hasil disahkan pemilik layanan
+G-04,PR.AA-01,Hak lokal berbeda; akun bersama masih ada,5.15; 5.16; 5.18,Akun per orang,R-02,K-01,Jejak perubahan data tidak dapat ditelusuri,5,Pemilik SIMRS,Pemilik layanan,Peran baku pada 5 rumah sakit; nol akun bersama pada sampel
+G-05,RS.MA-01; GV.SC-07,Vendor terlambat melapor; prosedur belum dilatih,5.20; 5.26,Prosedur insiden bersama vendor,R-01; R-12,K-04; K-05,K-05 berstatus tidak memenuhi,3,Pemilik Medikara+; fungsi hukum,Pengelola vendor,Latihan bersama: laporan dalam 12 jam
+G-06,ID.AM-02,Inventaris lokal belum direkonsiliasi,5.9,Inventaris sistem lintas rumah sakit,R-02,Tidak ada,Dasar bagi G-04,6,Pemilik SIMRS,Kepala TI,Satu inventaris disetujui untuk 5 rumah sakit
+G-07,...,...,...,...,...,...,...,...,...,...,...

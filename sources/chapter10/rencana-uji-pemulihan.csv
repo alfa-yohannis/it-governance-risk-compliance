@@ -1,0 +1,5 @@
+# Kegunaan: pembagian 144 uji pemulihan per tahun dan contoh hasil triwulan pertama, sama dengan seksi Latihan dan Pengujian Bab 10. Cara memakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, ganti jumlah fasilitas dan hasil dengan keadaan tim. Uji hanya pada sistem sendiri atau yang berizin tertulis, memakai data sintetis. Seluruh hasil pengandaian. Baris terakhir adalah total.
+kelompok,jumlah_fasilitas,uji_per_tahun,uji_biasa,uji_akun_terpisah,jam_per_tahun,uji_triwulan_1,lulus,lewat_rto,data_gagal,persen_lulus
+5 rumah sakit,5,20,15,5,60,5,3,1,1,60.0
+31 fasilitas lain,31,124,93,31,372,31,26,4,1,83.9
+Total,36,144,108,36,432,36,29,5,2,80.6

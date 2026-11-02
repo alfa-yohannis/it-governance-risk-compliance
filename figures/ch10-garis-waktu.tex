@@ -1,0 +1,37 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  x=1.75cm,
+  y=1cm,
+  panah/.style={-{Stealth[length=2mm]}, thick},
+  penanda/.style={dashed, gray!70!black, thick}]
+  % Baris jalur teknologi
+  \node[anchor=east, align=right, text width=1.45cm] at (-0.08,2.05) {Pemulihan\\teknologi};
+  \draw[fill=blue!8] (0,1.75) rectangle node[align=center] {\textit{Restore} SIMRS\\uji 90 menit}
+    (1.5,2.35);
+  \draw[fill=orange!12] (1.5,1.75) rectangle (4,2.35);
+  \node[align=center] at (3,2.05) {Verifikasi data\\dan rekonsiliasi};
+  % Baris layanan sementara
+  \node[anchor=east, align=right, text width=1.45cm] at (-0.08,1.05) {Layanan\\sementara};
+  \draw[fill=gray!35] (0,0.75) rectangle node {\tiny Aktivasi} (0.5,1.35);
+  \draw[fill=green!10] (0.5,0.75) rectangle (4,1.35);
+  \node[align=center] at (3,1.05) {Prosedur manual\\40 resep per jam};
+  % Sumbu waktu
+  \draw[panah] (-0.85,0) -- (4.55,0);
+  \foreach \jam in {0,1,2,3,4} {
+    \draw[thick] (\jam,0.08) -- (\jam,-0.08);
+    \node[below] at (\jam,-0.06) {\jam\ jam};
+  }
+  \fill[red!22] (-0.25,-0.1) rectangle (0,0.1);
+  % Penanda target
+  \draw[very thick, red!60!black] (0,-0.08) -- (0,2.6);
+  \node[above, font=\scriptsize\bfseries] at (0,2.6) {Gangguan};
+  \draw[penanda] (2,0.08) -- (2,2.6);
+  \node[above] at (2,2.6) {RTO layanan dan sistem: 2 jam};
+  \draw[penanda] (4,0.08) -- (4,2.6);
+  \node[above] at (4,2.6) {MTPD: 4 jam};
+  \node[below, align=center] at (-0.42,-0.42) {RPO 15 menit\\(celah data)};
+  \draw[gray!70!black] (-0.125,-0.1) -- (-0.3,-0.45);
+  \node[anchor=north west, align=left, text width=9.4cm] at (-0.85,-1.2)
+    {{\tiny\mdseries Angka farmasi pada satu rumah sakit (pengandaian). RPO berada sebelum gangguan,
+    sedangkan RTO dan MTPD berada sesudahnya. Uji 90 menit berada di bawah RTO sistem 120 menit.}};
+\end{tikzpicture}

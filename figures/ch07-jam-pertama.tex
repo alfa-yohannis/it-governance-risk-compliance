@@ -1,0 +1,32 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  kotak/.style={draw, rounded corners, align=center, text width=2.9cm, minimum height=1.2cm},
+  jam/.style={align=center, font=\tiny},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  % Skala garis tidak proporsional. Jam dihitung dari saat Medikara mengetahui kejadian.
+  \draw[panah] (-0.3,0) -- (10.0,0);
+  \foreach \posisi in {0, 1.85, 3.7, 5.55, 7.4, 9.25}
+    \draw[thick] (\posisi,0.1) -- (\posisi,-0.1);
+  \node[kotak, fill=red!22] (a) at (0,1.15) {Keluhan pasien sampai ke koordinator. Jumlah belum
+    diketahui};
+  \node[kotak, fill=blue!8] (b) at (1.85,-1.45) {Vendor mengakui akun masih aktif. Akun
+    dinonaktifkan};
+  \node[kotak, fill=orange!12] (c) at (3.7,1.15) {Rekap harian: jumlah sementara 1.240 rekam};
+  \node[kotak, fill=orange!12] (d) at (5.55,-1.45) {620 rekam terlacak, 620 rekam tinggal jumlah};
+  \node[kotak, fill=blue!8] (e) at (7.4,1.15) {Akar sebab belum selesai. Pemberitahuan tidak
+    menunggu};
+  \node[kotak, fill=green!10] (f) at (9.25,-1.45) {Batas terluar kerja bila dihitung dari saat
+    diketahui};
+  \draw (a) -- (0,0.1);
+  \draw (b) -- (1.85,-0.1);
+  \draw (c) -- (3.7,0.1);
+  \draw (d) -- (5.55,-0.1);
+  \draw (e) -- (7.4,0.1);
+  \draw (f) -- (9.25,-0.1);
+  \node[jam, fill=white, inner sep=1pt] at (0,-0.38) {Jam 0\\ Jumat 20.00};
+  \node[jam, fill=white, inner sep=1pt] at (1.85,0.38) {Jam 1\\ Jumat 21.00};
+  \node[jam, fill=white, inner sep=1pt] at (3.7,-0.38) {Jam 12\\ Sabtu 08.00};
+  \node[jam, fill=white, inner sep=1pt] at (5.55,0.38) {Jam 18\\ Sabtu 14.00};
+  \node[jam, fill=white, inner sep=1pt] at (7.4,-0.38) {Jam 40\\ Minggu 12.00};
+  \node[jam, fill=white, inner sep=1pt] at (9.25,0.38) {Jam 72\\ Senin 20.00};
+\end{tikzpicture}

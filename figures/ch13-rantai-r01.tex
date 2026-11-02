@@ -1,0 +1,18 @@
+\begin{tikzpicture}[node distance=4.5mm, tahap/.style={draw, rounded corners, align=center, text width=2.4cm, minimum height=1.5cm, font=\scriptsize}, ukur/.style={draw, align=center, text width=2.4cm, minimum height=1.25cm, font=\scriptsize, fill=blue!8}, panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[tahap,fill=blue!8] (a) {\textbf{Akar penyebab}\\[1pt]{\tiny\mdseries tanggal berakhir tidak masuk daftar}};
+  \node[tahap,fill=orange!12] (b) [right=of a] {\textbf{Kejadian antara}\\[1pt]{\tiny\mdseries akun aktif melewati masa berlaku}};
+  \node[tahap,fill=red!22] (c) [right=of b] {\textbf{Kejadian risiko}\\[1pt]{\tiny\mdseries akun membaca data pasien tanpa tugas}};
+  \node[tahap,fill=gray!35] (d) [right=of c] {\textbf{Akibat}\\[1pt]{\tiny\mdseries pemberitahuan dan kerugian}};
+  \draw[panah] (a) -- (b);
+  \draw[panah] (b) -- (c);
+  \draw[panah] (c) -- (d);
+  \node[ukur] (ua) [below=6mm of a] {\textbf{KCI IK-07}\\{\tiny\mdseries cakupan peninjauan AC-01}};
+  \node[ukur] (ub) [below=6mm of b] {\textbf{KRI IK-01, IK-02}\\{\tiny\mdseries akun tanpa pemilik; lewat masa berlaku}};
+  \node[ukur] (uc) [below=6mm of c] {\textbf{Tinjauan \textit{log}}\\{\tiny\mdseries 247 dari 260 tinjauan mingguan (Bab 8)}};
+  \node[ukur] (ud) [below=6mm of d] {\textbf{KPI IK-11}\\{\tiny\mdseries pemberitahuan tepat waktu}};
+  \draw[-, dashed] (a) -- (ua);
+  \draw[-, dashed] (b) -- (ub);
+  \draw[-, dashed] (c) -- (uc);
+  \draw[-, dashed] (d) -- (ud);
+  \draw[panah] ([yshift=-5mm]ua.south west) -- node[below, font=\scriptsize] {sinyal makin terlambat, waktu untuk bertindak makin pendek} ([yshift=-5mm]ud.south east);
+\end{tikzpicture}

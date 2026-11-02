@@ -1,0 +1,41 @@
+\begin{tikzpicture}[
+  tanya/.style={draw, rounded corners, align=center, text width=1.62cm, minimum height=1.95cm,
+    font=\scriptsize, fill=orange!12},
+  mulai/.style={draw, rounded corners, align=center, text width=7.4cm, minimum height=0.7cm,
+    font=\scriptsize, fill=blue!8},
+  henti/.style={draw, rounded corners, align=center, text width=1.62cm, minimum height=1.45cm,
+    font=\scriptsize, fill=red!22},
+  perbaiki/.style={draw, rounded corners, align=center, text width=1.62cm, minimum height=1.45cm,
+    font=\scriptsize, fill=gray!35},
+  hasil/.style={draw, rounded corners, align=center, text width=1.62cm, minimum height=1.45cm,
+    font=\scriptsize, fill=green!10},
+  ket/.style={font=\tiny, inner sep=1pt},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[mulai, anchor=west] (awal) at (-0.92,1.65) {Usulan: data pasien disimpan, dikirim, atau
+    ditampilkan ke luar wilayah Indonesia};
+  \node[tanya] (a) at (0,0) {Data kesehatan atau rekam medis?\\ {\tiny\mdseries PP 28/2024 Pasal
+    966, 972}};
+  \node[tanya] (b) at (2.35,0) {Penyimpanan rutin di luar negeri?\\ {\tiny\mdseries Pasal 966 ayat
+    (2), ayat (5)}};
+  \node[tanya] (c) at (4.7,0) {Tujuan spesifik dan terbatas?\\ {\tiny\mdseries Pasal 972 ayat (2)}};
+  \node[tanya] (d) at (7.05,0) {Izin Menteri sudah ada?\\ {\tiny\mdseries Pasal 972 ayat (3) huruf
+    a}};
+  \node[tanya] (e) at (9.4,0) {Syarat transfer terpenuhi?\\ {\tiny\mdseries UU PDP Pasal 56 ayat (2)
+    sampai (4)}};
+  \node[perbaiki] (a2) at (0,-2.55) {Baca UU PDP Pasal 56 dan PP 71/2019 Pasal 21};
+  \node[henti] (b2) at (2.35,-2.55) {Berhenti: pusat data wajib di dalam Indonesia};
+  \node[henti] (c2) at (4.7,-2.55) {Berhenti: rancang ulang alur data};
+  \node[perbaiki] (d2) at (7.05,-2.55) {Ajukan izin sebelum transfer};
+  \node[hasil] (e2) at (9.4,-2.55) {Jalan dengan bukti\\ {\tiny\mdseries bila tidak terpenuhi:
+    berhenti}};
+  \draw[panah] (a |- awal.south) -- (a);
+  \draw[panah] (a) -- node[ket, above] {Ya} (b);
+  \draw[panah] (b) -- node[ket, above] {Tidak} (c);
+  \draw[panah] (c) -- node[ket, above] {Ya} (d);
+  \draw[panah] (d) -- node[ket, above] {Ya} (e);
+  \draw[panah] (a) -- node[ket, right] {Tidak} (a2);
+  \draw[panah] (b) -- node[ket, right] {Ya} (b2);
+  \draw[panah] (c) -- node[ket, right] {Tidak} (c2);
+  \draw[panah] (d) -- node[ket, right] {Tidak} (d2);
+  \draw[panah] (e) -- node[ket, right] {Ya} (e2);
+\end{tikzpicture}

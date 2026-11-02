@@ -1,0 +1,23 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  tingkat/.style={draw, rounded corners, align=center, text width=3.05cm, minimum height=1.25cm},
+  catatan/.style={align=center, text width=3.05cm},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[tingkat, fill=blue!8] (insiden) at (0,0)
+    {\textbf{Insiden siber}\\Tim tanggap organisasi\\Kepala operasi TI};
+  \node[tingkat, fill=orange!12] (krisis) at (4.3,0)
+    {\textbf{Krisis organisasi}\\Istilah internal Medikara\\Direksi memimpin};
+  \node[tingkat, fill=red!22] (nasional) at (8.6,0)
+    {\textbf{Krisis Siber}\\Situasi darurat nasional\\Presiden menetapkan};
+  \draw[panah] (insiden) -- (krisis);
+  \draw[panah] (krisis) -- (nasional);
+  \node[catatan, below=2mm of insiden]
+    {Batasi, catat kronologi, nilai dampak. Lapor bila paling sedikit berisiko tinggi};
+  \node[catatan, below=2mm of krisis]
+    {Pemicu: RTO terlewat, lebih dari satu rumah sakit, atau risiko cedera berat};
+  \node[catatan, below=2mm of nasional]
+    {Bukan keputusan Medikara. Sebagai PSE, Medikara menindaklanjuti peringatan dini};
+  \node[anchor=north west, align=left, text width=11.4cm] at (-1.55,-2.75)
+    {{\tiny\mdseries Pemicu krisis organisasi adalah pengandaian Medikara. Definisi dan penetapan Krisis
+    Siber mengikuti Peraturan BSSN 2/2024 Pasal 1 angka 3 dan Pasal 13 ayat (2).}};
+\end{tikzpicture}

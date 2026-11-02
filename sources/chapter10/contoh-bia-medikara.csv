@@ -1,0 +1,8 @@
+# Kegunaan: contoh BIA enam layanan pada rumah sakit Bekasi, sama dengan tabel dampak dan tabel BIA pada Bab 10. Cara memakai: bandingkan dengan hasil tim, bukan disalin. Seluruh angka pengandaian, dan target klinis harus divalidasi pihak berwenang pada organisasi nyata.
+layanan,pemilik,kapasitas_normal,dampak_1_jam,dampak_4_jam,dampak_6_jam,dampak_12_jam,dampak_24_jam,dampak_48_jam,cedera_berat_mungkin_sejak,mtpd_menit,rto_layanan_menit,rpo_menit,kapasitas_minimum,ketergantungan,asumsi_bukti
+IGD,Kepala IGD,6 pasien per jam,3,4,5,5,5,5,1 jam,240,15,5,6 pasien per jam,SIMRS; identitas pasien; petugas,Misalkan; IGD melayani 24 jam; bukan rekomendasi klinis
+Farmasi,Kepala farmasi,100 resep per jam,2,4,4,5,5,5,4 jam,240,120,15,40 resep per jam,SIMRS; identitas pasien; riwayat alergi; stok,Misalkan; terkait R-11
+Laboratorium,Kepala laboratorium,60 hasil per jam,2,4,4,5,5,5,4 jam,240,120,15,20 hasil per jam,SIMRS; identitas pasien; antarmuka alat,Misalkan; perlu validasi klinis
+Pendaftaran,Kepala registrasi,40 pasien per jam,2,3,4,4,5,5,Tidak langsung,360,90,30,20 pasien per jam,SIMRS; identitas pasien; jadwal,Misalkan; 5 rumah sakit kali 40 sama dengan 200 dari 274 kunjungan per jam; RTO memberi sisa 30 menit dari batas 2 jam per bulan Bab 5
+Telekonsultasi,Pemilik Medikara+,40 konsultasi per jam,1,2,2,4,4,5,Tidak langsung,720,360,60,10 konsultasi per jam,V-01; V-02; layanan identitas; penyedia pesan,Misalkan; jalur sementara lewat telepon
+Klaim BPJS,Kepala klaim,300 klaim per hari,1,1,1,2,3,4,Tidak ada,2880,1440,240,100 klaim per hari,Integrasi BPJS; SIMRS; kode layanan,Misalkan

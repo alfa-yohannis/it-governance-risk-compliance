@@ -1,0 +1,19 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  fungsi/.style={draw, rounded corners, align=center, text width=2.2cm,
+    minimum height=0.95cm, fill=blue!8},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[fungsi, fill=praditagreen!15, text width=2.7cm, minimum height=1.2cm] (gv) at (0,0)
+    {\textbf{Govern}\\{\tiny\mdseries arah, peran, kebijakan, pengawasan, pemasok}};
+  \node[fungsi] (id) at (0,2.3) {\textbf{Identify}\\{\tiny\mdseries aset, risiko, perbaikan}};
+  \node[fungsi] (pr) at (4.2,0.8) {\textbf{Protect}\\{\tiny\mdseries akses, data, platform}};
+  \node[fungsi] (de) at (2.55,-2.0) {\textbf{Detect}\\{\tiny\mdseries pemantauan, analisis}};
+  \node[fungsi] (rs) at (-2.55,-2.0) {\textbf{Respond}\\{\tiny\mdseries insiden, komunikasi}};
+  \node[fungsi] (rc) at (-4.2,0.8) {\textbf{Recover}\\{\tiny\mdseries pemulihan, komunikasi}};
+  \draw[gray, thin] (id) -- (pr) -- (de) -- (rs) -- (rc) -- (id);
+  \draw[panah] (gv) -- (id);
+  \draw[panah] (gv) -- (pr);
+  \draw[panah] (gv) -- (de);
+  \draw[panah] (gv) -- (rs);
+  \draw[panah] (gv) -- (rc);
+\end{tikzpicture}

@@ -1,0 +1,23 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  kotak/.style={draw, rounded corners, align=center, text width=3.3cm, minimum height=1.25cm},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[kotak, fill=praditagreen!15] (krit) at (0,1)
+    {\textbf{Kriteria}\\{\tiny\mdseries seharusnya: dicabut paling lambat 1 hari kerja}};
+  \node[kotak, fill=blue!8] (kond) at (0,-1)
+    {\textbf{Kondisi}\\{\tiny\mdseries nyatanya: 6 dari 30 akun masih aktif}};
+  \node[kotak, fill=orange!12] (sebab) at (4.3,1)
+    {\textbf{Sebab}\\{\tiny\mdseries tanggal berakhir tidak masuk daftar peninjau}};
+  \node[kotak, fill=orange!12] (akibat) at (4.3,-1)
+    {\textbf{Akibat}\\{\tiny\mdseries nyata: 24 akun dicabut; potensi: R-01 berskor 12}};
+  \node[kotak, fill=blue!8] (rek) at (8.6,1)
+    {\textbf{Rekomendasi}\\{\tiny\mdseries pemilik, tenggat 30 hari, menuju sebab}};
+  \node[kotak, fill=green!10] (ver) at (8.6,-1)
+    {\textbf{Verifikasi penutupan}\\{\tiny\mdseries 120 dari 120, 60 dari 60, 30 dari 30}};
+  \draw[panah] (krit.east) -- ++(0.25,0) |- (sebab.west);
+  \draw[panah] (kond.east) -- ++(0.25,0) |- (sebab.west);
+  \draw[panah] (kond) -- (akibat);
+  \draw[panah] (sebab) -- (rek);
+  \draw[panah] (akibat.north east) -- (rek.south west);
+  \draw[panah] (rek) -- (ver);
+\end{tikzpicture}

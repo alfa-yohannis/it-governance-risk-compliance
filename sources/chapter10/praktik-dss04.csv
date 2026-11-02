@@ -1,0 +1,10 @@
+# Kegunaan: pemetaan delapan praktik DSS04 ke bukti, sama dengan tabel DSS04 pada Bab 10. Cara memakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, ganti bukti dan status dengan keadaan tim. Nama praktik diringkas dari artikel ISACA Rafeq dan Elangovan 2021 dan perlu dicocokkan ke naskah COBIT 2019. Seluruh bukti pengandaian.
+praktik,inti_praktik,bukti_medikara,pemilik,status_contoh
+DSS04.01,"Kebijakan, tujuan, dan ruang lingkup",Ruang lingkup 36 fasilitas disahkan direksi,Direktur pelayanan,Rancangan
+DSS04.02,Menjaga ketahanan bisnis,BIA 36 baris dan pilihan strategi,Pemilik layanan,Rancangan
+DSS04.03,Mengembangkan dan menerapkan respons,Prosedur korporat dengan 36 lampiran,Kepala operasi TI dan pemilik layanan,Belum ada bukti
+DSS04.04,"Melatih, menguji, dan meninjau rencana",144 uji pemulihan dan 5 tabletop per tahun,Kepala operasi TI,Sebagian
+DSS04.05,"Meninjau, memelihara, dan memperbaiki rencana","Tindakan, pemilik, tenggat, dan uji ulang",Pemilik layanan,Belum ada bukti
+DSS04.06,Pelatihan rencana,Petugas manual tiap rumah sakit dilatih dan dicatat,Direktur rumah sakit,Belum ada bukti
+DSS04.07,Mengelola pengaturan cadangan,"KB-08, K-02, cadangan dan akun terpisah",Kepala operasi TI,Sebagian
+DSS04.08,Tinjauan sesudah pemulihan,Rekonsiliasi disahkan kepala rekam medis,Kepala rekam medis,Belum ada bukti

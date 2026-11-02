@@ -1,0 +1,11 @@
+# Kegunaan: contoh matriks hak keputusan pengandaian Medikara untuk Aktivitas Bab 2. Cara pakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, ganti delapan baris contoh, lalu isi baris D-09 dan seterusnya.
+id,domain_keputusan,keputusan,masukan,pemutus_akhir,pengawas,batas_delegasi,bukti,arketipe_indikatif,status
+D-01,Prinsip TI,Identitas pasien tunggal,Direktur pelayanan dan kepala TI dan direktur rumah sakit,Direksi,Dewan komisaris,Lintas fasilitas,Notulen dan prinsip,Monarki bisnis,Contoh pengandaian
+D-02,Arsitektur,Standar integrasi,Pemilik aplikasi dan keamanan,Kepala TI lewat forum arsitektur,Komite pengarah TI,Dalam prinsip yang disetujui,Catatan keputusan,Monarki TI,Contoh pengandaian
+D-03,Infrastruktur,Kapasitas penyimpanan cadangan,Tim platform dan rekam medis,Kepala TI,Komite pengarah TI,Sampai Rp100 juta dan tunduk aturan sektor,Evaluasi opsi dan persetujuan,Monarki TI,Contoh pengandaian
+D-04,Kebutuhan aplikasi,Rancangan alur pendaftaran,Petugas pendaftaran dan klinisi dan perwakilan pasien,Direktur pelayanan bersama 5 direktur rumah sakit,Komite pengarah TI,Sesuai standar klinis,Persetujuan kebutuhan,Federal,Contoh pengandaian
+D-05,Investasi,Investasi Medikara+ Rp8 miliar,Direktur pelayanan dan kepala TI dan keuangan,Direksi,Dewan komisaris,"Toleransi 10 persen sehingga batas atas Rp8,8 miliar",Keputusan investasi,Monarki bisnis,Contoh pengandaian
+D-06,Keamanan,Pemberian akses vendor,Keamanan dan kepala TI dan pemilik data,Pemilik Medikara+,Audit internal,Bila kepala TI keberatan naik ke direktur pelayanan,Tiket dan persetujuan,Feodal,Contoh pengandaian
+D-07,Risiko,Penerimaan risiko R-01,Analis risiko dan pemilik layanan,Direksi sesuai delegasi,Dewan komisaris,Tidak menghapus kewajiban hukum,Keputusan risiko,Monarki bisnis,Contoh pengandaian
+D-08,Perubahan,Peluncuran lintas rumah sakit,Tim TI dan layanan dan vendor,Direktur pelayanan bersama kepala TI,Komite pengarah TI,Syarat aman dan rencana pemulihan; bila tidak sepakat naik ke direktur utama,Daftar kesiapan dan keputusan,Duopoli TI,Contoh pengandaian
+D-09,...,...,...,...,...,...,...,...,...

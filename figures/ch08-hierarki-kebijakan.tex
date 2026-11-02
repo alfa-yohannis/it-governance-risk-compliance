@@ -1,0 +1,28 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  lapis/.style={draw, rounded corners, align=center, minimum height=0.95cm},
+  catatan/.style={anchor=west, align=left, text width=4.5cm},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[lapis, fill=praditagreen!15, text width=5.8cm] (kb) at (0,0)
+    {\textbf{Kebijakan}\\arah dan tanggung jawab};
+  \node[lapis, fill=blue!8, text width=2.7cm] (st) at (-1.55,-1.45)
+    {\textbf{Standar}\\ketentuan wajib};
+  \node[lapis, fill=blue!8, text width=2.7cm] (pd) at (1.55,-1.45)
+    {\textbf{Pedoman}\\pilihan pelaksanaan};
+  \node[lapis, fill=orange!12, text width=5.8cm] (pr) at (0,-2.9)
+    {\textbf{Prosedur}\\langkah kerja yang dapat diuji};
+  \node[lapis, fill=green!10, text width=5.8cm] (bk) at (0,-4.35)
+    {\textbf{Bukti operasi}\\catatan AC-01, tiket pencabutan, hasil uji};
+  \draw[panah] (kb.south -| st) -- (st);
+  \draw[panah] (kb.south -| pd) -- (pd);
+  \draw[panah] (st) -- (pr.north -| st);
+  \draw[panah] (pd) -- (pr.north -| pd);
+  \draw[panah] (pr) -- (bk);
+  \node[catatan] at (3.35,0) {KB-01, KB-05\\Disetujui direksi; tinjau 24 bulan};
+  \node[catatan] at (3.35,-1.45)
+    {KB-02, KB-06 disetujui komite pengarah TI; KB-04 disetujui direktur pelayanan; tinjau
+    12 bulan};
+  \node[catatan] at (3.35,-2.9)
+    {KB-03, KB-07, KB-08\\Disetujui kepala TI atau komite; tinjau 12 bulan};
+  \node[catatan] at (3.35,-4.35) {Diperiksa terhadap bukti penerimaan};
+\end{tikzpicture}

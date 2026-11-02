@@ -1,0 +1,58 @@
+\begin{tikzpicture}[x=0.235cm, y=0.47cm,
+  biaya/.style={draw=black!55, fill=blue!8},
+  tekan/.style={draw=black!55, fill=orange!12},
+  ada/.style={draw=black!55, fill=praditagreen!15},
+  nama/.style={anchor=east, font=\scriptsize},
+  gerbang/.style={draw=black, fill=red!22, diamond, inner sep=1.3pt},
+  garis/.style={densely dashed, draw=black!55}]
+  % Pita gelombang: bulan 1 adalah Desember 2026, bulan 36 adalah November 2029.
+  \fill[blue!4] (0,0.3) rectangle (6,-11);
+  \fill[orange!6] (6,0.3) rectangle (18,-11);
+  \fill[green!5] (18,0.3) rectangle (36,-11);
+  \node[font=\scriptsize\bfseries] at (3,0.75) {Gel. 1};
+  \node[font=\scriptsize\bfseries] at (12,0.75) {Gelombang 2};
+  \node[font=\scriptsize\bfseries] at (27,0.75) {Gelombang 3};
+  % Baris inisiatif.
+  \node[nama] at (-0.4,-0.4) {GRC-01 Target 8 objektif};
+  \draw[biaya] (0,-0.1) rectangle (36,-0.7);
+  \node[nama] at (-0.4,-1.4) {GRC-02 Penutupan TA-01};
+  \draw[tekan] (0,-1.1) rectangle (4,-1.7);
+  \node[nama] at (-0.4,-2.4) {GRC-03 Opsi B};
+  \draw[biaya] (0,-2.1) rectangle (36,-2.7);
+  \draw[tekan] (0,-2.1) rectangle (2,-2.7);
+  \node[nama] at (-0.4,-3.4) {GRC-04 Tata kelola AI};
+  \draw[biaya] (0,-3.1) rectangle (36,-3.7);
+  \node[nama] at (-0.4,-4.4) {GRC-05 Register dan alat};
+  \draw[biaya] (0,-4.1) rectangle (36,-4.7);
+  \node[nama] at (-0.4,-5.4) {GRC-06 Uji ekspor V-01};
+  \draw[biaya] (2,-5.1) rectangle (6,-5.7);
+  \node[nama] at (-0.4,-6.4) {GRC-07 Penilaian pemasok};
+  \draw[tekan] (2,-6.1) rectangle (10,-6.7);
+  \node[nama] at (-0.4,-7.4) {GRC-08 Latihan terpadu};
+  \draw[biaya] (6,-7.1) rectangle (12,-7.7);
+  \node[nama] at (-0.4,-8.4) {GRC-09 Celah gelombang 2};
+  \draw[biaya] (12,-8.1) rectangle (30,-8.7);
+  \node[nama] at (-0.4,-9.4) {GRC-10 Rencana asurans};
+  \draw[ada] (0,-9.1) rectangle (36,-9.7);
+  \node[nama] at (-0.4,-10.4) {GRC-11 Laporan satu halaman};
+  \draw[ada] (0,-10.1) rectangle (36,-10.7);
+  % Titik keputusan IT40513.
+  \draw[garis] (11,0.3) -- (11,-11);
+  \draw[garis] (28,0.3) -- (28,-11);
+  \draw[garis] (35,0.3) -- (35,-11);
+  \node[font=\tiny] at (11,-11.35) {K2};
+  \node[font=\tiny] at (28,-11.35) {K3};
+  \node[font=\tiny] at (35,-11.35) {K4};
+  % Gerbang utama.
+  \node[gerbang] at (2,-2.4) {};
+  \node[gerbang] at (4,-1.4) {};
+  \node[gerbang] at (12,-4.4) {};
+  \node[gerbang] at (10,-6.4) {};
+  % Sumbu waktu.
+  \draw[thick] (0,-11) -- (36,-11);
+  \foreach \bulan/\teks in {0/Des 2026, 12/Des 2027, 24/Des 2028} {
+    \draw (\bulan,-11) -- (\bulan,-11.15);
+    \node[font=\tiny,anchor=north] at (\bulan+1.5,-11.75) {\teks};
+  }
+  \node[font=\tiny,anchor=north east] at (36,-11.75) {Nov 2029};
+\end{tikzpicture}

@@ -1,0 +1,29 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  tahap/.style={draw, rounded corners, align=center, text width=1.75cm,
+    minimum height=1.25cm, fill=blue!8},
+  pita/.style={draw, rounded corners, align=center, text width=10.5cm,
+    minimum height=0.55cm, fill=praditagreen!15},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[pita] (komunikasi) at (4.5,1.5)
+    {Komunikasi dan konsultasi: pemilik layanan, klinis, hukum, keuangan, dan TI};
+  \node[tahap] (konteks) at (0,0) {Cakupan, konteks, dan kriteria};
+  \node[tahap, fill=orange!12] (identifikasi) at (2.25,0) {Identifikasi\\skenario};
+  \node[tahap, fill=orange!12] (analisis) at (4.5,0) {Analisis\\kemungkinan\\dan dampak};
+  \node[tahap, fill=orange!12] (evaluasi) at (6.75,0) {Evaluasi\\terhadap\\kriteria};
+  \node[tahap, fill=green!10] (penanganan) at (9,0) {Penanganan\\dan\\risiko sisa};
+  \node[pita] (pantau) at (4.5,-1.5)
+    {Pantau dan tinjau: perubahan bukti, paparan, dan efektivitas kontrol};
+  \node[pita] (catat) at (4.5,-2.2)
+    {Pencatatan dan pelaporan: \textit{risk register} dan bahan keputusan};
+  \draw[panah] (konteks) -- (identifikasi);
+  \draw[panah] (identifikasi) -- (analisis);
+  \draw[panah] (analisis) -- (evaluasi);
+  \draw[panah] (evaluasi) -- (penanganan);
+  \draw[thick, decorate] (identifikasi.north west) ++(0,0.08) -- ++(0,0.1)
+    -| ([yshift=0.08cm]evaluasi.north east);
+  \node[fill=white, inner sep=1pt] at (4.5,0.84) {{\tiny\mdseries penilaian risiko}};
+  \draw[panah] (penanganan.south) -- (penanganan.south |- pantau.north);
+  \draw[panah, dashed] (pantau.north -| identifikasi) -- (identifikasi.south)
+    node[midway, right] {{\tiny\mdseries perbarui penilaian}};
+\end{tikzpicture}

@@ -1,0 +1,15 @@
+\begin{tikzpicture}[
+  kotak/.style={draw,rounded corners,align=center,text width=2.35cm,
+    minimum height=1.25cm,font=\scriptsize,fill=blue!8},
+  panah/.style={-{Stealth[length=2mm]},thick}
+]
+  \node[kotak,fill=praditagreen!15] (a) at (0,0) {Konteks, faktor desain, dan tujuan};
+  \node[kotak,fill=orange!12] (b) at (3.05,0) {Objektif prioritas serta alasan};
+  \node[kotak] (c) at (6.1,0) {Bukti kapabilitas dan celah};
+  \node[kotak,fill=green!10] (d) at (9.15,0) {Masukan C2 untuk risiko Bab 5 dan target Bab 8};
+  \draw[panah] (a) -- (b);
+  \draw[panah] (b) -- (c);
+  \draw[panah] (c) -- (d);
+  \draw[panah] (c.south) -- ++(0,-0.45) -| node[pos=0.25,below,font=\scriptsize]
+    {bukti baru dapat mengubah prioritas} (a.south);
+\end{tikzpicture}

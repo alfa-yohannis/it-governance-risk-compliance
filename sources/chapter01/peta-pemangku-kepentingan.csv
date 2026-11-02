@@ -1,0 +1,11 @@
+# Kegunaan: contoh peta pemangku kepentingan Medikara untuk pemicu P-01 (penilaian contoh, skala 1 sampai 3) dan templat tim. Cara pakai: salin berkas, ganti baris sesuai organisasi, hapus baris komentar ini bila diimpor ke spreadsheet.
+id,pemicu,pemangku_kepentingan,peran_keputusan,kepentingan,pengaruh_1_rendah_3_tinggi,dampak_1_rendah_3_tinggi,keputusan_yang_diperlukan,cara_pelibatan,pemilik_hubungan,sumber
+S-01,P-01,Pasien,Terdampak,Kerahasiaan dan mutu layanan,1,3,Batas pemanfaatan data,Perwakilan pasien dan kajian dampak,Direktur pelayanan,Contoh fiktif Medikara
+S-02,P-01,Direksi,Memutuskan,Nilai investasi dan pertanggungjawaban,3,3,Prioritas serta pemilik risiko,Rapat keputusan,Direktur utama,Contoh fiktif Medikara
+S-03,P-01,Dewan komisaris,Mengawasi,Pengawasan hasil dan risiko,3,2,Arahan pengawasan,Laporan berkala,Sekretariat perusahaan,Contoh fiktif Medikara
+S-04,P-01,Klinisi,Terdampak dan memberi masukan,Data tepat dan layanan tersedia,2,3,Kriteria layanan aman,Diskusi alur klinis,Direktur pelayanan,Contoh fiktif Medikara
+S-05,P-01,Manajemen TI,Menjalankan,Operasi dan perubahan,2,3,Rencana pelaksanaan,Penilaian teknologi,Kepala TI,Contoh fiktif Medikara
+S-06,P-01,Vendor Medikara+,Menjalankan sesuai kontrak,Ruang lingkup dan kewenangan akses,2,2,Batas akses dan bukti layanan,Tinjauan kontrak,Pengelola vendor,Contoh fiktif Medikara
+S-07,P-01,Audit internal,Memeriksa,Bukti pengendalian,2,2,Lingkup asurans,Permintaan bukti,Kepala audit internal,Contoh fiktif Medikara
+S-08,P-01,Regulator sektor,Mengatur,Pemenuhan kewajiban,3,1,Kepatuhan dan pelaporan,Saluran resmi,Analis regulasi,Contoh fiktif Medikara
+S-09,...,...,...,...,...,...,...,...,...,...

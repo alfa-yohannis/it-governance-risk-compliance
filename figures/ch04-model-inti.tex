@@ -1,0 +1,36 @@
+\begin{tikzpicture}[
+  kotak/.style={draw,rounded corners,align=center,text width=2.3cm,
+    minimum height=1.6cm,font=\scriptsize,fill=blue!8},
+  induk/.style={draw,rounded corners,align=center,text width=11.1cm,
+    minimum height=0.95cm,font=\scriptsize,fill=praditagreen!15},
+  pilih/.style={draw,rounded corners,align=center,text width=2.3cm,
+    minimum height=0.95cm,font=\scriptsize,fill=orange!12},
+  panah/.style={-{Stealth[length=2mm]},thick}
+]
+  \node[induk] (edm) at (4.35,2.35)
+    {\textbf{EDM: 5 objektif tata kelola}\\
+    {\tiny\mdseries mengevaluasi, mengarahkan, dan memantau}};
+  \node[kotak] (apo) at (0,0)
+    {\textbf{APO}\\14 objektif\\{\tiny\mdseries menyelaraskan dan merencanakan}};
+  \node[kotak] (bai) at (2.9,0)
+    {\textbf{BAI}\\11 objektif\\{\tiny\mdseries membangun dan memperoleh}};
+  \node[kotak] (dss) at (5.8,0)
+    {\textbf{DSS}\\6 objektif\\{\tiny\mdseries menjalankan dan mendukung}};
+  \node[kotak] (mea) at (8.7,0)
+    {\textbf{MEA}\\4 objektif\\{\tiny\mdseries memantau dan menilai}};
+  \draw[panah] (apo) -- (bai);
+  \draw[panah] (bai) -- (dss);
+  \draw[panah] (dss) -- (mea);
+  \draw[panah] (apo.north |- edm.south) -- node[right,font=\tiny] {arah} (apo.north);
+  \draw[panah] (mea.north) -- node[left,font=\tiny] {laporan} (mea.north |- edm.south);
+  \node[pilih] (p1) at (0,-1.5) {APO10, APO12, APO13, APO14};
+  \node[pilih,fill=gray!35] (p2) at (2.9,-1.5) {BAI06 sebagai dependensi};
+  \node[pilih] (p3) at (5.8,-1.5) {DSS05};
+  \node[pilih] (p4) at (8.7,-1.5) {MEA03};
+  \draw[thick,densely dashed] (apo) -- (p1);
+  \draw[thick,densely dashed] (bai) -- (p2);
+  \draw[thick,densely dashed] (dss) -- (p3);
+  \draw[thick,densely dashed] (mea) -- (p4);
+  \node[font=\scriptsize,align=center] at (4.35,-2.4)
+    {5 + 14 + 11 + 6 + 4 = 40 objektif. Baris bawah: enam objektif awal pengandaian Medikara.};
+\end{tikzpicture}

@@ -1,0 +1,38 @@
+\begin{tikzpicture}[
+  kotak/.style={draw, rounded corners, align=center, text width=2.85cm,
+    minimum height=1.15cm, font=\scriptsize, fill=blue!8},
+  panah/.style={-{Stealth[length=2mm]}, thick},
+  keterangan/.style={font=\tiny, align=center, inner sep=1pt}
+]
+  \node[kotak, fill=praditagreen!15] (komisaris) at (0, 4.5)
+    {\textbf{Dewan Komisaris}\\{\tiny\mdseries mengawasi dan\\memberi nasihat}};
+  \node[kotak, fill=praditagreen!15] (direksi) at (4.45, 4.5)
+    {\textbf{Direksi}\\{\tiny\mdseries mengurus perseroan\\dan menetapkan delegasi}};
+  \node[kotak, fill=orange!12] (komite) at (8.9, 4.5)
+    {\textbf{Komite pengarah TI}\\{\tiny\mdseries forum bermandat,\\bukan organ perseroan}};
+  \node[kotak] (pemilik) at (2.225, 2.25)
+    {\textbf{Pemilik layanan}\\{\tiny\mdseries direktur pelayanan:\\manfaat dan risiko}};
+  \node[kotak] (manajemen) at (6.675, 2.25)
+    {\textbf{Manajemen TI}\\{\tiny\mdseries kepala TI:\\kesiapan dan operasi}};
+  \node[kotak, fill=green!10] (hasil) at (2.225, 0)
+    {\textbf{Hasil layanan}\\{\tiny\mdseries waktu tunggu,\\mutu, dan biaya}};
+  \node[kotak] (vendor) at (6.675, 0)
+    {\textbf{Vendor}\\{\tiny\mdseries menjalankan pekerjaan\\sesuai kontrak}};
+  \draw[panah] ([yshift=2mm]komisaris.east) -- node[keterangan, above]
+    {pengawasan\\nasihat} ([yshift=2mm]direksi.west);
+  \draw[panah] ([yshift=-2mm]direksi.west) -- node[keterangan, below]
+    {laporan} ([yshift=-2mm]komisaris.east);
+  \draw[panah] ([yshift=2mm]direksi.east) -- node[keterangan, above]
+    {mandat} ([yshift=2mm]komite.west);
+  \draw[panah] ([yshift=-2mm]komite.west) -- node[keterangan, below]
+    {rekomendasi} ([yshift=-2mm]direksi.east);
+  \draw[panah] (direksi.south) -- node[keterangan, fill=white] {delegasi}
+    (pemilik.north);
+  \draw[panah] (direksi.south) -- node[keterangan, fill=white] {delegasi}
+    (manajemen.north);
+  \draw[{Stealth[length=2mm]}-{Stealth[length=2mm]}, thick] (pemilik) --
+    node[keterangan, above] {kebutuhan\\kesiapan} (manajemen);
+  \draw[panah] (pemilik) -- node[keterangan, right] {memiliki\\manfaat} (hasil);
+  \draw[panah] (manajemen) -- node[keterangan, right] {mengelola\\kontrak} (vendor);
+  \draw[panah] (vendor) -- node[keterangan, above] {pekerjaan} (hasil);
+\end{tikzpicture}

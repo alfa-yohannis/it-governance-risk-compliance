@@ -1,0 +1,29 @@
+\begin{tikzpicture}[
+  aturan/.style={draw,rounded corners,align=center,text width=2.2cm,
+    minimum height=1.05cm,font=\scriptsize,fill=blue!8},
+  mitra/.style={draw,rounded corners,align=center,text width=2.2cm,
+    minimum height=1.05cm,font=\scriptsize,fill=orange!12},
+  pusat/.style={draw,rounded corners,align=center,text width=2.0cm,
+    minimum height=1.2cm,font=\scriptsize\bfseries,fill=praditagreen!15},
+  akhir/.style={draw,rounded corners,align=center,text width=1.8cm,
+    minimum height=1.05cm,font=\scriptsize,fill=green!10},
+  label/.style={font=\tiny,inner sep=1pt},
+  panah/.style={-{Stealth[length=2mm]},thick}
+]
+  \node[aturan,text width=5.6cm] (langsung) at (1.65,2.0) {Aturan yang mencakup Medikara sendiri:
+    UU PDP, UU 17/2023, PP 28/2024, Permenkes 24/2022, PP 71/2019};
+  \node[aturan] (ojk) at (-0.2,0) {POJK 4/POJK.05/2021};
+  \node[mitra] (asuransi) at (3.3,0) {Perusahaan asuransi mitra (LJKNB)};
+  \node[pusat] (medikara) at (6.7,0) {Medikara};
+  \node[akhir] (vendor) at (9.9,0) {Vendor Medikara+ dan penyedia \textit{cloud}};
+  \node[aturan] (spbe) at (-0.2,-2.0) {Perpres 95/2018 tentang SPBE};
+  \node[mitra] (instansi) at (3.3,-2.0) {Instansi pemerintah mitra};
+  \draw[panah] (ojk) -- node[label,above=1pt] {mengikat} (asuransi);
+  \draw[panah] (spbe) -- node[label,above=1pt] {mengikat} (instansi);
+  \draw[panah,dashed] (asuransi) -- node[label,above=1pt] {kontrak} (medikara);
+  \draw[panah,dashed] (instansi) -| node[label,pos=0.25,above=1pt] {perjanjian} (medikara);
+  \draw[panah,dashed] (medikara) -- node[label,above=1pt] {kontrak} (vendor);
+  \draw[panah] (langsung.east) -| node[label,pos=0.25,above=1pt] {mengikat langsung} (medikara.north);
+  \draw (6.0,-2.75) -- (6.7,-2.75) node[right,font=\tiny] {garis penuh: aturan berlaku langsung};
+  \draw[dashed] (6.0,-3.05) -- (6.7,-3.05) node[right,font=\tiny] {garis putus: syarat mengalir lewat kontrak};
+\end{tikzpicture}

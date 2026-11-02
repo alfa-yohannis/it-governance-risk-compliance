@@ -1,0 +1,37 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  judul/.style={draw, align=center, text width=1.9cm, minimum height=0.6cm,
+    fill=praditagreen!15},
+  sel/.style={draw, rounded corners, align=center, text width=1.9cm,
+    minimum height=1.05cm, fill=blue!8},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[judul] at (0,0) {\textbf{Subkategori}};
+  \node[judul] at (2.45,0) {\textbf{Status lokal}};
+  \node[judul] at (4.9,0) {\textbf{Celah}};
+  \node[judul] at (7.35,0) {\textbf{Kontrol}};
+  \node[judul] at (9.8,0) {\textbf{Risiko, kewajiban}};
+  \node[sel] (a1) at (0,-1.0) {PR.AA-05};
+  \node[sel, fill=gray!35] (a2) at (2.45,-1.0) {Sebagian};
+  \node[sel, fill=orange!12] (a3) at (4.9,-1.0)
+    {\textbf{G-01}\\{\tiny\mdseries peninjauan belum lintas lokasi}};
+  \node[sel] (a4) at (7.35,-1.0) {AC-01\\{\tiny\mdseries Annex A 5.15, 5.18}};
+  \node[sel, fill=green!10] (a5) at (9.8,-1.0) {R-01, K-01};
+  \node[sel] (b1) at (0,-2.3) {RC.RP-03};
+  \node[sel, fill=red!22] (b2) at (2.45,-2.3) {Belum ada bukti};
+  \node[sel, fill=orange!12] (b3) at (4.9,-2.3)
+    {\textbf{G-03}\\{\tiny\mdseries pemulihan belum diuji}};
+  \node[sel] (b4) at (7.35,-2.3) {Uji pemulihan\\{\tiny\mdseries Annex A 8.13}};
+  \node[sel, fill=green!10] (b5) at (9.8,-2.3) {R-05, K-02};
+  \node[sel] (c1) at (0,-3.6) {RS.MA-01, GV.SC-07};
+  \node[sel, fill=red!22] (c2) at (2.45,-3.6) {Belum ada bukti};
+  \node[sel, fill=orange!12] (c3) at (4.9,-3.6)
+    {\textbf{G-05}\\{\tiny\mdseries vendor terlambat\\melapor}};
+  \node[sel] (c4) at (7.35,-3.6) {Insiden vendor\\{\tiny\mdseries Annex A 5.20, 5.26}};
+  \node[sel, fill=green!10] (c5) at (9.8,-3.6) {R-01, R-12, K-04, K-05};
+  \foreach \baris in {a,b,c} {
+    \draw[panah] (\baris1) -- (\baris2);
+    \draw[panah] (\baris2) -- (\baris3);
+    \draw[panah] (\baris3) -- (\baris4);
+    \draw[panah] (\baris4) -- (\baris5);
+  }
+\end{tikzpicture}

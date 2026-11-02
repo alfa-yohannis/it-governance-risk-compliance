@@ -1,0 +1,31 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  x=0.82cm,
+  batang/.style={draw, rounded corners=1pt, minimum height=0.6cm, align=center, inner sep=1pt,
+    font=\tiny},
+  ket/.style={align=center, font=\tiny},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  % Sumbu hari: satu satuan x sama dengan satu hari, hari ke-1 berada pada x = 1.
+  \draw[panah] (0.7,0) -- (14.6,0);
+  \foreach \hari/\nama in {1/Selasa, 4/Jumat, 8/Selasa, 11/Jumat, 14/Senin} {
+    \draw[thick] (\hari,0.1) -- (\hari,-0.1);
+    \node[ket] at (\hari,-0.45) {Hari \hari\\ \nama};
+  }
+  % Lapisan fakta latihan: rekam kunjungan dan catatan rinci.
+  \node[batang, fill=red!22, text width=3.2cm, anchor=west] at (1,1.15)
+    {Malam 1 sampai 4: 620 rekam, hanya jumlah};
+  \node[batang, fill=green!10, text width=3.2cm, anchor=west] at (5,1.15)
+    {Malam 5 sampai 8: 620 rekam terlacak};
+  \node[batang, fill=gray!35, text width=4.85cm, anchor=west] at (5,0.46)
+    {Catatan rinci tersisa saat diketahui: 7 hari};
+  \node[ket, anchor=west] at (11.2,1.05) {Keluhan pasien\\ hari 11, 20.00 WIB};
+  \draw[thick, dashed] (11,0.1) -- (11,1.4);
+  % Tiga pembacaan rentang 72 jam.
+  \draw[panah, blue!60!black] (1,-1.05) -- (4,-1.05);
+  \node[ket, anchor=west] at (4.15,-1.05) {dari panggilan pertama: batas hari 4, lewat sebelum
+    diketahui};
+  \draw[panah, orange!70!black] (8,-1.65) -- (11,-1.65);
+  \node[ket, anchor=east] at (7.85,-1.65) {dari panggilan terakhir: batas tepat saat diketahui};
+  \draw[panah, green!40!black] (11,-2.25) -- (14,-2.25);
+  \node[ket, anchor=east] at (10.85,-2.25) {dari saat diketahui: batas Senin 20.00 WIB};
+\end{tikzpicture}

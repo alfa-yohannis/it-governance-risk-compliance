@@ -1,0 +1,35 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  execute at begin node={\hyphenpenalty=10000},
+  atas/.style={align=center, text width=1.6cm, inner sep=0pt, anchor=south},
+  bawah/.style={align=center, text width=1.6cm, inner sep=0pt, anchor=north,
+    font=\tiny\mdseries},
+  rentang/.style={{Stealth[length=1.6mm]}-{Stealth[length=1.6mm]}, thick},
+  nilai/.style={fill=white, inner sep=1pt, font=\tiny\bfseries}]
+  \fill[green!10] (0,0) rectangle (1.68,0.28);
+  \fill[red!22] (1.68,0) rectangle (4.2,0.28);
+  \fill[blue!8] (4.2,0) rectangle (8.4,0.28);
+  \fill[orange!12] (8.4,0) rectangle (10.08,0.28);
+  \draw (0,0) rectangle (10.08,0.28);
+  \foreach \x in {0,1.68,4.2,8.4,10.08} {
+    \draw[thick] (\x,-0.08) -- (\x,0.36);
+  }
+  \node[atas] at (0,0.42) {Jam 0\\{\tiny\mdseries Jumat 20.00}};
+  \node[atas] at (1.68,0.42) {Jam 12\\{\tiny\mdseries Sabtu 08.00}};
+  \node[atas] at (4.2,0.42) {Jam 30\\{\tiny\mdseries Minggu 02.00}};
+  \node[atas] at (8.4,0.42) {Jam 60\\{\tiny\mdseries Senin 08.00}};
+  \node[atas] at (10.08,0.42) {Jam 72\\{\tiny\mdseries Senin 20.00}};
+  \node[bawah] at (0,-0.14) {Vendor mendeteksi};
+  \node[bawah] at (1.68,-0.14) {Batas K-05};
+  \node[bawah] at (4.2,-0.14) {Varian Bab 3: terlambat 18 jam};
+  \node[bawah] at (8.4,-0.14) {Batas internal naskah};
+  \node[bawah] at (10.08,-0.14) {Batas terluar Pasal 46};
+  \draw[rentang] (1.68,-1.02) -- node[nilai] {48 jam} (8.4,-1.02);
+  \draw[rentang] (1.68,-1.42) -- node[nilai] {60 jam} (10.08,-1.42);
+  \draw[rentang] (4.2,-1.82) -- node[nilai] {30 jam} (8.4,-1.82);
+  \draw[rentang] (4.2,-2.22) -- node[nilai] {42 jam} (10.08,-2.22);
+  \node[align=right, anchor=east, font=\tiny\mdseries] at (1.6,-1.22)
+    {laporan pada\\jam ke-12};
+  \node[align=right, anchor=east, font=\tiny\mdseries] at (4.12,-2.02)
+    {laporan pada\\jam ke-30};
+\end{tikzpicture}

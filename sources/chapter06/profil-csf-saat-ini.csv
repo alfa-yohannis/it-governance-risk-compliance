@@ -1,0 +1,16 @@
+# Kegunaan: templat profil saat ini NIST CSF 2.0 untuk Aktivitas Bab 06. Cara memakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, isi kolom kosong, lalu tambah atau kurangi subkategori sesuai cakupan; pemilik_risiko mengikuti register Bab 05 dan pemilik_hasil adalah penanggung jawab hasil dan buktinya.
+fungsi,subkategori,hasil_ringkas,cakupan,status_lokal,sumber_bukti,periode,keterbatasan,risiko_terkait,kewajiban_terkait,pemilik_risiko,pemilik_hasil
+Govern,GV.OC-03,Persyaratan hukum dan kontrak dipahami serta dikelola,,,,,,,,,
+Govern,GV.RM-02,Pernyataan risk appetite dan risk tolerance ditetapkan,,,,,,,,,
+Govern,GV.RR-02,Peran dan wewenang ditetapkan serta ditegakkan,,,,,,,,,
+Govern,GV.SC-07,Risiko pemasok dipahami dan dipantau sepanjang hubungan,,,,,,,,,
+Identify,ID.AM-02,Inventaris perangkat lunak dan layanan dan sistem dipelihara,,,,,,,,,
+Protect,PR.AA-01,Identitas dan kredensial pengguna dikelola,,,,,,,,,
+Protect,PR.AA-03,Pengguna dan layanan diautentikasi,,,,,,,,,
+Protect,PR.AA-05,Hak akses ditetapkan dan ditinjau dengan hak minimum,,,,,,,,,
+Protect,PR.AA-06,Akses fisik dikelola dan dipantau,,,,,,,,,
+Protect,PR.PS-04,Catatan aktivitas dibuat dan tersedia untuk pemantauan,,,,,,,,,
+Protect,PR.DS-11,Cadangan dibuat dan dilindungi dan dipelihara dan diuji,,,,,,,,,
+Detect,DE.CM-03,Aktivitas personel dan pemakaian teknologi dipantau,,,,,,,,,
+Respond,RS.MA-01,Rencana insiden dijalankan bersama pihak ketiga terkait,,,,,,,,,
+Recover,RC.RP-03,Integritas cadangan diverifikasi sebelum pemulihan,,,,,,,,,

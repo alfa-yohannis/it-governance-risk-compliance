@@ -1,0 +1,12 @@
+# Kegunaan: lembar RACI kosong untuk Aktivitas Bab 08. Cara memakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, ganti nama peran bila organisasi berbeda, isi R, A, C, I, atau - pada 8 sampai 10 baris, lalu uji tepat satu A dan sedikitnya satu R per baris.
+keputusan,direksi,direktur_pelayanan,pemilik_layanan,kepala_rekam_medis,operasi_ti,keamanan_ciso,petugas_pelindungan_data,hukum,forum_arsitektur,alasan_dan_delegasi
+Aturan rekam medis terpadu,,,,,,,,,,
+Tujuan berbagi data mitra,,,,,,,,,,
+Akses teknis mitra,,,,,,,,,,
+Peninjauan akses AC-01,,,,,,,,,,
+Pencabutan akun vendor,,,,,,,,,,
+Perubahan darurat SIMRS,,,,,,,,,,
+Penerimaan risiko di atas batas,,,,,,,,,,
+Uji pemulihan,,,,,,,,,,
+Pemberitahuan insiden data,,,,,,,,,,
+Subprosesor dan penghentian vendor,,,,,,,,,,

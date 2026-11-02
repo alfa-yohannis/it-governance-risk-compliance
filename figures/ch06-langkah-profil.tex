@@ -1,0 +1,26 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  tahap/.style={draw, rounded corners, align=center, text width=1.9cm,
+    minimum height=1.0cm, fill=blue!8},
+  hasil/.style={draw, align=center, text width=1.9cm, minimum height=1.05cm,
+    fill=white, font=\tiny},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[tahap] (s1) at (0,0) {1. Tetapkan cakupan};
+  \node[tahap] (s2) at (2.45,0) {2. Kumpulkan informasi};
+  \node[tahap, fill=orange!12] (s3) at (4.9,0) {3. Buat profil};
+  \node[tahap, fill=orange!12] (s4) at (7.35,0) {4. Analisis celah dan rencana};
+  \node[tahap, fill=green!10] (s5) at (9.8,0) {5. Jalankan dan perbarui};
+  \node[hasil] (h1) at (0,-1.55) {5 rumah sakit, Medikara+, 120 akun, 12 bulan};
+  \node[hasil] (h2) at (2.45,-1.55) {Register Bab 3, register Bab 5, sumber bukti};
+  \node[hasil] (h3) at (4.9,-1.55) {14 subkategori dengan status lokal};
+  \node[hasil] (h4) at (7.35,-1.55) {6 celah, 3 prioritas untuk Bab 8};
+  \node[hasil] (h5) at (9.8,-1.55) {Profil target Bab 8, tonggak C3};
+  \draw[panah] (s1) -- (s2);
+  \draw[panah] (s2) -- (s3);
+  \draw[panah] (s3) -- (s4);
+  \draw[panah] (s4) -- (s5);
+  \foreach \nomor in {1,2,3,4,5} {
+    \draw[gray, thin] (s\nomor) -- (h\nomor);
+  }
+  \draw[panah, dashed] (s5.north) -- ++(0,0.4) -| node[pos=0.25, above] {ulangi} (s1.north);
+\end{tikzpicture}

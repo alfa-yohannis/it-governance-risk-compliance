@@ -1,0 +1,10 @@
+# Kegunaan: menyaring usulan terhadap Pasal 34 ayat (2) UU PDP pada Aktivitas Bab 7. Cara pakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, tambah kolom usulan tim; contoh adalah pengandaian.
+huruf,keadaan,klaim_asuransi,triase_otomatis_telekonsultasi,tampilan_baru_medikara_plus,usulan_tim
+a,Keputusan otomatis dengan akibat hukum atau dampak signifikan,Tidak,Ya,Tidak,
+b,Data spesifik,Ya,Ya,Sudah ada; tidak berubah,
+c,Skala besar,Ya: 72.000 per tahun,Perlu dihitung,Sudah ada; tidak berubah,
+d,Evaluasi; penskoran; atau pemantauan sistematis,Tidak,Ya: penskoran gejala,Tidak,
+e,Pencocokan atau penggabungan data,Ya,Tidak,Tidak,
+f,Teknologi baru,Tidak,Ya,Tidak,
+g,Membatasi hak subjek data,Perlu diperiksa,Perlu diperiksa,Tidak,
+keputusan,Keputusan penilaian dampak,DPIA sebelum aktif,DPIA sebelum uji coba,Tinjau DPIA lama bila alur berubah,

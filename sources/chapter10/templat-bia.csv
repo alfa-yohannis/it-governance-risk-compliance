@@ -1,0 +1,3 @@
+# Kegunaan: lembar kosong BIA untuk Aktivitas Bab 10. Cara memakai: salin berkas, buang baris komentar ini bila aplikasi tidak mengenalinya, isi satu baris per layanan dengan nilai dampak 1 sampai 5 menurut skala Bab 5, lalu tetapkan MTPD pada titik waktu pertama bernilai 4 atau lebih. Bandingkan dengan contoh-bia-medikara.csv.
+layanan,pemilik,kapasitas_normal,dampak_1_jam,dampak_4_jam,dampak_6_jam,dampak_12_jam,dampak_24_jam,dampak_48_jam,cedera_berat_mungkin_sejak,mtpd_menit,rto_layanan_menit,rpo_menit,kapasitas_minimum,ketergantungan,asumsi_bukti
+,,,,,,,,,,,,,,,

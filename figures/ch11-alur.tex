@@ -1,0 +1,24 @@
+\begin{tikzpicture}[
+  node distance=5mm,
+  font=\scriptsize,
+  kotak/.style={draw, rounded corners, align=center, text width=2.4cm, minimum height=1cm},
+  catatan/.style={align=center, text width=2.4cm},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[kotak, fill=praditagreen!15] (t0) {\textbf{Tujuan dan konteks}};
+  \node[kotak, fill=blue!8, right=of t0] (t1) {\textbf{Dampak dan risiko}};
+  \node[kotak, fill=orange!12, right=of t1] (t2) {\textbf{Batas pemakaian}};
+  \node[kotak, fill=green!10, right=of t2] (t3) {\textbf{Evaluasi dan pengawasan}};
+  \draw[panah] (t0) -- (t1);
+  \draw[panah] (t1) -- (t2);
+  \draw[panah] (t2) -- (t3);
+  \node[catatan, below=2mm of t0] (c0)
+    {Apa yang dibantu\\dan siapa\\memakainya?\\{\tiny\mdseries Bukti: baris inventaris}};
+  \node[catatan, below=2mm of t1] (c1)
+    {Siapa dirugikan bila keluaran salah?\\{\tiny\mdseries Bukti: penilaian dampak}};
+  \node[catatan, below=2mm of t2] (c2)
+    {Diizinkan, perlu persetujuan, atau ditahan?\\{\tiny\mdseries Bukti: kebijakan KB-09}};
+  \node[catatan, below=2mm of t3] (c3)
+    {Manfaat terbukti dan keluaran dapat ditolak?\\{\tiny\mdseries Bukti: hasil uji dan log}};
+  \draw[panah, dashed] (c3.south) -- ++(0,-5mm) -| (c0.south)
+    node[pos=0.25, below] {Perubahan tujuan, model, data, atau vendor memicu tinjauan ulang};
+\end{tikzpicture}

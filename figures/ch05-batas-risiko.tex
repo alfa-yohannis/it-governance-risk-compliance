@@ -1,0 +1,24 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000},
+  isi/.style={anchor=north west, align=left, text width=9.6cm, inner sep=2pt}]
+  \draw[rounded corners, fill=praditagreen!15] (0,0) rectangle (11.4,5.3);
+  \node[isi, text width=11cm] at (0.15,5.22)
+    {\textbf{Kapasitas risiko:} batas yang mampu ditanggung, misalkan Rp5 miliar per tahun.};
+  \draw[rounded corners, fill=orange!12] (0.4,0.45) rectangle (11,4.75);
+  \node[isi, text width=10.2cm] at (0.55,4.67)
+    {\textbf{\textit{Risk appetite}:} arah yang disahkan direksi. Rendah untuk akses tidak sah
+    pada data pasien. Peluang kerugian Rp1,5 miliar atau lebih paling tinggi 2 persen per
+    tahun.};
+  \draw[rounded corners, fill=blue!8] (0.8,0.65) rectangle (10.6,3.6);
+  \node[isi, text width=9.4cm] at (0.95,3.52)
+    {\textbf{\textit{Risk tolerance}:} batas operasional. Nol akun vendor aktif tanpa pemilik
+    dan masa berlaku. Pencabutan paling lambat 1 hari kerja setelah penugasan berakhir.};
+  \draw[rounded corners, fill=green!10] (1.2,0.85) rectangle (10.2,2.4);
+  \node[isi, text width=8.6cm] at (1.35,2.32)
+    {\textbf{KRI dan bukti:} jumlah akun tanpa pemilik, akun melewati masa berlaku, dan hasil
+    AC-01. Nilai di luar batas memicu pembekuan akun dan keputusan pemilik risiko.};
+  \node[anchor=south, align=center] at (5.7,0.06)
+    {{\tiny\mdseries Keselamatan pasien dan kewajiban hukum dinilai terpisah, bukan ditukar
+    dengan rupiah.}};
+\end{tikzpicture}

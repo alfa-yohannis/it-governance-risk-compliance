@@ -1,0 +1,5 @@
+# Kegunaan: hitungan tangan peluang kerugian R-01 melampaui ambang (Bab 05). Cara memakai: bandingkan dengan hasil simulasi-kerugian.py; seluruh angka pengandaian.
+ambang_kerugian_rupiah,peluang_bersyarat_melampaui,peluang_awal_per_tahun,persen_melampaui_awal,peluang_setelah_kontrol,persen_melampaui_setelah_kontrol,batas_appetite_persen
+100000000,1.0,0.2,20,0.05,5,
+500000000,0.5,0.2,10,0.05,2.5,
+1500000000,0.2,0.2,4,0.05,1,2

@@ -1,0 +1,24 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  tahap/.style={draw, rounded corners, align=center, text width=3.0cm,
+    minimum height=1.1cm, fill=blue!8},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[tahap, fill=praditagreen!15] (risiko) at (0,0)
+    {\textbf{Risiko R-01}\\{\tiny\mdseries skor $3 \times 4 = 12$, dinilai pada Bab 5}};
+  \node[tahap] (tangani) at (4.1,0)
+    {\textbf{Penanganan dipilih}\\{\tiny\mdseries kurangi paparan akun vendor}};
+  \node[tahap] (perlu) at (8.2,0)
+    {\textbf{Kontrol diperlukan}\\{\tiny\mdseries AC-01 dan pemantauan aktivitas}};
+  \node[tahap] (banding) at (8.2,-1.9)
+    {\textbf{Dibandingkan dengan Annex A}\\{\tiny\mdseries 93 kontrol sebagai rujukan}};
+  \node[tahap, fill=orange!12] (soa) at (4.1,-1.9)
+    {\textbf{SoA}\\{\tiny\mdseries kontrol, alasan, status, pengecualian}};
+  \node[tahap, fill=green!10] (bukti) at (0,-1.9)
+    {\textbf{Bukti operasi}\\{\tiny\mdseries daftar akun, keputusan, tiket pencabutan}};
+  \draw[panah] (risiko) -- (tangani);
+  \draw[panah] (tangani) -- (perlu);
+  \draw[panah] (perlu) -- (banding);
+  \draw[panah] (banding) -- (soa);
+  \draw[panah] (soa) -- (bukti);
+  \draw[panah, dashed] (bukti) -- node[right, align=left] {tinjau ulang} (risiko);
+\end{tikzpicture}

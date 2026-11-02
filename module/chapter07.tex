@@ -1,69 +1,1209 @@
+% !TeX root = it-governance-risk-compliance.tex
+% !TeX encoding = UTF-8
 \chapter{Pelindungan Data Pribadi dalam Praktik}
 
 \section*{Tujuan Pembelajaran}
 \begin{itemize}
-  \item Menjelaskan kewajiban pengendali dan prosesor data pribadi menurut UU 27/2022 dan PP 33/2026.
+  \item Menjelaskan kewajiban pengendali dan prosesor data pribadi menurut UU 27/2022 dan ketentuan
+  pelaksana yang terverifikasi.
   \item Menyusun catatan kegiatan pemrosesan data pribadi untuk satu proses layanan.
-  \item Menganalisis insiden kebocoran data dan menilai apakah penanganannya memenuhi kewajiban notifikasi.
+  \item Menganalisis insiden kebocoran data dan menilai apakah penanganannya memenuhi kewajiban
+  notifikasi.
 \end{itemize}
 
 \section{Pendahuluan}
 
-% TODO
-% Cakupan: data pasien bocor lewat vendor, lalu muncul pertanyaan siapa yang bertanggung jawab dan apa yang wajib dilakukan dalam hitungan jam.
-% Kasus Medikara: insiden kebocoran skala kecil lewat vendor pada 2025.
+Ketika kebocoran terjadi pada vendor, pertanyaan pertama sering diarahkan kepada pemilik server.
+Pelindungan data memerlukan pertanyaan lain: siapa menentukan tujuan pemrosesan, siapa memberi
+instruksi, siapa menerima data, dan siapa memberi tahu pasien. Data latihan yang dipakai sejak Bab 1
+memberi gambarannya. Akun dukungan vendor tetap aktif setelah kontrak pekerjaan selesai. Selama 8
+malam akun itu memanggil data kunjungan pada dua rumah sakit, 155 panggilan per malam, sehingga
+1.240 rekam kunjungan terbaca. Medikara baru mengetahuinya pada hari ke-11, lewat keluhan pasien.
 
-\section{Konsep Dasar UU 27/2022}
+Bab ini menutup tonggak C2. Bab 3 memberi register kewajiban K-01 sampai K-16, Bab 5 memberi
+skenario R-01 dan R-12, dan Bab 6 memberi daftar celah G-01 sampai G-06. Bab ini menambahkan catatan
+kegiatan pemrosesan dan analisis celah pelindungan data. Fakta dasar kasus hanya menyebut kebocoran
+skala kecil lewat vendor pada 2025. Angka insiden mengikuti data latihan mata kuliah IT40613,
+sedangkan rincian jam merupakan pengandaian bab ini. Bab ini bukan nasihat hukum. Pembacaan pasal
+yang memerlukan penilaian ditandai ``penafsiran bab'', dan keputusan pada kasus nyata tetap
+memerlukan penasihat hukum.
 
-% TODO
-% Cakupan: data pribadi umum dan data pribadi yang bersifat spesifik, termasuk data kesehatan; prinsip pemrosesan; dasar pemrosesan; ruang lingkup dan masa transisi yang berakhir 17 Oktober 2024.
+Acuan hukum bab ini adalah Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU
+PDP), Putusan Mahkamah Konstitusi (MK) Nomor 151/PUU-XXII/2024, Peraturan Pemerintah (PP) Nomor 28
+Tahun 2024, dan Peraturan Menteri Kesehatan (Permenkes) Nomor 24 Tahun 2022 tentang Rekam Medis.
+Sistem manajemen privasi dibahas melalui ISO/IEC 27701:2025. Panduan Eropa dipakai sebagai
+pembanding, bukan sumber kewajiban di Indonesia. Aturan pelaksana yang naskah resminya belum
+diperoleh tidak dijadikan kewajiban
+\cite{uu27-2022-pdp,c07-mk151,pp28-2024-kesehatan,permenkes24-2022,c07-iso27701}.
 
-\section{Hak Subjek Data dan Kewajiban Pengendali}
+\IfFileExists{../figures/ch07-diagram-konsep.png}{%
 
-% TODO
-% Cakupan: hak akses, pembetulan, penghapusan, dan keberatan atas keputusan otomatis; kewajiban pengendali dan prosesor; pengendali bersama; pejabat atau petugas pelindungan data pribadi.
+Gambar \ref{fig:ch07-ilustrasi-bab} merangkum hubungan komponen dan konsep utama bab ini.
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/ch07-diagram-konsep.png}
+  \caption{Tujuan dan dasar pemrosesan mengendalikan alur data pribadi}
+  \label{fig:ch07-ilustrasi-bab}
+\end{figure}
+}{}
 
-\section{PP 33/2026 dan Status Penegakan}
+\section{Data, Tujuan, dan Dasar Pemrosesan}
 
-% TODO
-% Cakupan: ditetapkan 16 Juli 2026 dan berlaku 16 Januari 2027; rincian teknis seperti mekanisme persetujuan, data anak, penilaian dampak, transfer data, dan ganti rugi; sanksi administratif; status lembaga pengawas pelindungan data pribadi.
-% Catatan: per 30 Oktober 2026 naskah resmi belum tampil di JDIH BPK; cocokkan nomor pasal dengan naskah resmi saat menulis isi.
+\subsection*{Data umum dan data spesifik}
 
-\section{Penilaian Dampak dan Notifikasi Kegagalan}
+UU PDP mendefinisikan data pribadi sebagai data tentang orang perseorangan yang teridentifikasi atau
+dapat diidentifikasi, secara tersendiri atau dikombinasi dengan informasi lain. Pasal 4 membaginya
+menjadi data yang bersifat umum dan data yang bersifat spesifik. Data dan informasi kesehatan, data
+biometrik, data genetika, catatan kejahatan, data anak, dan data keuangan pribadi termasuk data
+spesifik. Nama lengkap, jenis kelamin, agama, dan status perkawinan termasuk data umum
+\cite{uu27-2022-pdp}. Pembagian ini punya akibat. Pasal 34 menempatkan pemrosesan data spesifik
+sebagai pemrosesan berpotensi risiko tinggi, dan Pasal 53 memakainya untuk menilai kebutuhan petugas
+pelindungan data.
 
-% TODO
-% Cakupan: kapan penilaian dampak pelindungan data pribadi wajib (data spesifik, skala besar, keputusan otomatis); isi minimum penilaian; notifikasi tertulis paling lambat 3 x 24 jam kepada subjek data dan lembaga; isi notifikasi.
-% Kasus Medikara: garis waktu insiden vendor 2025 dibandingkan dengan kewajiban notifikasi.
+Analogi buku tamu membantu menjelaskan pembagian ini. Nama di buku tamu gedung perkantoran tidak
+banyak bercerita. Nama yang sama di buku tamu poli jantung sudah bercerita tentang kesehatan
+seseorang. Datanya tampak sama, tetapi konteksnya mengubah risikonya.
 
-\section{Catatan Kegiatan Pemrosesan dan Transfer Data}
+Dua contoh pada Medikara:
+\begin{enumerate}
+  \item Medikara+ melayani sekitar 28.000 janji temu per bulan, atau 336.000 per tahun. Tiap baris
+  memuat nama dan poli tujuan. Nama termasuk data umum, tetapi poli tujuan memperlihatkan keadaan
+  kesehatan. Bab ini memperlakukan seluruh baris sebagai data spesifik. Itu penafsiran bab, karena
+  Pasal 4 tidak membahas gabungan seperti ini.
+  \item Mata kuliah IT40613 menghitung akibat pembatasan data. Kontrak Application Programming
+  Interface (API) janji temu memuat 4 bidang. Misalkan vendor meminta 10 bidang, dengan tambahan
+  nama lengkap, tanggal lahir, telepon, nomor identitas, diagnosis, dan alergi. Bila 1.240 rekam
+  terpapar, butir data yang terpapar naik dari 4.960 menjadi 12.400, atau 2,5 kali. Bidang yang
+  tidak pernah dikirim tidak dapat bocor lewat jalur itu.
+\end{enumerate}
 
-% TODO
-% Cakupan: struktur catatan kegiatan pemrosesan (RoPA, Records of Processing Activities); pemetaan alur data; transfer ke luar wilayah hukum Indonesia; kaitan dengan kerahasiaan dan masa simpan rekam medis menurut Permenkes 24/2022.
-% Kasus Medikara: alur data pendaftaran pasien dan telekonsultasi di Medikara+.
+Tabel~\ref{tab:ch07-jenis-data} menerapkan pembagian itu pada data Medikara.
 
-\section{Sistem Manajemen Privasi ISO/IEC 27701:2025}
+\begin{table}[!htb]
+  \centering\small
+  \caption{Jenis data pada Medikara dan akibatnya (misalkan)}\label{tab:ch07-jenis-data}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.3\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Data} & \textbf{Jenis menurut Pasal 4} & \textbf{Akibat pada pengelolaan} \\ \hline
+    Nama lengkap dan jenis kelamin pada pendaftaran & Umum & Tetap memerlukan dasar, tujuan, dan
+    pengamanan \\ \hline
+    Diagnosis, hasil laboratorium, dan resep & Spesifik: data dan informasi kesehatan & Potensi
+    risiko tinggi menurut Pasal 34 ayat (2) huruf b \\ \hline
+    Nama dan poli tujuan pada janji temu & Gabungan; diperlakukan spesifik (penafsiran bab) & Akses
+    dibatasi seperti data klinis \\ \hline
+    Data pasien anak & Spesifik: data anak & Persetujuan orang tua atau wali menurut Pasal 25 \\
+    \hline
+    Rekening untuk pembayaran & Spesifik: data keuangan pribadi & Dipisahkan dari catatan klinis
+    \\ \hline
+  \end{tabularx}
+\end{table}
 
-% TODO
-% Cakupan: PIMS (Privacy Information Management System) yang kini dapat berdiri sendiri; kaitan dengan ISO/IEC 27001; kapan sertifikasi privasi berguna bagi organisasi.
-% Pendalaman teknis: pseudonimisasi, tokenisasi, klasifikasi data otomatis, dan sumber daya Consent pada HL7 FHIR (dibahas rinci di IT40613).
+Kepemilikan dokumen juga berbeda dari hak subjek data. Pasal 297 UU 17/2023 menyatakan dokumen rekam
+medis milik fasilitas pelayanan kesehatan, dan pasien berhak mengakses informasi di dalamnya
+\cite{c03-uu17}.
 
-\section{Aktivitas: Catatan Pemrosesan Data dan Analisis Insiden Vendor}
+\subsection*{Tujuan membatasi pemrosesan}
 
-% TODO
-% Tujuan aktivitas: memahami alur data pribadi yang sebenarnya dan menilai celah kepatuhan PDP berdasarkan satu proses dan satu insiden.
-% Peran dalam tim: analis regulasi memimpin; pemilik konteks memetakan alur data nyata; analis teknologi menelusuri sistem yang terlibat; analis risiko memperbarui risk register.
-% Langkah: pilih satu proses layanan; isi catatan pemrosesan (jenis data, tujuan, dasar, penerima, lokasi, masa simpan, kontrol); susun garis waktu insiden vendor 2025; nilai celah terhadap UU PDP dan PP 33/2026; rangkum seluruh luaran Bab 4 sampai 7 menjadi C2.
-% Luaran dan tonggak capstone: catatan kegiatan pemrosesan data pribadi dan analisis celah PDP; masuk C2 yang ditinjau menjelang UTS.
-% Berkas sources yang direncanakan: sources/chapter07/templat-ropa.xlsx, sources/chapter07/kronologi-insiden-vendor-2025.md, sources/chapter07/daftar-periksa-celah-pdp.xlsx
+Pasal 16 ayat (2) UU PDP memuat prinsip pemrosesan. Pengumpulan dilakukan terbatas dan spesifik,
+sah secara hukum, dan transparan. Pemrosesan sesuai tujuan, menjamin hak subjek data, akurat, aman,
+dan diberitahukan. Data dimusnahkan atau dihapus setelah masa retensi berakhir, kecuali ditentukan
+lain. Seluruh pemrosesan dapat dibuktikan \cite{uu27-2022-pdp}. Pasal 27 dan Pasal 28 mengulang dua
+prinsip pertama sebagai kewajiban pengendali.
+
+Analogi kunci rumah membantu menjelaskan batas tujuan. Izin tukang memperbaiki keran tidak memberi
+izin membuka seluruh lemari. Begitu pula data yang diperlukan untuk pengobatan tidak otomatis boleh
+dipakai untuk promosi layanan lain. Pembatasan data diterjemahkan menjadi kolom formulir, hak akses,
+penerima, dan masa simpan yang dapat diperiksa.
+
+\subsection*{Enam dasar, bukan satu kotak persetujuan}
+
+Pasal 20 ayat (1) mewajibkan pengendali memiliki dasar pemrosesan. Ayat (2) menyebut enam dasar:
+persetujuan eksplisit, perjanjian, kewajiban hukum, kepentingan vital, tugas kepentingan umum atau
+pelayanan publik berdasarkan peraturan, dan kepentingan sah lainnya dengan memperhatikan
+keseimbangan. Penjelasan huruf d mencontohkan kepentingan vital pada perawatan medis serius
+\cite{uu27-2022-pdp}. Pasal 963 ayat (1) PP 28/2024 memakai pola serupa: pemrosesan data kesehatan
+individu memerlukan persetujuan pemilik data dan/atau ketentuan lain yang menjadi dasar pemrosesan
+\cite{pp28-2024-kesehatan}. Tim menilai dasar untuk setiap kegiatan, bukan memakai satu kotak
+persetujuan untuk semua kegiatan.
+
+Dua contoh menunjukkan perlunya pemisahan tujuan:
+\begin{enumerate}
+  \item Misalkan Medikara memproses diagnosis untuk pelayanan dan pencatatan yang diwajibkan aturan
+  kesehatan, pada sekitar 1,2 juta kunjungan per tahun. Tim mencatat dasar yang sesuai dengan unsur
+  kewajibannya, bukan menganggap persetujuan satu-satunya dasar. Dengan dasar itu, satu baris K-16
+  menjelaskan seluruh kunjungan, tanpa 1,2 juta kotak centang yang harus dibuktikan satu per satu.
+  \item Misalkan data kontak 2.000 pasien akan dipakai untuk promosi, dan 150 pasien kemudian
+  menarik persetujuan. Pasal 40 ayat (2) meminta penghentian paling lambat $3 \times 24$ jam sejak
+  permintaan diterima. Daftar promosi turun menjadi 1.850 pasien. Penarikan itu tidak otomatis
+  menghilangkan rekam medis ke-150 pasien yang wajib disimpan.
+\end{enumerate}
+
+Tabel~\ref{tab:ch07-tujuan} merangkum analisis tujuan pemrosesan. Kolom dasar adalah penafsiran bab
+dan perlu ditinjau fungsi hukum.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Analisis tujuan pemrosesan (misalkan; dasar adalah penafsiran bab)}
+  \label{tab:ch07-tujuan}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Tujuan} & \textbf{Data} & \textbf{Dasar kandidat} & \textbf{Bila pasien menolak atau
+    menarik} \\ \hline
+    Pendaftaran janji temu & Identitas, poli, jadwal & Perjanjian atau permintaan subjek data, Pasal
+    20 ayat (2) huruf b & Layanan daring tidak berjalan; pasien memakai loket \\ \hline
+    Pelayanan dan rekam medis & Catatan klinis relevan & Kewajiban hukum, huruf c; UU 17/2023 Pasal
+    296, PP 28/2024 Pasal 779 & Pencatatan tetap berjalan; retensi 25 tahun tetap berlaku \\ \hline
+    Gawat darurat, pasien tidak sadar & Alergi dan obat & Kepentingan vital, huruf d & Persetujuan
+    tidak dapat diminta saat itu \\ \hline
+    Pembukaan rekam medis untuk asuransi & Data klaim & Persetujuan, huruf a; Permenkes 24/2022
+    Pasal 34 ayat (1) huruf c & Klaim lewat jalur itu berhenti; perlu jalur lain \\ \hline
+    Promosi layanan lain & Kontak & Persetujuan terpisah, huruf a & Keluar dari daftar paling lambat
+    $3 \times 24$ jam \\ \hline
+  \end{tabularx}
+\end{table}
+
+Dua hal pada persetujuan sering tertukar: persetujuan tindakan dan persetujuan pemrosesan data.
+Pembagiannya begini. Pasal 293 UU 17/2023 meminta persetujuan untuk setiap tindakan pelayanan
+kesehatan perseorangan \cite{c03-uu17}. Persetujuan itu menjawab boleh tidaknya tindakan pada
+pasien. Persetujuan pemrosesan menjawab boleh tidaknya data dipakai untuk tujuan tertentu. Tanda
+tangan pada formulir tindakan bedah tidak membuktikan persetujuan promosi.
+
+Pilihan dasar punya dua konsekuensi. Pertama, bila rekam medis didasarkan pada persetujuan,
+penarikan persetujuan memicu Pasal 40 dan Pasal 43 ayat (1) huruf b UU PDP, padahal Pasal 39
+Permenkes 24/2022 meminta penyimpanan paling singkat 25 tahun. Rentang 72 jam berbenturan dengan
+rentang 25 tahun. Kedua, persetujuan menuntut bukti. Pasal 24 UU PDP mewajibkan pengendali
+menunjukkan bukti persetujuan, dan Pasal 22 ayat (5) menyatakan persetujuan yang tidak memenuhi
+syarat batal demi hukum \cite{uu27-2022-pdp,permenkes24-2022}.
+
+\begin{kasus}[title={Kasus Medikara Health: Satu Kotak untuk Tiga Tujuan}]
+Misalkan formulir Medikara+ memakai satu kotak centang untuk pendaftaran, pengobatan, dan promosi.
+Dalam setahun, 336.000 janji temu melewati formulir itu. Pasal 22 ayat (4) UU PDP meminta
+persetujuan yang memuat tujuan lain dapat dibedakan secara jelas, dengan format yang mudah dipahami
+dan bahasa yang sederhana \cite{uu27-2022-pdp}. Tim menandai K-16 belum memenuhi untuk baris
+promosi.
+
+Keputusan perbaikannya punya dua konsekuensi. Pertama, daftar promosi 2.000 pasien dibekukan sampai
+persetujuan terpisah terkumpul. Misalkan 40 persen pasien setuju kembali, sehingga daftar turun
+menjadi 800 pasien. Kedua, pendaftaran dan pengobatan tidak lagi bergantung pada kotak itu, karena
+dasarnya sudah dipisahkan. Tim kehilangan 1.200 kontak promosi dan memperoleh dasar yang dapat
+dibuktikan.
+\end{kasus}
+
+\section{Pengendali, Prosesor, dan Pengendali Bersama}
+
+\subsection*{Peran ditentukan oleh kegiatan nyata}
+
+Pasal 1 UU PDP menyebut pengendali sebagai pihak yang menentukan tujuan dan melakukan kendali
+pemrosesan, sedangkan prosesor memproses atas nama pengendali. Pasal 51 mengatur akibatnya. Prosesor
+wajib memproses berdasarkan perintah pengendali, dan pemrosesan itu termasuk tanggung jawab
+pengendali. Prosesor memerlukan persetujuan tertulis sebelum melibatkan prosesor lain. Pemrosesan di
+luar perintah dan tujuan yang ditetapkan pengendali menjadi tanggung jawab prosesor. Pasal 52
+memberlakukan sejumlah kewajiban pengendali kepada prosesor, termasuk Pasal 35 sampai Pasal 39
+\cite{uu27-2022-pdp}. Nama jabatan dalam kontrak karena itu perlu diuji terhadap alur keputusan.
+
+Pada sektor kesehatan, Pasal 962 PP 28/2024 menyatakan setiap penyelenggara Sistem Informasi
+Kesehatan merupakan pengendali data pribadi \cite{pp28-2024-kesehatan}. Panduan Eropa memberi
+pembanding yang berguna. European Data Protection Board (EDPB) menyebut pengendali dan prosesor
+sebagai konsep fungsional: statusnya ditentukan kegiatan nyata pada situasi tertentu, bukan sebutan
+formal dalam kontrak \cite{c07-edpb-roles}. Panduan itu tidak mengikat di Indonesia.
+
+Analogi jasa penitipan dokumen menunjukkan perbedaan peran. Pemilik menentukan mengapa dokumen
+disimpan dan siapa boleh menerima salinan. Penyedia penyimpanan menjalankan instruksinya. Bila
+penyedia memakai isi dokumen untuk tujuannya sendiri, analisis perannya berubah.
+
+Dua contoh menjaga analisis tetap spesifik:
+\begin{enumerate}
+  \item Misalkan Medikara menentukan tujuan janji temu dan vendor hanya mengoperasikan Medikara+.
+  Medikara dianalisis sebagai pengendali dan vendor sebagai prosesor untuk 28.000 janji temu per
+  bulan itu. Bila vendor memakai 3 penyedia pendukung, Medikara perlu dapat menunjukkan 3
+  persetujuan tertulis.
+  \item Misalkan vendor memakai data 336.000 janji temu per tahun untuk melatih produk komersialnya
+  sendiri. Tim menilai kembali tujuan, dasar, instruksi, dan peran untuk penggunaan itu. Label
+  prosesor dalam kontrak tidak menyelesaikan analisis.
+\end{enumerate}
+
+Gambar~\ref{fig:ch07-peran} memperlihatkan hubungan itu, dan Tabel~\ref{tab:ch07-peran} merangkum
+pertanyaan untuk menentukan tanggung jawab. Istilah ``instruksi'' pada bab ini sama dengan
+``perintah'' pada Pasal 51.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch07-peran-pemrosesan.tex}
+  \caption{Pengendali, prosesor, dan letak tanggung jawab (penafsiran bab)}
+  \label{fig:ch07-peran}
+\end{figure}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Pertanyaan untuk menentukan tanggung jawab}\label{tab:ch07-peran}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Pertanyaan} & \textbf{Bukti} & \textbf{Akibat keputusan} \\ \hline
+    Siapa menentukan tujuan? & Kebijakan layanan dan keputusan bisnis & Tentukan pengendali per
+    kegiatan \\ \hline
+    Siapa memberi instruksi? & Kontrak serta perubahan instruksi & Batasi tindakan prosesor \\
+    \hline
+    Siapa melibatkan pihak lain? & Persetujuan tertulis dan daftar prosesor lain & Pasal 51 ayat (5)
+    dapat diuji \\ \hline
+    Siapa menangani permintaan pasien? & Alur permintaan dan catatan tanggapan & Cegah pasien
+    dipingpong antarorganisasi \\ \hline
+    Siapa memberi tahu saat kegagalan? & Prosedur insiden dan bukti pengiriman & Pengendali memiliki
+    data yang diperlukan tepat waktu \\ \hline
+  \end{tabularx}
+\end{table}
+
+Pertanyaan kemudian muncul: apakah kebocoran di vendor memindahkan seluruh tanggung jawab kepada
+vendor? Kasus berikut memisahkan dua pertanyaan yang sering dicampur.
+
+\begin{kasus}[title={Kasus Medikara Health: Akun Dukungan di Luar Penugasan}]
+Pada data latihan, kontrak pekerjaan sudah selesai dan akun dukungan tetap aktif. Pertanyaan
+pertama: siapa bertanggung jawab atas pembacaan 1.240 rekam yang tidak punya hubungan layanan dengan
+pekerjaan vendor? Bila bukti menunjukkan vendor bertindak di luar perintah, Pasal 51 ayat (6)
+mengarah kepada vendor. Bukti itu belum lengkap, karena catatan hanya memuat ID aplikasi, bukan ID
+orang.
+
+Pertanyaan kedua: siapa wajib memberi tahu pasien? Pasal 46 menyebut pengendali, sehingga kewajiban
+itu tetap berada pada Medikara. Pasal 37 dan Pasal 39 juga menuntut Medikara mengawasi pihak yang
+terlibat dan mencegah akses tidak sah \cite{uu27-2022-pdp}. Temuan 12 dari 120 akun yang luput dari
+peninjauan menunjukkan kewajiban itu belum terpenuhi sepenuhnya. Pembacaan ini penafsiran bab dan
+perlu ditinjau fungsi hukum.
+
+Keputusan ini punya dua konsekuensi. Pertama, perjanjian vendor harus memuat instruksi, daftar akun,
+dan pencabutan saat kontrak selesai, karena G-01 dan K-01 bergantung padanya. Kedua, klausul laporan
+12 jam pada K-05 tidak menggantikan Pasal 46. Klausul itu hanya memberi Medikara waktu untuk
+memenuhi kewajibannya sendiri.
+\end{kasus}
+
+Perjanjian prosesor akan menjadi lebih rinci. Salinan pihak ketiga PP 33/2026 Pasal 14 memuat 11
+butir minimum perjanjian, antara lain cakupan, jenis data, jangka waktu, serta mekanisme pengawasan
+dan audit \cite{c03-pp33-nonresmi}. Ringkasan RSM Indonesia menyebut pasal yang sama
+\cite{c07-rsm-pp33}. Naskah resmi belum diperoleh, sehingga bab ini memakainya sebagai daftar
+periksa awal, bukan kewajiban. Misalkan perjanjian vendor hanya memuat 6 dari 11 butir. Tim mencatat
+5 butir kosong sebagai bahan tawar ulang pada Bab 9.
+
+Pasal 18 UU PDP mengatur pemrosesan oleh 2 atau lebih pengendali. Syarat minimalnya adalah
+perjanjian yang memuat peran dan tanggung jawab, tujuan yang saling berkaitan dengan cara pemrosesan
+yang ditentukan bersama, dan narahubung yang ditunjuk bersama \cite{uu27-2022-pdp}. Misalkan
+Medikara dan perusahaan klien merancang program kesehatan untuk 3.000 karyawan. Keduanya menentukan
+tujuan skrining dan cara pelaporannya. Tim memeriksa ketiga syarat, lalu menetapkan bahwa perusahaan
+hanya menerima hasil agregat. Mitra asuransi yang menentukan tujuan klaimnya sendiri dinilai sebagai
+pengendali terpisah. Pembedaan ini penafsiran bab.
+
+\subsection*{Pejabat atau petugas fungsi pelindungan data}
+
+Pasal 53 ayat (1) mewajibkan pengendali dan prosesor menunjuk pejabat atau petugas yang melaksanakan
+fungsi pelindungan data dalam tiga keadaan. Keadaan pertama adalah pemrosesan untuk kepentingan
+pelayanan publik. Keadaan kedua adalah kegiatan inti yang memerlukan pemantauan teratur dan
+sistematis atas data berskala besar. Keadaan ketiga adalah kegiatan inti berupa pemrosesan data
+spesifik atau data tindak pidana dalam skala besar \cite{uu27-2022-pdp}. Putusan MK Nomor
+151/PUU-XXII/2024, yang diucapkan 30 Juli 2025, menyatakan kata ``dan'' pada huruf b tidak mempunyai
+kekuatan hukum mengikat secara bersyarat sepanjang tidak dimaknai ``dan/atau'' \cite{c07-mk151}.
+Karena itu bab ini tidak membaca kriteria tersebut sebagai keharusan memenuhi semua keadaan
+sekaligus. Pembacaan ini penafsiran bab. Pasal 54 menetapkan tugas paling sedikit: memberi saran,
+memantau kepatuhan, memberi saran penilaian dampak, dan menjadi narahubung.
+
+Analogi petugas keselamatan kerja membantu menjelaskan posisi fungsi ini. Petugas itu memeriksa dan
+melapor, tetapi tidak mengoperasikan mesin yang diperiksanya. Bila operator mesin merangkap
+pemeriksa, temuan mudah hilang.
+
+Dua contoh penerapannya:
+\begin{enumerate}
+  \item Medikara memproses data kesehatan dari sekitar 1,2 juta kunjungan per tahun sebagai kegiatan
+  inti. Keadaan ini dibaca memenuhi keadaan ketiga. Sebelum putusan, pembacaan kumulatif membuka
+  perdebatan apakah jaringan swasta juga memenuhi keadaan pertama. Sesudah putusan, perdebatan itu
+  tidak lagi menentukan kewajiban menunjuk.
+  \item Misalkan Medikara menunjuk 1 petugas penuh waktu dan 5 koordinator rumah sakit dengan 20
+  persen waktu. Kapasitasnya setara 2 orang penuh waktu, atau 320 jam per bulan pada 160 jam kerja.
+  Kepala Teknologi Informasi (TI) yang memimpin 52 staf tidak dipilih, karena ia ikut menentukan
+  cara pemrosesan. Pengawasan tidak boleh berbenturan dengan kepentingan pelaksana pemrosesan.
+\end{enumerate}
+
+\section{Hak Subjek Data dan Batas Tanggapan}
+
+UU PDP memberi subjek data hak atas informasi (Pasal 5), perbaikan (Pasal 6), akses dan salinan
+(Pasal 7), pengakhiran dan penghapusan (Pasal 8), penarikan persetujuan (Pasal 9), keberatan atas
+keputusan otomatis (Pasal 10), penundaan atau pembatasan (Pasal 11), gugatan ganti rugi (Pasal 12),
+serta pemakaian dan pengiriman data (Pasal 13). Pasal 14 meminta hak pada Pasal 6 sampai Pasal 11
+diajukan lewat permohonan tercatat kepada pengendali. Hak juga punya batas. Pasal 15 memuat
+pengecualian tertentu, dan Pasal 33 mewajibkan pengendali menolak akses perubahan yang membahayakan
+kesehatan atau mengungkap data orang lain \cite{uu27-2022-pdp}. Hak karena itu diterjemahkan menjadi
+proses: penerimaan, verifikasi identitas, penilaian, dan pencatatan tanggapan.
+
+Analogi loket berkas di kantor kelurahan membantu. Warga mengambil nomor, petugas memeriksa
+identitas, berkas dinilai, dan tanda terima disimpan. Tanpa nomor antrean, warga dipingpong ke loket
+lain, dan tidak ada yang tahu berapa lama permintaan sudah menunggu.
+
+Dua contoh menguji proses itu:
+\begin{enumerate}
+  \item Misalkan 0,1 persen dari 28.000 janji temu per bulan berujung permintaan hak, yaitu 28
+  permintaan per bulan. Bila satu permintaan memerlukan 45 menit, bebannya 21 jam per bulan, atau
+  252 jam per tahun. Angka itu sekitar 1,6 bulan kerja. Permintaan akses yang masuk Jumat pukul
+  16.00 WIB harus selesai Senin pukul 16.00 WIB. Bila loket hanya buka Senin sampai Jumat pukul
+  08.00 sampai 17.00 WIB, jam kerja yang tersedia hanya 9 jam. Pasal menulis jam, bukan hari kerja.
+  Pembacaan jam kalender ini penafsiran bab.
+  \item Misalkan pasien yang terakhir berkunjung pada 2 Maret 2026 meminta seluruh datanya dihapus.
+  Pasal 39 Permenkes 24/2022 mengharuskan rekam medis elektroniknya disimpan paling singkat sampai 2
+  Maret 2051 \cite{permenkes24-2022}. Tim menghapus data dari daftar promosi, menjelaskan alasan
+  rekam medis tidak dihapus, lalu mencatat keduanya. Permintaan dinilai terhadap kewajiban
+  penyimpanan, bukan langsung dijalankan atau langsung ditolak tanpa alasan.
+\end{enumerate}
+
+Tabel~\ref{tab:ch07-hak} menerjemahkan hak menjadi batas, pemilik, dan bukti.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Hak subjek data, batas tanggapan, dan bukti (pemilik misalkan)}\label{tab:ch07-hak}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Hak} & \textbf{Pasal} & \textbf{Batas} & \textbf{Pemilik} & \textbf{Bukti} \\ \hline
+    Akses dan salinan & 7, 32; UU 17/2023 Pasal 297 & $3 \times 24$ jam sejak permintaan diterima &
+    Rekam medis & Tiket dan bukti pengiriman \\ \hline
+    Perbaikan & 6, 30 & $3 \times 24$ jam sejak permintaan diterima & Rekam medis & Jejak perubahan
+    \\ \hline
+    Menarik persetujuan & 9, 40 & Penghentian $3 \times 24$ jam sejak permintaan diterima &
+    Pemasaran & Daftar sebelum dan sesudah \\ \hline
+    Menunda atau membatasi & 11, 41 & $3 \times 24$ jam sejak permintaan diterima & Fungsi privasi &
+    Pengaturan sistem \\ \hline
+    Mengakhiri dan menghapus & 8, 42, 43, 44 & Tidak ada rentang jam pada pasal; mengikuti peraturan
+    & Fungsi privasi & Keputusan beserta alasan \\ \hline
+    Keberatan keputusan otomatis & 10 & Rincian diatur peraturan pemerintah & Pemilik layanan &
+    Catatan keberatan \\ \hline
+  \end{tabularx}
+\end{table}
+
+\section{Catatan Pemrosesan dan Retensi}
+
+\subsection*{Satu baris per kegiatan pemrosesan}
+
+Catatan kegiatan pemrosesan menghubungkan tujuan, data, dasar, penerima, lokasi, retensi, dan
+kontrol. Pasal 31 UU PDP mewajibkan pengendali merekam seluruh kegiatan pemrosesan, dan Pasal 52
+memberlakukannya pula pada prosesor \cite{uu27-2022-pdp}. \textit{Records of Processing Activities}
+(RoPA) dipakai di bab ini sebagai nama lembar kerja. Pengisian kolom membantu menemukan salinan data
+yang tidak mempunyai tujuan atau pemilik jelas. Salinan pihak ketiga PP 33/2026 Pasal 74 merinci 13
+butir minimum, antara lain sumber dan tujuan pengiriman, dasar, jenis data, pihak yang dapat
+mengakses, peta aliran data, masa retensi, dan rincian transfer \cite{c03-pp33-nonresmi}. Templat
+bab ini memuat butir tersebut, dengan status pemantauan sampai naskah resmi diperoleh.
+
+Analogi kartu persediaan gudang membantu penelusuran. Barang masuk dicatat asal, tujuan, lokasi, dan
+masa simpannya. Salinan yang berpindah tanpa catatan membuat pengendalian menjadi sulit.
+
+Dua contoh menilai alur data, bukan hanya aplikasi:
+\begin{enumerate}
+  \item Misalkan data janji temu disalin ke sistem pesan dan catatan dukungan vendor. Tim membuat
+  baris penerima dan masa simpan masing-masing. Bila catatan dukungan disimpan 90 hari, isinya
+  sekitar 84.000 baris pada satu waktu. Bila retensi rekam medis 25 tahun disalin otomatis ke
+  catatan itu, isinya menjadi 8,4 juta baris, atau 100 kali lipat. Retensi rekam medis tidak
+  otomatis berlaku untuk seluruh catatan pemasaran atau dukungan.
+  \item Misalkan tim mendaftar 6 proses inti pada 36 fasilitas. Satu baris per fasilitas
+  menghasilkan 216 baris, dan pada 40 menit per baris bebannya 144 jam. Tim mengelompokkan fasilitas
+  menjadi 4 jenis: rumah sakit, klinik, laboratorium, dan apotek, sehingga ada 24 baris. Karena 5
+  rumah sakit memakai versi Sistem Informasi Manajemen Rumah Sakit (SIMRS) berbeda, proses rekam
+  medis rumah sakit dipecah lagi menjadi 5 baris, sehingga totalnya 28 baris, atau sekitar 19 jam.
+  \textit{Tradeoff}-nya, perbedaan antarklinik harus dicatat sebagai pengecualian.
+\end{enumerate}
+
+Tabel~\ref{tab:ch07-ropa} memuat contoh tiga baris. Baris dukungan vendor sering luput karena tidak
+tampak pada alur layanan pasien.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh catatan pemrosesan (misalkan; dasar adalah penafsiran bab)}\label{tab:ch07-ropa}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Butir} & \textbf{P-01 Pendaftaran} & \textbf{P-02 Telekonsultasi} & \textbf{P-05
+    Dukungan vendor} \\ \hline
+    Tujuan dan pemilik & Janji temu; pemilik Medikara+ & Pelayanan jarak jauh; pemilik rekam medis &
+    Perbaikan gangguan; pengelola vendor \\ \hline
+    Data & Identitas, poli, jadwal & Keluhan dan catatan klinis & Data pada tiket; akses baca
+    terbatas \\ \hline
+    Dasar & Perjanjian, huruf b & Kewajiban hukum, huruf c & Perjanjian; instruksi tertulis \\
+    \hline
+    Penerima & Vendor sesuai instruksi & Tenaga kesehatan berwenang & Staf vendor yang ditugaskan \\
+    \hline
+    Lokasi & Harus dikonfirmasi & Pusat data dalam negeri & Harus dikonfirmasi, termasuk dukungan
+    jarak jauh \\ \hline
+    Retensi & Ditetapkan per tujuan & Mengikuti rekam medis & 90 hari \\ \hline
+    Bukti & Dasar, instruksi, akses & Dasar, akses, jejak perubahan & AC-01 dan daftar 120 akun \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+Diagram konsep pada awal bab meringkas alur yang sama. Tujuan dan dasar dinilai per kegiatan
+pemrosesan, lalu menjadi pegangan pengendali. Medikara sebagai pengendali memberi instruksi terbatas
+kepada prosesor vendor. Tujuan, peran, alur, dan salinan data masuk catatan pemrosesan. Alur
+berisiko tinggi diteruskan ke penilaian dampak. Permintaan subjek data masuk ke pengendali untuk
+diverifikasi dan ditanggapi. Diagram itu menampilkan pembagian umum, sedangkan peran pada kasus
+nyata tetap dinilai per kegiatan.
+
+\subsection*{Dua masa simpan yang sering tertukar}
+
+Dua hal pada retensi sering tertukar: masa simpan rekam medis dan masa simpan catatan akses.
+Pembagiannya begini. Pasal 39 Permenkes 24/2022 menetapkan penyimpanan rekam medis elektronik di
+fasilitas pelayanan kesehatan paling singkat 25 tahun sejak tanggal kunjungan terakhir pasien.
+Setelah itu data dapat dikecualikan dari pemusnahan bila masih dipergunakan, dan pemusnahan
+mengikuti ketentuan yang berlaku \cite{permenkes24-2022}. Catatan akses punya pertanyaan lain:
+berapa lama organisasi perlu dapat membuktikan siapa membaca apa.
+
+Analogi rekaman kamera toko menjelaskan bedanya. Faktur penjualan disimpan bertahun-tahun untuk
+pembukuan. Rekaman kamera hanya disimpan beberapa hari. Bila pencurian baru diketahui sesudah
+rekaman tertimpa, faktur tidak dapat menjawab siapa pelakunya.
+
+Dua contoh berangka:
+\begin{enumerate}
+  \item Pada data latihan, catatan rinci hanya disimpan 7 hari. Ketika kejadian diketahui pada hari
+  ke-11, yang tersisa hanya hari ke-5 sampai ke-11. Rekam malam ke-5 sampai ke-8 masih terlacak,
+  yaitu 620 rekam. Rekam malam ke-1 sampai ke-4, juga 620 rekam, tinggal terlihat sebagai jumlah
+  pada rekap harian. Pasal 46 ayat (2) huruf a meminta pemberitahuan memuat data yang terungkap.
+  Separuh rekam tidak dapat dijawab.
+  \item Misalkan masa simpan catatan rinci dinaikkan dari 7 menjadi 90 hari. Ruang simpan naik
+  sekitar 12,9 kali. Catatan akses juga memuat data pribadi, sehingga masa simpan yang lebih panjang
+  memerlukan tujuan, pembatasan akses, dan baris sendiri pada RoPA. Keputusan ini
+  \textit{tradeoff}, bukan sekadar tambahan ruang.
+\end{enumerate}
+
+\section{Pusat Data dan Transfer ke Luar Wilayah Hukum}
+
+Pertanyaan berikutnya: di mana data pasien boleh berada? Dua lapis aturan dibaca bersama. Lapis umum
+ada pada Pasal 56 UU PDP. Pengendali wajib memastikan negara penerima memiliki tingkat pelindungan
+yang setara atau lebih tinggi. Bila tidak terpenuhi, harus ada pelindungan yang memadai dan bersifat
+mengikat. Bila keduanya tidak terpenuhi, pengendali wajib mendapatkan persetujuan subjek data
+\cite{uu27-2022-pdp}.
+
+Lapis sektor ada pada PP 28/2024. Pasal 966 ayat (2) menyatakan pangkalan data kesehatan berupa
+pusat data yang berada di dalam wilayah Indonesia. Ayat (5) mengizinkan jasa dan fasilitas pihak
+lain bila dilaksanakan di dalam wilayah Indonesia, berdasarkan perjanjian kerja sama, dengan data
+yang dimiliki dan dikendalikan penuh oleh penyelenggara, serta memenuhi kewajiban prosesor. Pasal
+972 mengatur transfer ke luar wilayah hukum untuk tujuan spesifik dan terbatas, dengan izin Menteri,
+serta memenuhi persyaratan transfer data pribadi \cite{pp28-2024-kesehatan}. Pasal 22 Permenkes
+24/2022 menambahkan rekomendasi unit data Kementerian Kesehatan dan larangan pemanfaatan data bagi
+penyedia penyimpanan \cite{permenkes24-2022}. Bab 3 sudah membaca ketentuan ini bersama Pasal 21 PP
+71/2019, yang lebih umum \cite{pp71-2019-pste}. Hubungan aturan umum dan aturan khusus pada kasus
+nyata tetap perlu dinilai penasihat hukum.
+
+Analogi brankas bank membantu. Bank boleh menyewa jasa penjaga dari luar, tetapi brankasnya tetap di
+gedung itu dan kuncinya tetap dipegang bank. Mengirim isi brankas ke kantor luar negeri memerlukan
+alasan khusus dan izin, bukan sekadar persetujuan pemilik rekening.
+
+Dua contoh berangka:
+\begin{enumerate}
+  \item Bab 3 memisalkan vendor menawarkan penyimpanan di luar negeri seharga Rp420 juta per tahun.
+  Penghematannya Rp180 juta, atau 30 persen dari Rp600 juta. Bila hanya membaca Pasal 56, tim dapat
+  tergoda mengejar persetujuan pasien dari sekitar 1,2 juta kunjungan per tahun. Persetujuan itu
+  tidak menjawab Pasal 966 ayat (2), sehingga usulan berhenti lebih awal.
+  \item Misalkan 4 staf dukungan vendor di luar negeri membuka layar Medikara+ dari jarak jauh untuk
+  sekitar 300 tiket per bulan. Data tidak berpindah penyimpanan. Namun Pasal 971 ayat (2) PP 28/2024
+  menyebut penampilan sebagai salah satu bentuk transfer \cite{pp28-2024-kesehatan}. Tim
+  memperlakukan akses itu sebagai transfer, dan ini penafsiran bab. Pilihan lainnya adalah dukungan
+  dalam negeri atau data sintetis. Misalkan tarif dukungan dalam negeri lebih mahal Rp25 juta per
+  bulan, atau Rp300 juta per tahun. Selisih itu menjadi bahan keputusan.
+\end{enumerate}
+
+Gambar~\ref{fig:ch07-transfer} menyusun bacaan itu sebagai pertanyaan, dan urutannya adalah
+penafsiran bab. Baris register terkait adalah K-07 dan K-13. Salinan pihak ketiga PP 33/2026 Pasal
+163 sampai Pasal 165 mengulang urutan Pasal 56 dan menambah penilaian risiko transfer
+\cite{c03-pp33-nonresmi}, sehingga tim memantaunya.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch07-lapis-transfer.tex}
+  \caption{Pertanyaan berurutan untuk lokasi dan transfer data pasien (penafsiran bab)}
+  \label{fig:ch07-transfer}
+\end{figure}
+
+\section{Penilaian Dampak Pelindungan Data Pribadi}
+
+Penilaian dampak pelindungan data pribadi, atau \textit{Data Protection Impact Assessment} (DPIA),
+mengevaluasi potensi risiko dari suatu pemrosesan serta langkah mitigasinya, termasuk terhadap hak
+subjek data. Pasal 34 ayat (1) UU PDP mewajibkannya bila pemrosesan berpotensi risiko tinggi
+terhadap subjek data. Ayat (2) menyebut tujuh keadaan: keputusan otomatis dengan akibat hukum atau
+dampak signifikan, data spesifik, skala besar, evaluasi atau pemantauan sistematis, pencocokan atau
+penggabungan data, teknologi baru, dan pemrosesan yang membatasi hak subjek data
+\cite{uu27-2022-pdp}. Salinan pihak ketiga PP 33/2026 Pasal 121 menambahkan waktu dan isi: dilakukan
+sebelum pemrosesan, memuat deskripsi, kebutuhan dan proporsionalitas, risiko terhadap hak, serta
+langkah pelindungan, lalu ditinjau ulang bila risiko berubah \cite{c03-pp33-nonresmi}.
+
+Analogi pemeriksaan ruang baru menjelaskan waktunya. Sebelum ruang operasi baru dibuka, tim
+memeriksa jalur evakuasi dan pasokan listrik. Pemeriksaan dilakukan sebelum pasien masuk. Hasilnya
+tidak selalu melarang ruang dibuka, tetapi menentukan syarat pembukaannya.
+
+Dua contoh menuntut keputusan berbeda:
+\begin{enumerate}
+  \item Misalkan integrasi asuransi mengirim data kesehatan 6.000 klaim per bulan, atau 72.000 per
+  tahun. Tim menilai kebutuhan, penerima, dampak diskriminasi, pembatasan data, dan bukti pengujian
+  sebelum alur diaktifkan. Alur itu menyentuh tiga keadaan Pasal 34: data spesifik, skala besar, dan
+  penggabungan data.
+  \item Misalkan 5 dari 6 proses inti Medikara memuat data kesehatan. Satu DPIA memerlukan 3 orang
+  selama 3 hari kerja, atau 72 jam. Lima DPIA memerlukan 360 jam, sekitar 2,25 bulan kerja, atau
+  Rp21,6 juta pada tarif Rp60.000 per jam. Angka itu kecil dibanding harapan kerugian R-01 sebesar
+  Rp100 juta per tahun, tetapi perbandingan rupiah bukan alasan utamanya. Alasan utamanya adalah
+  hak pasien.
+\end{enumerate}
+
+Tabel~\ref{tab:ch07-dpia} menyaring tiga usulan terhadap ketujuh keadaan.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Penyaringan tiga usulan terhadap Pasal 34 ayat (2) (misalkan)}\label{tab:ch07-dpia}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.3\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Keadaan} & \textbf{Klaim asuransi} & \textbf{Triase otomatis pada telekonsultasi} &
+    \textbf{Tampilan baru Medikara+} \\ \hline
+    a. Keputusan otomatis & Tidak & Ya & Tidak \\ \hline
+    b. Data spesifik & Ya & Ya & Sudah ada, tidak berubah \\ \hline
+    c. Skala besar & Ya: 72.000 per tahun & Perlu dihitung & Sudah ada, tidak berubah \\ \hline
+    d. Evaluasi atau pemantauan & Tidak & Ya: penskoran gejala & Tidak \\ \hline
+    e. Penggabungan data & Ya & Tidak & Tidak \\ \hline
+    f. Teknologi baru & Tidak & Ya & Tidak \\ \hline
+    g. Membatasi hak & Perlu diperiksa & Perlu diperiksa & Tidak \\ \hline
+    \textbf{Keputusan} & DPIA sebelum aktif & DPIA sebelum uji coba & Tinjau DPIA lama bila alur
+    berubah \\ \hline
+  \end{tabularx}
+\end{table}
+
+Panduan Eropa memberi pembanding. Article 29 Working Party memakai sembilan kriteria, dan pemrosesan
+yang memenuhi dua kriteria pada umumnya memerlukan DPIA. Pada kasus tertentu, satu kriteria dapat
+cukup. Panduan itu mencontohkan rumah sakit yang memproses data genetik dan kesehatan pasien pada
+sistem informasi rumah sakit \cite{c07-wp248}. Pasal 34 tidak memuat aturan dua kriteria. Bab ini
+membaca satu keadaan sudah cukup, karena ayat (2) memakai ``dan/atau''. Pembacaan ini penafsiran
+bab. Akibatnya, hampir seluruh proses klinis Medikara masuk, sehingga DPIA disusun per alur proses,
+bukan per fasilitas.
+
+Dua hal pada risiko juga sering tertukar: risiko bagi organisasi dan risiko bagi subjek data.
+Pembagiannya begini. R-01 pada Bab 5 berskor $3 \times 4 = 12$ pada skala 5 tingkat, dengan harapan
+kerugian Rp100 juta per tahun. Skala dampak Bab 5 memakai rupiah dan gangguan layanan. DPIA bertanya
+hal lain: apa akibatnya pada pasien? Misalkan satu rekam kunjungan ke poli kejiwaan terungkap kepada
+atasan pasien. Kerugian Medikara mungkin di bawah Rp10 juta, atau dampak 1. Akibat pada pasien dapat
+berupa stigma dan kehilangan pekerjaan. Bab 5 sudah menilai hak pasien dalam kolom terpisah, dan
+DPIA menjadi tempat penalaran kolom itu.
+
+\section{Kegagalan Pelindungan dan Pemberitahuan}
+
+\subsection*{Isi kewajiban}
+
+Penjelasan Pasal 46 ayat (1) UU PDP mengartikan kegagalan pelindungan sebagai kegagalan melindungi
+kerahasiaan, integritas, dan ketersediaan data pribadi. Kegagalan itu mencakup pelanggaran keamanan,
+disengaja maupun tidak, yang mengarah pada perusakan, kehilangan, perubahan, pengungkapan, atau
+akses yang tidak sah. Ayat (1) mewajibkan pengendali menyampaikan pemberitahuan tertulis paling
+lambat $3 \times 24$ jam kepada subjek data dan lembaga. Ayat (2) menetapkan isi minimum: data yang
+terungkap, kapan dan bagaimana data terungkap, serta upaya penanganan dan pemulihan. Ayat (3)
+mewajibkan pemberitahuan kepada masyarakat dalam hal tertentu, antara lain bila kegagalan mengganggu
+pelayanan publik dan/atau berdampak serius terhadap kepentingan masyarakat \cite{uu27-2022-pdp}. Bab
+3 sudah membedakan pengertian ini dari insiden siber, sehingga K-04 dan K-09 tetap dua baris.
+
+Analogi peringatan kerusakan produk menunjukkan pentingnya waktu. Menunggu seluruh penyebab
+diketahui dapat membuat pengguna terus terpapar. Organisasi menyampaikan fakta yang telah dipastikan
+dan mencatat pembaruan, sambil melanjutkan penanganan.
+
+Dua contoh tenggat:
+\begin{enumerate}
+  \item Misalkan kegagalan terjadi dan ditemukan bersamaan pada Jumat pukul 20.00 WIB. Untuk
+  latihan, akhir rentang 72 jam adalah Senin pukul 20.00 WIB, bukan akhir jam kerja hari Senin.
+  Contoh ini menjadi asumsi dasar pada Bab 3.
+  \item Bab 3 memakai varian untuk menguji kontrak. Misalkan vendor menemukan akun dukungan dipakai
+  di luar penugasan pada Jumat pukul 20.00 WIB, dan baru memberi tahu Medikara setelah 30 jam, yaitu
+  Minggu pukul 02.00 WIB. Kontrak 12 jam terlewati 18 jam. Bila batas tetap dihitung dari Jumat,
+  sisa rentang Pasal 46 tinggal 42 jam dari 72 jam.
+\end{enumerate}
+
+Gambar~\ref{fig:ch07-insiden} memperlihatkan alur keputusan ketika kegagalan pelindungan terdeteksi.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch07-alur-insiden.tex}
+  \caption{Alur keputusan ketika kegagalan pelindungan terdeteksi}
+  \label{fig:ch07-insiden}
+\end{figure}
+
+\subsection*{Kapan rentang 72 jam mulai dihitung?}
+
+Pertanyaan kemudian muncul: kapan rentang 72 jam mulai dihitung? Pasal 46 ayat (1) tidak menjawabnya
+secara eksplisit. Empat pasal lain pada undang-undang yang sama menulis titik mulai dengan jelas.
+Pasal 30, Pasal 32, Pasal 40, dan Pasal 41 memakai frasa ``terhitung sejak'' pengendali menerima
+permintaan. Pasal 46 tidak memakai frasa itu \cite{uu27-2022-pdp}. Dua sumber lain membantu, tetapi
+tidak menyelesaikan persoalan.
+
+\begin{enumerate}
+  \item Salinan pihak ketiga PP 33/2026 Pasal 114 ayat (2) menulis rentang itu terhitung sejak
+  kegagalan ``diketahui secara pasti, patut, dan wajar''. Penjelasannya mengaitkan pengetahuan itu
+  dengan kesimpulan dokumentasi pengendali \cite{c03-pp33-nonresmi}. Naskah resminya belum
+  diperoleh, dan peraturan itu baru berlaku 16 Januari 2027, sehingga ketentuan ini hanya dipantau.
+  Bab ini tidak memakainya untuk menilai insiden 2025.
+  \item \textit{General Data Protection Regulation} (GDPR) di Eropa menghitung 72 jam setelah
+  pengendali mengetahui pelanggaran. EDPB menganggap pengendali mengetahui ketika memiliki tingkat
+  kepastian yang wajar bahwa insiden keamanan telah membuat data pribadi terganggu. Investigasi
+  singkat diperbolehkan, tetapi harus segera dimulai \cite{c07-edpb-breach}. GDPR tidak menjadi
+  dasar kewajiban Medikara dalam kasus ini.
+\end{enumerate}
+
+Bab ini mengambil sikap kerja berikut, sebagai penafsiran bab. Waktu kejadian dan waktu diketahui
+dicatat terpisah. Fungsi hukum menetapkan batas operasional konservatif. Selama belum ada kepastian,
+batas terluar dihitung dari saat pertama Medikara mengetahui kegagalan, bukan dari saat dokumentasi
+selesai. Contoh Jumat hanya berlaku dengan asumsi waktu kegagalan dan penemuan sama. Jika kejadian
+lebih awal, tim tidak boleh otomatis menganggap penemuan sebagai awal tenggat baru. Alasan
+keterlambatan terhadap titik yang lebih awal harus tertulis.
+
+Data latihan insiden 2025 menguji sikap itu. Misalkan hari ke-1 jatuh pada Selasa, panggilan pertama
+terjadi pukul 20.00 WIB, dan hari ke-11 jatuh pada Jumat. Gambar~\ref{fig:ch07-titik-mulai} dan
+Tabel~\ref{tab:ch07-titik-mulai} memperlihatkan akibat tiap titik mulai.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch07-titik-mulai.tex}
+  \caption{Fakta latihan insiden 2025 dan tiga pembacaan rentang 72 jam (jam adalah pengandaian)}
+  \label{fig:ch07-titik-mulai}
+\end{figure}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Akibat pilihan titik mulai pada insiden 2025 (misalkan)}\label{tab:ch07-titik-mulai}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.24\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Titik mulai} & \textbf{Waktu} & \textbf{Batas 72 jam} & \textbf{Terhadap saat diketahui}
+    \\ \hline
+    Panggilan pertama & Hari 1, Selasa 20.00 & Hari 4, Jumat 20.00 & Lewat 168 jam sebelum Medikara
+    tahu; dijelaskan pada kronologi \\ \hline
+    Panggilan terakhir & Hari 8, Selasa 20.00 & Hari 11, Jumat 20.00 & Habis tepat saat Medikara
+    tahu \\ \hline
+    Saat diketahui & Hari 11, Jumat 20.00 & Hari 14, Senin 20.00 & Sisa 72 jam; batas terluar kerja
+    bab ini \\ \hline
+    Kesimpulan dokumentasi (salinan PP 33/2026) & Hari 12, Sabtu 14.00 & Hari 15, Selasa 14.00 &
+    Sisa 90 jam; tidak dipakai karena belum berlaku pada 2025 \\ \hline
+  \end{tabularx}
+\end{table}
+
+\subsection*{Jam-jam pertama: angka belum pasti}
+
+Pertanyaan berikutnya: apa yang dilakukan ketika jumlah data belum diketahui?
+Gambar~\ref{fig:ch07-jam-pertama} menyusun pengandaian jam-jam pertama. Urutan harinya mengikuti
+data latihan IT40613, sedangkan jamnya pengandaian bab ini.
+
+\begin{figure}[!htb]
+  \centering
+  \input{../figures/ch07-jam-pertama.tex}
+  \caption{Jam-jam pertama sesudah Medikara mengetahui kejadian (misalkan; skala tidak
+    proporsional)}
+  \label{fig:ch07-jam-pertama}
+\end{figure}
+
+\begin{kasus}[title={Kasus Medikara Health: Jam-Jam Pertama Insiden 2025}]
+Misalkan keluhan pasien sampai kepada koordinator insiden pada hari ke-11, Jumat pukul 20.00 WIB.
+Pada jam itu jumlah data belum diketahui. Pukul 20.30 WIB vendor mengakui akun dukungan masih aktif.
+Pukul 21.00 WIB akun dinonaktifkan.
+
+Sabtu pukul 08.00 WIB, rekap harian menunjukkan 155 panggilan per malam selama 8 malam. Jumlah
+sementara menjadi 1.240 rekam, sesudah 12 jam dari 72 jam. Sabtu pukul 14.00 WIB, pemeriksaan
+catatan rinci menunjukkan 620 rekam terlacak dan 620 rekam tinggal jumlah. Pada titik itu 18 jam,
+atau 25 persen rentang, sudah terpakai. Minggu pukul 12.00 WIB, jam ke-40, akar sebab belum selesai.
+Catatan hanya memuat ID aplikasi, sehingga orang yang memakai akun belum diketahui. Apakah data
+disalin keluar juga belum diketahui.
+
+Tim tidak menunggu angka final. Pemberitahuan menyatakan yang sudah pasti, yang masih sementara, dan
+kapan pembaruan dikirim. Pasal 33 ayat (4) GDPR mengizinkan informasi diberikan bertahap
+\cite{c07-edpb-breach}. UU PDP tidak menyebut tahapan itu, dan salinan PP 33/2026 Pasal 119
+menyerahkan rincian pemberitahuan kepada peraturan lembaga \cite{c03-pp33-nonresmi}. Tim memakai
+cara bertahap sebagai praktik kerja dan mencatat keputusan itu bersama fungsi hukum. Ini penafsiran
+bab.
+\end{kasus}
+
+Tabel~\ref{tab:ch07-isi} menerapkan isi minimum Pasal 46 ayat (2) pada Senin pagi. Rincian
+pemberitahuan tersedia di \berkas{sources/chapter07/templat-notifikasi.md}.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Isi minimum pemberitahuan pada Senin pagi (misalkan)}\label{tab:ch07-isi}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Unsur Pasal 46 ayat (2)} & \textbf{Sudah pasti} & \textbf{Masih sementara atau belum
+    diketahui} \\ \hline
+    Data yang terungkap & Rekam kunjungan pada dua rumah sakit & Jumlah 1.240 berasal dari rekap;
+    620 rekam belum terhubung ke nama pasien \\ \hline
+    Kapan dan bagaimana & 8 malam, lewat akun dukungan vendor yang aktif setelah kontrak selesai &
+    Orang yang memakai akun; apakah data disalin keluar \\ \hline
+    Penanganan dan pemulihan & Akun dinonaktifkan; 120 akun diperiksa & Akar sebab; hasil
+    pemeriksaan di sisi vendor \\ \hline
+  \end{tabularx}
+\end{table}
+
+Pertanyaan kemudian muncul: bagaimana memberi tahu pemilik 620 rekam yang tidak terlacak? Mata
+kuliah IT40613 menghitung pemberitahuan kepada 620 pasien: 15 menit per pasien dengan tarif Rp60.000
+per jam, atau Rp9,3 juta. Hitungan itu menganggap satu rekam mewakili satu pasien.
+Tabel~\ref{tab:ch07-620} membandingkan tiga pilihan. Bila dua rumah sakit itu menerima 30 persen
+dari sekitar 1,2 juta kunjungan, pilihan C menjangkau sekitar 360.000 kunjungan per tahun. Angka itu
+batas atas, karena satu pasien dapat berkunjung beberapa kali. Angka itu juga berbeda dari 336.000
+janji temu Medikara+, yang hanya menghitung pemesanan lewat aplikasi pada kelima rumah sakit.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Tiga pilihan untuk rekam yang tidak terlacak (misalkan)}\label{tab:ch07-620}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Pilihan} & \textbf{Biaya langsung} & \textbf{Kelemahan} \\ \hline
+    A. Hanya 620 pasien yang terlacak & Rp9,3 juta & 620 rekam lain tanpa pemberitahuan \\ \hline
+    B. A ditambah pengumuman di Medikara+ dan situs, serta kanal tanya jawab & Rp9,3 juta ditambah 2
+    orang, 5 hari, 8 jam, atau Rp4,8 juta; jumlah Rp14,1 juta & Pesan umum tidak menjamin terbaca \\
+    \hline
+    C. Pesan ke seluruh kunjungan dua rumah sakit & 360.000 pesan dikali Rp500, atau Rp180 juta &
+    Sebagian besar penerima tidak terdampak; menimbulkan kecemasan \\ \hline
+  \end{tabularx}
+\end{table}
+
+Misalkan tim mengusulkan pilihan B. Biaya langsung naik dari Rp23,7 juta pada hitungan IT40613
+menjadi Rp28,5 juta. Keputusan ini punya dua konsekuensi. Pertama, fungsi hukum perlu menilai apakah
+keadaan ini masuk ``dalam hal tertentu'' pada Pasal 46 ayat (3). Bab ini tidak menyimpulkannya, dan
+memakai pengumuman sebagai cara menjangkau pasien. Kedua, kanal tanya jawab dapat menerima
+permintaan akses yang berjalan pada rentang $3 \times 24$ jam tersendiri, sehingga petugasnya perlu
+disiapkan.
+
+\subsection*{Membaca dua penelitian}
+
+Literatur membantu membaca besar kecilnya kejadian dan akibat perbaikannya. Dua penelitian dari
+Amerika Serikat berikut tidak boleh disalin menjadi angka Medikara, karena aturan dan sistem
+layanannya berbeda.
+\begin{enumerate}
+  \item McCoy dan Perlis menelaah pelanggaran data kesehatan yang dilaporkan pada 2010 sampai 2017.
+  Jumlahnya 2.149 pelanggaran dengan 176,4 juta rekam. Penyedia layanan kesehatan menyumbang 70
+  persen pelanggaran, tetapi 21 persen rekam. \textit{Health plan} menyumbang 13 persen pelanggaran,
+  tetapi 63 persen rekam \cite{c07-mccoy2018}. Jumlah kejadian dan jumlah rekam memberi gambaran
+  yang berbeda. Register Medikara karena itu mencatat keduanya, dan 1.240 rekam tetap satu kejadian
+  yang perlu dinilai.
+  \item Choi dan rekan menggabungkan data pelanggaran dengan data mutu pada 3.025 rumah sakit, atau
+  14.297 observasi rumah sakit per tahun, untuk 2012 sampai 2016. Dalam 3 tahun sesudah pelanggaran,
+  waktu sampai elektrokardiogram naik hingga 2,7 menit. Mortalitas 30 hari infark miokard akut naik
+  hingga 0,36 poin persentase. Penulis mengaitkannya dengan upaya perbaikan dan menyarankan
+  inisiatif keamanan dievaluasi cermat \cite{c07-choi2019}. Hubungan itu asosiasi, bukan bukti sebab
+  tunggal. Pembacaan bagi Medikara: kontrol baru sesudah insiden diuji dampaknya pada pelayanan
+  klinis bersama pimpinan klinis.
+\end{enumerate}
+
+\section{Status Aturan, Sanksi, dan Sistem Manajemen Privasi}
+
+\subsection*{Mencatat status sumber hukum}
+
+Status hukum diperiksa melalui naskah resmi, perubahan, putusan pengadilan yang relevan, dan ruang
+lingkup. Berita penerbitan aturan berguna sebagai petunjuk pencarian, tetapi belum cukup untuk
+mengisi nomor pasal, tenggat, atau kewajiban baru.
+
+Analogi jadwal perjalanan membantu menjelaskan kehati-hatian ini. Pengumuman bahwa rute baru akan
+dibuka belum menunjukkan jadwal keberangkatan yang dapat dipesan. Petugas perlu memeriksa dokumen
+resmi dan tanggal berlakunya sebelum mengubah prosedur.
+
+Dua contoh memisahkan pengetahuan dan asumsi:
+\begin{enumerate}
+  \item Publikasi Badan Pengawas Obat dan Makanan (BPOM) menyebut PP 33/2026 diundangkan 16 Juli
+  2026 \cite{bpom-pp33-2026-status}. Basis data nonresmi dan ringkasan RSM Indonesia mencatat mulai
+  berlaku 16 Januari 2027, yaitu 76 hari dari 1 November 2026
+  \cite{c03-pp33-nonresmi,c07-rsm-pp33}. Penelusuran bab ini pada 1 November 2026 belum memperoleh
+  naskah resmi. Tim menandai status belum terverifikasi dan tidak menurunkan kewajiban tambahan
+  darinya. Salinan pihak ketiga dipakai untuk menyiapkan daftar periksa.
+  \item Portal resmi MK memuat putusan yang mengubah makna Pasal 53 ayat (1) huruf b
+  \cite{c07-mk151}. Tim membaca amar dan konteksnya, memperbarui register kewajiban, serta menautkan
+  bukti perubahan. Satu kata pada amar putusan mengubah pembacaan tiga keadaan.
+\end{enumerate}
+
+Tabel~\ref{tab:ch07-status} merangkum cara mencatat kepastian sumber hukum per 1 November 2026.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Status sumber hukum per 1 November 2026}\label{tab:ch07-status}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Sumber} & \textbf{Status kerja} & \textbf{Tindakan} \\ \hline
+    UU 27/2022 & Naskah resmi terbaca; masa penyesuaian Pasal 74 berakhir 17 Oktober 2024 & Turunkan
+    kewajiban serta bukti \\ \hline
+    Putusan MK 151/PUU-XXII/2024 & Amar resmi terbaca & Baca bersama Pasal 53 \\ \hline
+    PP 28/2024; Permenkes 24/2022 & Naskah resmi terbaca & Turunkan kewajiban sektor \\ \hline
+    PP 33/2026 & Salinan pihak ketiga dan ringkasan; naskah resmi belum diperoleh & Pantau; jangan
+    menetapkan pasal sebagai kewajiban \\ \hline
+    Peraturan Presiden (Perpres) dan lembaga & Berita; naskah belum ditemukan & Tetapkan penanggung
+    jawab kanal \\ \hline
+    Peraturan lembaga & Belum ditemukan & Pantau; catat pasal yang menunggunya \\ \hline
+  \end{tabularx}
+\end{table}
+
+Pasal 58 UU PDP menyatakan lembaga ditetapkan oleh Presiden, dan ketentuan lebih lanjut diatur
+dengan Perpres \cite{uu27-2022-pdp}. Statusnya belum pasti pada tanggal pemeriksaan bab ini. Pada 23
+Juli 2026, Wakil Menteri Komunikasi dan Digital menyebut pembahasan Perpres sedang difinalisasi
+\cite{c07-detik-otoritas}. Pada 13 September 2026, Bisnis.com mengutip Kementerian Komunikasi dan
+Digital bahwa rancangan Perpres sudah diajukan kepada Presiden. Berita yang sama mengutip pengamat
+yang mendengar Perpres sudah ditandatangani, tetapi lembaganya masih memerlukan proses pembentukan
+\cite{c07-bisnis-badanpdp}. Penelusuran pada 1 November 2026 belum menemukan naskah Perpres.
+Ketiadaan rincian kanal tidak menghapus kewajiban UU PDP. Pemilik kepatuhan harus memastikan kanal
+yang berwenang, menyimpan bukti upaya, dan mengaktifkan jalur eskalasi. Bab ini tidak menganggap
+rancangan lembaga atau mekanisme masa depan sudah berlaku.
+
+\subsection*{Sanksi dan masa penyesuaian}
+
+Pasal 57 ayat (1) UU PDP mengenakan sanksi administratif atas pelanggaran sejumlah pasal, termasuk
+Pasal 20 ayat (1), Pasal 31, Pasal 34 ayat (1), Pasal 37, Pasal 39 ayat (1), Pasal 46 ayat (1) dan
+ayat (3), serta Pasal 53 ayat (1). Ayat (2) menyebut peringatan tertulis, penghentian sementara
+pemrosesan, penghapusan atau pemusnahan data, dan denda administratif. Ayat (3) membatasi denda
+paling tinggi 2 persen dari pendapatan atau penerimaan tahunan terhadap variabel pelanggaran. Ayat
+(4) menyatakan sanksi diberikan oleh lembaga. Di luar sanksi administratif, Pasal 12 memberi subjek
+data hak menggugat ganti rugi, dan Pasal 67 mengancam pidana bagi orang yang dengan sengaja dan
+melawan hukum memperoleh, mengungkapkan, atau menggunakan data pribadi yang bukan miliknya
+\cite{uu27-2022-pdp}.
+
+Analogi rambu lalu lintas menjelaskan peran angka maksimum. Rambu menulis denda paling tinggi, bukan
+tagihan yang pasti diterima. Pengemudi tetap perlu tahu besarnya sebelum memutuskan menerobos.
+
+Dua contoh berangka:
+\begin{enumerate}
+  \item Bab 3 memisalkan variabel pelanggaran Rp500 miliar, sehingga denda paling tinggi Rp10
+  miliar. Angka itu sekitar 422 kali biaya langsung Rp23,7 juta, dan dua kali kapasitas risiko Rp5
+  miliar pada Bab 5. Salinan PP 33/2026 Pasal 185 menyebut variabel seperti dampak, durasi, jenis
+  data, jumlah subjek data, dan tingkat kerja sama \cite{c03-pp33-nonresmi}. Angka Rp10 miliar tetap
+  alat diskusi, bukan perkiraan denda.
+  \item Pasal 67 ayat (1) mengancam pidana penjara paling lama 5 tahun dan/atau denda paling banyak
+  Rp5 miliar. Ayat (2) mengancam 4 tahun dan/atau Rp4 miliar. Pasal 70 ayat (3) menetapkan denda
+  korporasi paling banyak 10 kali maksimum, atau sampai Rp50 miliar pada ancaman Rp5 miliar
+  \cite{uu27-2022-pdp}. Ancaman ini menuntut unsur sengaja dan melawan hukum, sehingga berbeda dari
+  kelalaian administratif. Penerapannya pada kasus nyata adalah urusan penasihat hukum.
+\end{enumerate}
+
+Pasal 74 memberi masa penyesuaian paling lama 2 tahun sejak pengundangan pada 17 Oktober 2022,
+sehingga berakhir 17 Oktober 2024. Insiden 2025 terjadi sesudah itu, sehingga alasan ``masih masa
+penyesuaian'' tidak tersedia. Sebaliknya, PP 33/2026 baru berlaku 2027, sehingga rinciannya tidak
+dipakai menilai kejadian 2025. Kedua pembacaan ini penafsiran bab.
+
+\subsection*{Sistem manajemen privasi}
+
+ISO/IEC 27701:2025 menetapkan persyaratan dan panduan \textit{Privacy Information Management System}
+(PIMS) \cite{c07-iso27701}. Halaman lembaga sertifikasi DNV menyebut edisi yang terbit 14 Oktober
+2025 ini sebagai standar mandiri, yang juga dapat menambahkan kontrol privasi pada ISO/IEC 27001
+\cite{c07-dnv-27701}. Naskah standarnya berbayar, sehingga rincian klausul perlu dicocokkan ke
+naskah berlisensi. Sertifikasi tidak menggantikan analisis dasar pemrosesan dan kewajiban hukum.
+
+Analogi pengelolaan arsip menunjukkan manfaat sistem. Satu lembar persetujuan bukan sistem privasi.
+Pembagian peran, daftar pemrosesan, penanganan permintaan, pemeriksaan, dan perbaikan harus saling
+terkait.
+
+Dua contoh memperlihatkan peran pengujian:
+\begin{enumerate}
+  \item Misalkan tim mengganti nama pasien dengan kode pada salinan untuk analitik berisi 1.240
+  rekam. Bila tabel penghubung masih tersedia, data belum otomatis anonim. Penilaian harus mencakup
+  akses dan kemungkinan pengenalan ulang.
+  \item Misalkan persetujuan tercatat pada aplikasi, tetapi salinan vendor tidak mengikuti
+  pencabutan. Dari 150 pasien yang menarik persetujuan, uji sampel menemukan 12 pasien masih
+  menerima promosi, atau 8 persen. Keberadaan kolom persetujuan belum membuktikan pelaksanaan di
+  seluruh alur.
+\end{enumerate}
+
+Tabel~\ref{tab:ch07-manajemen} merangkum hubungan kegiatan privasi dan bukti.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Hubungan kegiatan privasi dan bukti}\label{tab:ch07-manajemen}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Kegiatan} & \textbf{Bukti} & \textbf{Pertanyaan peninjau} \\ \hline
+    Pemetaan pemrosesan & RoPA yang diperbarui & Apakah prosesor lain tercakup? \\ \hline
+    Permintaan subjek & Catatan permintaan anonim & Apakah alasan tanggapan dapat diuji? \\ \hline
+    Penilaian dampak & DPIA dan saran petugas & Apakah dilakukan sebelum alur aktif? \\ \hline
+    Penanganan insiden & Kronologi dan bukti pengiriman & Apakah waktu dan penerima tercatat? \\
+    \hline
+    Perbaikan & Tindakan dan uji ulang & Apakah celah yang sama berulang? \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{pendalaman}
+Gunakan data sintetis untuk membandingkan penghapusan pengenal langsung, pseudonimisasi, dan
+anonimisasi. Daftar kembali siapa memegang kunci penghubung. Rocher dan rekan memodelkan bahwa 99,98
+persen orang Amerika akan teridentifikasi kembali dengan benar pada himpunan data apa pun yang
+memakai 15 atribut demografis \cite{c07-rocher2019}. Angka itu berasal dari model statistik dan
+populasi Amerika Serikat, tetapi cukup untuk meragukan klaim ``sudah anonim'' yang hanya menghapus
+nama.
+
+Sumber daya Consent pada Health Level Seven Fast Healthcare Interoperability Resources (HL7 FHIR)
+membantu representasi teknis. Spesifikasinya menyebut sumber daya itu sebagai catatan pilihan
+konsumen layanan kesehatan \cite{c07-fhir-consent}. Catatan itu tidak membuktikan sendiri bahwa
+persetujuan atau dasar hukumnya sah. Skrip \berkas{sources/chapter07/hitung-tenggat-notifikasi.py}
+menghitung ulang Tabel~\ref{tab:ch07-titik-mulai}, sehingga tim dapat menguji titik mulai lain.
+\end{pendalaman}
+
+\subsection*{Merangkum celah untuk C2}
+
+Seluruh pembacaan bab ini bermuara pada daftar celah. Tabel~\ref{tab:ch07-celah} melanjutkan G-01
+sampai G-06 dari Bab 6, dengan kode CP untuk celah pelindungan data. Tabel ini pengandaian dan
+tersedia di \berkas{sources/chapter07/analisis-celah-pdp.md}.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Celah pelindungan data Medikara untuk C2 (misalkan)}\label{tab:ch07-celah}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.08\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{ID} & \textbf{Celah} & \textbf{Kaitan} & \textbf{Pemilik} & \textbf{Bukti selesai} \\
+    \hline
+    CP-01 & Perjanjian vendor tanpa instruksi, daftar akun, dan pencabutan & R-01, K-01, K-05,
+    G-01 & Pengelola vendor & Perjanjian baru; 120 dari 120 akun cocok \\ \hline
+    CP-02 & RoPA belum mencakup 36 fasilitas & K-16, K-13 & Fungsi privasi & 28 baris disahkan
+    pemilik proses \\ \hline
+    CP-03 & DPIA alur asuransi belum ada & Pasal 34, R-01 & Fungsi privasi & DPIA disetujui sebelum
+    aktif \\ \hline
+    CP-04 & Prosedur pemberitahuan belum dilatih & R-12, K-04, G-05 & Fungsi hukum & Latihan: naskah
+    siap sebelum jam ke-60 \\ \hline
+    CP-05 & Catatan rinci 7 hari tidak menjawab isi pemberitahuan & R-12, G-02 & Fungsi keamanan &
+    Masa simpan baru; uji telusur satu rekam \\ \hline
+    CP-06 & Fungsi pelindungan data belum ditunjuk & Pasal 53, R-12 & Direksi & Keputusan penunjukan
+    dan jalur laporan \\ \hline
+    CP-07 & Lokasi cadangan dan dukungan jarak jauh belum diperiksa & K-13, K-07 & Kepala TI dan
+    rekam medis & Inventaris lokasi \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{kasus}[title={Kasus Medikara Health: Tiga Celah untuk C3}]
+Misalkan tim memilih CP-04, CP-01, dan CP-05. CP-04 dipilih karena R-12 berpemilik fungsi hukum dan
+K-04 masih belum terverifikasi. CP-01 dipilih karena R-01 menjadi prioritas Bab 5, dan K-05
+berstatus tidak memenuhi. CP-05 dipilih karena 620 rekam tidak dapat dijawab pada pemberitahuan.
+
+Keputusan ini punya dua konsekuensi yang dapat dihitung. Pertama, latihan pemberitahuan dua kali
+setahun dengan 12 orang selama 4 jam memakan 96 jam per tahun, atau Rp5,76 juta. Kedua, masa simpan
+90 hari menaikkan ruang simpan sekitar 12,9 kali. Keduanya kecil dibanding denda paling tinggi Rp10
+miliar, tetapi tetap harus masuk anggaran dan jadwal. Sisanya tidak dihapus. CP-02, CP-03, CP-06,
+dan CP-07 tetap tercatat dengan pemilik pada C2.
+\end{kasus}
+
+\section{Aktivitas: Catatan Pemrosesan dan Analisis Insiden Vendor}
+
+\textbf{Tujuan.} Tim menyusun catatan kegiatan pemrosesan untuk satu proses layanan, lalu menilai
+penanganan insiden vendor terhadap UU PDP dan ketentuan pelaksana yang terverifikasi. Tim memakai
+organisasi nyata dengan izin dan data yang dianonimkan, atau kasus Medikara Health.
+
+\textbf{Pembagian peran.} Analis regulasi memimpin dasar pemrosesan dan tenggat. Pemilik konteks
+memetakan alur data yang sebenarnya. Analis teknologi menelusuri sistem, penerima, serta salinan
+data. Analis risiko memperbarui R-01 dan R-12.
+
+\textbf{Langkah kerja.}
+\begin{enumerate}
+  \item Pilih pendaftaran atau telekonsultasi. Isi
+  \berkas{sources/chapter07/catatan-pemrosesan.csv}, lalu bandingkan dengan
+  \berkas{sources/chapter07/contoh-pemrosesan-medikara.csv}.
+  \item Periksa dasar, penerima, lokasi, retensi, kontrol, dan sumber bukti. Pisahkan promosi dari
+  tujuan pengobatan. Uji lokasi dengan Gambar~\ref{fig:ch07-transfer}.
+  \item Saring proses itu dengan \berkas{sources/chapter07/penyaringan-penilaian-dampak.csv}. Tandai
+  bila DPIA diperlukan.
+  \item Baca kronologi pengandaian di \berkas{sources/chapter07/kronologi-insiden-vendor-2025.md}.
+  Pisahkan waktu kejadian, penemuan, eskalasi, dan pemberitahuan.
+  \item Isi \berkas{sources/chapter07/analisis-celah-pdp.md}. Cocokkan kewajiban dengan fakta yang
+  tersedia, dan tandai yang belum diketahui.
+  \item Siapkan rancangan pemberitahuan dengan \berkas{sources/chapter07/templat-notifikasi.md}.
+  Dokumen ini hanya latihan dan tidak dikirim kepada pihak nyata.
+  \item Perbarui baris R-01, R-12, K-01, K-04, K-05, K-13, K-16, dan G-05 bila temuan mengubahnya.
+  \item Rangkum luaran Bab 4 sampai 7 menjadi C2 menurut Tabel~\ref{tab:ch07-c2}. Bawa tiga celah
+  utama ke desain target C3.
+\end{enumerate}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Isi tonggak C2 Kondisi Saat Ini}\label{tab:ch07-c2}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.09\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Bab} & \textbf{Luaran} & \textbf{Pertanyaan peninjau} \\ \hline
+    4 & Hasil faktor desain, objektif prioritas COBIT, dan potret kapabilitas & Apakah objektif
+    berasal dari faktor desain? \\ \hline
+    5 & Pernyataan \textit{risk appetite} dan \textit{risk register} & Apakah skenario punya pemilik
+    dan batas? \\ \hline
+    6 & Profil saat ini National Institute of Standards and Technology Cybersecurity Framework (NIST
+    CSF) dan daftar celah kontrol & Apakah status didukung bukti? \\ \hline
+    7 & Catatan pemrosesan dan analisis celah PDP & Apakah celah tertaut ke kewajiban dan risiko? \\
+    \hline
+  \end{tabularx}
+\end{table}
+
+\textbf{Luaran.} RoPA, hasil penyaringan DPIA, analisis insiden, rancangan pemberitahuan, celah PDP,
+dan tiga prioritas.
+
+\textbf{Kaitan dengan capstone.} Luaran menutup tonggak C2 Kondisi Saat Ini, yang ditinjau menjelang
+Ujian Tengah Semester (UTS). Tiga prioritas menjadi masukan C3 pada Bab 8 dan Bab 9. Penulisan
+temuan pada Bab 12 memakai kronologi yang sama.
+
+\textbf{Kriteria penilaian.} Ketepatan dasar dan peran 30 persen; kelengkapan alur 25 persen;
+kronologi serta tenggat 30 persen; keterlacakan bukti 15 persen. Nilai tinggi diberikan pada
+ketepatan batas kesimpulan, termasuk penandaan fakta yang belum diketahui.
+
+\textbf{Berkas pendukung.} Daftar lengkap ada di \berkas{sources/chapter07/README.md}. Data
+organisasi nyata wajib berizin dan dianonimkan. Data pribadi pasien atau karyawan tidak boleh
+dipakai.
 
 \section{Ringkasan}
 
-% TODO
+Pelindungan data dimulai dari tujuan dan dasar pemrosesan. Data kesehatan termasuk data spesifik,
+dan Pasal 20 UU PDP menyediakan enam dasar. Persetujuan hanya salah satunya. Rekam medis yang
+disandarkan pada persetujuan berbenturan dengan retensi 25 tahun, sedangkan daftar promosi memang
+pantas memakai persetujuan terpisah. Satu kotak centang tidak membenarkan seluruh penggunaan dan
+salinan data.
+
+Pengendali dan prosesor dinilai per kegiatan. Instruksi, penggunaan mandiri, serta prosesor lain
+memengaruhi tanggung jawab. Pasal 51 ayat (6) dapat mengarahkan pemrosesan di luar perintah kepada
+vendor, tetapi kewajiban memberi tahu tetap pada pengendali. Fungsi pelindungan data membutuhkan
+wewenang dan ruang pengawasan yang sesuai, dan Putusan MK Nomor 151/PUU-XXII/2024 mengubah
+pembacaan kriteria penunjukannya.
+
+RoPA memperlihatkan ke mana data berpindah dan mengapa disimpan. Retensi, permintaan subjek, dan
+transfer dinilai bersama aturan sektor. Pasal 56 UU PDP tidak dibaca sendiri, karena Pasal 966 dan
+Pasal 972 PP 28/2024 lebih dahulu menentukan lokasi dan transfer data kesehatan. DPIA menilai akibat
+bagi pasien sebelum alur berjalan, sehingga melengkapi skor risiko organisasi pada Bab 5.
+
+Penanganan insiden memerlukan kronologi dan keputusan cepat. Tenggat tidak berhenti pada akhir
+pekan. Pasal 46 tidak menulis titik mulai, sehingga waktu kejadian dan waktu diketahui dicatat
+terpisah. Pada insiden 2025, jumlah 1.240 rekam baru tersedia pada jam ke-12, dan 620 rekam tidak
+dapat dilacak karena catatan hanya disimpan 7 hari. Status PP 33/2026 dan lembaga pelindungan data
+masih harus dipantau, dengan tanggal pemeriksaan yang tertulis.
+
+Seluruh temuan bermuara pada daftar celah dan tonggak C2. Tiga celah prioritas membawa kondisi saat
+ini ke perancangan kondisi target. Sebagai kerangka, ISO/IEC 27701:2025 membantu menjaga agar
+kegiatan tersebut tetap menjadi sistem. Pesan utama bab ini ialah bahwa organisasi harus dapat
+menunjukkan alasan pemrosesan, kendali alur data, dan bukti pertanggungjawabannya.
 
 \section{Latihan}
 
+\subsection*{Latihan 1: Peran Vendor}
+
+Medikara memakai vendor untuk aplikasi Medikara+. Dalam hubungan ini, siapa pengendali dan siapa
+prosesor? Apa akibatnya terhadap tanggung jawab saat terjadi kebocoran? Latihan ini membuktikan
+bahwa peran dinilai per kegiatan, bukan per nama perusahaan.
+
 \begin{enumerate}
-  \item Medikara memakai vendor untuk aplikasi Medikara+. Dalam hubungan ini, siapa pengendali dan siapa prosesor? Apa akibatnya terhadap tanggung jawab saat terjadi kebocoran?
-  \item Tentukan dasar pemrosesan yang paling tepat untuk data rekam medis dalam layanan pengobatan. Jelaskan mengapa persetujuan belum tentu menjadi dasar yang terbaik.
-  \item Susun garis waktu notifikasi yang memenuhi UU PDP untuk insiden yang ditemukan pada Jumat malam.
+  \item Daftar kegiatan vendor pada Medikara+: operasi, dukungan, dan penggunaan untuk produk
+  vendor.
+  \item Catat pihak yang menentukan tujuan dan pihak yang memberi instruksi untuk tiap kegiatan.
+  \item Pisahkan operasi sesuai instruksi dan penggunaan mandiri.
+  \item Tetapkan alur eskalasi serta pemilik pemberitahuan.
 \end{enumerate}
+
+Tabel~\ref{tab:ch07-lat1-contoh} merangkum contoh analisis Latihan 1 dari skenario pembelajaran, dan
+Tabel~\ref{tab:ch07-lat1-hasil} menyediakan lembar isiannya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh analisis Latihan 1 (skenario pembelajaran)}\label{tab:ch07-lat1-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|}
+    \hline
+    \textbf{Kegiatan (misalkan)} & \textbf{Analisis peran} & \textbf{Akibat saat bocor} &
+    \textbf{Bukti} \\ \hline
+    Vendor mengoperasikan 28.000 janji temu per bulan & Medikara pengendali; vendor prosesor untuk
+    kegiatan ini & Pasal 51 ayat (3): termasuk tanggung jawab pengendali & Instruksi dan kontrak \\
+    \hline
+    Akun dukungan membaca 1.240 rekam setelah kontrak selesai & Di luar perintah bila terbukti &
+    Pasal 51 ayat (6) mengarah ke vendor; pemberitahuan tetap pada Medikara & Daftar akun dan
+    catatan akses \\ \hline
+    Vendor melatih produk sendiri & Peran dan dasar perlu dinilai kembali & Vendor dapat dinilai
+    sebagai pengendali untuk kegiatan itu & Keputusan tujuan penggunaan \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar hasil Latihan 1}\label{tab:ch07-lat1-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|}
+    \hline
+    \textbf{Kegiatan (misalkan)} & \textbf{Analisis peran} & \textbf{Akibat saat bocor} &
+    \textbf{Bukti} \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+\textbf{Pertanyaan analisis.} Apakah label kontrak cukup bila kegiatan nyata berbeda? Informasi apa
+harus diterima Medikara agar dapat memberi pemberitahuan tepat waktu? Bila 12 dari 120 akun vendor
+luput dari peninjauan, apakah Pasal 51 ayat (6) cukup untuk melepaskan Medikara?
+
+\subsection*{Latihan 2: Dasar Pengobatan}
+
+Tentukan dasar pemrosesan yang paling tepat untuk data rekam medis dalam layanan pengobatan.
+Jelaskan mengapa persetujuan belum tentu menjadi dasar yang terbaik. Latihan ini membuktikan bahwa
+pilihan dasar punya akibat pada hak dan retensi.
+
+\begin{enumerate}
+  \item Pisahkan tujuan pelayanan, pencatatan, keadaan darurat, dan promosi.
+  \item Baca kewajiban rekam medis dan Pasal 20 ayat (2) UU PDP.
+  \item Tuliskan pilihan dasar untuk tiap tujuan.
+  \item Hitung akibat penarikan persetujuan terhadap retensi dan daftar promosi.
+\end{enumerate}
+
+Tabel~\ref{tab:ch07-lat2-contoh} merangkum contoh analisis Latihan 2 dari skenario pembelajaran, dan
+Tabel~\ref{tab:ch07-lat2-hasil} menyediakan lembar isiannya. Jawaban dasar adalah penafsiran yang
+harus dipertahankan dengan alasan.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh analisis Latihan 2 (skenario pembelajaran)}\label{tab:ch07-lat2-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Tujuan} & \textbf{Dasar kandidat} & \textbf{Pertimbangan} & \textbf{Keputusan yang harus
+    dibuktikan} \\ \hline
+    Rekam medis layanan pengobatan & Kewajiban hukum, huruf c & Penarikan persetujuan memicu rentang
+    72 jam, padahal retensi paling singkat 25 tahun & Dokumentasikan dasar sesuai kewajiban \\
+    \hline
+    Pasien gawat darurat tidak sadar & Kepentingan vital, huruf d & Persetujuan tidak dapat
+    diperoleh saat itu & Catat keadaan dan akses darurat \\ \hline
+    Promosi layanan lain & Persetujuan terpisah, huruf a & Tujuan berbeda; 2.000 pasien turun
+    menjadi 1.850 sesudah 150 penarikan & Nilai dasar tersendiri \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar hasil Latihan 2}\label{tab:ch07-lat2-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Tujuan} & \textbf{Dasar kandidat} & \textbf{Pertimbangan} & \textbf{Keputusan yang harus
+    dibuktikan} \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+\textbf{Pertanyaan analisis.} Apakah pencabutan persetujuan promosi menghapus rekam medis? Data mana
+yang tidak diperlukan untuk tujuan pelayanan? Bila formulir lama memakai satu kotak untuk 336.000
+janji temu per tahun, baris mana yang diperbaiki lebih dulu?
+
+\subsection*{Latihan 3: Notifikasi Jumat Malam}
+
+Susun garis waktu notifikasi yang memenuhi UU PDP untuk insiden yang ditemukan pada Jumat malam.
+Latihan ini menguji waktu kalender dan kecukupan informasi.
+
+\begin{enumerate}
+  \item Mulai dari asumsi kegagalan dan penemuan bersamaan Jumat 20.00 WIB, sehingga batasnya Senin
+  20.00 WIB.
+  \item Tetapkan eskalasi, penyiapan informasi, dan pengiriman sebelum batas. Sisakan cadangan 12
+  jam.
+  \item Tandai informasi yang masih sementara pada setiap langkah.
+  \item Uji ulang dengan data latihan insiden 2025, ketika bukti menunjukkan kejadian lebih awal.
+\end{enumerate}
+
+Tabel~\ref{tab:ch07-lat3-contoh} merangkum contoh analisis Latihan 3 dari skenario pembelajaran, dan
+Tabel~\ref{tab:ch07-lat3-hasil} menyediakan lembar isiannya.
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Contoh analisis Latihan 3 (skenario pembelajaran)}\label{tab:ch07-lat3-contoh}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.08\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.24\textwidth}|}
+    \hline
+    \textbf{Waktu (misalkan)} & \textbf{Jam} & \textbf{Tindakan} & \textbf{Bukti} \\ \hline
+    Jumat 20.00 & 0 & Keluhan dieskalasi; waktu diketahui dicatat; jumlah belum diketahui & Tiket
+    layanan pasien \\ \hline
+    Jumat 21.00 & 1 & Akun dinonaktifkan; fungsi hukum dihubungi & Daftar akun \\ \hline
+    Sabtu 08.00 & 12 & Jumlah sementara 1.240 rekam & Rekap harian \\ \hline
+    Sabtu 14.00 & 18 & 620 rekam terlacak, 620 rekam tinggal jumlah & Catatan rinci \\ \hline
+    Minggu 12.00 & 40 & Rancangan disetujui fungsi hukum & Versi rancangan \\ \hline
+    Senin 08.00 & 60 & Pemberitahuan tertulis dikirim kepada pasien dan lembaga & Bukti pengiriman
+    \\ \hline
+    Senin 20.00 & 72 & Batas terluar kerja; cadangan 12 jam & Catatan keputusan \\ \hline
+    Rabu 20.00 & 120 & Pembaruan pertama & Salinan pembaruan \\ \hline
+  \end{tabularx}
+\end{table}
+
+\begin{table}[!htb]
+  \centering\small
+  \caption{Lembar hasil Latihan 3}\label{tab:ch07-lat3-hasil}
+  \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.08\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.24\textwidth}|}
+    \hline
+    \textbf{Waktu (misalkan)} & \textbf{Jam} & \textbf{Tindakan} & \textbf{Bukti} \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+    \dots & \dots & \dots & \dots \\ \hline
+  \end{tabularx}
+\end{table}
+
+\textbf{Pertanyaan analisis.} Bagaimana batas berubah bila kejadian ternyata Kamis? Fakta minimum
+apa yang belum tersedia dan bagaimana pembaruannya dicatat? Bila jam ke-60 terlewati, siapa
+memutuskan pengiriman dengan informasi yang belum lengkap?

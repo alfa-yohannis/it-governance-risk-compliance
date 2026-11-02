@@ -1,0 +1,37 @@
+\begin{tikzpicture}[
+  sel/.style={draw,align=center,text width=2.95cm,minimum height=1.2cm,
+    font=\scriptsize,fill=blue!8,inner sep=2pt},
+  kosong/.style={sel,fill=white},
+  panah/.style={-{Stealth[length=2mm]},thick}
+]
+  % Baris atas: dampak tinggi. Kolom kanan: pengaruh tinggi.
+  \node[sel,fill=orange!12] at (0,2.5)
+    {S-01 Pasien\\{\tiny\mdseries wakili suaranya}};
+  \node[sel] at (3.15,2.5)
+    {S-04 Klinisi\\S-05 Manajemen TI\\{\tiny\mdseries libatkan dalam rancangan}};
+  \node[sel,fill=praditagreen!15] at (6.3,2.5)
+    {S-02 Direksi\\{\tiny\mdseries memutuskan dan menerima risiko}};
+
+  \node[kosong] at (0,1.25) {};
+  \node[sel] at (3.15,1.25)
+    {S-06 Vendor Medikara+\\S-07 Audit internal\\{\tiny\mdseries minta batas dan bukti}};
+  \node[sel] at (6.3,1.25)
+    {S-03 Dewan komisaris\\{\tiny\mdseries terima laporan pengawasan}};
+
+  \node[kosong] at (0,0) {};
+  \node[kosong] at (3.15,0) {};
+  \node[sel] at (6.3,0)
+    {S-08 Regulator sektor\\{\tiny\mdseries penuhi lewat saluran resmi}};
+
+  \draw[panah] (-1.65,-0.75) -- (-1.65,3.25);
+  \node[font=\scriptsize,rotate=90,anchor=south] at (-1.95,1.25)
+    {Dampak bila pemicu diabaikan};
+  \draw[panah] (-1.65,-0.75) -- (8,-0.75);
+  \node[font=\scriptsize,anchor=north] at (3.15,-0.8)
+    {Pengaruh pada keputusan};
+  \node[font=\tiny,anchor=north] at (0,-0.8) {1 rendah};
+  \node[font=\tiny,anchor=north] at (6.3,-0.8) {3 tinggi};
+  \node[font=\tiny,anchor=east] at (-1.68,2.5) {3};
+  \node[font=\tiny,anchor=east] at (-1.68,1.25) {2};
+  \node[font=\tiny,anchor=east] at (-1.68,0) {1};
+\end{tikzpicture}

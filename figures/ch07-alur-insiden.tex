@@ -1,0 +1,15 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  tahap/.style={draw, rounded corners, align=center, text width=2.25cm,
+    minimum height=1.45cm, fill=blue!8},
+  panah/.style={-{Stealth[length=2mm]}, thick}]
+  \node[tahap] (n0) at (0,0) {Temukan\\dan amankan\\ {\tiny\mdseries catat dua waktu}};
+  \node[tahap, fill=orange!12] (n1) at (2.8,0) {Nilai data\\serta waktu\\ {\tiny\mdseries pisahkan
+    pasti dan sementara}};
+  \node[tahap] (n2) at (5.6,0) {Putuskan\\dan beri tahu\\ {\tiny\mdseries subjek data dan lembaga}};
+  \node[tahap, fill=green!10] (n3) at (8.4,0) {Pulihkan\\dan perbaiki\\ {\tiny\mdseries bukti dan
+    uji ulang}};
+  \draw[panah] (n0) -- (n1);
+  \draw[panah] (n1) -- (n2);
+  \draw[panah] (n2) -- (n3);
+\end{tikzpicture}
