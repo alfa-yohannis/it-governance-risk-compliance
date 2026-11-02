@@ -301,7 +301,7 @@ Tim yang memakai organisasi tempat kerja tetap dapat memakai Medikara sebagai pe
 
 ## Struktur Repositori
 
-- `figures/`: gambar untuk modul dan slide, yaitu diagram TikZ `chNN-nama.tex`, diagram konsep `chNN-diagram-konsep.png` beserta `.svg`, ilustrasi JPG opsional `chNN-nama.jpg`, serta `logo_universitas.png` dan `building.png`. Daftar lengkapnya ada di [`figures/README.md`](figures/README.md).
+- `figures/`: gambar untuk modul dan slide, yaitu diagram TikZ `chNN-nama.tex`, diagram konsep `chNN-diagram-konsep.png` beserta `.svg`, ilustrasi JPG arsip `chNN-nama.jpg`, serta `logo_universitas.png` dan `building.png`. Daftar lengkapnya ada di [`figures/README.md`](figures/README.md).
 - `module/`: naskah modul LaTeX. Berkas utama `it-governance-risk-compliance.tex` memuat `titlepage.tex` dan `chapter01.tex` sampai `chapter14.tex`. Rujukan inti dan rujukan lintas bab ada di `references.bib`, sedangkan rujukan khusus satu bab ada di `bib/chapterNN.bib`. Folder `module/fonts` berisi font Titillium Web beserta lisensinya. PDF siap pakai ada di `module/it-governance-risk-compliance.pdf`.
 - `slides/`: slide per pertemuan di `slides/sessionNN/`, memakai `slides/preamble.tex` bersama. Folder `slides/theme` berisi tema Beamer. PDF siap pakai ada di `slides/sessionNN/sessionNN.pdf`.
 - `sources/`: berkas pendukung per bab di `sources/chapterNN/`, misalnya lembar kerja, templat, data kasus, dan skrip opsional yang dirujuk dari naskah modul. Ringkasannya ada di [`sources/README.md`](sources/README.md), dan panduan penggabungan luaran ada di [`sources/panduan-capstone.md`](sources/panduan-capstone.md).
