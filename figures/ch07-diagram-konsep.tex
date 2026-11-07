@@ -1,0 +1,70 @@
+% Diagram konsep Bab 7: Tujuan dan dasar pemrosesan mengendalikan alur data pribadi.
+% Dibangkitkan tools/render-diagrams.py dari figures/chapter-diagrams.json;
+% ubah data JSON lalu jalankan ulang skrip, jangan sunting berkas ini langsung.
+\begin{tikzpicture}[
+  x=0.92cm, y=0.95cm,
+  kotak konsep/.style={draw, line width=0.5pt, rounded corners=2pt,
+    align=center, minimum width=2.999cm,
+    minimum height=1.330cm, inner sep=0pt, font=\scriptsize,
+    text=konsepJudul},
+  peran actor/.style={kotak konsep, fill=konsepIsiActor, draw=konsepGarisActor},
+  peran service/.style={kotak konsep, fill=konsepIsiService, draw=konsepGarisService},
+  peran control/.style={kotak konsep, fill=konsepIsiControl, draw=konsepGarisControl},
+  peran data/.style={kotak konsep, fill=konsepIsiData, draw=konsepGarisData},
+  peran outcome/.style={kotak konsep, fill=konsepIsiOutcome, draw=konsepGarisOutcome},
+  peran risk/.style={kotak konsep, fill=konsepIsiRisk, draw=konsepGarisRisk},
+  panah konsep/.style={-{Stealth[length=1.3mm, width=1.2mm]}, line width=0.6pt,
+    draw=konsepPanah},
+  panah putus/.style={panah konsep, draw=konsepPanahPutus,
+    dash pattern=on 2.5pt off 1.5pt},
+  label panah/.style={font=\tiny, align=center, fill=white,
+    inner sep=1pt, text=konsepLabel},
+  catatan/.style={font=\scriptsize, align=left, anchor=north west,
+    inner sep=0pt, text width=12.383cm, text=konsepTeks,
+    execute at begin node={\hyphenpenalty=10000\hbadness=10000\relax}},
+]
+  \definecolor{konsepIsiActor}{HTML}{EEF1F6}
+  \definecolor{konsepGarisActor}{HTML}{50627D}
+  \definecolor{konsepIsiService}{HTML}{EAF2FB}
+  \definecolor{konsepGarisService}{HTML}{3F6893}
+  \definecolor{konsepIsiControl}{HTML}{E9F3EC}
+  \definecolor{konsepGarisControl}{HTML}{316B4B}
+  \definecolor{konsepIsiData}{HTML}{F1EDF8}
+  \definecolor{konsepGarisData}{HTML}{786394}
+  \definecolor{konsepIsiOutcome}{HTML}{E4F2EC}
+  \definecolor{konsepGarisOutcome}{HTML}{236C57}
+  \definecolor{konsepIsiRisk}{HTML}{FCEDE7}
+  \definecolor{konsepGarisRisk}{HTML}{B36947}
+  \definecolor{konsepJudul}{HTML}{20394F}
+  \definecolor{konsepTeks}{HTML}{455264}
+  \definecolor{konsepLabel}{HTML}{35485C}
+  \definecolor{konsepPanah}{HTML}{5C7084}
+  \definecolor{konsepPanahPutus}{HTML}{A15D40}
+  % Panah dan label lebih dahulu; kotak menutupi sisa latar label.
+  \draw[panah konsep] (-0.7,0.7) -- (-0.7,0.9) -- (4.4,0.9) -- (4.4,0.7);
+  \draw[panah konsep] (6.03,0) -- (7.87,0);
+  \draw[panah konsep] (9.5,-0.7) -- (9.5,-0.9) -- (6.2,-0.9) -- (6.2,-2.7) -- (6.03,-2.7);
+  \draw[panah konsep] (4.4,-0.7) -- (4.4,-2);
+  \draw[panah konsep] (0.93,-2.7) -- (1.1,-2.7) -- (1.1,0) -- (2.77,0);
+  \draw[panah konsep] (4.4,-3.4) -- (4.4,-3.6) -- (9.5,-3.6) -- (9.5,-3.4);
+  \node[label panah] at (1.85,0.9) {dasar kegiatan};
+  \node[label panah] at (6.95,0) {instruksi\\terbatas};
+  \node[label panah] at (6.2,-1.53) {alur dan salinan data};
+  \node[label panah] at (4.15,-1.35) {catat tujuan,\\peran};
+  \node[label panah] at (1.1,-1.35) {proses hak subjek};
+  \node[label panah] at (6.95,-3.91) {alur berisiko tinggi};
+  \node[peran control] (tujuan) at (-0.7,0)
+    {\textbf{Tujuan dan dasar}\\[0.5pt]{\tiny\color{konsepTeks}nilai per kegiatan}\\[-2pt]{\tiny\color{konsepTeks}pemrosesan}};
+  \node[peran actor] (kendali) at (4.4,0)
+    {\textbf{Pengendali: Medikara}\\[0.5pt]{\tiny\color{konsepTeks}tujuan dan instruksi}};
+  \node[peran service] (vendor) at (9.5,0)
+    {\textbf{Prosesor vendor}\\[0.5pt]{\tiny\color{konsepTeks}bertindak sesuai instruksi}};
+  \node[peran actor] (hak) at (-0.7,-2.7)
+    {\textbf{Permintaan}\\\textbf{subjek data}\\[0.5pt]{\tiny\color{konsepTeks}verifikasi dan tanggapan}};
+  \node[peran data] (ropa) at (4.4,-2.7)
+    {\textbf{Catatan pemrosesan}\\[0.5pt]{\tiny\color{konsepTeks}data, penerima, lokasi, retensi}};
+  \node[peran control] (dampak) at (9.5,-2.7)
+    {\textbf{Penilaian dampak}\\[0.5pt]{\tiny\color{konsepTeks}risiko bagi pasien}};
+  \node[catatan] at (-2.33,-4.5)
+    {Persetujuan bukan satu-satunya dasar pemrosesan. Retensi serta transfer dinilai bersama aturan sektor dan tujuan masing-masing.};
+\end{tikzpicture}

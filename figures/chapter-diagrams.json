@@ -1,7 +1,7 @@
 {
   "code": "IT40813",
   "format_version": 1,
-  "description": "Diagram konsep orisinal, disusun dari naskah bab; kotak generik, tanpa TikZ.",
+  "description": "Diagram konsep orisinal, disusun dari naskah bab; kotak generik yang dibangkitkan menjadi TikZ oleh tools/render-diagrams.py.",
   "chapters": [
     {
       "caption": "Dari tujuan layanan ke kontrol dan bukti GRC",
@@ -104,7 +104,7 @@
       "note": "Kebijakan saja belum menunjukkan kontrol bekerja. Keputusan menyebut pemilik hasil, dasar bukti, dan waktu peninjauan.",
       "basis": "Governance versus management, risk/control/compliance/assurance, vendor incident and accountable decisions.",
       "number": 1,
-      "filename": "ch01-diagram-konsep.png",
+      "filename": "ch01-diagram-konsep.tex",
       "source": "module/chapter01.tex",
       "chapter_title": "Orientasi Mata Kuliah dan Dasar-Dasar GRC",
       "sections": [
@@ -229,7 +229,7 @@
       "note": "Hak keputusan harus mengikuti mandat dan delegasi. Forum komite tidak memindahkan pertanggungjawaban hasil bisnis kepada TI.",
       "basis": "ISO/IEC 38500:2024 EDM, stakeholder engagement, decision rights and alignment/value.",
       "number": 2,
-      "filename": "ch02-diagram-konsep.png",
+      "filename": "ch02-diagram-konsep.tex",
       "source": "module/chapter02.tex",
       "chapter_title": "Prinsip Tata Kelola TI dan Peran Direksi",
       "sections": [
@@ -333,7 +333,7 @@
       "note": "Retensi, cadangan, interoperabilitas, dan pelaporan adalah kewajiban berbeda. Satu sertifikat tidak menggantikan pemeriksaan cakupan.",
       "basis": "Regulatory applicability, official texts, PDP/PSE/medical record duties, obligation register and evidence statuses.",
       "number": 3,
-      "filename": "ch03-diagram-konsep.png",
+      "filename": "ch03-diagram-konsep.tex",
       "source": "module/chapter03.tex",
       "chapter_title": "Lanskap Regulasi dan Kewajiban Kepatuhan",
       "sections": [
@@ -438,7 +438,7 @@
       "note": "Versi model dicatat pada artefak. Prioritas lokal dan hasil pemetaan tidak otomatis menjadi keluaran resmi COBIT Toolkit.",
       "basis": "COBIT 2019 seven components, 40 objectives, design factors, goals cascade and evidence-based capability.",
       "number": 4,
-      "filename": "ch04-diagram-konsep.png",
+      "filename": "ch04-diagram-konsep.tex",
       "source": "module/chapter04.tex",
       "chapter_title": "COBIT 2019: Sistem Tata Kelola dan Faktor Desain",
       "sections": [
@@ -543,7 +543,7 @@
       "note": "Skor matriks berskala urut, bukan rupiah atau peluang. Pemilik risiko tetap bertanggung jawab meski kontrol dikerjakan vendor.",
       "basis": "ERM, ISO 31000 context/assessment/treatment, appetite/tolerance/capacity, register and residual risk.",
       "number": 5,
-      "filename": "ch05-diagram-konsep.png",
+      "filename": "ch05-diagram-konsep.tex",
       "source": "module/chapter05.tex",
       "chapter_title": "Manajemen Risiko Enterprise dan Risiko TI",
       "sections": [
@@ -646,7 +646,7 @@
       "note": "NIST CSF: Govern, Identify, Protect, Detect, Respond, Recover bekerja bersamaan. Pemetaan tidak membuktikan kesetaraan kerangka.",
       "basis": "ISO 27001 ISMS and SoA, CIA, Annex A/27002, NIST CSF concurrent functions, profiles and gaps.",
       "number": 6,
-      "filename": "ch06-diagram-konsep.png",
+      "filename": "ch06-diagram-konsep.tex",
       "source": "module/chapter06.tex",
       "chapter_title": "Keamanan Informasi: ISO/IEC 27001 dan NIST CSF 2.0",
       "sections": [
@@ -759,7 +759,7 @@
       "note": "Persetujuan bukan satu-satunya dasar pemrosesan. Retensi serta transfer dinilai bersama aturan sektor dan tujuan masing-masing.",
       "basis": "PDP legal bases, controller/processor roles, rights, RoPA, DPIA, retention/transfer and privacy management.",
       "number": 7,
-      "filename": "ch07-diagram-konsep.png",
+      "filename": "ch07-diagram-konsep.tex",
       "source": "module/chapter07.tex",
       "chapter_title": "Pelindungan Data Pribadi dalam Praktik",
       "sections": [
@@ -864,7 +864,7 @@
       "note": "Target kapabilitas dipilih sesuai kebutuhan. Kebijakan, standar, prosedur, dan pedoman memiliki fungsi serta pemilik berbeda.",
       "basis": "COBIT design, target CSF profile, forum/SoD, RACI, policy lifecycle and acceptance evidence.",
       "number": 8,
-      "filename": "ch08-diagram-konsep.png",
+      "filename": "ch08-diagram-konsep.tex",
       "source": "module/chapter08.tex",
       "chapter_title": "Merancang Sistem Tata Kelola Target",
       "sections": [
@@ -966,7 +966,7 @@
       "note": "Dua vendor dapat memiliki satu titik kegagalan bersama. Kontrak dan sertifikat penyedia tidak menghapus tanggung jawab pelanggan.",
       "basis": "Third/fourth parties, concentration, supplier lifecycle, contractual controls, shared responsibility and DPIA.",
       "number": 9,
-      "filename": "ch09-diagram-konsep.png",
+      "filename": "ch09-diagram-konsep.tex",
       "source": "module/chapter09.tex",
       "chapter_title": "Risiko Pihak Ketiga dan Cloud",
       "sections": [
@@ -1072,7 +1072,7 @@
       "note": "Server hidup belum menjamin layanan pasien pulih. Tabletop menguji keputusan; restore teknis membuktikan kemampuan pemulihan.",
       "basis": "BCMS, BIA objectives, continuity versus DR/incident management, cyber crisis and distinct exercise evidence.",
       "number": 10,
-      "filename": "ch10-diagram-konsep.png",
+      "filename": "ch10-diagram-konsep.tex",
       "source": "module/chapter10.tex",
       "chapter_title": "Kelangsungan Bisnis dan Ketahanan Operasional",
       "sections": [
@@ -1183,7 +1183,7 @@
       "note": "Fungsi AI RMF saling berulang. Kategori hukum bergantung tujuan dan cakupan; pengawasan memerlukan waktu serta wewenang nyata.",
       "basis": "AI inventory and human oversight, ISO 42001/42005, NIST AI RMF Govern/Map/Measure/Manage and context-based legal classification.",
       "number": 11,
-      "filename": "ch11-diagram-konsep.png",
+      "filename": "ch11-diagram-konsep.tex",
       "source": "module/chapter11.tex",
       "chapter_title": "Tata Kelola Kecerdasan Artifisial",
       "sections": [
@@ -1286,7 +1286,7 @@
       "note": "Peran bukan jumlah departemen. Penutupan temuan memerlukan pengujian perbaikan; sampel membatasi kesimpulan audit.",
       "basis": "Three Lines, audit independence, risk-based planning, design/operating tests, findings and verified follow-up.",
       "number": 12,
-      "filename": "ch12-diagram-konsep.png",
+      "filename": "ch12-diagram-konsep.tex",
       "source": "module/chapter12.tex",
       "chapter_title": "Audit TI dan Asurans",
       "sections": [
@@ -1409,7 +1409,7 @@
       "note": "KCI tinjauan 95% dapat hijau sementara satu akun tanpa pemilik membuat KRI merah. Kedua status tidak dirata-ratakan.",
       "basis": "KPI/KRI/KCI, numerator/denominator and zero/missing statuses, threshold actions and decision-oriented board reporting.",
       "number": 13,
-      "filename": "ch13-diagram-konsep.png",
+      "filename": "ch13-diagram-konsep.tex",
       "source": "module/chapter13.tex",
       "chapter_title": "KPI, KRI, dan Pelaporan ke Direksi",
       "sections": [
@@ -1517,7 +1517,7 @@
       "note": "Pemakaian ulang bukti memerlukan kecocokan periode, sistem, dan kriteria. Alat dipilih setelah identitas serta proses disepakati.",
       "basis": "Integrated GRC shared IDs, many-to-many mapping, tool requirements, evidence reuse and phased governance roadmap.",
       "number": 14,
-      "filename": "ch14-diagram-konsep.png",
+      "filename": "ch14-diagram-konsep.tex",
       "source": "module/chapter14.tex",
       "chapter_title": "Alat GRC dan Peta Jalan Tata Kelola Terpadu",
       "sections": [

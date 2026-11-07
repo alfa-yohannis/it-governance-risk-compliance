@@ -1,0 +1,68 @@
+% Diagram konsep Bab 9: Risiko konsentrasi tersembunyi di balik beberapa vendor.
+% Dibangkitkan tools/render-diagrams.py dari figures/chapter-diagrams.json;
+% ubah data JSON lalu jalankan ulang skrip, jangan sunting berkas ini langsung.
+\begin{tikzpicture}[
+  x=0.92cm, y=0.95cm,
+  kotak konsep/.style={draw, line width=0.5pt, rounded corners=2pt,
+    align=center, minimum width=2.999cm,
+    minimum height=1.330cm, inner sep=0pt, font=\scriptsize,
+    text=konsepJudul},
+  peran actor/.style={kotak konsep, fill=konsepIsiActor, draw=konsepGarisActor},
+  peran service/.style={kotak konsep, fill=konsepIsiService, draw=konsepGarisService},
+  peran control/.style={kotak konsep, fill=konsepIsiControl, draw=konsepGarisControl},
+  peran data/.style={kotak konsep, fill=konsepIsiData, draw=konsepGarisData},
+  peran outcome/.style={kotak konsep, fill=konsepIsiOutcome, draw=konsepGarisOutcome},
+  peran risk/.style={kotak konsep, fill=konsepIsiRisk, draw=konsepGarisRisk},
+  panah konsep/.style={-{Stealth[length=1.3mm, width=1.2mm]}, line width=0.6pt,
+    draw=konsepPanah},
+  panah putus/.style={panah konsep, draw=konsepPanahPutus,
+    dash pattern=on 2.5pt off 1.5pt},
+  label panah/.style={font=\tiny, align=center, fill=white,
+    inner sep=1pt, text=konsepLabel},
+  catatan/.style={font=\scriptsize, align=left, anchor=north west,
+    inner sep=0pt, text width=12.383cm, text=konsepTeks,
+    execute at begin node={\hyphenpenalty=10000\hbadness=10000\relax}},
+]
+  \definecolor{konsepIsiActor}{HTML}{EEF1F6}
+  \definecolor{konsepGarisActor}{HTML}{50627D}
+  \definecolor{konsepIsiService}{HTML}{EAF2FB}
+  \definecolor{konsepGarisService}{HTML}{3F6893}
+  \definecolor{konsepIsiControl}{HTML}{E9F3EC}
+  \definecolor{konsepGarisControl}{HTML}{316B4B}
+  \definecolor{konsepIsiData}{HTML}{F1EDF8}
+  \definecolor{konsepGarisData}{HTML}{786394}
+  \definecolor{konsepIsiOutcome}{HTML}{E4F2EC}
+  \definecolor{konsepGarisOutcome}{HTML}{236C57}
+  \definecolor{konsepIsiRisk}{HTML}{FCEDE7}
+  \definecolor{konsepGarisRisk}{HTML}{B36947}
+  \definecolor{konsepJudul}{HTML}{20394F}
+  \definecolor{konsepTeks}{HTML}{455264}
+  \definecolor{konsepLabel}{HTML}{35485C}
+  \definecolor{konsepPanah}{HTML}{5C7084}
+  \definecolor{konsepPanahPutus}{HTML}{A15D40}
+  % Panah dan label lebih dahulu; kotak menutupi sisa latar label.
+  \draw[panah konsep] (-0.7,0.7) -- (-0.7,0.9) -- (4.4,0.9) -- (4.4,0.7);
+  \draw[panah konsep] (6.03,0) -- (7.87,0);
+  \draw[panah konsep] (0.93,0) -- (1.1,0) -- (1.1,-1.8) -- (4.4,-1.8) -- (4.4,-2);
+  \draw[panah konsep] (6.03,-2.7) -- (6.2,-2.7) -- (6.2,-0.9) -- (9.5,-0.9) -- (9.5,-0.7);
+  \draw[panah konsep] (-0.7,-2) -- (-0.7,-0.7);
+  \draw[panah konsep] (0.93,-2.7) -- (2.77,-2.7);
+  \node[label panah] at (1.85,1.21) {kontrak dan instruksi};
+  \node[label panah] at (6.95,0.31) {bergantung};
+  \node[label panah] at (1.1,-1.17) {kerja sama layanan};
+  \node[label panah] at (6.2,-1.53) {bergantung};
+  \node[label panah] at (-0.7,-1.35) {mengatur\\hubungan};
+  \node[label panah] at (1.85,-2.7) {syarat\\dan bukti};
+  \node[peran actor] (med) at (-0.7,0)
+    {\textbf{Medikara}\\[0.5pt]{\tiny\color{konsepTeks}pemilik tujuan dan risiko}};
+  \node[peran service] (app) at (4.4,0)
+    {\textbf{Vendor Medikara+}\\[0.5pt]{\tiny\color{konsepTeks}akses dan kontrak layanan}};
+  \node[peran risk] (pesan) at (9.5,0)
+    {\textbf{Penyedia}\\\textbf{pesan bersama}\\[0.5pt]{\tiny\color{konsepTeks}ketergantungan}\\[-2pt]{\tiny\color{konsepTeks}pihak keempat}};
+  \node[peran control] (kontrol) at (-0.7,-2.7)
+    {\textbf{Siklus hubungan}\\\textbf{vendor}\\[0.5pt]{\tiny\color{konsepTeks}uji tuntas sampai keluar}};
+  \node[peran service] (lab) at (4.4,-2.7)
+    {\textbf{Laboratorium mitra}\\[0.5pt]{\tiny\color{konsepTeks}kontrak layanan berbeda}};
+  \node[catatan] at (-2.33,-3.77)
+    {Dua vendor dapat memiliki satu titik kegagalan bersama. Kontrak dan sertifikat penyedia tidak menghapus tanggung jawab pelanggan.};
+\end{tikzpicture}
